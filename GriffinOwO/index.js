@@ -240,7 +240,7 @@ register("chat", (player, type, floor) => {
 }).setCriteria(/^Party > (.+): ![Jj][Oo][Ii][Nn] ([FMfm])([0-7])$/);
 
 // !allinv
-register("chat", () => {
+register("chat", (player) => {
     if (!chat_option) return;
 
     player = getIGN(player);
