@@ -323,9 +323,9 @@ register("chat", (player) => {
     if (checkWhitelist(player) === false) return;
 
     let unitque_num = getUniqueValue(player);
-    ChatLib.chat(`&2[GriffinOwO] &ferror`);
 
     setTimeout(() => {
+        ChatLib.chat(`&2[GriffinOwO] &fRunning rng generator. [${player}]`);
         if (unitque_num <= 50) {
             ChatLib.command(`pc ${player} you are ${unitque_num}% chance to get rng!`)
         }
