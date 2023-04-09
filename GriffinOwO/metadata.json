@@ -1,0 +1,10 @@
+{
+    "name": "GriffinOwO",
+    "creator": "whats2000_, syang12002",
+    "version": "1.1.0",
+    "entry": "index.js",
+    "description": "/griffin to toggle",
+    "requires": [
+        "BeaconBeam"
+    ]
+}
