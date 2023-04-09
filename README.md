@@ -13,12 +13,15 @@ A chattrigger script helper for hypixel skyblock
 
 ### Party Chat Trigger Command
 1. `!warp` : allow party members to warp the party
-2. `/msg [IGN] !party [anything string]` : let leader invite the player
-3. `!allinv` : allow party members enable all invite
-4. `!ptme` : allow party members to be the new leader
-5. `/msg [IGN] !mute [anything string]` : allow party members to mute and unmute party
-6. `!join [dungeon floor (ex: f7, m7)]` : allow party members to start dungeon (No downtime)
-7. `!rp` : allow party members to reparty (need toggle others mod reparty */rp*)
+2. `!allinv` : allow party members enable all invite
+3. `!ptme` : allow party members to be the new leader
+4. `!join [dungeon floor (ex: f7, m7)]` : allow party members to start dungeon (No downtime)
+5. `!rp` : allow party members to reparty (need toggle others mod reparty */rp*)
+
+### DM Trigger Command
+1. `/msg [IGN] !party [anything string]` : let leader invite the player
+2. `/msg [IGN] !mute [anything string]` : allow party members to mute and unmute party
+
 ### Fun command
 1. `!rng` : show what your today luck
 
