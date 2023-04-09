@@ -57,23 +57,25 @@ function getUniqueValue(str) {
 }
 
 function getIGN(player) {
-    //player = player.replace(/[ \u24B7\u2672\u2600]+$/, ""); // remove bingo . ironman . stranded suffix
-    player = player.replace(/[^0-9A-Za-z_]+$/, ""); // remove any suffixes that are not legal ign symbols starting from the tail
+    let player_ign = player;
 
-    //player = player.replace(/^.+ /, ""); // remove any prefix (ex: rank)
-    let match_list = player.match(/[0-9A-Za-z_]+$/); // preserve all legal ign symbols starting from the tail
+    // remove any suffixes that are not legal ign symbols starting from the tail
+    player_ign = player_ign.replace(/[^0-9A-Za-z_]+$/, "");
+
+    // preserve all legal ign symbols starting from the tail
+    let match_list = player_ign.match(/[0-9A-Za-z_]+$/);
 
     if (match_list !== null) {
-        player = match_list[0]; // preserve all legal ign symbols starting from the tail
+        player_ign = match_list[0];
     } else {
-        player = "";
+        player_ign = "";
 
         setTimeout(() => {
             ChatLib.chat(`error at IGN, input = "${player}"`);
         }, 50);
     }
 
-    return player;
+    return player_ign;
 }
 
 register("command", () => {
