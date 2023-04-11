@@ -128,33 +128,20 @@ register("Chat", (event) => {
 
 // These function below is refer to slayerhelper to draw out the beacon light which written by Eragon
 register("chat", (player, x, y, z, event) => {
-    if (chat_option === true) {
-        waypoint = [x, y, z].map(a => parseInt(a));
-        ChatLib.chat("&2[GriffinOwO] &fYou received the coordinate from chat and add waypoint!!");
-    }
-}).setCriteria(/^Party > (.+): ([\d-]+) ([\d-]+) ([\d-]+)$/)
+    if (!chat_option) return;
+
+    waypoint = [x, y, z].map(a => parseInt(a));
+    ChatLib.chat(`&2[GriffinOwO] &fYou received the coordinate [x: ${x}, y: ${y}, z: ${z}] from chat and add waypoint!!`);
+}).setCriteria(/^Party\s*>\s*\[.+?\]\s*(.+):\s*(?:.+?\s+)?(-?\d+)\s+(-?\d+)\s+(-?\d+)(?:\s+.*)?$/)
 
 register("chat", (player, x, y, z, event) => {
-    if (chat_option === true) {
-        waypoint = [x, y, z].map(a => parseInt(a));
-        ChatLib.chat("&2[GriffinOwO] &fYou received the coordinate from chat and add waypoint!!");
-    }
-}).setCriteria(/^Party > (.+): ([\d-]+) ([\d-]+) ([\d-]+) (.+)$/)
+    if (!chat_option) return;
 
-register("chat", (player, x, y, z, event) => {
-    if (chat_option === true) {
-        waypoint = [x, y, z].map(a => parseInt(a));
-        ChatLib.chat("&2[GriffinOwO] &fYou received the coordinate from chat and add waypoint!!");
-    }
-}).setCriteria(/^Party > (.+): (.+) ([\d-]+) ([\d-]+) ([\d-]+)$/)
-
-register("chat", (player, x, y, z, event) => {
-    if (chat_option === true) {
-        waypoint = [x, y, z].map(a => parseInt(a));
-        ChatLib.chat("&2[GriffinOwO] &fYou received the coordinate from chat and add waypoint!!");
-    }
+    waypoint = [x, y, z].map(a => parseInt(a));
+    ChatLib.chat("&2[GriffinOwO] &fYou received the coordinate from chat and add waypoint!!");
 }).setCriteria(/^From (.+): ([\d-]+) ([\d-]+) ([\d-]+)/)
 
+// Support for patcher coord
 register("chat", (player, x, y, z) => {
     if (!chat_option) return;
 
@@ -168,27 +155,27 @@ register("chat", (player, x, y, z) => {
 }).setCriteria("${player}: x: ${x}, y: ${y}, z: ${z}");
 
 register("renderWorld", () => {
-    if (chat_option === true) {
-        if (!waypoint) return
+    if (!chat_option) return;
 
-        player_abs_x = Math.abs(Math.round(Player.getX()));
-        player_abs_y = Math.abs(Math.round(Player.getY()));
-        player_abs_z = Math.abs(Math.round(Player.getZ()));
-        beacon_abs_x = Math.abs(waypoint[0]);
-        beacon_abs_y = Math.abs(waypoint[1]);
-        beacon_abs_z = Math.abs(waypoint[2]);
-        check_x = Math.abs(player_abs_x - beacon_abs_x);
-        check_y = Math.abs(player_abs_y - beacon_abs_y);
-        check_z = Math.abs(player_abs_z - beacon_abs_z);
-        if (check_x < 5 && check_y < 5 && check_z < 5) {
-            waypoint = [];
-            ChatLib.chat("&2[GriffinOwO] &fYou arrive to the coordinate!!");
-        }
-        console.log(check_x, check_y, check_z);
+    if (!waypoint) return
 
-        let [x, y, z] = waypoint
-        renderBeaconBeam(x, y, z, 255, 255, 0, 1, false);
+    player_abs_x = Math.abs(Math.round(Player.getX()));
+    player_abs_y = Math.abs(Math.round(Player.getY()));
+    player_abs_z = Math.abs(Math.round(Player.getZ()));
+    beacon_abs_x = Math.abs(waypoint[0]);
+    beacon_abs_y = Math.abs(waypoint[1]);
+    beacon_abs_z = Math.abs(waypoint[2]);
+    check_x = Math.abs(player_abs_x - beacon_abs_x);
+    check_y = Math.abs(player_abs_y - beacon_abs_y);
+    check_z = Math.abs(player_abs_z - beacon_abs_z);
+    if (check_x < 5 && check_y < 5 && check_z < 5) {
+        waypoint = [];
+        ChatLib.chat("&2[GriffinOwO] &fYou arrive to the coordinate!!");
     }
+    console.log(check_x, check_y, check_z);
+
+    let [x, y, z] = waypoint
+    renderBeaconBeam(x, y, z, 255, 255, 0, 1, false);
 })
 
 // !warp
@@ -252,7 +239,7 @@ register("chat", (player) => {
         ChatLib.command("p setting allinvite")
     }, 300);
 
-}).setCriteria(/^Party > (.+): ![Aa][Ll]{2}[Ii][Nn][Vv]$/);
+}).setCriteria(/^Party > (.+): ![Aa][Ll]{2}[Ii][Nn][Vv]([Ii][Tt][Ee])?$/);
 
 // !ptme
 register("chat", (player) => {
@@ -282,7 +269,7 @@ register("chat", (player) => {
         ChatLib.command(`p mute`)
     }, 300);
 
-}).setCriteria("From ${player}: !mut${string}");
+}).setCriteria(/^From (.+): ![Mm][Uu][Tt][Ee](.*)?$/);
 
 // !party player
 register("chat", (player) => {
@@ -297,7 +284,7 @@ register("chat", (player) => {
         ChatLib.command(`p ${player}`)
     }, 300);
 
-}).setCriteria("From ${player}: !part${string}");
+}).setCriteria(/^From (.+): ![Pp][Aa][Rr][Tt][Yy](.*)?$/);
 
 // !rp
 register("chat", (player) => {
@@ -312,7 +299,7 @@ register("chat", (player) => {
         ChatLib.command(`rp`, true)
     }, 300);
 
-}).setCriteria(/^Party > (.+): ![Rr][Pp]$/);
+}).setCriteria(/^Party > (.+): ![Rr][PpSs]$/);
 
 // !rng
 register("chat", (player) => {
