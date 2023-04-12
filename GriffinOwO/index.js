@@ -13,30 +13,41 @@ let check_z = 0;
 let waypoint = [];
 let formatted_message = "";
 let show_message = "";
-var whitelist_mode = false;
 
+var whitelist_mode = false;
+var blacklist_mode = true;
+
+// note : if both on whitelist and blacklist will take blacklist  
 let whitelist_ign = [];
+let blacklist_ign = [];
 
 function checkWhitelist(player) {
-    let check = false;
     let lower_case_player_ign = player.toString().toLowerCase();
 
-    if (whitelist_mode === true) {
-        for (let a = 0; a < whitelist_ign.length; a++) {
-            if (lower_case_player_ign == whitelist_ign[a].toLowerCase()) {
-                check = true;
-                break;
+    if (blacklist_mode) {
+        for (let a = 0; a < blacklist_ign.length; a++)
+            if (lower_case_player_ign == blacklist_ign[a].toLowerCase()) {
+                setTimeout(() => {
+                    ChatLib.chat(`&2[GriffinOwO] &f[${player}] is on blacklist !`);
+                }, 50);
+
+                return false;
             }
-        }
+    }
 
-        if (check === false) {
-            setTimeout(() => {
-                ChatLib.chat(`&2[GriffinOwO] &f[${player}] not on whitelist !`);
-            }, 50);
-        }
-    } else check = true;
+    if (whitelist_mode) {
+        for (let a = 0; a < whitelist_ign.length; a++)
+            if (lower_case_player_ign == whitelist_ign[a].toLowerCase())
+                return true;
 
-    return check;
+        setTimeout(() => {
+            ChatLib.chat(`&2[GriffinOwO] &f[${player}] is not on whitelist !`);
+        }, 50);
+
+        return false;
+    }
+
+    return true;
 }
 
 function getUniqueNumber(str) {
@@ -103,28 +114,69 @@ register("command", (x, y, z) => {
 }).setName("griffin_set_coord");
 
 register("Chat", (event) => {
-    if (chat_option === true) {
-        formatted_message = ChatLib.getChatMessage(event, true);
-        if (formatted_message.includes("&r&eYou dug out &r&2a Minos Champion&r&e!&r")) {
-            setTimeout(() => {
-                waypoint[0] = Player.getX();
-                waypoint[1] = Player.getY();
-                waypoint[2] = Player.getZ();
+    if (!chat_option) return;
 
-                show_message = new Message(
-                    "&2[GriffinOwO] &fClick to show coord to party member. ",
-                    new TextComponent("&a[Show coord]").setClick("run_command", `/pc ` +
-                        `x: ${Math.floor(Player.getX())}` +
-                        `, y: ${Math.floor(Player.getY())}` +
-                        `, z: ${Math.floor(Player.getZ())} [!] Inquis is dug out Warning [!]`),
-                );
+    formatted_message = ChatLib.getChatMessage(event, true);
 
-                ChatLib.chat(show_message);
-            }, 300);
-        }
-    }
+    if (!formatted_message.includes("&r&eYou dug out &r&2a Minos Champion&r&e!&r")) return;
+
+    setTimeout(() => {
+        waypoint[0] = Player.getX();
+        waypoint[1] = Player.getY();
+        waypoint[2] = Player.getZ();
+
+        show_message = new Message(
+            "&2[GriffinOwO] &fClick to show coord to party member. ",
+            new TextComponent("&a[Show coord]").setClick("run_command", `/pc ` +
+                `x: ${Math.floor(Player.getX())}` +
+                `, y: ${Math.floor(Player.getY())}` +
+                `, z: ${Math.floor(Player.getZ())} [!] Inquis is dug out Warning [!]`),
+        );
+
+        ChatLib.chat(show_message);
+    }, 300);
 })
 
+register("Chat", (event) => {
+    if (!chat_option) return;
+
+    formatted_message = ChatLib.getChatMessage(event, true);
+
+    if (!formatted_message.includes("&r&aA &r&cVanquisher &r&ais spawning nearby!&r")) return;
+
+    setTimeout(() => {
+        ChatLib.command(`pc ` +
+            `x: ${Math.floor(Player.getX())}` +
+            `, y: ${Math.floor(Player.getY())}` +
+            `, z: ${Math.floor(Player.getZ())}`)
+    }, 1);
+
+    setTimeout(() => {
+        let scoreboard = Scoreboard.getLines().map(a => { return ChatLib.removeFormatting(a) });
+
+        var location = '';
+
+        for (let line of scoreboard)
+            if (line.includes("⏣")) {
+                location = line;
+                break;
+            }
+
+        ChatLib.command(`pc [!] Vanquisher is spawned at [${location}] [!]`)
+    }, 1001);
+})
+
+register("Chat", (event) => {
+    if (!chat_option) return;
+
+    formatted_message = ChatLib.getChatMessage(event, true);
+
+    if (!formatted_message.includes("&r&6&lRARE DROP! &r&6Nether Star&r")) return;
+
+    setTimeout(() => {
+        ChatLib.command(`pc Vanquisher is killed!`)
+    }, 300);
+})
 
 // These function below is refer to slayerhelper to draw out the beacon light which written by Eragon
 register("chat", (player, x, y, z, event) => {
@@ -184,7 +236,7 @@ register("chat", (player) => {
 
     player = getIGN(player);
 
-    if (checkWhitelist(player) === false) return;
+    if (!checkWhitelist(player)) return;
 
     setTimeout(() => {
         ChatLib.command("pc Party warping in 5s please leave if you don't want to warp!")
@@ -203,23 +255,23 @@ register("chat", (player, type, floor) => {
 
     player = getIGN(player);
 
-    if (checkWhitelist(player) === false) return;
+    if (!checkWhitelist(player)) return;
 
-    if (type.toLowerCase() === "f") {
+    if (type.toLowerCase() === "f")
         type = "catacombs";
-    } else if (floor === "0") { // No m0 here
+    else if (floor === "0")  // No m0 here
         return;
-    } else {
+    else
         type = "master_catacombs";
-    }
+
 
     setTimeout(() => {
-        if (floor === '0') {
+        if (floor === '0')
             ChatLib.chat(`&2[GriffinOwO] &fTrying to join dungeon ${type} entrance. [${player}]`);
-        } else {
+        else
             ChatLib.chat(`&2[GriffinOwO] &fTrying to join dungeon ${type} floor ${floor}. [${player}]`);
-        }
     }, 50);
+
     setTimeout(() => {
         ChatLib.command(`joindungeon ${type} ${floor}`);
     }, 300);
@@ -232,7 +284,7 @@ register("chat", (player) => {
 
     player = getIGN(player);
 
-    if (checkWhitelist(player) === false) return;
+    if (!checkWhitelist(player)) return;
 
     setTimeout(() => {
         ChatLib.chat(`&2[GriffinOwO] &fTrying to set party all invite on. [${player}]`);
@@ -247,7 +299,7 @@ register("chat", (player) => {
 
     player = getIGN(player);
 
-    if (checkWhitelist(player) === false) return;
+    if (!checkWhitelist(player)) return;
 
     setTimeout(() => {
         ChatLib.chat(`&2[GriffinOwO] &fTrying to transfer party. [${player}]`);
@@ -262,7 +314,7 @@ register("chat", (player) => {
 
     player = getIGN(player);
 
-    if (checkWhitelist(player) === false) return;
+    if (!checkWhitelist(player)) return;
 
     setTimeout(() => {
         ChatLib.chat(`&2[GriffinOwO] &fTrying to mute party. [${player}]`);
@@ -277,7 +329,7 @@ register("chat", (player) => {
 
     player = getIGN(player);
 
-    if (checkWhitelist(player) === false) return;
+    if (!checkWhitelist(player)) return;
 
     setTimeout(() => {
         ChatLib.chat(`&2[GriffinOwO] &fTrying to party. [${player}]`);
@@ -292,7 +344,7 @@ register("chat", (player) => {
 
     player = getIGN(player);
 
-    if (checkWhitelist(player) === false) return;
+    if (!checkWhitelist(player)) return;
 
     setTimeout(() => {
         ChatLib.chat(`&2[GriffinOwO] &fTrying to reparty. [${player}]`);
@@ -307,7 +359,7 @@ register("chat", (player) => {
 
     player = getIGN(player);
 
-    if (checkWhitelist(player) === false) return;
+    if (!checkWhitelist(player)) return;
 
     let unitque_num = getUniqueValue(player);
 
