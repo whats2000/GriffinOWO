@@ -374,3 +374,55 @@ register("chat", (player) => {
     }, 300);
 
 }).setCriteria(/^Party > (.+): ![Rr][Nn][Gg]$/);
+
+// /pk player1 player2... 
+let lastAttemptRePartyTime = 0;
+let unWantPlayer = [];
+let validMembers = [];
+
+register("command", (...players) => {
+    if (!chat_option) return;
+
+    unWantPlayer = [];
+    validMembers = [];
+
+    ChatLib.chat('&2[GriffinOwO] &fTrying to get party list.');
+    ChatLib.command('party list');
+
+    setTimeout(() => {
+        ChatLib.command('party disband');
+    }, 300);
+
+    players.forEach((player) => {
+        if (player) unWantPlayer.push(player);
+    });
+
+    lastAttemptRePartyTime = new Date().getTime();
+}).setName("pk");
+
+// For get player list from pk command
+register("chat", (mode, names, e) => {
+    if (new Date().getTime() - lastAttemptRePartyTime > 1000) {
+        return;
+    }
+
+    if (mode !== "Moderators" && mode !== "Members") {
+        return;
+    }
+
+    let membsArr = names.split(" ● ");
+    membsArr.pop();
+
+    // Consider player is in unWantPlayer
+    validMembers = membsArr.map((playerName) => {
+        return playerName.replace(/(\[[a-zA-Z0-9\+]+\])+? /g, "").replace(/(&[0123456789ABCDEFLMNOabcdeflmnor])|\[|\]| |\+/g, "");
+    }).filter((member) => {
+        return !unWantPlayer.includes(member);
+    });
+
+    // run /party 
+    setTimeout(() => {
+        const partyMembers = validMembers.join(" ");
+        ChatLib.command(`party ${partyMembers}`);
+    }, 600);
+}).setChatCriteria("Party ${mode}: ${names}");
