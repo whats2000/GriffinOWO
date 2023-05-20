@@ -580,19 +580,18 @@ register("chat", (mode, names, e) => {
 
     // Consider player is in unWantPlayer
     validMembers = membsArr.map((playerName) => {
-        return playerName.replace(/(\[[a-zA-Z0-9\+]+\])+? /g, "").replace(/(&[0123456789ABCDEFLMNOabcdeflmnor])|\[|\]| |\+/g, "");
+        return getIGN(playerName);
     }).filter((member) => {
         return !unWantPlayer.includes(member);
     });
 
 
+    let i = 0;
     // run /party 
-    for (var i = 0; i < validMembers.length; i++) {
+    validMembers.forEach(player => {
         setTimeout(() => {
-            ChatLib.command(`party ${validMembers[i]}`);
+            ChatLib.command(`party ${player}`);
         }, 500 * (i + 1));
-    }
-
+        i++;
+    });
 }).setChatCriteria("Party ${mode}: ${names}");
-
-
