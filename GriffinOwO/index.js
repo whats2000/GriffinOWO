@@ -1,4 +1,5 @@
-import renderBeaconBeam from "../BeaconBeam"
+import renderBeaconBeam from "../BeaconBeam";
+import Settings from "./config";
 
 let chat_option = true;
 let player_abs_x = 0;
@@ -21,6 +22,10 @@ var blacklist_mode = true;
 let whitelist_ign = [];
 let blacklist_ign = [];
 
+register("command", () => {
+    Settings.openGUI();
+}).setName("griffin_config");
+
 function checkWhitelist(player) {
     let lower_case_player_ign = player.toString().toLowerCase();
 
@@ -28,7 +33,7 @@ function checkWhitelist(player) {
         for (let a = 0; a < blacklist_ign.length; a++)
             if (lower_case_player_ign == blacklist_ign[a].toLowerCase()) {
                 setTimeout(() => {
-                    ChatLib.chat(`&2[GriffinOwO] &f[${player}] is on blacklist !`);
+                    ChatLib.chat(`&2[GriffinOwO] &f[${player}]is on blacklist!`);
                 }, 50);
 
                 return false;
@@ -41,7 +46,7 @@ function checkWhitelist(player) {
                 return true;
 
         setTimeout(() => {
-            ChatLib.chat(`&2[GriffinOwO] &f[${player}] is not on whitelist !`);
+            ChatLib.chat(`&2[GriffinOwO] &f[${player}]is not on whitelist!`);
         }, 50);
 
         return false;
@@ -96,6 +101,15 @@ register("command", () => {
     } else if (chat_option == false) {
         chat_option = true;
         ChatLib.chat("&2[GriffinOwO] &fis now &aenabled!");
+        const hoverText = "Click me to run command";
+        const show_message = new Message(
+            "&2[GriffinOwO] &fFor setting you can use ",
+            new TextComponent("&a[/griffin_config]")
+                .setClick("run_command", `/griffin_config`)
+                .setHover("show_text", hoverText),
+        );
+
+        ChatLib.chat(show_message);
     }
 }).setName("griffin").setAliases("griffinOwO");
 
@@ -127,10 +141,10 @@ register("Chat", (event) => {
 
         show_message = new Message(
             "&2[GriffinOwO] &fClick to show coord to party member. ",
-            new TextComponent("&a[Show coord]").setClick("run_command", `/pc ` +
+            new TextComponent("&a[Show coord]").setClick("run_command", `/pc` +
                 `x: ${Math.floor(Player.getX())}` +
                 `, y: ${Math.floor(Player.getY())}` +
-                `, z: ${Math.floor(Player.getZ())} [!] Inquis is dug out Warning [!]`),
+                `, z: ${Math.floor(Player.getZ())}[!] Inquis is dug out Warning[!]`),
         );
 
         ChatLib.chat(show_message);
@@ -145,7 +159,7 @@ register("Chat", (event) => {
     if (!formatted_message.includes("&r&aA &r&cVanquisher &r&ais spawning nearby!&r")) return;
 
     setTimeout(() => {
-        ChatLib.command(`pc ` +
+        ChatLib.command(`pc` +
             `x: ${Math.floor(Player.getX())}` +
             `, y: ${Math.floor(Player.getY())}` +
             `, z: ${Math.floor(Player.getZ())}`)
@@ -162,7 +176,7 @@ register("Chat", (event) => {
                 break;
             }
 
-        ChatLib.command(`pc [!] Vanquisher is spawned at [${location}] [!]`)
+        ChatLib.command(`pc[!] Vanquisher is spawned at[${location}][!]`)
     }, 1001);
 })
 
@@ -183,7 +197,7 @@ register("chat", (player, x, y, z, event) => {
     if (!chat_option) return;
 
     waypoint = [x, y, z].map(a => parseInt(a));
-    ChatLib.chat(`&2[GriffinOwO] &fYou received the coordinate [x: ${x}, y: ${y}, z: ${z}] from chat and add waypoint!!`);
+    ChatLib.chat(`&2[GriffinOwO] &fYou received the coordinate[x: ${x}, y: ${y}, z: ${z}]from chat and add waypoint!!`);
 }).setCriteria(/^Party\s*>\s*\[.+?\]\s*(.+):\s*(?:.+?\s+)?(-?\d+)\s+(-?\d+)\s+(-?\d+)(?:\s+.*)?$/)
 
 register("chat", (player, x, y, z, event) => {
@@ -234,24 +248,54 @@ register("renderWorld", () => {
 register("chat", (player) => {
     if (!chat_option) return;
 
+    if (!Settings.warp) {
+        const hoverText = "Click me to run command";
+        const show_message = new Message(
+            "&2[GriffinOwO] &f[!warp] is not enable, you can toggle it use ",
+            new TextComponent("&a[/griffin_config]")
+                .setClick("run_command", `/griffin_config`)
+                .setHover("show_text", hoverText),
+        );
+
+        ChatLib.chat(show_message);
+        return;
+    }
+
     player = getIGN(player);
 
     if (!checkWhitelist(player)) return;
 
-    setTimeout(() => {
-        ChatLib.command("pc Party warping in 5s please leave if you don't want to warp!")
-    }, 300);
+
+    let delay = Settings.warpDelay;
+
+    if (delay > 0)
+        setTimeout(() => {
+            ChatLib.command(`pc Party warping in ${delay}s please leave if you don't want to warp!`)
+        }, 300);
 
     setTimeout(() => {
         ChatLib.chat(`&2[GriffinOwO] &fTrying to warp party. [${player}]`);
         ChatLib.command("p warp")
-    }, 5300);
+    }, 300 + 1000 * delay);
 
 }).setCriteria(/^Party > (.+): ![Ww][Aa][Rr][Pp]$/);
 
 // !join
 register("chat", (player, type, floor) => {
     if (!chat_option) return;
+
+    if (!Settings.join) {
+        const hoverText = "Click me to run command";
+        const show_message = new Message(
+            "&2[GriffinOwO] &f[!join] is not enable, you can toggle it use ",
+            new TextComponent("&a[/griffin_config]")
+                .setClick("run_command", `/griffin_config`)
+                .setHover("show_text", hoverText),
+        );
+
+        ChatLib.chat(show_message);
+        return;
+    }
 
     player = getIGN(player);
 
@@ -282,6 +326,19 @@ register("chat", (player, type, floor) => {
 register("chat", (player) => {
     if (!chat_option) return;
 
+    if (!Settings.allinv) {
+        const hoverText = "Click me to run command";
+        const show_message = new Message(
+            "&2[GriffinOwO] &f[!allinv] is not enable, you can toggle it use ",
+            new TextComponent("&a[/griffin_config]")
+                .setClick("run_command", `/griffin_config`)
+                .setHover("show_text", hoverText),
+        );
+
+        ChatLib.chat(show_message);
+        return;
+    }
+
     player = getIGN(player);
 
     if (!checkWhitelist(player)) return;
@@ -296,6 +353,19 @@ register("chat", (player) => {
 // !ptme
 register("chat", (player) => {
     if (!chat_option) return;
+
+    if (!Settings.ptme) {
+        const hoverText = "Click me to run command";
+        const show_message = new Message(
+            "&2[GriffinOwO] &f[!ptme] is not enable, you can toggle it use ",
+            new TextComponent("&a[/griffin_config]")
+                .setClick("run_command", `/griffin_config`)
+                .setHover("show_text", hoverText),
+        );
+
+        ChatLib.chat(show_message);
+        return;
+    }
 
     player = getIGN(player);
 
@@ -312,6 +382,19 @@ register("chat", (player) => {
 register("chat", (player) => {
     if (!chat_option) return;
 
+    if (!Settings.mute) {
+        const hoverText = "Click me to run command";
+        const show_message = new Message(
+            "&2[GriffinOwO] &f[!mute] is not enable, you can toggle it use ",
+            new TextComponent("&a[/griffin_config]")
+                .setClick("run_command", `/griffin_config`)
+                .setHover("show_text", hoverText),
+        );
+
+        ChatLib.chat(show_message);
+        return;
+    }
+
     player = getIGN(player);
 
     if (!checkWhitelist(player)) return;
@@ -326,6 +409,19 @@ register("chat", (player) => {
 // !party player
 register("chat", (player) => {
     if (!chat_option) return;
+
+    if (!Settings.party) {
+        const hoverText = "Click me to run command";
+        const show_message = new Message(
+            "&2[GriffinOwO] &f[!party] is not enable, you can toggle it use ",
+            new TextComponent("&a[/griffin_config]")
+                .setClick("run_command", `/griffin_config`)
+                .setHover("show_text", hoverText),
+        );
+
+        ChatLib.chat(show_message);
+        return;
+    }
 
     player = getIGN(player);
 
@@ -342,6 +438,19 @@ register("chat", (player) => {
 register("chat", (player) => {
     if (!chat_option) return;
 
+    if (!Settings.rp) {
+        const hoverText = "Click me to run command";
+        const show_message = new Message(
+            "&2[GriffinOwO] &f[!rp] is not enable, you can toggle it use ",
+            new TextComponent("&a[/griffin_config]")
+                .setClick("run_command", `/griffin_config`)
+                .setHover("show_text", hoverText),
+        );
+
+        ChatLib.chat(show_message);
+        return;
+    }
+
     player = getIGN(player);
 
     if (!checkWhitelist(player)) return;
@@ -357,6 +466,19 @@ register("chat", (player) => {
 register("chat", (player) => {
     if (!chat_option) return;
 
+    if (!Settings.rng) {
+        const hoverText = "Click me to run command";
+        const show_message = new Message(
+            "&2[GriffinOwO] &f[!rng] is not enable, you can toggle it use ",
+            new TextComponent("&a[/griffin_config]")
+                .setClick("run_command", `/griffin_config`)
+                .setHover("show_text", hoverText),
+        );
+
+        ChatLib.chat(show_message);
+        return;
+    }
+
     player = getIGN(player);
 
     if (!checkWhitelist(player)) return;
@@ -366,10 +488,10 @@ register("chat", (player) => {
     setTimeout(() => {
         ChatLib.chat(`&2[GriffinOwO] &fRunning rng generator. [${player}]`);
         if (unitque_num <= 50) {
-            ChatLib.command(`pc ${player} you are ${unitque_num}% chance to get rng!`)
+            ChatLib.command(`pc ${player} you are ${unitque_num} % chance to get rng!`)
         }
         else {
-            ChatLib.command(`pc ${player} you are ${unitque_num}% chance not to get rng!`)
+            ChatLib.command(`pc ${player} you are ${unitque_num} % chance not to get rng!`)
         }
     }, 300);
 
@@ -402,6 +524,8 @@ register("command", (...players) => {
 
 // For get player list from pk command
 register("chat", (mode, names, e) => {
+    if (!chat_option) return;
+
     if (new Date().getTime() - lastAttemptRePartyTime > 1000) {
         return;
     }
@@ -420,9 +544,12 @@ register("chat", (mode, names, e) => {
         return !unWantPlayer.includes(member);
     });
 
+
     // run /party 
-    setTimeout(() => {
-        const partyMembers = validMembers.join(" ");
-        ChatLib.command(`party ${partyMembers}`);
-    }, 600);
+    for (var i = 0; i < validMembers.length; i++) {
+        setTimeout(() => {
+            ChatLib.command(`party ${validMembers[i]}`);
+        }, 500 * (i + 1));
+    }
+
 }).setChatCriteria("Party ${mode}: ${names}");
