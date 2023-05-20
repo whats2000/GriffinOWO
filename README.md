@@ -32,4 +32,4 @@ A chattrigger script helper for hypixel skyblock
 1. `!rng` : show what your today luck
 
 ## What's more?
-* Your can toggle `whitelist_mode/blacklist_mode` to `true/false` by edit the index.js and put the whitelist/blacklist member in `whitelist_ign/blacklist_ign`, and then do `/ct reload`. I will move it to a config in later version but you can use it directly now.
+* Your can toggle `whitelist_mode/blacklist_mode` on config now, use `griffin_config` to see more

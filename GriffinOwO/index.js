@@ -15,25 +15,21 @@ let waypoint = [];
 let formatted_message = "";
 let show_message = "";
 
-var whitelist_mode = false;
-var blacklist_mode = true;
-
-// note : if both on whitelist and blacklist will take blacklist  
-let whitelist_ign = [];
-let blacklist_ign = [];
-
 register("command", () => {
     Settings.openGUI();
 }).setName("griffin_config");
 
 function checkWhitelist(player) {
+    const whitelist_mode = Settings.whitelist;
+    const blacklist_mode = Settings.blacklist;
     let lower_case_player_ign = player.toString().toLowerCase();
 
     if (blacklist_mode) {
+        let blacklist_ign = Settings.blacklistIGN.split(" ");
         for (let a = 0; a < blacklist_ign.length; a++)
             if (lower_case_player_ign == blacklist_ign[a].toLowerCase()) {
                 setTimeout(() => {
-                    ChatLib.chat(`&2[GriffinOwO] &f[${player}]is on blacklist!`);
+                    ChatLib.chat(`&2[GriffinOwO] &f[${player}] is on blacklist!`);
                 }, 50);
 
                 return false;
@@ -41,12 +37,13 @@ function checkWhitelist(player) {
     }
 
     if (whitelist_mode) {
+        let whitelist_ign = Settings.whitelistIGN.split(" ");
         for (let a = 0; a < whitelist_ign.length; a++)
             if (lower_case_player_ign == whitelist_ign[a].toLowerCase())
                 return true;
 
         setTimeout(() => {
-            ChatLib.chat(`&2[GriffinOwO] &f[${player}]is not on whitelist!`);
+            ChatLib.chat(`&2[GriffinOwO] &f[${player}] is not on whitelist!`);
         }, 50);
 
         return false;
@@ -130,6 +127,8 @@ register("command", (x, y, z) => {
 register("Chat", (event) => {
     if (!chat_option) return;
 
+    if (!Settings.inquis) return;
+
     formatted_message = ChatLib.getChatMessage(event, true);
 
     if (!formatted_message.includes("&r&eYou dug out &r&2a Minos Champion&r&e!&r")) return;
@@ -154,13 +153,31 @@ register("Chat", (event) => {
 register("Chat", (event) => {
     if (!chat_option) return;
 
+    if (!Settings.vanquisher) return;
+
     formatted_message = ChatLib.getChatMessage(event, true);
 
     if (!formatted_message.includes("&r&aA &r&cVanquisher &r&ais spawning nearby!&r")) return;
 
+    let channel = "";
+
+    switch (Settings.vanquisherAlertChat) {
+        case 0:
+            channel = "pc";
+            break;
+        case 1:
+            channel = "gc";
+            break;
+        case 2:
+            channel = "ac";
+            break;
+        default:
+            channel = "pc";
+    }
+
     setTimeout(() => {
-        ChatLib.command(`pc` +
-            `x: ${Math.floor(Player.getX())}` +
+        ChatLib.command(channel +
+            ` x: ${Math.floor(Player.getX())}` +
             `, y: ${Math.floor(Player.getY())}` +
             `, z: ${Math.floor(Player.getZ())}`)
     }, 1);
@@ -176,25 +193,45 @@ register("Chat", (event) => {
                 break;
             }
 
-        ChatLib.command(`pc[!] Vanquisher is spawned at[${location}][!]`)
+        ChatLib.command(`${channel} [!] Vanquisher is spawned at[${location}][!]`)
     }, 1001);
 })
 
 register("Chat", (event) => {
     if (!chat_option) return;
 
+    if (!Settings.vanquisherDeadAlert) return;
+
     formatted_message = ChatLib.getChatMessage(event, true);
 
     if (!formatted_message.includes("&r&6&lRARE DROP! &r&6Nether Star&r")) return;
 
+    let channel = "";
+
+    switch (Settings.vanquisherAlertChat) {
+        case 0:
+            channel = "pc";
+            break;
+        case 1:
+            channel = "gc";
+            break;
+        case 2:
+            channel = "ac";
+            break;
+        default:
+            channel = "pc";
+    }
+
     setTimeout(() => {
-        ChatLib.command(`pc Vanquisher is killed!`)
+        ChatLib.command(`${channel} Vanquisher is killed!`)
     }, 300);
 })
 
 // These function below is refer to slayerhelper to draw out the beacon light which written by Eragon
 register("chat", (player, x, y, z, event) => {
     if (!chat_option) return;
+
+    if (!Settings.recieveWaypoint) return;
 
     waypoint = [x, y, z].map(a => parseInt(a));
     ChatLib.chat(`&2[GriffinOwO] &fYou received the coordinate[x: ${x}, y: ${y}, z: ${z}]from chat and add waypoint!!`);
@@ -211,6 +248,8 @@ register("chat", (player, x, y, z, event) => {
 register("chat", (player, x, y, z) => {
     if (!chat_option) return;
 
+    if (!Settings.recieveWaypoint) return;
+
     // Remove anything after z coords
     const spaceIndex = z.indexOf(' ')
     if (spaceIndex != -1) {
@@ -222,6 +261,8 @@ register("chat", (player, x, y, z) => {
 
 register("renderWorld", () => {
     if (!chat_option) return;
+
+    if (!Settings.recieveWaypoint) return;
 
     if (!waypoint) return
 
@@ -553,3 +594,5 @@ register("chat", (mode, names, e) => {
     }
 
 }).setChatCriteria("Party ${mode}: ${names}");
+
+
