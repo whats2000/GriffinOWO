@@ -586,7 +586,7 @@ register("chat", (mode, names, e) => {
     });
 
 
-    let i = 0;
+    let i = 1;
     // run /party 
     validMembers.forEach(player => {
         setTimeout(() => {
