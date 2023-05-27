@@ -41,7 +41,7 @@ register("Chat", (event) => {
                 break;
             }
 
-        ChatLib.command(`${channel} [!] Vanquisher is spawned at[${location}][!]`)
+        ChatLib.command(`${channel} [!] Vanquisher is spawned at [ ${location} ] [!]`)
     }, 501);
 })
 
