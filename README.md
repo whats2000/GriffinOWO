@@ -7,11 +7,10 @@ A chattrigger script helper for hypixel skyblock
 * Some fun feature
 
 ### Command
-1. `griffin` : toggle on/off or module
-2. `griffin_config` : open the config GUI
-3. `griffin_reset` : reset waypoint
-4. `griffin_set_coord x y z` : set waypoint manually
-5. `pk [IGN1] [IGN2]...` : polite remove a player from party by reparty without invite them
+1. `griffin` : open the config GUI
+2. `griffin_reset` : reset waypoint
+3. `griffin_set_coord x y z` : set waypoint manually
+4. `pk [IGN1] [IGN2]...` : polite remove a player from party by reparty without invite them
 
 ### Send waypoint
 1. The script will allow you to tell the inquisher spot in party chat
