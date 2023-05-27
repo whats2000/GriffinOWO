@@ -37,17 +37,17 @@ class Settings {
     whitelistIGN = '';
 
     @SwitchProperty({
-        name: "Recieve waypoint from chat",
-        description: "Toggle to recieve waypoint from chat",
-        category: "Waypoint and Send Coordinate",
-        subcategory: "Recieve Waypoint"
+        name: "Broken Hyper Detect",
+        description: "Toggle to detect if use hyper but not get combat exp",
+        category: "Crimson Island",
+        subcategory: "Broken Hyper"
     })
-    recieveWaypoint = true;
+    brokenHyper = true;
 
     @SwitchProperty({
         name: "Vanquisher Alert",
         description: "Toggle to send the coordinate of vanquisher",
-        category: "Waypoint and Send Coordinate",
+        category: "Crimson Island",
         subcategory: "Vanquisher Alert"
     })
     vanquisher = true;
@@ -55,7 +55,7 @@ class Settings {
     @SelectorProperty({
         name: 'Vanquisher Alert Chat',
         description: 'Select an option to send the coordinate of vanquisher',
-        category: "Waypoint and Send Coordinate",
+        category: "Crimson Island",
         subcategory: "Vanquisher Alert",
         options: ['party', 'guild', 'all'],
     })
@@ -64,15 +64,23 @@ class Settings {
     @SwitchProperty({
         name: "Vanquisher killed Alert",
         description: "Toggle to tell vanquisher is killed",
-        category: "Waypoint and Send Coordinate",
+        category: "Crimson Island",
         subcategory: "Vanquisher Alert"
     })
     vanquisherDeadAlert = true;
 
     @SwitchProperty({
+        name: "Recieve waypoint from chat",
+        description: "Toggle to recieve waypoint from chat",
+        category: "Waypoint",
+        subcategory: "Recieve Waypoint"
+    })
+    recieveWaypoint = true;
+
+    @SwitchProperty({
         name: "Inquis Alert",
         description: "Toggle to send the coordinate of inquis",
-        category: "Waypoint and Send Coordinate",
+        category: "Diana",
         subcategory: "Inquis Alert"
     })
     inquis = true;
@@ -80,7 +88,7 @@ class Settings {
     @SwitchProperty({
         name: "!warp",
         description: "Toggle warp party to the leader lobby",
-        category: "Party Chat Trigger Command",
+        category: "Trigger Command (Party)",
         subcategory: "!warp"
     })
     warp = true;
@@ -88,7 +96,7 @@ class Settings {
     @SliderProperty({
         name: "Delay of !warp",
         description: "The delay second to let party members leave before warp",
-        category: "Party Chat Trigger Command",
+        category: "Trigger Command (Party)",
         subcategory: "!warp",
         min: 0,
         max: 10
@@ -98,7 +106,7 @@ class Settings {
     @SwitchProperty({
         name: "!join",
         description: "Toggle join catatombs or master catatombs by the player who send this",
-        category: "Party Chat Trigger Command",
+        category: "Trigger Command (Party)",
         subcategory: "!join",
     })
     join = true;
@@ -106,7 +114,7 @@ class Settings {
     @SwitchProperty({
         name: "!allinv",
         description: "Toggle to enable/disable all invite by the player who send this",
-        category: "Party Chat Trigger Command",
+        category: "Trigger Command (Party)",
         subcategory: "!allinv",
     })
     allinv = true;
@@ -114,7 +122,7 @@ class Settings {
     @SwitchProperty({
         name: "!ptme",
         description: "Toggle transfer party to the player who send this",
-        category: "Party Chat Trigger Command",
+        category: "Trigger Command (Party)",
         subcategory: "!ptme",
     })
     ptme = true;
@@ -122,7 +130,7 @@ class Settings {
     @SwitchProperty({
         name: "!rp",
         description: "Toggle to send '/rp' to toggle other mod reparty function",
-        category: "Party Chat Trigger Command",
+        category: "Trigger Command (Party)",
         subcategory: "!rp",
     })
     rp = true;
@@ -130,7 +138,7 @@ class Settings {
     @SwitchProperty({
         name: "!mute",
         description: "Toggle party mute by '/msg leader !mute [random text]' to fix channel in party chat",
-        category: "DM Trigger Command",
+        category: "Trigger Command (DM)",
         subcategory: "!mute",
     })
     mute = true;
@@ -138,7 +146,7 @@ class Settings {
     @SwitchProperty({
         name: "!party",
         description: "Toggle party invite by '/msg leader !party [random text]' to get a invite to party",
-        category: "DM Trigger Command",
+        category: "Trigger Command (DM)",
         subcategory: "!party",
     })
     party = true;

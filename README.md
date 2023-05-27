@@ -28,6 +28,9 @@ A chattrigger script helper for hypixel skyblock
 1. `/msg [IGN] !party [anything string]` : let leader invite the player
 2. `/msg [IGN] !mute [anything string]` : allow party members to mute and unmute party
 
+### Crimson Island
+1. Detect Hyper grand combat xp is stopped without using book of state **[Beta]**
+
 ### Fun command
 1. `!rng` : show what your today luck
 
