@@ -7,7 +7,7 @@ A chattrigger script helper for hypixel skyblock
 * Some fun feature
 
 ### Command
-1. `griffin` : open the config GUI
+1. `griffin` / 'gf' : open the config GUI
 2. `griffin_reset` : reset waypoint
 3. `griffin_set_coord x y z` : set waypoint manually
 4. `pk [IGN1] [IGN2]...` : polite remove a player from party by reparty without invite them
@@ -28,7 +28,10 @@ A chattrigger script helper for hypixel skyblock
 2. `/msg [IGN] !mute [anything string]` : allow party members to mute and unmute party
 
 ### Crimson Island
-1. Detect Hyper grand combat xp is stopped without using book of state **[Beta]**
+1. Detect Hyper grand combat xp is stopped without using book of state
+
+### Kuudra
+1. Kuudra 2/2 reparty **[Beta]**
 
 ### Fun command
 1. `!rng` : show what your today luck

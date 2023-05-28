@@ -18,6 +18,9 @@ import "./features/CrimsonIsland/VanquisherAlert";
 // Fun
 import "./features/Fun/GetTodayLuck";
 
+// Kuudra
+import "./features/Kuudra/KuudraTwoTwoReparty";
+
 // Reparty
 import "./features/Reparty/RepartyKickPlayer";
 
@@ -26,4 +29,4 @@ import "./features/Waypoint/Waypoint";
 
 register("command", () => {
     Settings.openGUI();
-}).setName("griffin").setAliases("griffinOwO");
+}).setName("griffin").setAliases("griffinOwO").setAliases("gf");

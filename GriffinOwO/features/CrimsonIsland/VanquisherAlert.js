@@ -33,7 +33,7 @@ register("Chat", (event) => {
     setTimeout(() => {
         let scoreboard = Scoreboard.getLines().map(a => { return ChatLib.removeFormatting(a) });
 
-        var location = '';
+        let location = '';
 
         for (let line of scoreboard)
             if (line.includes("⏣")) {
@@ -41,7 +41,7 @@ register("Chat", (event) => {
                 break;
             }
 
-        ChatLib.command(`${channel} [!] Vanquisher is spawned at [ ${location} ] [!]`)
+        ChatLib.command(`${channel} [!] Vanquisher is spawned at [${location} ] [!]`)
     }, 501);
 })
 

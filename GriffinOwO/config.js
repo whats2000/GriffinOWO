@@ -159,6 +159,15 @@ class Settings {
     })
     rng = true;
 
+    @TextProperty({
+        name: 'Kuudra 2/2 reparty IGN',
+        description: 'Put player you want to reparty in other group split by space',
+        category: "Kuudra",
+        subcategory: "Kuudra 2/2 Reparty",
+        triggerActionOnInitialization: false,
+    })
+    kuudraRepartyList = '';
+
     constructor() {
         this.initialize(this);
     }
