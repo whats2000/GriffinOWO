@@ -5,6 +5,7 @@ let lastAttemptKuudraRePartyTime = 0;
 let waitForJoin = false;
 let kickTarget = [];
 let inviteTarget = [];
+let leader = "";
 let cd = false;
 
 register("chat", () => {
@@ -21,12 +22,23 @@ register("chat", () => {
 }).setCriteria("[NPC] Elle: Talk with me to begin!");
 
 register("chat", (mode, names, e) => {
-    if (new Date().getTime() - lastAttemptKuudraRePartyTime > 1000) {
+    if (new Date().getTime() - lastAttemptKuudraRePartyTime > 1000 || cd) {
         return;
     }
     const myIGN = getIGN(Player.getName()).toLowerCase();
 
     if (mode !== "Moderators" && mode !== "Members") {
+        leader = getIGN(names).toLowerCase();
+        setTimeout(() => {
+            ChatLib.chat(`&2[GriffinOwO] &f[${leader}] is leader.`);
+        }, 30);
+        if (leader !== myIGN) {
+            cd = true;
+            setTimeout(() => {
+                cd = false;
+            }, 6000);
+        }
+
         return;
     }
 
@@ -98,15 +110,15 @@ register("chat", (player) => {
 }).setCriteria("${player} joined the party.");
 
 register("chat", () => {
+    if (Settings.kuudraRepartyList === '') return;
+
+    leader = getIGN(player).toLowerCase();
+    setTimeout(() => {
+        ChatLib.chat(`&2[GriffinOwO] &f[${leader}] is leader.`);
+    }, 30);
+
     cd = true;
     setTimeout(() => {
         cd = false;
     }, 6000);
 }).setCriteria("Party Leader, ${player}, summoned you to their server.");
-
-register("chat", () => {
-    cd = true;
-    setTimeout(() => {
-        cd = false;
-    }, 6000);
-}).setCriteria(" » ${player} is traveling to Instanced FOLLOW");
