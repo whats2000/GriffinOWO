@@ -12,7 +12,7 @@ import "./features/ChatTriggerCommandParty/PartyWarp";
 import "./features/ChatTriggerCommandParty/Restart";
 
 // CrimsonIsland
-import "./features/CrimsonIsland/BrokenHyper";
+import "./features/CrimsonIsland/BrokenHype";
 import "./features/CrimsonIsland/VanquisherAlert";
 
 // Fun

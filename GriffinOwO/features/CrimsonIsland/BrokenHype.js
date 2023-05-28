@@ -25,5 +25,5 @@ register("entitydeath", (entity) => {
         killCount++;
 
     if (killCount > 4)
-        Client.Companion.showTitle(`&6Hyper is broken`, "", 5, 25, 5);
+        Client.Companion.showTitle(`&6Hype is broken`, "", 5, 25, 5);
 });
