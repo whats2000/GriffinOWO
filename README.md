@@ -1,5 +1,5 @@
 # GriffinOWO
-A chattrigger script helper for hypixel skyblock
+A chattrigger script helper for Hypixel skyblock
 
 ## What's it do?
 * Helping people tell the waypoint and display the waypoint received by supporting many formats (ex: patcher format). 
@@ -10,11 +10,11 @@ A chattrigger script helper for hypixel skyblock
 1. `griffin` / `gf` : open the config GUI
 2. `griffin_reset` : reset waypoint
 3. `griffin_set_coord x y z` : set waypoint manually
-4. `pk [IGN1] [IGN2]...` : polite remove a player from party by reparty without invite them
+4. `pk [IGN1] [IGN2]...` : polite remove a player from the party by reparty without inviting them
 
 ### Send waypoint
-1. The script will allow you to tell the inquisher spot in party chat
-2. The script will allow you to tell the location and x y z of vanquisher to party
+1. The script will allow you to tell the inquisher spot in the party chat
+2. The script will allow you to tell the location and x y z of vanquisher to the party
 
 ### Party Chat Trigger Command
 1. `!warp` : allow party members to warp the party
@@ -24,11 +24,11 @@ A chattrigger script helper for hypixel skyblock
 5. `!rp` : allow party members to reparty (need toggle others mod reparty */rp*)
 
 ### DM Trigger Command
-1. `/msg [IGN] !party [anything string]` : let leader invite the player
+1. `/msg [IGN] !party [anything string]` : let the leader invite the player
 2. `/msg [IGN] !mute [anything string]` : allow party members to mute and unmute party
 
 ### Crimson Island
-1. Detect Hype stopped grand combat xp without using book of state
+1. Detect Hype stopped grand combat xp without using the book of state
 
 ### Kuudra
 1. Kuudra 2/2 reparty **[Beta]**
@@ -37,4 +37,4 @@ A chattrigger script helper for hypixel skyblock
 1. `!rng` : show what your today luck
 
 ## What's more?
-* Your can toggle `whitelist_mode/blacklist_mode` on config now, use `griffin` to see more
+* You can toggle `whitelist_mode/blacklist_mode` on config now, use `griffin` to see more
