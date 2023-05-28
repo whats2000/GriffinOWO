@@ -21,6 +21,19 @@ register("chat", () => {
     lastAttemptKuudraRePartyTime = new Date().getTime();
 }).setCriteria("[NPC] Elle: Talk with me to begin!");
 
+register("command", () => {
+    if (Settings.kuudraRepartyList === '' || cd) return;
+
+    inviteTarget = [];
+    kickTarget = [];
+    waitForJoin = false;
+
+    ChatLib.chat('&2[GriffinOwO] &fTrying to get party list.');
+    ChatLib.command('party list');
+
+    lastAttemptKuudraRePartyTime = new Date().getTime();
+}).setName("kw")
+
 register("chat", (mode, names, e) => {
     if (new Date().getTime() - lastAttemptKuudraRePartyTime > 1000 || cd) {
         return;
@@ -70,6 +83,10 @@ register("chat", (mode, names, e) => {
         }, 500 * (i + 1));
         i++;
     });
+
+    setTimeout(() => {
+        waitForJoin = false;
+    }, 30000 + 500 * (i + 1));
 }).setChatCriteria("Party ${mode}: ${names}");
 
 register("chat", (player) => {
