@@ -126,7 +126,7 @@ register("chat", (player) => {
     }
 }).setCriteria("${player} joined the party.");
 
-register("chat", () => {
+register("chat", (player) => {
     if (Settings.kuudraRepartyList === '') return;
 
     leader = getIGN(player).toLowerCase();

@@ -13,10 +13,10 @@ register("command", (...players) => {
 
     setTimeout(() => {
         ChatLib.command('party disband');
-    }, 300);
+    }, 500);
 
     players.forEach((player) => {
-        if (player) unWantPlayer.push(player);
+        if (player) unWantPlayer.push(player.toLowerCase());
     });
 
     lastAttemptRePartyTime = new Date().getTime();
@@ -39,11 +39,11 @@ register("chat", (mode, names, e) => {
     validMembers = membsArr.map((playerName) => {
         return getIGN(playerName);
     }).filter((member) => {
-        return !unWantPlayer.includes(member);
+        return !unWantPlayer.includes(member.toLowerCase());
     });
 
 
-    let i = 1;
+    let i = 2;
     // run /party 
     validMembers.forEach(player => {
         setTimeout(() => {
