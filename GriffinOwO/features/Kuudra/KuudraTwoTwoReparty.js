@@ -1,5 +1,6 @@
 import Settings from "../../config";
 import { getIGN } from "../../utils/Function";
+import { registerCommand } from "../../utils/CommandQueue";
 
 let lastAttemptKuudraRePartyTime = 0;
 let waitForJoin = false;
@@ -16,7 +17,9 @@ register("chat", () => {
     waitForJoin = false;
 
     ChatLib.chat('&2[GriffinOwO] &fTrying to get party list.');
-    ChatLib.command('party list');
+    registerCommand(() => {
+        ChatLib.command('party list');
+    });
 
     lastAttemptKuudraRePartyTime = new Date().getTime();
 }).setCriteria("[NPC] Elle: Talk with me to begin!");
@@ -29,7 +32,9 @@ register("command", () => {
     waitForJoin = false;
 
     ChatLib.chat('&2[GriffinOwO] &fTrying to get party list.');
-    ChatLib.command('party list');
+    registerCommand(() => {
+        ChatLib.command('party list');
+    });
 
     lastAttemptKuudraRePartyTime = new Date().getTime();
 }).setName("kw")
@@ -78,9 +83,9 @@ register("chat", (mode, names, e) => {
     let i = 1;
     // run /party 
     inviteTarget.forEach(player => {
-        setTimeout(() => {
+        registerCommand(() => {
             ChatLib.command(`party ${player}`);
-        }, 500 * (i + 1));
+        });
         i++;
     });
 
@@ -109,18 +114,18 @@ register("chat", (player) => {
     if (inviteTarget.length === 0) {
         ChatLib.chat("&2[GriffinOwO] &fAll players have joined the party.");
 
-        setTimeout(() => {
+        registerCommand(() => {
             ChatLib.command("party warp");
-        }, 500);
-        setTimeout(() => {
+        });
+        registerCommand(() => {
             ChatLib.command(`party kick ${kickTarget[0]}`);
-        }, 1000);
-        setTimeout(() => {
+        });
+        registerCommand(() => {
             ChatLib.command(`party transfer ${Settings.kuudraRepartyList.split(" ")[0]}`);
-        }, 1500);
-        setTimeout(() => {
+        });
+        registerCommand(() => {
             ChatLib.command("party leave");
-        }, 2000);
+        });
 
         waitForJoin = false;
     }

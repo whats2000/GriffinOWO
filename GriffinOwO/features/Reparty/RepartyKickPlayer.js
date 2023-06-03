@@ -1,4 +1,5 @@
 import { getIGN } from "../../utils/Function";
+import { registerCommand } from "../../utils/CommandQueue";
 
 let lastAttemptRePartyTime = 0;
 let unWantPlayer = [];
@@ -9,11 +10,13 @@ register("command", (...players) => {
     validMembers = [];
 
     ChatLib.chat('&2[GriffinOwO] &fTrying to get party list.');
-    ChatLib.command('party list');
+    registerCommand(() => {
+        ChatLib.command('party list');
+    });
 
-    setTimeout(() => {
+    registerCommand(() => {
         ChatLib.command('party disband');
-    }, 500);
+    });
 
     players.forEach((player) => {
         if (player) unWantPlayer.push(player.toLowerCase());
@@ -43,12 +46,9 @@ register("chat", (mode, names, e) => {
     });
 
 
-    let i = 2;
-    // run /party 
-    validMembers.forEach(player => {
-        setTimeout(() => {
+    validMembers.forEach((player) => {
+        registerCommand(() => {
             ChatLib.command(`party ${player}`);
-        }, 500 * (i + 1));
-        i++;
+        });
     });
 }).setChatCriteria("Party ${mode}: ${names}");
