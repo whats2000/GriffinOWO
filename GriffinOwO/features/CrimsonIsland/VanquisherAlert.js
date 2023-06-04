@@ -2,7 +2,7 @@ import Settings from "../../config";
 import { registerCommand } from "../../utils/CommandQueue";
 
 register("Chat", (event) => {
-    if (!Settings.vanquisher) return;
+    if (!Settings.vanquisher || Settings.flarePartyList !== '') return;
 
     const formatted_message = ChatLib.getChatMessage(event, true);
 
@@ -26,7 +26,7 @@ register("Chat", (event) => {
 
     const scoreboard = Scoreboard.getLines().map(a => { return ChatLib.removeFormatting(a) });
 
-    let location = '';
+    let location = "";
 
     for (let line of scoreboard) {
         if (line.includes("⏣")) {
@@ -49,7 +49,7 @@ register("Chat", (event) => {
 })
 
 register("Chat", (event) => {
-    if (!Settings.vanquisherDeadAlert) return;
+    if (!Settings.vanquisherDeadAlert || Settings.flarePartyList !== '') return;
 
     formatted_message = ChatLib.getChatMessage(event, true);
 

@@ -13,6 +13,7 @@ import "./features/ChatTriggerCommandParty/Restart";
 
 // CrimsonIsland
 import "./features/CrimsonIsland/BrokenHype";
+import "./features/CrimsonIsland/FlareTrade";
 import "./features/CrimsonIsland/VanquisherAlert";
 
 // Fun

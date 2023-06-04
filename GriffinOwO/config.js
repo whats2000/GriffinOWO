@@ -37,10 +37,10 @@ class Settings {
     whitelistIGN = '';
 
     @SwitchProperty({
-        name: "Broken Hyper Detect",
-        description: "Toggle to detect if use hyper but not get combat exp",
+        name: "Broken Hype Detect",
+        description: "Toggle to detect if use hype but not get combat exp",
         category: "Crimson Island",
-        subcategory: "Broken Hyper"
+        subcategory: "Broken Hype"
     })
     brokenHyper = true;
 
@@ -68,6 +68,15 @@ class Settings {
         subcategory: "Vanquisher Alert"
     })
     vanquisherDeadAlert = true;
+
+    @TextProperty({
+        name: 'Flare Trade party IGN',
+        description: 'Put player you want to reparty in other group split by space',
+        category: "Crimson Island",
+        subcategory: "Flare Trade",
+        triggerActionOnInitialization: false,
+    })
+    flarePartyList = '';
 
     @SwitchProperty({
         name: "Recieve waypoint from chat",

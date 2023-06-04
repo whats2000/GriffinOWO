@@ -29,9 +29,10 @@ A chattrigger script helper for Hypixel skyblock
 
 ### Crimson Island
 1. Detect Hype stopped grand combat xp without using the book of state
+2. Flare Trade **[Beta]**
 
 ### Kuudra
-1. Kuudra 2/2 reparty **[Beta]**
+1. Kuudra 2/2 reparty
 
 ### Fun command
 1. `!rng` : show what your today luck
