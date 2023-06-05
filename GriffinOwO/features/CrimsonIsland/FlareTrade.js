@@ -31,6 +31,7 @@ function checkIsAllWarp() {
     flareInvitePlayersCount--;
 
     if (flareInvitePlayersCount <= 0) {
+        warpFlareParty()
         flareInvitePlayersCount = 0;
 
         setTimeout(() => {
@@ -84,8 +85,6 @@ register("Chat", (event) => {
 
 register("chat", (player) => {
     if (!flareWaitForJoin || Settings.flarePartyList === '') return;
-
-    warpFlareParty();
 
     setTimeout(() => {
         ChatLib.chat(`&2[GriffinOwO] &f${player} has joined the party.`);
