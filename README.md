@@ -11,6 +11,8 @@ A chattrigger script helper for Hypixel skyblock
 2. `griffin_reset` : reset waypoint
 3. `griffin_set_coord x y z` : set waypoint manually
 4. `pk [IGN1] [IGN2]...` : polite remove a player from the party by reparty without inviting them
+5. `kw` : Manually warp 2/2 kuudra party
+6. `fw` : Ignore waiting for all other player and warp party when flare trade
 
 ### Send waypoint
 1. The script will allow you to tell the inquisher spot in the party chat

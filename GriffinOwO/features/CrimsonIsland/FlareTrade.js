@@ -116,3 +116,10 @@ register("chat", () => {
     flareWaitForJoin = false;
     flareInvitePlayersCount = 0;
 }).setCriteria("RARE DROP! Nether Star");
+
+register("command", () => {
+    if (Settings.flarePartyList === '') return;
+    flareWaitForJoin = false;
+    flareInvitePlayersCount = 0;
+    checkIsAllWarp();
+}).setName("fw")

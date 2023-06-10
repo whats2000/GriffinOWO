@@ -45,6 +45,14 @@ class Settings {
     brokenHyper = true;
 
     @SwitchProperty({
+        name: "Broken Hype Detect Only On Flare",
+        description: "Toggle off to detect not only on flare",
+        category: "Crimson Island",
+        subcategory: "Broken Hype"
+    })
+    brokenHyperDetectFlareOnly = true;
+
+    @SwitchProperty({
         name: "Vanquisher Alert",
         description: "Toggle to send the coordinate of vanquisher",
         category: "Crimson Island",

@@ -9,7 +9,24 @@ const WITHER_BLADES = ["HYPERION", "ASTRAEA", "SCYLLA", "VALKYRIE", "NECRON_BLAD
 register("entitydeath", (entity) => {
     if (!Settings.brokenHyper) return;
 
-    if (!(Player.asPlayerMP().distanceTo(entity) < 6) || !(entity.getClassName() == "EntityBlaze")) return;
+    if (!(Player.asPlayerMP().distanceTo(entity) < 6)) return;
+
+    const scoreboard = Scoreboard.getLines().map(a => { return ChatLib.removeFormatting(a) });
+
+    if (Settings.brokenHyperDetectFlareOnly) {
+        if (!(entity.getClassName() == "EntityBlaze")) return;
+
+        let location = "";
+
+        for (let line of scoreboard) {
+            if (line.includes("⏣")) {
+                location = line;
+                break;
+            }
+        }
+
+        if (location !== " ⏣ Magma Cha🐍mber") return;
+    }
 
     const item = Player.getHeldItem().getNBT().getCompoundTag("tag").getCompoundTag("ExtraAttributes");
     const itemId = item.getString("id");
