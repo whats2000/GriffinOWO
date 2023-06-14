@@ -1,5 +1,4 @@
 import Settings from "../../config";
-import { getIGN } from "../../utils/Function";
 import { registerCommand } from "../../utils/CommandQueue";
 
 let playerX = 0;
@@ -89,8 +88,8 @@ register("chat", (player) => {
     setTimeout(() => {
         ChatLib.chat(`&2[GriffinOwO] &f${player} has joined the party.`);
 
-        if (flareInviteTarget.length > 0)
-            ChatLib.chat(`&2[GriffinOwO] &fWaiting for ${flareInviteTarget} to join`);
+        if (flareInvitePlayersCount > 0)
+            ChatLib.chat(`&2[GriffinOwO] &fWaiting for ${flareInvitePlayersCount} players to join`);
     }, 30);
 
     checkIsAllWarp();

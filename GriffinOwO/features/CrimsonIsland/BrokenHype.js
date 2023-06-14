@@ -25,7 +25,7 @@ register("entitydeath", (entity) => {
             }
         }
 
-        if (location !== " ⏣ Magma Cha🐍mber") return;
+        if (location.replace(/[^\x00-\x7F]/g, '') !== "  Magma Chamber") return;
     }
 
     const item = Player.getHeldItem().getNBT().getCompoundTag("tag").getCompoundTag("ExtraAttributes");
