@@ -79,12 +79,20 @@ class Settings {
 
     @TextProperty({
         name: 'Flare Trade party IGN',
-        description: 'Put player you want to reparty in other group split by space',
+        description: 'Put player you want to reparty in other group split by space, you can use /fw for manually warp if someone is afk',
         category: "Crimson Island",
         subcategory: "Flare Trade",
         triggerActionOnInitialization: false,
     })
     flarePartyList = '';
+
+    @SwitchProperty({
+        name: 'Flare Trade party auto accept',
+        description: 'If the party invite from flare trade will auto accept',
+        category: "Crimson Island",
+        subcategory: "Flare Trade"
+    })
+    flareTradeAutoJoin = false;
 
     @SwitchProperty({
         name: "Recieve waypoint from chat",
@@ -108,7 +116,7 @@ class Settings {
         category: "Trigger Command (Party)",
         subcategory: "!warp"
     })
-    warp = true;
+    warp = false;
 
     @SliderProperty({
         name: "Delay of !warp",
@@ -126,7 +134,7 @@ class Settings {
         category: "Trigger Command (Party)",
         subcategory: "!join",
     })
-    join = true;
+    join = false;
 
     @SwitchProperty({
         name: "!allinv",
@@ -134,7 +142,7 @@ class Settings {
         category: "Trigger Command (Party)",
         subcategory: "!allinv",
     })
-    allinv = true;
+    allinv = false;
 
     @SwitchProperty({
         name: "!ptme",
@@ -142,7 +150,7 @@ class Settings {
         category: "Trigger Command (Party)",
         subcategory: "!ptme",
     })
-    ptme = true;
+    ptme = false;
 
     @SwitchProperty({
         name: "!rp",
@@ -150,7 +158,7 @@ class Settings {
         category: "Trigger Command (Party)",
         subcategory: "!rp",
     })
-    rp = true;
+    rp = false;
 
     @SwitchProperty({
         name: "!mute",
@@ -158,7 +166,7 @@ class Settings {
         category: "Trigger Command (DM)",
         subcategory: "!mute",
     })
-    mute = true;
+    mute = false;
 
     @SwitchProperty({
         name: "!party",
@@ -166,7 +174,7 @@ class Settings {
         category: "Trigger Command (DM)",
         subcategory: "!party",
     })
-    party = true;
+    party = false;
 
     @SwitchProperty({
         name: "!rng",
@@ -174,16 +182,24 @@ class Settings {
         category: "Fun Command",
         subcategory: "!rng",
     })
-    rng = true;
+    rng = false;
 
     @TextProperty({
         name: 'Kuudra 2/2 reparty IGN',
-        description: 'Put player you want to reparty in other group split by space',
+        description: 'Put player you want to reparty in other group split by space, you can use /kw for manually warp if warp is fail',
         category: "Kuudra",
         subcategory: "Kuudra 2/2 Reparty",
         triggerActionOnInitialization: false,
     })
     kuudraRepartyList = '';
+
+    @SwitchProperty({
+        name: 'Kuudra 2/2 party auto accept',
+        description: 'If the party invite from kuudra 2/2 will auto accept',
+        category: "Kuudra",
+        subcategory: "Kuudra 2/2 Reparty"
+    })
+    kuudraAutoJoin = false;
 
     constructor() {
         this.initialize(this);

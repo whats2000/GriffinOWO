@@ -144,3 +144,20 @@ register("chat", (player) => {
         cd = false;
     }, 6000);
 }).setCriteria("Party Leader, ${player}, summoned you to their server.");
+
+register("chat", (player) => {
+    if (!Settings.kuudraAutoJoin) return;
+
+    const kuudraPartyMember = Settings.kuudraRepartyList.split(" ")
+        .map(player => player.toLowerCase());
+
+    const ign = getIGN(player).toLowerCase();
+
+    if (kuudraPartyMember.includes(ign)) {
+        const acceptCommand = `party accept ${ign}`;
+
+        registerCommand(() => {
+            ChatLib.command(acceptCommand);
+        });
+    }
+}).setCriteria("-----------------------------------------------------\n${player} has invited you to join their party!\nYou have 60 seconds to accept. Click here to join!\n-----------------------------------------------------");

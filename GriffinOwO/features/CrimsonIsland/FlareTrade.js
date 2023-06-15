@@ -1,4 +1,5 @@
 import Settings from "../../config";
+import { getIGN } from "../../utils/Function";
 import { registerCommand } from "../../utils/CommandQueue";
 
 let playerX = 0;
@@ -121,4 +122,21 @@ register("command", () => {
     flareWaitForJoin = false;
     flareInvitePlayersCount = 0;
     checkIsAllWarp();
-}).setName("fw")
+}).setName("fw");
+
+register("chat", (player) => {
+    if (!Settings.flareTradeAutoJoin) return;
+
+    const flarePartyMember = Settings.flarePartyList.split(" ")
+        .map(player => player.toLowerCase());
+
+    const ign = getIGN(player).toLowerCase();
+
+    if (flarePartyMember.includes(ign)) {
+        const acceptCommand = `party accept ${ign}`;
+
+        registerCommand(() => {
+            ChatLib.command(acceptCommand);
+        });
+    }
+}).setCriteria("-----------------------------------------------------\n${player} has invited you to join their party!\nYou have 60 seconds to accept. Click here to join!\n-----------------------------------------------------");
