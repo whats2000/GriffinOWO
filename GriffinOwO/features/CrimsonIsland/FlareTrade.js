@@ -125,6 +125,7 @@ register("command", () => {
 }).setName("fw");
 
 register("chat", (player) => {
+    if (Settings.flarePartyList === '' || flareWaitForJoin) return;
     if (!Settings.flareTradeAutoJoin) return;
 
     const flarePartyMember = Settings.flarePartyList.split(" ")

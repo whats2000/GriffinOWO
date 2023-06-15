@@ -146,6 +146,7 @@ register("chat", (player) => {
 }).setCriteria("Party Leader, ${player}, summoned you to their server.");
 
 register("chat", (player) => {
+    if (Settings.kuudraRepartyList === '') return;
     if (!Settings.kuudraAutoJoin) return;
 
     const kuudraPartyMember = Settings.kuudraRepartyList.split(" ")
