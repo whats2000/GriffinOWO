@@ -201,6 +201,24 @@ class Settings {
     })
     kuudraAutoJoin = false;
 
+    @SwitchProperty({
+        name: 'Kuudra Supply Pearl Helper',
+        description: 'Marks a nearest supply place location to throw an ender pearl',
+        category: "Kuudra",
+        subcategory: "Kuudra Supply Pearl Helper"
+    })
+    kuudraSupplyPearlHelper = false;
+
+    @SliderProperty({
+        name: "Kuudra Supply Pearl Helper Distance Text Size",
+        description: "The distance text size",
+        category: "Kuudra",
+        subcategory: "Kuudra Supply Pearl Helper",
+        min: 0,
+        max: 5
+    })
+    kuudraSupplyPearlHelperTextSize = 1;
+
     constructor() {
         this.initialize(this);
     }

@@ -21,6 +21,7 @@ import "./features/Fun/GetTodayLuck";
 
 // Kuudra
 import "./features/Kuudra/KuudraTwoTwoReparty";
+import "./features/Kuudra/KuudraSupplyPearlHelper";
 
 // Reparty
 import "./features/Reparty/RepartyKickPlayer";

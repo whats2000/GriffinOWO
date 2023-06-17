@@ -112,7 +112,9 @@ register("chat", (player) => {
     }
 
     if (inviteTarget.length === 0) {
-        ChatLib.chat("&2[GriffinOwO] &fAll players have joined the party.");
+        setTimeout(() => {
+            ChatLib.chat("&2[GriffinOwO] &fAll players have joined the party.");
+        }, 30);
 
         registerCommand(() => {
             ChatLib.command("party warp");
@@ -142,7 +144,7 @@ register("chat", (player) => {
     cd = true;
     setTimeout(() => {
         cd = false;
-    }, 6000);
+    }, 10000);
 }).setCriteria("Party Leader, ${player}, summoned you to their server.");
 
 register("chat", (player) => {
