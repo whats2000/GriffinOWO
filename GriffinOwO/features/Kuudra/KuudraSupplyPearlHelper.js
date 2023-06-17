@@ -29,7 +29,7 @@ register("step", () => {
 
     const stands = World.getAllEntitiesOfType(ArmorStand.class);
 
-    const endCollectingArmorStand = stands.some(stand => stand.getName().includes("PUNCH"));
+    const endCollectingArmorStand = stands.some(stand => stand.getName().includes("SUPPLY PILE"));
     if (endCollectingArmorStand) {
         isWaitingForSupply = false;
         supplyPlaceWaypoint = null;
