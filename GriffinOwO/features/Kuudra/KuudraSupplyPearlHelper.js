@@ -72,9 +72,9 @@ register("renderWorld", () => {
     const isShadow = true;
 
     if (scale > 0)
-        Tessellator.drawString(`§aPearl Here [${distance}m]`, x + 0.5, y + 0.5, z + 0.5, textColor, true, scale, isShadow);
+        Tessellator.drawString(`§aPearl Here [${distance}m]`, x, y + 0.5, z, textColor, true, scale, isShadow);
 
-    renderBeaconBeam(x, y, z, 0, 191, 255, 0.5, false);
+    renderBeaconBeam(x - 0.5, y, z - 0.5, 0, 191, 255, 0.5, false);
 });
 
 register("worldUnload", () => {
