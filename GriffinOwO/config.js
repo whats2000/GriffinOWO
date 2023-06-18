@@ -1,4 +1,4 @@
-import { @Vigilant, @TextProperty, @SwitchProperty, @SliderProperty, @SelectorProperty } from "Vigilance";
+import { @Vigilant, @TextProperty, @SwitchProperty, @SliderProperty, @SelectorProperty, @ColorProperty, Color } from "Vigilance";
 
 @Vigilant("GriffinOWO")
 class Settings {
@@ -101,6 +101,32 @@ class Settings {
         subcategory: "Recieve Waypoint"
     })
     recieveWaypoint = true;
+
+    @SwitchProperty({
+        name: "Recieve waypoint from chat include yourself",
+        description: "Toggle to recieve waypoint from chat if the coord send by yourself",
+        category: "Waypoint",
+        subcategory: "Recieve Waypoint"
+    })
+    recieveOwnWaypoint = true;
+
+    @ColorProperty({
+        name: "Waypoint Beacon Color",
+        description: 'Pick a color for beacon',
+        category: 'Waypoint',
+        subcategory: 'Waypoint Beacon Color',
+    })
+    waypointBeaconColor = Color.BLUE;
+
+    @SliderProperty({
+        name: "Waypoint Text Size",
+        description: "The waypoint text size",
+        category: 'Waypoint',
+        subcategory: 'Waypoint Text Size',
+        min: 0,
+        max: 5
+    })
+    waypointTextSize = 1;
 
     @SwitchProperty({
         name: "Inquis Alert",

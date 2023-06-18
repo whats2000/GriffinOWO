@@ -71,3 +71,12 @@ export function getIGN(player) {
 
     return player_ign;
 }
+
+export function getColorArray(color) {
+    const red = color.getRed();
+    const green = color.getGreen();
+    const blue = color.getBlue();
+    const alpha = color.getAlpha();
+
+    return [red, green, blue, alpha];
+}
