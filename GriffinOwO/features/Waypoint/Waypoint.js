@@ -122,6 +122,17 @@ register("chat", (player, x, y, z, event) => {
         if (player.toLowerCase() === myIGN) return;
 
     addWaypoint(x, y, z, player);
+}).setCriteria(/^\[.+?\]\s*(.+):\s*(?:.+?\s+)?(-?\d+)\s+(-?\d+)\s+(-?\d+)(?:\s+.*)?$/);
+
+register("chat", (player, x, y, z, event) => {
+    if (!Settings.recieveWaypoint) return;
+
+    player = getIGN(player);
+
+    if (!Settings.recieveOwnWaypoint)
+        if (player.toLowerCase() === myIGN) return;
+
+    addWaypoint(x, y, z, player);
 }).setCriteria(/^From (.+): ([\d-]+) ([\d-]+) ([\d-]+)/);
 
 // Support for patcher coord
@@ -164,7 +175,7 @@ register("renderWorld", () => {
 
         if (check_x < 5 && check_y < 5 && check_z < 5) {
             waypoints.splice(index, 1);
-            ChatLib.chat(`&2[GriffinOwO] &fYou arrived at the coordinate &b[${waypoint.name}]!!`);
+            ChatLib.chat(`&2[GriffinOwO] &fYou arrived at the coordinate &b[${waypoint.name}]&f!!`);
         } else {
             const playerPos = [Player.getX(), Player.getY(), Player.getZ()];
             const distance = Math.floor(Math.sqrt(Math.pow(waypoint.x - playerPos[0], 2) + Math.pow(waypoint.y - playerPos[1], 2) + Math.pow(waypoint.z - playerPos[2], 2)));
