@@ -12,7 +12,7 @@ const SupplyPlacePos = [
     [-106, 78.125, -112.9375]
 ];
 
-let supplyPlaceWaypoint = null;
+let supplyPlaceWaypoint = [];
 let isWaitingForSupply = false;
 
 
@@ -20,7 +20,7 @@ register("chat", () => {
     if (!Settings.kuudraSupplyPearlHelper) return;
 
     isWaitingForSupply = true;
-    supplyPlaceWaypoint = null;
+    supplyPlaceWaypoint = [];
 }).setCriteria("[NPC] Elle: Not again!");
 
 register("step", () => {
@@ -32,7 +32,7 @@ register("step", () => {
     const endCollectingArmorStand = stands.some(stand => stand.getName().includes("SUPPLY PILE"));
     if (endCollectingArmorStand) {
         isWaitingForSupply = false;
-        supplyPlaceWaypoint = null;
+        supplyPlaceWaypoint = [];
         return;
     }
 
@@ -62,7 +62,7 @@ register("step", () => {
 register("renderWorld", () => {
     if (!Settings.kuudraSupplyPearlHelper) return;
     if (!isWaitingForSupply) return;
-    if (!supplyPlaceWaypoint) return
+    if (supplyPlaceWaypoint.length === 0) return
 
     let [x, y, z] = supplyPlaceWaypoint;
     const playerPos = [Player.getX(), Player.getY(), Player.getZ()];
@@ -79,5 +79,5 @@ register("renderWorld", () => {
 
 register("worldUnload", () => {
     isWaitingForSupply = false;
-    supplyPlaceWaypoint = null;
+    supplyPlaceWaypoint = [];
 });

@@ -1,10 +1,10 @@
 import Settings from "../../config";
 import renderBeaconBeam from "../../../BeaconBeam";
 
-let waypoint = null;
+let waypoint = [];
 
 register("command", () => {
-    waypoint = null;
+    waypoint = [];
     ChatLib.chat("&2[GriffinOwO] &fYou remove the coordinate!!");
 }).setName("griffin_reset");
 
@@ -71,7 +71,7 @@ register("chat", (player, x, y, z) => {
 register("renderWorld", () => {
     if (!Settings.recieveWaypoint) return;
 
-    if (!waypoint) return
+    if (waypoint.length === 0) return
 
     const player_abs_x = Math.abs(Math.round(Player.getX()));
     const player_abs_y = Math.abs(Math.round(Player.getY()));
@@ -83,7 +83,7 @@ register("renderWorld", () => {
     const check_y = Math.abs(player_abs_y - beacon_abs_y);
     const check_z = Math.abs(player_abs_z - beacon_abs_z);
     if (check_x < 5 && check_y < 5 && check_z < 5) {
-        waypoint = null;
+        waypoint = [];
         ChatLib.chat("&2[GriffinOwO] &fYou arrive to the coordinate!!");
     }
 
