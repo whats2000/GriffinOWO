@@ -40,12 +40,12 @@ register("renderWorld", () => {
         const isShadow = true;
 
         const nearbyPlayers = players.filter(player =>
-            Math.abs(player.getX() - x) <= 3 && Math.abs(player.getY() - y) <= 3 && Math.abs(player.getZ() - z) <= 3
+            Math.abs(player.getX() - x) <= 5 && Math.abs(player.getY() - y) <= 5 && Math.abs(player.getZ() - z) <= 5
         );
 
         if (nearbyPlayers.length > 0) {
             if (scale > 0)
-                Tessellator.drawString(`§cSupply Collecting`, x, y + 0.5, z, textColor, true, scale, isShadow);
+                Tessellator.drawString(`§cPlayer Around`, x, y + 0.5, z, textColor, true, scale, isShadow);
         } else {
             if (scale > 0)
                 Tessellator.drawString(`§aSupply [${distance}m]`, x, y + 0.5, z, textColor, true, scale, isShadow);
