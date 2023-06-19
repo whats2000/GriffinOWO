@@ -208,3 +208,8 @@ register("renderWorld", () => {
     });
 });
 
+register("worldUnload", () => {
+    if (!Settings.waypointUnloadWhenSwapLobby) return;
+
+    waypoints = [];
+});

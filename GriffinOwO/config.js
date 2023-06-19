@@ -129,6 +129,14 @@ class Settings {
     waypointTextSize = 1;
 
     @SwitchProperty({
+        name: "Waypoint Unload When Swap Lobby",
+        description: "The waypoint will remove when you swap lobby",
+        category: 'Waypoint',
+        subcategory: 'Waypoint Unload When Swap Lobby'
+    })
+    waypointUnloadWhenSwapLobby = true;
+
+    @SwitchProperty({
         name: "Inquis Alert",
         description: "Toggle to send the coordinate of inquis",
         category: "Diana",
