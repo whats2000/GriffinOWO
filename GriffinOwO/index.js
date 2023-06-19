@@ -20,8 +20,9 @@ import "./features/CrimsonIsland/VanquisherAlert";
 import "./features/Fun/GetTodayLuck";
 
 // Kuudra
-import "./features/Kuudra/KuudraTwoTwoReparty";
 import "./features/Kuudra/KuudraSupplyPearlHelper";
+import "./features/Kuudra/KuudraSupplyWaypoint";
+import "./features/Kuudra/KuudraTwoTwoReparty";
 
 // Reparty
 import "./features/Reparty/RepartyKickPlayer";

@@ -11,13 +11,13 @@ class Settings {
     blacklist = true;
 
     @TextProperty({
-        name: 'Blacklist IGN',
-        description: 'Put player you want put on blacklist split by space',
+        name: "Blacklist IGN",
+        description: "Put player you want put on blacklist split by space",
         category: "Blacklist and Whitelist",
         subcategory: "Blacklist Mode",
         triggerActionOnInitialization: false,
     })
-    blacklistIGN = '';
+    blacklistIGN = "";
 
     @SwitchProperty({
         name: "Whitelist Mode",
@@ -28,13 +28,13 @@ class Settings {
     whitelist = false;
 
     @TextProperty({
-        name: 'Whitelist IGN',
-        description: 'Put player you want put on whitelist split by space',
+        name: "Whitelist IGN",
+        description: "Put player you want put on whitelist split by space",
         category: "Blacklist and Whitelist",
         subcategory: "Whitelist Mode",
         triggerActionOnInitialization: false,
     })
-    whitelistIGN = '';
+    whitelistIGN = "";
 
     @SwitchProperty({
         name: "Broken Hype Detect",
@@ -61,11 +61,11 @@ class Settings {
     vanquisher = true;
 
     @SelectorProperty({
-        name: 'Vanquisher Alert Chat',
-        description: 'Select an option to send the coordinate of vanquisher',
+        name: "Vanquisher Alert Chat",
+        description: "Select an option to send the coordinate of vanquisher",
         category: "Crimson Island",
         subcategory: "Vanquisher Alert",
-        options: ['party', 'guild', 'all'],
+        options: ["party", "guild", "all"],
     })
     vanquisherAlertChat = 0;
 
@@ -78,17 +78,17 @@ class Settings {
     vanquisherDeadAlert = true;
 
     @TextProperty({
-        name: 'Flare Trade party IGN',
-        description: 'Put player you want to reparty in other group split by space, you can use /fw for manually warp if someone is afk',
+        name: "Flare Trade party IGN",
+        description: "Put player you want to reparty in other group split by space, you can use /fw for manually warp if someone is afk",
         category: "Crimson Island",
         subcategory: "Flare Trade",
         triggerActionOnInitialization: false,
     })
-    flarePartyList = '';
+    flarePartyList = "";
 
     @SwitchProperty({
-        name: 'Flare Trade party auto accept',
-        description: 'If the party invite from flare trade will auto accept',
+        name: "Flare Trade party auto accept",
+        description: "If the party invite from flare trade will auto accept",
         category: "Crimson Island",
         subcategory: "Flare Trade"
     })
@@ -112,17 +112,17 @@ class Settings {
 
     @ColorProperty({
         name: "Waypoint Beacon Color",
-        description: 'Pick a color for beacon',
-        category: 'Waypoint',
-        subcategory: 'Waypoint Beacon Color',
+        description: "Pick a color for beacon",
+        category: "Waypoint",
+        subcategory: "Waypoint Beacon Color",
     })
     waypointBeaconColor = Color.BLUE;
 
     @SliderProperty({
         name: "Waypoint Text Size",
         description: "The waypoint text size",
-        category: 'Waypoint',
-        subcategory: 'Waypoint Text Size',
+        category: "Waypoint",
+        subcategory: "Waypoint Text Size",
         min: 0,
         max: 5
     })
@@ -131,8 +131,8 @@ class Settings {
     @SwitchProperty({
         name: "Waypoint Unload When Swap Lobby",
         description: "The waypoint will remove when you swap lobby",
-        category: 'Waypoint',
-        subcategory: 'Waypoint Unload When Swap Lobby'
+        category: "Waypoint",
+        subcategory: "Waypoint Unload When Swap Lobby"
     })
     waypointUnloadWhenSwapLobby = true;
 
@@ -219,25 +219,51 @@ class Settings {
     rng = false;
 
     @TextProperty({
-        name: 'Kuudra 2/2 reparty IGN',
-        description: 'Put player you want to reparty in other group split by space, you can use /kw for manually warp if warp is fail',
+        name: "Kuudra 2/2 reparty IGN",
+        description: "Put player you want to reparty in other group split by space, you can use /kw for manually warp if warp is fail",
         category: "Kuudra",
         subcategory: "Kuudra 2/2 Reparty",
         triggerActionOnInitialization: false,
     })
-    kuudraRepartyList = '';
+    kuudraRepartyList = "";
 
     @SwitchProperty({
-        name: 'Kuudra 2/2 party auto accept',
-        description: 'If the party invite from kuudra 2/2 will auto accept',
+        name: "Kuudra 2/2 party auto accept",
+        description: "If the party invite from kuudra 2/2 will auto accept",
         category: "Kuudra",
         subcategory: "Kuudra 2/2 Reparty"
     })
     kuudraAutoJoin = false;
 
     @SwitchProperty({
-        name: 'Kuudra Supply Pearl Helper',
-        description: 'Marks a nearest supply place location to throw an ender pearl',
+        name: "Kuudra Supply Waypoint",
+        description: "Highlight the supply position",
+        category: "Kuudra",
+        subcategory: "Kuudra Supply Waypoint",
+    })
+    kuudraSupplyWaypoint = true;
+
+    @ColorProperty({
+        name: "Kuudra Supply Waypoint Beacon Color",
+        description: "Pick a color for beacon",
+        category: "Kuudra",
+        subcategory: "Kuudra Supply Waypoint",
+    })
+    kuudraSupplyBeaconColor = Color.YELLOW;
+
+    @SliderProperty({
+        name: "Kuudra Supply Waypoint Text Size",
+        description: "The waypoint text size",
+        category: "Kuudra",
+        subcategory: "Kuudra Supply Waypoint",
+        min: 0,
+        max: 5
+    })
+    kuudraSupplyTextSize = 1;
+
+    @SwitchProperty({
+        name: "Kuudra Supply Pearl Helper",
+        description: "Marks a nearest supply place location to throw an ender pearl",
         category: "Kuudra",
         subcategory: "Kuudra Supply Pearl Helper"
     })
