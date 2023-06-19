@@ -218,6 +218,14 @@ class Settings {
     })
     rng = false;
 
+    @SwitchProperty({
+        name: "Kuudra Show Phrase",
+        description: "Tell you what is current phrase",
+        category: "Kuudra",
+        subcategory: "Kuudra Show Phrase"
+    })
+    kuudraShowPhrase = false;
+
     @TextProperty({
         name: "Kuudra 2/2 reparty IGN",
         description: "Put player you want to reparty in other group split by space, you can use /kw for manually warp if warp is fail",

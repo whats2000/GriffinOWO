@@ -1,5 +1,8 @@
 import Settings from "./config";
 
+// Kuudra Stage Tracker
+import "./utils/KuudraStage";
+
 // ChatTriggerCommandDM
 import "./features/ChatTriggerCommandDM/PartyMute";
 import "./features/ChatTriggerCommandDM/PartyPlayer";

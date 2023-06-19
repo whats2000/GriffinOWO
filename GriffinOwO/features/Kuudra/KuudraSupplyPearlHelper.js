@@ -1,4 +1,5 @@
 import Settings from "../../config";
+import getCurrentPhase from "../../utils/KuudraStage";
 import renderBeaconBeam from "../../../BeaconBeam";
 
 const ArmorStand = Java.type("net.minecraft.entity.item.EntityArmorStand");
@@ -13,28 +14,18 @@ const SupplyPlacePos = [
 ];
 
 let supplyPlaceWaypoint = [];
-let isWaitingForSupply = false;
-
 
 register("chat", () => {
     if (!Settings.kuudraSupplyPearlHelper) return;
 
-    isWaitingForSupply = true;
     supplyPlaceWaypoint = [];
 }).setCriteria("[NPC] Elle: Not again!");
 
 register("step", () => {
     if (!Settings.kuudraSupplyPearlHelper) return;
-    if (!isWaitingForSupply) return;
+    if (getCurrentPhase() !== 1) return;
 
     const stands = World.getAllEntitiesOfType(ArmorStand.class);
-
-    const endCollectingArmorStand = stands.some(stand => stand.getName().includes("SUPPLY PILE"));
-    if (endCollectingArmorStand) {
-        isWaitingForSupply = false;
-        supplyPlaceWaypoint = [];
-        return;
-    }
 
     const placedSupply = stands.filter(stand => stand.getName().includes('✓ SUPPLIES RECEIVED ✓'));
     const playerPos = [Player.getX(), Player.getY(), Player.getZ()];
@@ -61,7 +52,7 @@ register("step", () => {
 
 register("renderWorld", () => {
     if (!Settings.kuudraSupplyPearlHelper) return;
-    if (!isWaitingForSupply) return;
+    if (getCurrentPhase() !== 1) return;
     if (supplyPlaceWaypoint.length === 0) return
 
     let [x, y, z] = supplyPlaceWaypoint;
@@ -78,6 +69,5 @@ register("renderWorld", () => {
 });
 
 register("worldUnload", () => {
-    isWaitingForSupply = false;
     supplyPlaceWaypoint = [];
 });

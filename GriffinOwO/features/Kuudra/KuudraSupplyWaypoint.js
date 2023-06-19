@@ -1,31 +1,15 @@
 import Settings from "../../config";
 import { getColorArray } from "../../utils/Function";
+import getCurrentPhase from "../../utils/KuudraStage";
 import renderBeaconBeam from "../../../BeaconBeam";
 
-const ArmorStand = Java.type("net.minecraft.entity.item.EntityArmorStand");
 const Giant = Java.type("net.minecraft.entity.monster.EntityGiantZombie");
-
-let isWaitingForSupply = false;
-
-
-register("chat", () => {
-    if (!Settings.kuudraSupplyWaypoint) return;
-
-    isWaitingForSupply = true;
-}).setCriteria("[NPC] Elle: Not again!");
 
 register("renderWorld", () => {
     if (!Settings.kuudraSupplyWaypoint) return;
-    if (!isWaitingForSupply) return;
+    if (getCurrentPhase() !== 1 && getCurrentPhase() !== 3) return;
 
-    const stands = World.getAllEntitiesOfType(ArmorStand.class);
     const players = World.getAllPlayers();
-
-    const endCollectingArmorStand = stands.some(stand => stand.getName().includes("SUPPLY PILE"));
-    if (endCollectingArmorStand) {
-        isWaitingForSupply = false;
-        return;
-    }
 
     const giants = World.getAllEntitiesOfType(Giant.class);
     const supplies = giants.filter(giant => giant.getY() < 67)
@@ -40,7 +24,10 @@ register("renderWorld", () => {
         const isShadow = true;
 
         const nearbyPlayers = players.filter(player =>
-            Math.abs(player.getX() - x) <= 5 && Math.abs(player.getY() - y) <= 5 && Math.abs(player.getZ() - z) <= 5
+            player.getName() !== Player.getName() &&
+            Math.abs(player.getX() - x) <= 5 &&
+            Math.abs(player.getY() - y) <= 5 &&
+            Math.abs(player.getZ() - z) <= 5
         );
 
         if (nearbyPlayers.length > 0) {
