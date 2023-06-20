@@ -14,6 +14,10 @@ A chattrigger script helper for Hypixel Skyblock
 5. `/kw`: Manually warp 2/2 kuudra party
 6. `/fw`: Ignore waiting for all other players and warp the party when flare trade
 
+### Blacklist and Whitelist
+1. Kick Not Welcome Player: Kick if the player is not in the whitelist or the player is in the blacklist
+2. Transfer Back Not Welcome Player: Transfer Back the leader if the player is not in the whitelist or the player is in the blacklist
+
 ### Party Chat Trigger Command
 1. `!warp`: allow party members to warp the party
 2. `!allinv`: allow party members to enable all invite
@@ -35,9 +39,9 @@ A chattrigger script helper for Hypixel Skyblock
 
 ### Kuudra
 1. Kuudra 2/2 reparty: Skip cd when starting a new run
-2. Kuudra Show Phrase: Show what kuudra stage is it **[Beta]**
-3. Kuudra Supply Waypoint: It can show if other players are around it, and can beacon change color **[Beta]**
-4. Kuudra Supply Pearl Helper: Mark the closest empty supply place location **[Beta]**
+2. Kuudra Show Phrase: Show what kuudra stage is it
+3. Kuudra Supply Waypoint: It can show if other players are around it, and can beacon change color
+4. Kuudra Supply Pearl Helper: Mark the closest empty supply place location
 5. Kuudra Build Progress: Show the build progress of all build locations **[Beta]**
 
 ### Fun command
