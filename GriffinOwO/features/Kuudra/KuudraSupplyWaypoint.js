@@ -7,7 +7,7 @@ const Giant = Java.type("net.minecraft.entity.monster.EntityGiantZombie");
 
 register("renderWorld", () => {
     if (!Settings.kuudraSupplyWaypoint) return;
-    if (getCurrentPhase() !== 1 && getCurrentPhase() !== 3) return;
+    if (getCurrentPhase() !== 0 && getCurrentPhase() !== 1 && getCurrentPhase() !== 3) return;
 
     const players = World.getAllPlayers();
 

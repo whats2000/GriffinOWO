@@ -287,6 +287,32 @@ class Settings {
     })
     kuudraSupplyPearlHelperTextSize = 1;
 
+    @SwitchProperty({
+        name: "Kuudra Build Progress",
+        description: "Show current build progress for each location",
+        category: "Kuudra",
+        subcategory: "Kuudra Build Progress"
+    })
+    kuudraBuildProgress = true;
+
+    @SwitchProperty({
+        name: "Kuudra Build Progress Show Beacon",
+        description: "Show a beacon mark if it not done",
+        category: "Kuudra",
+        subcategory: "Kuudra Build Progress"
+    })
+    kuudraBuildProgressBeacon = true;
+
+    @SliderProperty({
+        name: "Kuudra Build Progress Text Size",
+        description: "The progress text size",
+        category: "Kuudra",
+        subcategory: "Kuudra Build Progress",
+        min: 0,
+        max: 10
+    })
+    kuudraBuildProgressTextSize = 5;
+
     constructor() {
         this.initialize(this);
     }

@@ -69,5 +69,6 @@ register("renderWorld", () => {
 });
 
 register("worldUnload", () => {
+    if (!Settings.kuudraSupplyPearlHelper) return;
     supplyPlaceWaypoint = [];
 });

@@ -23,6 +23,7 @@ import "./features/CrimsonIsland/VanquisherAlert";
 import "./features/Fun/GetTodayLuck";
 
 // Kuudra
+import "./features/Kuudra/KuudraBuildProgress";
 import "./features/Kuudra/KuudraSupplyPearlHelper";
 import "./features/Kuudra/KuudraSupplyWaypoint";
 import "./features/Kuudra/KuudraTwoTwoReparty";
