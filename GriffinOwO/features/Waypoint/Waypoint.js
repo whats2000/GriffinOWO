@@ -49,7 +49,7 @@ register("command", (name) => {
 }).setName("griffin_remove");
 
 register("command", (x, y, z, name) => {
-    if (!name) name = "Custom Coord";
+    if (!name) name = "Custom_Coord";
     const newWaypoint = {
         x: parseInt(x),
         y: parseInt(y),
