@@ -60,10 +60,10 @@ register("renderWorld", () => {
     const distance = Math.floor(Math.sqrt(Math.pow(x - playerPos[0], 2) + Math.pow(y - playerPos[1], 2) + Math.pow(z - playerPos[2], 2)));
     const textColor = 0xFFFFFF;
     const scale = Settings.kuudraSupplyPearlHelperTextSize;
-    const isShadow = true;
+    const increase = true;
 
     if (scale > 0)
-        Tessellator.drawString(`§aPearl Here [${distance}m]`, x, y + 0.5, z, textColor, true, scale, isShadow);
+        Tessellator.drawString(`§aPearl Here [${distance}m]`, x, y + 0.5, z, textColor, true, scale, increase);
 
     renderBeaconBeam(x - 0.5, y, z - 0.5, 0, 191, 255, 0.5, false);
 });

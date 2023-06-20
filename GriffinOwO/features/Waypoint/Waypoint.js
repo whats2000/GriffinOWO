@@ -196,8 +196,8 @@ register("renderWorld", () => {
 
             const textColor = 0xFFFFFF;
             const scale = Settings.waypointTextSize;
-            const isShadow = true;
-            Tessellator.drawString(`§a[${index}] ${waypoint.name} [${distance}m]`, x + 0.5, y + 0.5, z + 0.5, textColor, true, scale, isShadow);
+            const increase = true;
+            Tessellator.drawString(`§a[${index}] ${waypoint.name} [${distance}m]`, x + 0.5, y + 0.5, z + 0.5, textColor, true, scale, increase);
 
             const maxDistance = 40;
             const beamIntensity = 0.2 + distance / maxDistance;

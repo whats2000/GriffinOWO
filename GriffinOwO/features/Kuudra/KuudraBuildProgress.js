@@ -66,8 +66,8 @@ register("renderWorld", () => {
     if (buildLocationProgress.length === 0) return;
 
     const textColor = 0xFFFFFF;
-    const scale = Settings.kuudraBuildProgressTextSize;
-    const isShadow = true;
+    const scale = Settings.kuudraBuildProgressTextSize * 0.02;
+    const increase = false;
 
     buildLocationProgress.forEach(location => {
         const [x, y, z, progress] = [location.x, location.y, location.z, location.progress];
@@ -75,7 +75,7 @@ register("renderWorld", () => {
 
         if (!progress.includes('COMPLETE')) {
             if (scale > 0)
-                Tessellator.drawString(`${progress}`, x, y + 0.5, z, textColor, false, scale, isShadow);
+                Tessellator.drawString(`${progress}`, x, y + 0.5, z, textColor, false, scale, increase);
 
             if (Settings.kuudraBuildProgressBeacon)
                 renderBeaconBeam(x - 0.5, y, z - 0.5, 0, 191, 255, 0.5, false);

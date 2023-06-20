@@ -1,4 +1,4 @@
-import { @Vigilant, @TextProperty, @SwitchProperty, @SliderProperty, @SelectorProperty, @ColorProperty, Color } from "Vigilance";
+import { @Vigilant, @TextProperty, @SwitchProperty, @DecimalSliderProperty @SliderProperty, @SelectorProperty, @ColorProperty, Color } from "Vigilance";
 
 @Vigilant("GriffinOWO")
 class Settings {
@@ -118,15 +118,16 @@ class Settings {
     })
     waypointBeaconColor = Color.BLUE;
 
-    @SliderProperty({
+    @DecimalSliderProperty({
         name: "Waypoint Text Size",
         description: "The waypoint text size",
         category: "Waypoint",
         subcategory: "Waypoint Text Size",
-        min: 0,
-        max: 5
+        minF: 0.0,
+        maxF: 5.0,
+        decimalPlaces: 1
     })
-    waypointTextSize = 1;
+    waypointTextSize = 2.0;
 
     @SwitchProperty({
         name: "Waypoint Unload When Swap Lobby",
@@ -259,15 +260,16 @@ class Settings {
     })
     kuudraSupplyBeaconColor = Color.YELLOW;
 
-    @SliderProperty({
+    @DecimalSliderProperty({
         name: "Kuudra Supply Waypoint Text Size",
         description: "The waypoint text size",
         category: "Kuudra",
         subcategory: "Kuudra Supply Waypoint",
-        min: 0,
-        max: 5
+        minF: 0.0,
+        maxF: 5.0,
+        decimalPlaces: 1
     })
-    kuudraSupplyTextSize = 1;
+    kuudraSupplyTextSize = 2.0;
 
     @SwitchProperty({
         name: "Kuudra Supply Pearl Helper",
@@ -277,15 +279,16 @@ class Settings {
     })
     kuudraSupplyPearlHelper = false;
 
-    @SliderProperty({
+    @DecimalSliderProperty({
         name: "Kuudra Supply Pearl Helper Distance Text Size",
         description: "The distance text size",
         category: "Kuudra",
         subcategory: "Kuudra Supply Pearl Helper",
-        min: 0,
-        max: 5
+        minF: 0.0,
+        maxF: 5.0,
+        decimalPlaces: 1
     })
-    kuudraSupplyPearlHelperTextSize = 1;
+    kuudraSupplyPearlHelperTextSize = 2.0;
 
     @SwitchProperty({
         name: "Kuudra Build Progress",
@@ -303,15 +306,16 @@ class Settings {
     })
     kuudraBuildProgressBeacon = true;
 
-    @SliderProperty({
+    @DecimalSliderProperty({
         name: "Kuudra Build Progress Text Size",
         description: "The progress text size",
         category: "Kuudra",
         subcategory: "Kuudra Build Progress",
-        min: 0,
-        max: 10
+        minF: 0.0,
+        maxF: 5.0,
+        decimalPlaces: 1
     })
-    kuudraBuildProgressTextSize = 5;
+    kuudraBuildProgressTextSize = 2.0;
 
     constructor() {
         this.initialize(this);
