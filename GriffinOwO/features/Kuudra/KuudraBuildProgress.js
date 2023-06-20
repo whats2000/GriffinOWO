@@ -66,7 +66,7 @@ register("renderWorld", () => {
     if (buildLocationProgress.length === 0) return;
 
     const textColor = 0xFFFFFF;
-    const scale = Settings.kuudraBuildProgressTextSize * 0.02;
+    const scale = Settings.kuudraBuildProgressTextSize * 0.1;
     const increase = false;
 
     buildLocationProgress.forEach(location => {
