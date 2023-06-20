@@ -33,8 +33,10 @@ import "./features/Kuudra/KuudraSupplyPearlHelper";
 import "./features/Kuudra/KuudraSupplyWaypoint";
 import "./features/Kuudra/KuudraTwoTwoReparty";
 
-// Reparty
-import "./features/Reparty/RepartyKickPlayer";
+// Party
+import "./features/Party/KickBlacklistPlayer";
+import "./features/Party/RepartyKickPlayer";
+import "./features/Party/TransferBackBlacklistPlayer";
 
 // Waypoint
 import "./features/Waypoint/Waypoint";

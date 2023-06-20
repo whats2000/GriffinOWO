@@ -1,6 +1,13 @@
 import { @Vigilant, @TextProperty, @SwitchProperty, @DecimalSliderProperty @SliderProperty, @SelectorProperty, @ColorProperty, Color } from "Vigilance";
 
-@Vigilant("GriffinOWO")
+@Vigilant("GriffinOWO", "Some people call it iahnaddons", {
+    getSubcategoryComparator: () => (a, b) => {
+        const subcategories = ["Whitelist Mode", "Kick Not Welcome Player", "Transfer Back Not Welcome Player"];
+
+        return subcategories.indexOf(a.getValue()[0].attributesExt.subcategory) -
+            subcategories.indexOf(b.getValue()[0].attributesExt.subcategory);
+    }
+})
 class Settings {
     @SwitchProperty({
         name: "Blacklist Mode",
@@ -35,6 +42,22 @@ class Settings {
         triggerActionOnInitialization: false,
     })
     whitelistIGN = "";
+
+    @SwitchProperty({
+        name: "Kick Not Welcome Player",
+        description: "Kick if the player is not in the whitelist or the player is in the blacklist",
+        category: "Blacklist and Whitelist",
+        subcategory: "Kick Not Welcome Player"
+    })
+    kickNotWelcomePlayer = false;
+
+    @SwitchProperty({
+        name: "Transfer Back Not Welcome Player",
+        description: "Transfer Back the leader if the player is not in the whitelist or the player is in the blacklist",
+        category: "Blacklist and Whitelist",
+        subcategory: "Transfer Back Not Welcome Player"
+    })
+    transferBackNotWelcomePlayer = false;
 
     @SwitchProperty({
         name: "Broken Hype Detect",
