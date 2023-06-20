@@ -249,7 +249,7 @@ class Settings {
         category: "Kuudra",
         subcategory: "Kuudra Supply Waypoint",
     })
-    kuudraSupplyWaypoint = true;
+    kuudraSupplyWaypoint = false;
 
     @ColorProperty({
         name: "Kuudra Supply Waypoint Beacon Color",
@@ -293,7 +293,7 @@ class Settings {
         category: "Kuudra",
         subcategory: "Kuudra Build Progress"
     })
-    kuudraBuildProgress = true;
+    kuudraBuildProgress = false;
 
     @SwitchProperty({
         name: "Kuudra Build Progress Show Beacon",
@@ -315,6 +315,24 @@ class Settings {
 
     constructor() {
         this.initialize(this);
+        this.addDependency("Kuudra Supply Waypoint Beacon Color", "Kuudra Supply Waypoint");
+        this.addDependency("Kuudra Supply Waypoint Text Size", "Kuudra Supply Waypoint");
+
+        this.addDependency("Kuudra Supply Pearl Helper Distance Text Size", "Kuudra Supply Pearl Helper");
+
+        this.addDependency("Kuudra Build Progress Show Beacon", "Kuudra Build Progress");
+        this.addDependency("Kuudra Build Progress Text Size", "Kuudra Build Progress");
+
+        this.addDependency("Delay of !warp", "!warp");
+
+        this.addDependency("Broken Hype Detect Only On Flare", "Broken Hype Detect");
+
+        this.addDependency("Vanquisher Alert Chat", "Vanquisher Alert");
+
+        this.addDependency("Recieve waypoint from chat include yourself", "Recieve waypoint from chat");
+        this.addDependency("Waypoint Beacon Color", "Recieve waypoint from chat");
+        this.addDependency("Waypoint Text Size", "Recieve waypoint from chat");
+        this.addDependency("Waypoint Unload When Swap Lobby", "Recieve waypoint from chat");
     }
 
     sync() {
