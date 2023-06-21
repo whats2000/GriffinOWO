@@ -32,6 +32,10 @@ A chattrigger script helper for Hypixel Skyblock
 ### Diana
 1. Inquis Alert: Allow you to tell the inquisher spot in the party chat
 
+### Combat
+1. Alignment Tracker: Alignment Tracker for gyro wand will track both yourself and other players aligment
+2. Gyro Cool Down Tracker: Gyro Cool Down Tracker for gyro wand will track the cd of the gyro wand right click ability
+
 ### Crimson Island
 1. Broke Hype Detect: Detect Hype stopped grand combat xp without using the book of state
 2. Flare Trade: Party other players and send vanquisher spot and disband the party after send
