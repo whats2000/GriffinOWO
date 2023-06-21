@@ -47,6 +47,7 @@ A chattrigger script helper for Hypixel Skyblock
 3. Kuudra Supply Waypoint: It can show if other players are around it, and can beacon change color
 4. Kuudra Supply Pearl Helper: Mark the closest empty supply place location
 5. Kuudra Build Progress: Show the build progress of all build locations **[Beta]**
+6. Kuudra Fuel Progress: Show the fuel progress **[Beta]**
 
 ### Fun command
 1. `!rng`: show what your today luck
