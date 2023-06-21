@@ -1,4 +1,4 @@
-import { @Vigilant, @TextProperty, @SwitchProperty, @DecimalSliderProperty @SliderProperty, @SelectorProperty, @ColorProperty, Color } from "Vigilance";
+import { @Vigilant, @ButtonProperty, @TextProperty, @SwitchProperty, @DecimalSliderProperty @SliderProperty, @SelectorProperty, @ColorProperty, Color } from "Vigilance";
 
 @Vigilant("GriffinOWO", "Some people call it iahnaddons", {
     getSubcategoryComparator: () => (a, b) => {
@@ -9,6 +9,9 @@ import { @Vigilant, @TextProperty, @SwitchProperty, @DecimalSliderProperty @Slid
     }
 })
 class Settings {
+    gyroGUI = new Gui()
+    alignmentGUI = new Gui()
+
     @SwitchProperty({
         name: "Blacklist Mode",
         description: "Note : if player both on whitelist and blacklist will take blacklist ",
@@ -58,6 +61,44 @@ class Settings {
         subcategory: "Transfer Back Not Welcome Player"
     })
     transferBackNotWelcomePlayer = false;
+
+    @SwitchProperty({
+        name: "Alignment Tracker",
+        description: "Alignment Tracker for gyro wand will track both yourself and other players aligment",
+        category: "Combat",
+        subcategory: "Alignment Tracker HUD",
+    })
+    alignmentTracker = false;
+
+    @ButtonProperty({
+        name: "Alignment Tracker Location",
+        description: "Moves the Alignment Tracker display hud",
+        category: "Combat",
+        subcategory: "Alignment Tracker HUD",
+        placeholder: "Move"
+    })
+    MoveAlignmentGUI() {
+        this.alignmentGUI.open()
+    };
+
+    @SwitchProperty({
+        name: "Gyro Cool Down Tracker",
+        description: "Gyro Cool Down Tracker for gyro wand will track the cd of the gyro wand",
+        category: "Combat",
+        subcategory: "Gyro Cool Down HUD",
+    })
+    gyroCoolDownTracker = false;
+
+    @ButtonProperty({
+        name: "Gyro Cool Down Tracker Location",
+        description: "Moves the Gyro Cool Down Tracker display hud",
+        category: "Combat",
+        subcategory: "Gyro Cool Down HUD",
+        placeholder: "Move"
+    })
+    MoveGyroGUI() {
+        this.gyroGUI.open()
+    };
 
     @SwitchProperty({
         name: "Broken Hype Detect",
@@ -342,6 +383,9 @@ class Settings {
 
     constructor() {
         this.initialize(this);
+        this.addDependency("Alignment Tracker Location", "Alignment Tracker");
+        this.addDependency("Gyro Cool Down Tracker Location", "Gyro Cool Down Tracker");
+
         this.addDependency("Kuudra Supply Waypoint Beacon Color", "Kuudra Supply Waypoint");
         this.addDependency("Kuudra Supply Waypoint Text Size", "Kuudra Supply Waypoint");
 

@@ -4,6 +4,9 @@ import { userData } from "./utils/UserData";
 // Kuudra Stage Tracker
 import "./utils/KuudraStage";
 
+// HUD rendering
+import "./utils/RenderHUD";
+
 // Whitelist and Blacklist
 import "./features/BlacklistWhitelist/Blacklist";
 import "./features/BlacklistWhitelist/Whitelist";
@@ -18,6 +21,9 @@ import "./features/ChatTriggerCommandParty/JoinDungeon";
 import "./features/ChatTriggerCommandParty/PartyTransfer";
 import "./features/ChatTriggerCommandParty/PartyWarp";
 import "./features/ChatTriggerCommandParty/Restart";
+
+// Combat
+import "./features/Combat/GyroTimer";
 
 // CrimsonIsland
 import "./features/CrimsonIsland/BrokenHype";
