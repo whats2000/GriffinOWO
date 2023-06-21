@@ -27,7 +27,7 @@ register("step", () => {
 
     const stands = World.getAllEntitiesOfType(ArmorStand.class);
 
-    const placedSupply = stands.filter(stand => stand.getName().includes('✓ SUPPLIES RECEIVED ✓'));
+    const placedSupply = stands.filter(stand => stand.getName().includes("✓ SUPPLIES RECEIVED ✓"));
     const playerPos = [Player.getX(), Player.getY(), Player.getZ()];
 
     let closestPos = null;

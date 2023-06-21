@@ -35,6 +35,7 @@ import "./features/Fun/GetTodayLuck";
 
 // Kuudra
 import "./features/Kuudra/KuudraBuildProgress";
+import "./features/Kuudra/KuudraFuelProgress";
 import "./features/Kuudra/KuudraSupplyPearlHelper";
 import "./features/Kuudra/KuudraSupplyWaypoint";
 import "./features/Kuudra/KuudraTwoTwoReparty";
@@ -95,6 +96,7 @@ register("command", (...args) => {
                     ChatLib.command(args.join(" "), true);
                     break;
                 case "list":
+                case undefined:
                     args.shift();
                     args.unshift("griffin_blacklist_list");
                     ChatLib.command(args.join(" "), true);
@@ -123,6 +125,7 @@ register("command", (...args) => {
                     ChatLib.command(args.join(" "), true);
                     break;
                 case "list":
+                case undefined:
                     args.shift();
                     args.unshift("griffin_whitelist_list");
                     ChatLib.command(args.join(" "), true);

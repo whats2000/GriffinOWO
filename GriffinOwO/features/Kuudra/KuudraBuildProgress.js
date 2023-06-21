@@ -27,7 +27,7 @@ register("step", () => {
 
     const stands = World.getAllEntitiesOfType(ArmorStand.class);
 
-    const buildSpot = stands.filter(stand => stand.getName().includes('PROGRESS:'));
+    const buildSpot = stands.filter(stand => stand.getName().includes("PROGRESS:"));
     buildSpot.forEach(stand => {
         const name = stand.getName();
         const progress = name ? name.replace("PROGRESS: ", "") : null;

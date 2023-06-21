@@ -83,7 +83,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Gyro Cool Down Tracker",
-        description: "Gyro Cool Down Tracker for gyro wand will track the cd of the gyro wand",
+        description: "Gyro Cool Down Tracker for gyro wand will track the cd  of the gyro wand right click ability",
         category: "Combat",
         subcategory: "Gyro Cool Down HUD",
     })
@@ -381,6 +381,33 @@ class Settings {
     })
     kuudraBuildProgressTextSize = 2.0;
 
+    @SwitchProperty({
+        name: "Kuudra Fuel Progress",
+        description: "Show current fuel progress",
+        category: "Kuudra",
+        subcategory: "Kuudra Fuel Progress"
+    })
+    kuudraFuelProgress = false;
+
+    @SwitchProperty({
+        name: "Kuudra Fuel Progress Show Beacon",
+        description: "Show a beacon mark",
+        category: "Kuudra",
+        subcategory: "Kuudra Fuel Progress"
+    })
+    kuudraFuelProgressBeacon = true;
+
+    @DecimalSliderProperty({
+        name: "Kuudra Fuel Progress Text Size",
+        description: "The progress text size",
+        category: "Kuudra",
+        subcategory: "Kuudra Fuel Progress",
+        minF: 0.0,
+        maxF: 5.0,
+        decimalPlaces: 1
+    })
+    kuudraFuelProgressTextSize = 2.0;
+
     constructor() {
         this.initialize(this);
         this.addDependency("Alignment Tracker Location", "Alignment Tracker");
@@ -393,6 +420,9 @@ class Settings {
 
         this.addDependency("Kuudra Build Progress Show Beacon", "Kuudra Build Progress");
         this.addDependency("Kuudra Build Progress Text Size", "Kuudra Build Progress");
+
+        this.addDependency("Kuudra Fuel Progress Show Beacon", "Kuudra Fuel Progress");
+        this.addDependency("Kuudra Fuel Progress Text Size", "Kuudra Fuel Progress");
 
         this.addDependency("Delay of !warp", "!warp");
 

@@ -31,5 +31,4 @@ register("chat", (player) => {
         ChatLib.chat(`&2[GriffinOwO] &fTrying to warp party. [${player}]`);
         ChatLib.command("p warp")
     }, 300 + 1000 * delay);
-
 }).setCriteria(/^Party > (.+): ![Ww][Aa][Rr][Pp]$/);
