@@ -70,7 +70,7 @@ register("renderWorld", () => {
 
     Object.entries(buildLocationProgress).forEach(([locationKey, progress]) => {
         const [x, z] = locationKey.split(":").map(Number);
-        ChatLib.chat(`&2[GriffinOwO] &fBuild progress for location (${x}, ${z}): ${progress}`);
+        //ChatLib.chat(`&2[GriffinOwO] &fBuild progress for location (${x}, ${z}): ${progress}`);
         const y = 78.125;
 
         if (!progress.includes('COMPLETE')) {
