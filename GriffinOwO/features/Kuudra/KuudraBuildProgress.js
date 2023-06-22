@@ -13,12 +13,26 @@ const SupplyPlacePos = [
     [-106, 78.125, -112.9375]
 ];
 
-let buildLocationProgress = [];
+let buildLocationProgress = {
+    "-98:-112.9375": "§c0%",
+    "-110:-106": "§c0%",
+    "-106:-99.0625": "§c0%",
+    "-94:-106": "§c0%",
+    "-98:-99.0625": "§c0%",
+    "-106:-112.9375": "§c0%"
+};
 
 register("chat", () => {
     if (!Settings.kuudraBuildProgress) return;
 
-    buildLocationProgress = [];
+    buildLocationProgress = {
+        "-98:-112.9375": "§c0%",
+        "-110:-106": "§c0%",
+        "-106:-99.0625": "§c0%",
+        "-94:-106": "§c0%",
+        "-98:-99.0625": "§c0%",
+        "-106:-112.9375": "§c0%"
+    };
 }).setCriteria("[NPC] Elle: Not again!");
 
 register("step", () => {
@@ -27,7 +41,7 @@ register("step", () => {
 
     const stands = World.getAllEntitiesOfType(ArmorStand.class);
 
-    const buildSpot = stands.filter(stand => stand.getName().includes("PROGRESS:"));
+    const buildSpot = stands.filter(stand => stand.getName().includes("PROGRESS:") && SupplyPlacePos.some(pos => pos[0] === stand.getX() && pos[2] === stand.getZ()));
     buildSpot.forEach(stand => {
         const name = stand.getName();
         const progress = name ? name.replace("PROGRESS: ", "") : null;
@@ -36,42 +50,28 @@ register("step", () => {
             const [x, y, z] = [stand.getX(), stand.getY(), stand.getZ()];
             const locationKey = `${x}:${z}`;
 
-            const isValidLocation = SupplyPlacePos.some(pos => pos[0] === x && pos[2] === z);
-            if (!isValidLocation) return;
-
-            const existingBuildLocation = buildLocationProgress.find(location => location.key === locationKey);
-            if (existingBuildLocation) {
-                existingBuildLocation.progress = progress;
-                //ChatLib.chat(`&2[GriffinOwO] &fUpdated build progress for location (${x}, ${z}): ${progress}`);
-            } else {
-                const newBuildLocation = {
-                    key: locationKey,
-                    x: parseInt(x),
-                    y: parseInt(y),
-                    z: parseInt(z),
-                    progress: progress
-                };
-
-                buildLocationProgress.push(newBuildLocation);
-                //ChatLib.chat(`&2[GriffinOwO] &fAdded new build location (${x}, ${z}): ${progress}`);
+            if (!buildLocationProgress.hasOwnProperty(locationKey)) {
+                return; // Skip current iteration if location is not in the target positions
             }
+
+            buildLocationProgress[locationKey] = progress;
+            // ChatLib.chat(`&2[GriffinOwO] &fUpdated build progress for location (${x}, ${z}): ${progress}`);
         }
     });
 }).setDelay(1);
 
-
 register("renderWorld", () => {
     if (!Settings.kuudraBuildProgress) return;
     if (getCurrentPhase() !== 2) return;
-    if (buildLocationProgress.length === 0) return;
 
     const textColor = 0xFFFFFF;
     const scale = Settings.kuudraBuildProgressTextSize * 0.1;
     const increase = false;
 
-    buildLocationProgress.forEach(location => {
-        const [x, y, z, progress] = [location.x, location.y, location.z, location.progress];
-        //ChatLib.chat(`&2[GriffinOwO] &f${[x, y, z, progress]}`);
+    Object.entries(buildLocationProgress).forEach(([locationKey, progress]) => {
+        const [x, z] = locationKey.split(":").map(Number);
+        ChatLib.chat(`&2[GriffinOwO] &fBuild progress for location (${x}, ${z}): ${progress}`);
+        const y = 78.125;
 
         if (!progress.includes('COMPLETE')) {
             if (scale > 0)
@@ -83,8 +83,17 @@ register("renderWorld", () => {
     });
 });
 
+
+
 register("worldUnload", () => {
     if (!Settings.kuudraBuildProgress) return;
 
-    buildLocationProgress = [];
+    buildLocationProgress = {
+        "-98:-112.9375": "§c0%",
+        "-110:-106": "§c0%",
+        "-106:-99.0625": "§c0%",
+        "-94:-106": "§c0%",
+        "-98:-99.0625": "§c0%",
+        "-106:-112.9375": "§c0%"
+    };
 });
