@@ -213,7 +213,7 @@ class Settings {
         name: "Enigma Souls Waypoint Beacon Color",
         description: "Pick a color for beacon",
         category: "Rift",
-        subcategory: "Enigma Souls Waypoint Beacon Color",
+        subcategory: "Enigma Souls Waypoint",
     })
     enigmaSoulsBeaconColor = Color.MAGENTA;
 
@@ -221,7 +221,7 @@ class Settings {
         name: "Enigma Souls Waypoint Max Distance",
         description: "The waypoint show within this distance",
         category: "Rift",
-        subcategory: "Enigma Souls Waypoint Max Distance",
+        subcategory: "Enigma Souls Waypoint",
         min: 0,
         max: 1024
     })
@@ -231,7 +231,7 @@ class Settings {
         name: "Enigma Souls Waypoint Text Max Distance",
         description: "The waypoint text show within this distance",
         category: "Rift",
-        subcategory: "Enigma Souls Waypoint Text Max Distance",
+        subcategory: "Enigma Souls Waypoint",
         min: 0,
         max: 1024
     })
@@ -241,7 +241,7 @@ class Settings {
         name: "Enigma Souls Waypoint Text Size",
         description: "The waypoint text size",
         category: "Rift",
-        subcategory: "Enigma Souls Waypoint Text Size",
+        subcategory: "Enigma Souls Waypoint",
         minF: 0.0,
         maxF: 5.0,
         decimalPlaces: 1
@@ -457,6 +457,11 @@ class Settings {
 
     constructor() {
         this.initialize(this);
+        this.addDependency("Enigma Souls Waypoint Beacon Color", "Enigma Souls Waypoint");
+        this.addDependency("Enigma Souls Waypoint Max Distance", "Enigma Souls Waypoint");
+        this.addDependency("Enigma Souls Waypoint Text Max Distance", "Enigma Souls Waypoint");
+        this.addDependency("Enigma Souls Waypoint Text Size", "Enigma Souls Waypoint");
+
         this.addDependency("Alignment Tracker Location", "Alignment Tracker");
         this.addDependency("Gyro Cool Down Tracker Location", "Gyro Cool Down Tracker");
 
