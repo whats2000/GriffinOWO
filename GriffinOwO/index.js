@@ -45,6 +45,9 @@ import "./features/Party/KickBlacklistPlayer";
 import "./features/Party/RepartyKickPlayer";
 import "./features/Party/TransferBackBlacklistPlayer";
 
+// Rift
+import "./features/Rift/EnigmaSoulsWaypoint";
+
 // Waypoint
 import "./features/Waypoint/Waypoint";
 
@@ -60,6 +63,7 @@ function commandHelp() {
     ChatLib.chat("&b/gf waypoint &f[&badd x y z&f|&bremove name&f|&breset&f] - Manage waypoints (coordinates)");
     ChatLib.chat("&b/kw &f- Manually warp 2/2 kuudra party");
     ChatLib.chat("&b/fw &f- Ignore waiting for all other players and warp the party when flare trade");
+    ChatLib.chat(`&b/enigma &f[&bon &f/ &boff &f/ &bremove &f/ &bclear &f/ &bunclear&f] - Enigma Souls Waypoints (Kinda similar to neusouls)`);
     ChatLib.chat("&r&r&b&m--------------------------------------------------------------------------------");
 }
 

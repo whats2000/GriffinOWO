@@ -11,7 +11,8 @@ export let userData = new PogObject("GriffinOwO", {
         x: 195,
         y: 90,
         scale: 1
-    }
+    },
+    foundEnigmaSouls: []
 }, "UserData.json");
 
 register("gameUnload", () => {

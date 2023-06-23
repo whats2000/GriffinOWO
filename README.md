@@ -41,6 +41,9 @@ A chattrigger script helper for Hypixel Skyblock
 2. Flare Trade: Party other players and send vanquisher spot and disband the party after send
 3. Vanquisher Alert: Tell the location and x y z of the vanquisher and the location to the party with patcher format coord
 
+### Rift
+1. Enigma Souls Waypoint: Show Enigma Souls Waypoint, you can use `/enigma` too
+
 ### Kuudra
 1. Kuudra 2/2 reparty: Skip cd when starting a new run
 2. Kuudra Show Phrase: Show what kuudra stage is it

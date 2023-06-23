@@ -202,6 +202,53 @@ class Settings {
     waypointUnloadWhenSwapLobby = true;
 
     @SwitchProperty({
+        name: "Enigma Souls Waypoint",
+        description: "Show Enigma Souls Waypoint, you can use '/enigma' too",
+        category: "Rift",
+        subcategory: "Enigma Souls Waypoint"
+    })
+    enigmaSouls = true;
+
+    @ColorProperty({
+        name: "Enigma Souls Waypoint Beacon Color",
+        description: "Pick a color for beacon",
+        category: "Rift",
+        subcategory: "Enigma Souls Waypoint Beacon Color",
+    })
+    enigmaSoulsBeaconColor = Color.MAGENTA;
+
+    @SliderProperty({
+        name: "Enigma Souls Waypoint Max Distance",
+        description: "The waypoint show within this distance",
+        category: "Rift",
+        subcategory: "Enigma Souls Waypoint Max Distance",
+        min: 0,
+        max: 1024
+    })
+    enigmaSoulsDistance = 256;
+
+    @SliderProperty({
+        name: "Enigma Souls Waypoint Text Max Distance",
+        description: "The waypoint text show within this distance",
+        category: "Rift",
+        subcategory: "Enigma Souls Waypoint Text Max Distance",
+        min: 0,
+        max: 1024
+    })
+    enigmaSoulsTextDistance = 128;
+
+    @DecimalSliderProperty({
+        name: "Enigma Souls Waypoint Text Size",
+        description: "The waypoint text size",
+        category: "Rift",
+        subcategory: "Enigma Souls Waypoint Text Size",
+        minF: 0.0,
+        maxF: 5.0,
+        decimalPlaces: 1
+    })
+    enigmaSoulsTextSize = 2.0;
+
+    @SwitchProperty({
         name: "Inquis Alert",
         description: "Toggle to send the coordinate of inquis",
         category: "Diana",
