@@ -2,10 +2,12 @@ import Settings from "../../config";
 import { getColorArray } from "../../utils/Function";
 import { EnigmaSouls } from "../../utils/Variable";
 import { userData } from "../../utils/UserData";
+import { in_rift } from "../../utils/Location";
 import renderBeaconBeam from "../../../BeaconBeam";
 
 const enigmaSoulsWaypoints = EnigmaSouls;
 let prevSoul = null;
+let nearestSoul = null;
 let inRift = false;
 
 function getNameCorlor(zone) {
@@ -59,7 +61,7 @@ register("command", (...args) => {
         case "on":
             ChatLib.chat(`&2[GriffinOwO] &fEnigma Souls Waypoints is &aon`);
             Settings.enigmaSouls = true;
-            inRift = true;
+            inRift = in_rift();
             break;
         case "off":
             ChatLib.chat(`&2[GriffinOwO] &fEnigma Souls Waypoints is &coff`);
@@ -70,7 +72,9 @@ register("command", (...args) => {
             const soulName = args.join(" ");
             const exists = enigmaSoulsWaypoints.some(waypoint => waypoint.Name === soulName);
             if (exists) {
-                foundSouls.push(soulName);
+                const index = foundSouls.indexOf(soulName);
+                if (index === -1)
+                    foundSouls.push(soulName);
 
                 ChatLib.chat(`&2[GriffinOwO] &fEnigma Souls [&b${soulName}&f] marked as complete`);
                 userData.foundEnigmaSouls = foundSouls;
@@ -119,7 +123,6 @@ register("renderWorld", () => {
     let soulsToShow = [];
 
     let nearestDistance = Infinity;
-    let nearestSoul = null;
 
     enigmaSoulsWaypoints.forEach(waypoint => {
         const found = foundSouls.includes(waypoint.Name);
@@ -202,6 +205,18 @@ register("renderWorld", () => {
         renderBeaconBeam(x, y, z, beaconColor[0], beaconColor[1], beaconColor[2], 1, false);
     });
 });
+
+register("chat", () => {
+    if (!Settings.enigmaSouls) return;
+    if (!inRift) return;
+    ChatLib.command(`enigma remove ${nearestSoul.Name}`, true);
+}).setCriteria("You have already found that Enigma Soul!");
+
+register("chat", () => {
+    if (!Settings.enigmaSouls) return;
+    if (!inRift) return;
+    ChatLib.command(`enigma remove ${nearestSoul.Name}`, true);
+}).setCriteria("SOUL! You unlocked an Enigma Soul!");
 
 register("worldUnload", () => {
     inRift = false;
