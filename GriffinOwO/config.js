@@ -1,12 +1,6 @@
 import { @Vigilant, @ButtonProperty, @TextProperty, @SwitchProperty, @DecimalSliderProperty @SliderProperty, @SelectorProperty, @ColorProperty, Color } from "Vigilance";
 
 @Vigilant("GriffinOWO", "Some people call it iahnaddons", {
-    getSubcategoryComparator: () => (a, b) => {
-        const subcategories = ["Whitelist Mode", "Kick Not Welcome Player", "Transfer Back Not Welcome Player"];
-
-        return subcategories.indexOf(a.getValue()[0].attributesExt.subcategory) -
-            subcategories.indexOf(b.getValue()[0].attributesExt.subcategory);
-    }
 })
 class Settings {
     gyroGUI = new Gui()
@@ -99,6 +93,15 @@ class Settings {
     MoveGyroGUI() {
         this.gyroGUI.open()
     };
+
+    @SelectorProperty({
+        name: "Flare Range Marker",
+        description: "Display the range of the flare",
+        category: "Combat",
+        subcategory: "Flare Range Marker",
+        options: ["none", "box", "floor"],
+    })
+    flareRangeMarker = 0;
 
     @SwitchProperty({
         name: "Broken Hype Detect",

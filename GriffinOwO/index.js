@@ -23,6 +23,7 @@ import "./features/ChatTriggerCommandParty/PartyWarp";
 import "./features/ChatTriggerCommandParty/Restart";
 
 // Combat
+import "./features/Combat/FlareRange";
 import "./features/Combat/GyroTimer";
 
 // CrimsonIsland
