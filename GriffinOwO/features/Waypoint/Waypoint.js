@@ -211,5 +211,17 @@ register("renderWorld", () => {
 register("worldUnload", () => {
     if (!Settings.waypointUnloadWhenSwapLobby) return;
 
-    waypoints = [];
+    // Prevent unload coord from Flare Trade
+    if (Settings.flarePartyList === '') {
+        waypoints = [];
+    }
+    else {
+        const flarePartyMember = Settings.flarePartyList.split(" ")
+            .map(player => player.toLowerCase());
+
+        waypoints.forEach(waypoint => {
+            if (!flarePartyMember.includes(waypoint.name))
+                waypoints.splice(waypoints.indexOf(waypoint), 1);
+        });
+    }
 });
