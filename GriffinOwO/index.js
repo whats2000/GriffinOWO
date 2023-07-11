@@ -180,3 +180,7 @@ register("command", (...args) => {
             break;
     }
 }).setName("griffin").setAliases("griffinOwO").setAliases("gf");
+
+register("command", () => {
+    Settings.openGUI();
+}).setName("griffin_config")
