@@ -14,7 +14,7 @@ register("chat", () => {
     phase = 1;
     if (Settings.kuudraShowPhrase)
         Client.Companion.showTitle(`&l&aSupply Spawn`, "", 5, 25, 5);
-}).setCriteria("[NPC] Elle: Not again!");
+}).setCriteria("[NPC] Elle: Okay adventurers, I will go and fish up Kuudra!");
 
 // All Supply Done
 register("chat", () => {
