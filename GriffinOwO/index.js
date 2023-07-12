@@ -47,6 +47,7 @@ import "./features/Party/RepartyKickPlayer";
 import "./features/Party/TransferBackBlacklistPlayer";
 
 // Rift
+import "./features/Rift/BloodEffigy";
 import "./features/Rift/EnigmaSoulsWaypoint";
 
 // Waypoint

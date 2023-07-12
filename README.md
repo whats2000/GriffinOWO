@@ -44,14 +44,15 @@ A chattrigger script helper for Hypixel Skyblock
 
 ### Rift
 1. Enigma Souls Waypoint: Show Enigma Souls Waypoint, you can use `/enigma` too
+2. Blood Effigy Timer Waypoint: Show Blood Effigy Timer at it location **[Beta]**
 
 ### Kuudra
 1. Kuudra 2/2 reparty: Skip cd when starting a new run
 2. Kuudra Show Phrase: Show what kuudra stage is it
 3. Kuudra Supply Waypoint: It can show if other players are around it, and can beacon change color
 4. Kuudra Supply Pearl Helper: Mark the closest empty supply place location
-5. Kuudra Build Progress: Show the build progress of all build locations **[Beta]**
-6. Kuudra Fuel Progress: Show the fuel progress **[Beta]**
+5. Kuudra Build Progress: Show the build progress of all build locations
+6. Kuudra Fuel Progress: Show the fuel progress
 
 ### Fun command
 1. `!rng`: show what your today luck

@@ -252,6 +252,14 @@ class Settings {
     enigmaSoulsTextSize = 2.0;
 
     @SwitchProperty({
+        name: "Blood Effigy Timer Waypoint",
+        description: "Show Blood Effigy Timer at it location",
+        category: "Rift",
+        subcategory: "Blood Effigy Timer Waypoint"
+    })
+    bloodEffigy = false;
+
+    @SwitchProperty({
         name: "Inquis Alert",
         description: "Toggle to send the coordinate of inquis",
         category: "Diana",
