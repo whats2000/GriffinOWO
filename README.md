@@ -15,7 +15,7 @@ A chattrigger script helper for Hypixel Skyblock
 6. `/fw`: Ignore waiting for all other players and warp the party when flare trade
 
 ### Blacklist and Whitelist
-1. Kick Not Welcome Player: Kick if the player is not in the whitelist or the player is in the blacklist
+1. Kick Not Welcome Player: Kick if the player is not in the whitelist or the player is on the blacklist
 2. Transfer Back Not Welcome Player: Transfer Back the leader if the player is not in the whitelist or the player is in the blacklist
 
 ### Party Chat Trigger Command
@@ -33,9 +33,10 @@ A chattrigger script helper for Hypixel Skyblock
 1. Inquis Alert: Allow you to tell the inquisher spot in the party chat
 
 ### Combat
-1. Alignment Tracker: Alignment Tracker for gyro wand will track both yourself and other players aligment
-2. Gyro Cool Down Tracker: Gyro Cool Down Tracker for gyro wand will track the cd of the gyro wand right click ability
+1. Alignment Tracker: The alignment Tracker for the gyro wand will track both your and other players' alignment
+2. Gyro Cool Down Tracker: Gyro Cool Down Tracker for the gyro wand will track the cd of the gyro wand right click ability
 3. Flare Range Marker: Display the range of the flare
+4. Flare Timer: Flare Timer will display the flare time when you are in flare range **[Beta]**
 
 ### Crimson Island
 1. Broke Hype Detect: Detect Hype stopped grand combat xp without using the book of state
@@ -44,7 +45,8 @@ A chattrigger script helper for Hypixel Skyblock
 
 ### Rift
 1. Enigma Souls Waypoint: Show Enigma Souls Waypoint, you can use `/enigma` too
-2. Blood Effigy Timer Waypoint: Show Blood Effigy Timer at it location **[Beta]**
+2. Blood Effigy Timer Waypoint: Show Blood Effigy Timer at its location
+3. Cadaver Marker: Mark Cadaver (The skull from the vampire boss)
 
 ### Kuudra
 1. Kuudra 2/2 reparty: Skip cd when starting a new run

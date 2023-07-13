@@ -1,6 +1,6 @@
 import Settings from "../../config";
+import { in_stillgore } from "../../utils/Location";
 
-let inStillgore = false;
 let lastTick = 0;
 let effigiesStatus = ["§c", "§c", "§c", "§c", "§c", "§c"];
 
@@ -34,18 +34,13 @@ function updateState() {
     }
 }
 
-register("chat", (time, zone) => {
+register("chat", () => {
     if (!Settings.bloodEffigy) return;
-    if (zone === "Stillgore Château") {
-        inStillgore = true;
+    if (!in_stillgore()) return;
 
-        setTimeout(() => {
-            updateState();
-        }, 1000);
-    }
-    else
-        inStillgore = false;
-    //ChatLib.chat(`&2[GriffinOwO] &fYou at the &b[${zone}, ${inStillgore}]&f!!`);
+    setTimeout(() => {
+        updateState();
+    }, 1000);
 }).setCriteria("You used ${time} ф Rift Time to teleport to ${zone}!");
 
 register("chat", () => {
@@ -68,7 +63,7 @@ register("chat", () => {
 
 register("renderWorld", () => {
     if (!Settings.bloodEffigy) return;
-    if (!inStillgore) return;
+    if (!in_stillgore()) return;
 
     // Check Blood Effigy respawn time
     BloodEffigyPos.forEach((pos, index) => {
@@ -127,6 +122,5 @@ register("step", () => {
 
 register("worldUnload", () => {
     if (!Settings.bloodEffigy) return;
-    inStillgore = false;
     respawnTime = [-1, -1, -1, -1, -1, -1];
 });

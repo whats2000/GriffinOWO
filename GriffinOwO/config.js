@@ -3,8 +3,9 @@ import { @Vigilant, @ButtonProperty, @TextProperty, @SwitchProperty, @DecimalSli
 @Vigilant("GriffinOWO", "Some people call it iahnaddons", {
 })
 class Settings {
-    gyroGUI = new Gui()
-    alignmentGUI = new Gui()
+    gyroGUI = new Gui();
+    alignmentGUI = new Gui();
+    flareTimerGUI = new Gui();
 
     @SwitchProperty({
         name: "Blacklist Mode",
@@ -102,6 +103,25 @@ class Settings {
         options: ["none", "box", "floor"],
     })
     flareRangeMarker = 0;
+
+    @SwitchProperty({
+        name: "Flare Timer",
+        description: "Flare Timer will display the flare time when you in flare range",
+        category: "Combat",
+        subcategory: "Flare Timer HUD",
+    })
+    flareTimer = false;
+
+    @ButtonProperty({
+        name: "Flare Timer Location",
+        description: "Moves the Flare Timer display hud",
+        category: "Combat",
+        subcategory: "Flare Timer HUD",
+        placeholder: "Move"
+    })
+    MoveflareTimerGUI() {
+        this.flareTimerGUI.open()
+    };
 
     @SwitchProperty({
         name: "Broken Hype Detect",
@@ -258,6 +278,22 @@ class Settings {
         subcategory: "Blood Effigy Timer Waypoint"
     })
     bloodEffigy = false;
+
+    @SwitchProperty({
+        name: "Cadaver Marker",
+        description: "Mark Cadaver (The skull from vampire boss)",
+        category: "Rift",
+        subcategory: "Cadaver Marker"
+    })
+    cadaverMarker = false;
+
+    @ColorProperty({
+        name: "Cadaver Marker Color",
+        description: "The color of Cadaver Marker",
+        category: "Rift",
+        subcategory: "Cadaver Marker"
+    })
+    cadaverMarkerColor = Color.BLUE;
 
     @SwitchProperty({
         name: "Inquis Alert",
@@ -473,8 +509,11 @@ class Settings {
         this.addDependency("Enigma Souls Waypoint Text Max Distance", "Enigma Souls Waypoint");
         this.addDependency("Enigma Souls Waypoint Text Size", "Enigma Souls Waypoint");
 
+        this.addDependency("Cadaver Marker Color", "Cadaver Marker");
+
         this.addDependency("Alignment Tracker Location", "Alignment Tracker");
         this.addDependency("Gyro Cool Down Tracker Location", "Gyro Cool Down Tracker");
+        this.addDependency("Flare Timer Location", "Flare Timer");
 
         this.addDependency("Kuudra Supply Waypoint Beacon Color", "Kuudra Supply Waypoint");
         this.addDependency("Kuudra Supply Waypoint Text Size", "Kuudra Supply Waypoint");

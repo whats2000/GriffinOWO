@@ -7,6 +7,9 @@ import "./utils/KuudraStage";
 // HUD rendering
 import "./utils/RenderHUD";
 
+// Location
+import "./utils/Location";
+
 // Whitelist and Blacklist
 import "./features/BlacklistWhitelist/Blacklist";
 import "./features/BlacklistWhitelist/Whitelist";
@@ -24,6 +27,7 @@ import "./features/ChatTriggerCommandParty/Restart";
 
 // Combat
 import "./features/Combat/FlareRange";
+import "./features/Combat/FlareTimer";
 import "./features/Combat/GyroTimer";
 
 // CrimsonIsland
@@ -48,6 +52,7 @@ import "./features/Party/TransferBackBlacklistPlayer";
 
 // Rift
 import "./features/Rift/BloodEffigy";
+import "./features/Rift/CadaverMarker";
 import "./features/Rift/EnigmaSoulsWaypoint";
 
 // Waypoint
