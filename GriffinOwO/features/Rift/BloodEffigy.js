@@ -23,6 +23,7 @@ function updateState() {
     let effigiesLine = Scoreboard.getLines().find((line) => line.getName().includes("Effigies:"));
     if (effigiesLine) {
         effigiesLine = String(effigiesLine).replace("🍭", "");
+        //console.log(effigiesLine);
         effigiesStatus = effigiesLine.replace("Effigies: ", "").split("⧯");
 
         effigiesStatus.forEach((status, index) => {
@@ -35,7 +36,7 @@ function updateState() {
     }
 }
 
-registerEventListener(() => Settings.bloodEffigy && checkInZone("Stillgore Château"),
+registerEventListener(() => Settings.bloodEffigy && checkInZone("Stillgore Chteau"),
     register("chat", () => {
         setTimeout(() => {
             updateState();
@@ -43,7 +44,7 @@ registerEventListener(() => Settings.bloodEffigy && checkInZone("Stillgore Chât
     }).setCriteria("You used ${time} ф Rift Time to teleport to ${zone}!")
 );
 
-registerEventListener(() => Settings.bloodEffigy && checkInZone("Stillgore Château"),
+registerEventListener(() => Settings.bloodEffigy && checkInZone("Stillgore Chteau"),
     register("chat", () => {
         setTimeout(() => {
             let effigiesLine = Scoreboard.getLines().find((line) => line.getName().includes("Effigies:"));
@@ -61,7 +62,7 @@ registerEventListener(() => Settings.bloodEffigy && checkInZone("Stillgore Chât
     }).setCriteria("${player} broke a Blood Effigy!")
 );
 
-registerEventListener(() => Settings.bloodEffigy && checkInZone("Stillgore Château"),
+registerEventListener(() => Settings.bloodEffigy && checkInZone("Stillgore Chteau"),
     register("renderWorld", () => {
         // Check Blood Effigy respawn time
         BloodEffigyPos.forEach((pos, index) => {
@@ -109,6 +110,7 @@ registerEventListener(() => Settings.bloodEffigy && checkInWorld("The Rift"),
         if (currentTick > lastTick) {
             lastTick = currentTick;
 
+            //console.log(respawnTime);
             respawnTime.forEach((time, index) => {
                 if (time > 0) {
                     respawnTime[index]--;

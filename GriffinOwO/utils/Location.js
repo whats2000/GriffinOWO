@@ -9,18 +9,17 @@ function updateZone() {
     const ZoneLine = Scoreboard.getLines().find((line) => line.getName().includes("⏣") || line.getName().includes("ф"));
 
     if (ZoneLine) {
-        currentZone = ZoneLine.getName().replace("⏣ ", "").replace("ф ", "").removeFormatting();
+        currentZone = ZoneLine.getName().replace("⏣ ", "").replace("ф ", "").removeFormatting().replace(/[^\x00-\x7F]/g, "").replace(/^\s+/, '');;
 
         if (currentZone.includes("None")) {
             zoneRetryCount++;
             setTimeout(updateZone, 1000);
         }
-
-        if (currentZone.includes("The Catac🍭ombs"))
+        if (currentZone.includes("The Catacombs"))
             currentWorld = "Dungeon";
 
-        //ChatLib.chat(`Current world: ${currentWorld}`);
-        //ChatLib.chat(`Current zone: ${currentZone}`);
+        //console.log(`Current world: [${currentWorld}]`);
+        //console.log(`Current zone: [${currentZone}]`);
 
         updateEventListeners();
     } else {
@@ -59,7 +58,10 @@ register("worldLoad", () => {
 
 registerEventListener(() => checkInWorld("The Rift"),
     register("chat", (time, zone) => {
-        currentZone = zone;
+        currentZone = zone.replace(/[^\x00-\x7F]/g, "");;
+
+        //console.log(`Current world: ${currentWorld}`);
+        //console.log(`Current zone: ${currentZone}`);
         updateEventListeners();
     }).setCriteria("You used ${time} ф Rift Time to teleport to ${zone}!")
 );

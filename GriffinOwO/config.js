@@ -504,7 +504,7 @@ class Settings {
 
     @SelectorProperty({
         name: "Dungeon Waypoint Mode",
-        description: "Select to make only show specify class waypoint instead of all",
+        description: "Select to make only show specify class waypoint instead of all (Need disable SBA hide boss message, others mod is fine)",
         category: "Dungeon",
         subcategory: "Dungeon Waypoint",
         options: ["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage"],
@@ -513,7 +513,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Dungeon Decoy Waypoint",
-        description: "Show where to place decoy",
+        description: "Show where to place decoy (Need disable SBA hide boss message, others mod is fine)",
         category: "Dungeon",
         subcategory: "Dungeon Waypoint",
     })
@@ -521,7 +521,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Dungeon Gyro Waypoint",
-        description: "Show where to use gyro",
+        description: "Show where to use gyro (Need disable SBA hide boss message, others mod is fine)",
         category: "Dungeon",
         subcategory: "Dungeon Waypoint",
     })
@@ -529,7 +529,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Dungeon Mining Waypoint",
-        description: "Show where to mine down phrase and where to get through",
+        description: "Show where to mine down phrase and where to get through (Need disable SBA hide boss message, others mod is fine)",
         category: "Dungeon",
         subcategory: "Dungeon Waypoint",
     })

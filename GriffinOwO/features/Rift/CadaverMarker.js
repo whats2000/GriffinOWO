@@ -8,7 +8,7 @@ const Cadaver = "ewogICJ0aW1lc3RhbXAiIDogMTY3NzUwNDQ5NTIxOSwKICAicHJvZmlsZUlkIiA
 
 const ArmorStand = Java.type("net.minecraft.entity.item.EntityArmorStand");
 
-registerEventListener(() => Settings.cadaverMarker && checkInZone("Stillgore Château"),
+registerEventListener(() => Settings.cadaverMarker && checkInZone("Stillgore Chteau"),
     register("renderWorld", () => {
         let armorstands = World.getAllEntitiesOfType(ArmorStand.class);
 

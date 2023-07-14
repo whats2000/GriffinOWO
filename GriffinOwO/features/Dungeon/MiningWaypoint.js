@@ -5,7 +5,7 @@ import { getDungeonPhase } from "../../utils/DungeonTracker";
 import { checkInZone } from "../../utils/Location";
 import { registerEventListener } from "../../utils/EventListener";
 
-registerEventListener(() => Settings.dungeonMiningWaypoint && (checkInZone("The Catac🍭ombs (M7)") || checkInZone("The Catac🍭ombs (F7)")),
+registerEventListener(() => Settings.dungeonMiningWaypoint && (checkInZone("The Catacombs (M7)") || checkInZone("The Catacombs (F7)")),
     register("renderWorld", () => {
         const phrase = getDungeonPhase();
         if (phrase < 71) return;
