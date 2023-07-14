@@ -4,6 +4,9 @@ import { userData } from "./utils/UserData";
 // Kuudra Stage Tracker
 import "./utils/KuudraStage";
 
+// Dungeon Stage Tracker
+import "./utils/DungeonTracker";
+
 // HUD rendering
 import "./utils/RenderHUD";
 
@@ -34,6 +37,11 @@ import "./features/Combat/GyroTimer";
 import "./features/CrimsonIsland/BrokenHype";
 import "./features/CrimsonIsland/FlareTrade";
 import "./features/CrimsonIsland/VanquisherAlert";
+
+// Dungeon
+import "./features/Dungeon/DecoyWaypoint";
+import "./features/Dungeon/GyroWaypoint";
+import "./features/Dungeon/MiningWaypoint";
 
 // Fun
 import "./features/Fun/GetTodayLuck";

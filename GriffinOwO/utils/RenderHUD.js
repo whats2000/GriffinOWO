@@ -4,7 +4,7 @@ import { getGyroUsedTimeFormatted, getAlignmentTimeFormatted } from "../features
 import { getFlareTimeFormatted } from "../features/Combat/FlareTimer";
 
 let canDrag = false; // Prevent drag after click the "move" button
-const Firework = new Item("fireworks")
+const Firework = new Item("fireworks");
 
 function renderExampleText(coords, exampleText) {
     const scale = coords.scale;

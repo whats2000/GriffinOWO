@@ -127,3 +127,190 @@ export const EnigmaSouls = [
     }
 ]
 
+// Class number index for ["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage"]
+export const HealerWaypoint = [
+    {
+        "name": "Mine down P2",
+        "x": 89,
+        "y": 220,
+        "z": 61,
+        w: 1,
+        h: 1,
+        show: [71],
+        class: [3, 5]
+    },
+    {
+        "name": "Mine down P3",
+        "x": 91.5,
+        "y": 166,
+        "z": 40.5,
+        w: 2,
+        h: 2,
+        show: [71, 72],
+        class: [3]
+    },
+    {
+        "name": "Pre-Device",
+        "x": 96,
+        "y": 120,
+        "z": 121,
+        w: 1,
+        h: 1,
+        show: [71, 72],
+        class: [3]
+    },
+    {
+        "name": "Mine down P4",
+        "x": 57,
+        "y": 108,
+        "z": 124,
+        w: 1,
+        h: 1,
+        show: [71, 72, 73],
+        class: [3]
+    },
+    {
+        "name": "Mine down P5 (M7)",
+        "x": 54,
+        "y": 64,
+        "z": 80,
+        w: 1,
+        h: 1,
+        show: [74],
+        class: [3]
+    }
+];
+
+export const DecoyWaypoint = [
+    {
+        "name": "§bDecoy",
+        "x": 90,
+        "y": 11,
+        "z": 100,
+        show: [74, 75],
+        class: [3]
+    },
+    {
+        "name": "§aDecoy",
+        "x": 21,
+        "y": 11,
+        "z": 88,
+        show: [74, 75],
+        class: [3]
+    },
+    {
+        "name": "§cDecoy",
+        "x": 37,
+        "y": 13,
+        "z": 44,
+        show: [74, 75],
+        class: [3]
+    },
+    {
+        "name": "§dDecoy",
+        "x": 56,
+        "y": 7,
+        "z": 124,
+        show: [74, 75],
+        class: [3]
+    },
+    {
+        "name": "§6Decoy",
+        "x": 91,
+        "y": 11,
+        "z": 62,
+        show: [74, 75],
+        class: [3]
+    },
+    {
+        "name": "§3Decoy Storm",
+        "x": 46,
+        "y": 168,
+        "z": 45,
+        show: [72],
+        class: [1]
+    },
+    {
+        "name": "§3Decoy Goldor",
+        "x": 54,
+        "y": 114,
+        "z": 55,
+        show: [73],
+        class: [3]
+    },
+    {
+        "name": "§3Pre Decoy 1",
+        "x": 43,
+        "y": 63,
+        "z": 100,
+        show: [71, 72, 73],
+        class: [3]
+    },
+    {
+        "name": "§3Pre Decoy 2",
+        "x": 54,
+        "y": 64,
+        "z": 76,
+        show: [71, 72, 73],
+        class: [3]
+    }
+];
+
+export const GyroWaypoint = [
+    {
+        "name": "§6Gyro skeletons",
+        "x": 98,
+        "y": 168,
+        "z": 53,
+        show: [71, 72],
+        class: [2]
+    },
+    {
+        "name": "§6Gyro skeletons",
+        "x": 44,
+        "y": 168,
+        "z": 53,
+        show: [71, 72],
+        class: [5]
+    },
+    {
+        "name": "§6Gyro Decoy for storm",
+        "x": 46,
+        "y": 168,
+        "z": 61,
+        show: [72],
+        class: [5]
+    },
+    {
+        "name": "§bGyro",
+        "x": 82,
+        "y": 5,
+        "z": 99,
+        show: [75],
+        class: [1, 2, 3, 4, 5]
+    },
+    {
+        "name": "§aGyro",
+        "x": 24,
+        "y": 5,
+        "z": 84,
+        show: [75],
+        class: [1, 2, 3, 4, 5]
+    },
+    {
+        "name": "§cGyro",
+        "x": 32,
+        "y": 5,
+        "z": 47,
+        show: [75],
+        class: [1, 2, 3, 4, 5]
+    },
+    {
+        "name": "§6Gyro",
+        "x": 84,
+        "y": 5,
+        "z": 62,
+        show: [75],
+        class: [1, 2, 3, 4, 5]
+    }
+];

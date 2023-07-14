@@ -502,6 +502,39 @@ class Settings {
     })
     kuudraFuelProgressTextSize = 2.0;
 
+    @SelectorProperty({
+        name: "Dungeon Waypoint Mode",
+        description: "Select to make only show specify class waypoint instead of all",
+        category: "Dungeon",
+        subcategory: "Dungeon Waypoint",
+        options: ["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage"],
+    })
+    dungeonWaypointMode = 0;
+
+    @SwitchProperty({
+        name: "Dungeon Decoy Waypoint",
+        description: "Show where to place decoy",
+        category: "Dungeon",
+        subcategory: "Dungeon Waypoint",
+    })
+    dungeonDecoyWaypoint = false;
+
+    @SwitchProperty({
+        name: "Dungeon Gyro Waypoint",
+        description: "Show where to use gyro",
+        category: "Dungeon",
+        subcategory: "Dungeon Waypoint",
+    })
+    dungeonGyroWaypoint = false;
+
+    @SwitchProperty({
+        name: "Dungeon Mining Waypoint",
+        description: "Show where to mine down phrase and where to get through",
+        category: "Dungeon",
+        subcategory: "Dungeon Waypoint",
+    })
+    dungeonMiningWaypoint = false;
+
     constructor() {
         this.initialize(this);
         this.addDependency("Enigma Souls Waypoint Beacon Color", "Enigma Souls Waypoint");
