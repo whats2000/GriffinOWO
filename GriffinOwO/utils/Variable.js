@@ -137,7 +137,7 @@ export const HealerWaypoint = [
         w: 1,
         h: 1,
         show: [71],
-        class: [3, 5]
+        class: [2, 3, 5]
     },
     {
         "name": "Mine down P3",
