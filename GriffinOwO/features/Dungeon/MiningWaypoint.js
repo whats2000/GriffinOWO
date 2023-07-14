@@ -1,6 +1,6 @@
 import Settings from "../../config";
 import RenderLib from "../../../RenderLib";
-import { HealerWaypoint } from "../../utils/Variable";
+import { MiningWaypoint } from "../../utils/Variable";
 import { getDungeonPhase } from "../../utils/DungeonTracker";
 
 register("renderWorld", () => {
@@ -8,7 +8,7 @@ register("renderWorld", () => {
     const phrase = getDungeonPhase();
     if (phrase < 71) return;
 
-    HealerWaypoint.forEach(waypoint => {
+    MiningWaypoint.forEach(waypoint => {
         if (!waypoint.show.includes(phrase)) return;
         if (Settings.dungeonWaypointMode !== 0)
             if (!waypoint.class.includes(Settings.dungeonWaypointMode)) return;

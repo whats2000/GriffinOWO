@@ -128,7 +128,7 @@ export const EnigmaSouls = [
 ]
 
 // Class number index for ["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage"]
-export const HealerWaypoint = [
+export const MiningWaypoint = [
     {
         "name": "Mine down P2",
         "x": 89,
