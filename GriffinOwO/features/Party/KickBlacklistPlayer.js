@@ -1,19 +1,20 @@
 import Settings from "../../config";
 import { registerCommand } from "../../utils/CommandQueue";
 import { getIGN, checkWhitelist } from "../../utils/Function";
+import { registerEventListener } from "../../utils/EventListener";
 
-register("chat", (player) => {
-    if (!Settings.kickNotWelcomePlayer) return;
+registerEventListener(() => Settings.kickNotWelcomePlayer,
+    register("chat", (player) => {
+        player = getIGN(player);
 
-    player = getIGN(player);
+        if (checkWhitelist(player)) return;
 
-    if (checkWhitelist(player)) return;
+        setTimeout(() => {
+            ChatLib.chat(`&2[GriffinOwO] &fKick ${player} as it is not welcome!`);
+        }, 30);
 
-    setTimeout(() => {
-        ChatLib.chat(`&2[GriffinOwO] &fKick ${player} as it is not welcome!`);
-    }, 30);
-
-    registerCommand(() => {
-        ChatLib.command(`party kick ${player}`);
-    });
-}).setCriteria("${player} joined the party.");
+        registerCommand(() => {
+            ChatLib.command(`party kick ${player}`);
+        });
+    }).setCriteria("${player} joined the party.")
+);

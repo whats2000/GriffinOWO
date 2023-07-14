@@ -68,7 +68,7 @@ import "./features/Rift/EnigmaSoulsWaypoint";
 
 // Waypoint
 import "./features/Waypoint/Waypoint";
-import { initializeEventListeners } from "./utils/EventListener";
+import { initializeEventListeners, updateEventListeners } from "./utils/EventListener";
 
 userData.autosave();
 
@@ -95,6 +95,8 @@ if (userData.firstUse) {
     userData.firstUse = false;
 }
 
+let settingOpen = false;
+
 register("command", (...args) => {
     const subCommand = args[0] == undefined ? undefined : args[0].toLowerCase();
     const subCommand2 = args[1] == undefined ? undefined : args[1].toLowerCase();
@@ -103,6 +105,7 @@ register("command", (...args) => {
         case undefined:
         case "settings":
             Settings.openGUI();
+            settingOpen = true;
             break;
         case "blacklist":
         case "blist":
@@ -201,6 +204,14 @@ register("command", (...args) => {
 
 register("command", () => {
     Settings.openGUI();
-}).setName("griffin_config")
+    settingOpen = true;
+}).setName("griffin_config");
+
+register("guiKey", (char, key, gui, event) => {
+    if (key == 1 && settingOpen) {
+        updateEventListeners();
+        settingOpen = false;
+    }
+});
 
 initializeEventListeners();

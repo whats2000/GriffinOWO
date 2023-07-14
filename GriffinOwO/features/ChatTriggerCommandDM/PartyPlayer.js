@@ -1,27 +1,17 @@
 import Settings from "../../config";
 import { getIGN, checkWhitelist } from "../../utils/Function";
+import { registerEventListener } from "../../utils/EventListener";
 
-register("chat", (player) => {
-    if (!Settings.party) {
-        const hoverText = "Click me to run command";
-        const show_message = new Message(
-            "&2[GriffinOwO] &f[!party] is not enable, you can toggle it use ",
-            new TextComponent("&a[/griffin_config]")
-                .setClick("run_command", `/griffin_config`)
-                .setHover("show_text", hoverText),
-        );
+registerEventListener(() => Settings.party,
+    register("chat", (player) => {
+        player = getIGN(player);
 
-        ChatLib.chat(show_message);
-        return;
-    }
+        if (!checkWhitelist(player)) return;
 
-    player = getIGN(player);
+        setTimeout(() => {
+            ChatLib.chat(`&2[GriffinOwO] &fTrying to party. [${player}]`);
+            ChatLib.command(`p ${player}`)
+        }, 300);
 
-    if (!checkWhitelist(player)) return;
-
-    setTimeout(() => {
-        ChatLib.chat(`&2[GriffinOwO] &fTrying to party. [${player}]`);
-        ChatLib.command(`p ${player}`)
-    }, 300);
-
-}).setCriteria(/^From (.+): ![Pp][Aa][Rr][Tt][Yy](.*)?$/);
+    }).setCriteria(/^From (.+): ![Pp][Aa][Rr][Tt][Yy](.*)?$/)
+);

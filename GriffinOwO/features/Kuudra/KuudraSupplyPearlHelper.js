@@ -1,6 +1,8 @@
 import Settings from "../../config";
 import getCurrentPhase from "../../utils/KuudraStage";
 import renderBeaconBeam from "../../../BeaconBeam";
+import { checkInWorld } from "../../utils/Location";
+import { registerEventListener } from "../../utils/EventListener";
 
 const ArmorStand = Java.type("net.minecraft.entity.item.EntityArmorStand");
 
@@ -15,60 +17,63 @@ const SupplyPlacePos = [
 
 let supplyPlaceWaypoint = [];
 
-register("chat", () => {
-    if (!Settings.kuudraSupplyPearlHelper) return;
-
-    supplyPlaceWaypoint = [];
-}).setCriteria("[NPC] Elle: Not again!");
-
-register("step", () => {
-    if (!Settings.kuudraSupplyPearlHelper) return;
-    if (getCurrentPhase() !== 1) return;
-
-    const stands = World.getAllEntitiesOfType(ArmorStand.class);
-
-    const placedSupply = stands.filter(stand => stand.getName().includes("✓ SUPPLIES RECEIVED ✓"));
-    const playerPos = [Player.getX(), Player.getY(), Player.getZ()];
-
-    let closestPos = null;
-    let closestDistance = Number.MAX_VALUE;
-
-    SupplyPlacePos.forEach((pos) => {
-        const [x, y, z] = pos;
-        const distance = Math.sqrt(Math.pow(x - playerPos[0], 2) + Math.pow(y - playerPos[1], 2) + Math.pow(z - playerPos[2], 2));
-
-        if (distance < closestDistance && !placedSupply.some(stand => stand.getX() === x && stand.getY() === y && stand.getZ() === z)) {
-            closestPos = pos;
-            closestDistance = distance;
-        }
-    });
-
-    if (closestPos !== null) {
-        supplyPlaceWaypoint = closestPos;
-    } else {
+registerEventListener(() => Settings.kuudraSupplyPearlHelper && checkInWorld("Instanced"),
+    register("chat", () => {
         supplyPlaceWaypoint = [];
-    }
-}).setDelay(1);
+    }).setCriteria("[NPC] Elle: Not again!")
+);
 
-register("renderWorld", () => {
-    if (!Settings.kuudraSupplyPearlHelper) return;
-    if (getCurrentPhase() !== 1) return;
-    if (supplyPlaceWaypoint.length === 0) return
+registerEventListener(() => Settings.kuudraSupplyPearlHelper && checkInWorld("Instanced"),
+    register("step", () => {
+        if (getCurrentPhase() !== 1) return;
 
-    let [x, y, z] = supplyPlaceWaypoint;
-    const playerPos = [Player.getX(), Player.getY(), Player.getZ()];
-    const distance = Math.floor(Math.sqrt(Math.pow(x - playerPos[0], 2) + Math.pow(y - playerPos[1], 2) + Math.pow(z - playerPos[2], 2)));
-    const textColor = 0xFFFFFF;
-    const scale = Settings.kuudraSupplyPearlHelperTextSize;
-    const increase = true;
+        const stands = World.getAllEntitiesOfType(ArmorStand.class);
 
-    if (scale > 0)
-        Tessellator.drawString(`§aPearl Here [${distance}m]`, x, y + 0.5, z, textColor, true, scale, increase);
+        const placedSupply = stands.filter(stand => stand.getName().includes("✓ SUPPLIES RECEIVED ✓"));
+        const playerPos = [Player.getX(), Player.getY(), Player.getZ()];
 
-    renderBeaconBeam(x - 0.5, y, z - 0.5, 0, 191, 255, 0.5, false);
-});
+        let closestPos = null;
+        let closestDistance = Number.MAX_VALUE;
 
-register("worldUnload", () => {
-    if (!Settings.kuudraSupplyPearlHelper) return;
-    supplyPlaceWaypoint = [];
-});
+        SupplyPlacePos.forEach((pos) => {
+            const [x, y, z] = pos;
+            const distance = Math.sqrt(Math.pow(x - playerPos[0], 2) + Math.pow(y - playerPos[1], 2) + Math.pow(z - playerPos[2], 2));
+
+            if (distance < closestDistance && !placedSupply.some(stand => stand.getX() === x && stand.getY() === y && stand.getZ() === z)) {
+                closestPos = pos;
+                closestDistance = distance;
+            }
+        });
+
+        if (closestPos !== null) {
+            supplyPlaceWaypoint = closestPos;
+        } else {
+            supplyPlaceWaypoint = [];
+        }
+    }).setDelay(1)
+);
+
+registerEventListener(() => Settings.kuudraSupplyPearlHelper && checkInWorld("Instanced"),
+    register("renderWorld", () => {
+        if (getCurrentPhase() !== 1) return;
+        if (supplyPlaceWaypoint.length === 0) return
+
+        let [x, y, z] = supplyPlaceWaypoint;
+        const playerPos = [Player.getX(), Player.getY(), Player.getZ()];
+        const distance = Math.floor(Math.sqrt(Math.pow(x - playerPos[0], 2) + Math.pow(y - playerPos[1], 2) + Math.pow(z - playerPos[2], 2)));
+        const textColor = 0xFFFFFF;
+        const scale = Settings.kuudraSupplyPearlHelperTextSize;
+        const increase = true;
+
+        if (scale > 0)
+            Tessellator.drawString(`§aPearl Here [${distance}m]`, x, y + 0.5, z, textColor, true, scale, increase);
+
+        renderBeaconBeam(x - 0.5, y, z - 0.5, 0, 191, 255, 0.5, false);
+    })
+);
+
+registerEventListener(() => Settings.kuudraSupplyPearlHelper,
+    register("worldUnload", () => {
+        supplyPlaceWaypoint = [];
+    })
+);

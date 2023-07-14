@@ -1,23 +1,24 @@
 import Settings from "../../config";
 import { registerCommand } from "../../utils/CommandQueue";
 import { getIGN, checkWhitelist } from "../../utils/Function";
+import { registerEventListener } from "../../utils/EventListener";
 
-register("chat", (target, player) => {
-    if (!Settings.transferBackNotWelcomePlayer) return;
+registerEventListener(() => Settings.transferBackNotWelcomePlayer,
+    register("chat", (target, player) => {
+        target = getIGN(target);
+        const myIGN = getIGN(Player.getName()).toLowerCase();
 
-    target = getIGN(target);
-    const myIGN = getIGN(Player.getName()).toLowerCase();
+        if (target !== myIGN) return;
 
-    if (target !== myIGN) return;
+        player = getIGN(player);
+        if (checkWhitelist(player)) return;
 
-    player = getIGN(player);
-    if (checkWhitelist(player)) return;
+        setTimeout(() => {
+            ChatLib.chat(`&2[GriffinOwO] &fTransfer back to ${player} as it is not welcome!`);
+        }, 30);
 
-    setTimeout(() => {
-        ChatLib.chat(`&2[GriffinOwO] &fTransfer back to ${player} as it is not welcome!`);
-    }, 30);
-
-    registerCommand(() => {
-        ChatLib.command(`party transfer ${player}`);
-    });
-}).setCriteria("The party was transferred to ${target} by ${player}");
+        registerCommand(() => {
+            ChatLib.command(`party transfer ${player}`);
+        });
+    }).setCriteria("The party was transferred to ${target} by ${player}")
+);

@@ -1,7 +1,7 @@
 {
     "name": "GriffinOwO",
     "creator": "whats2000_, syang12002",
-    "version": "2.2.5",
+    "version": "2.2.6",
     "entry": "index.js",
     "description": "/griffin to toggle more information on https://github.com/whats2000/GriffinOWO",
     "requires": [

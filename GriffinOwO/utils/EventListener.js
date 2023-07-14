@@ -21,7 +21,7 @@ export function unregisterEventListeners() {
 export function initializeEventListeners() {
     eventListeners.forEach(listener => {
         if (listener.conditions() && !listener.registered) {
-            ChatLib.chat("Registed command");
+            //ChatLib.chat("Registed command");
             listener.event.register();
             listener.registered = true;
         }
@@ -30,7 +30,7 @@ export function initializeEventListeners() {
 
 export function updateEventListeners() {
     eventListeners.forEach(listener => {
-        ChatLib.chat(`${listener.conditions()}`);
+        //ChatLib.chat(`[${listener.conditions}: ${listener.conditions()}]`);
         if (listener.conditions() && !listener.registered) {
             listener.event.register();
             listener.registered = true;

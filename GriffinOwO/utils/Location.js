@@ -1,4 +1,4 @@
-import { updateEventListeners } from '../utils/EventListener';
+import { registerEventListener, updateEventListeners } from '../utils/EventListener';
 
 let currentWorld = "Unknown";
 let currentZone = "Unknown";
@@ -10,7 +10,18 @@ function updateZone() {
 
     if (ZoneLine) {
         currentZone = ZoneLine.getName().replace("⏣ ", "").replace("ф ", "").removeFormatting();
-        ChatLib.chat(`Updated zone: ${currentZone}`);
+
+        if (currentZone.includes("None")) {
+            zoneRetryCount++;
+            setTimeout(updateZone, 1000);
+        }
+
+        if (currentZone.includes("The Catac🍭ombs"))
+            currentWorld = "Dungeon";
+
+        //ChatLib.chat(`Current world: ${currentWorld}`);
+        //ChatLib.chat(`Current zone: ${currentZone}`);
+
         updateEventListeners();
     } else {
         zoneRetryCount++;
@@ -27,7 +38,6 @@ function checkCurrentWorld() {
     const WorldLine = TabList.getNames().find(tab => tab.includes("Area"));
     if (WorldLine) {
         currentWorld = WorldLine.replace("Area: ", "").removeFormatting();
-        ChatLib.chat(`Current world: ${currentWorld}`);
         updateZone();
         zoneRetryCount = 0;
     } else {
@@ -36,6 +46,7 @@ function checkCurrentWorld() {
             setTimeout(checkCurrentWorld, 1000);
         } else {
             currentWorld = "Unknown";
+            updateZone();
             //ChatLib.chat("Failed to get current world after multiple attempts.");
         }
     }
@@ -46,9 +57,12 @@ register("worldLoad", () => {
     checkCurrentWorld();
 });
 
-register("chat", (time, zone) => {
-    currentZone = zone;
-}).setCriteria("You used ${time} ф Rift Time to teleport to ${zone}!");
+registerEventListener(() => checkInWorld("The Rift"),
+    register("chat", (time, zone) => {
+        currentZone = zone;
+        updateEventListeners();
+    }).setCriteria("You used ${time} ф Rift Time to teleport to ${zone}!")
+);
 
 register("worldUnload", () => {
     currentZone = "unknow";

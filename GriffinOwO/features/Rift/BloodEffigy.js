@@ -1,5 +1,6 @@
 import Settings from "../../config";
 import { checkInWorld, checkInZone } from "../../utils/Location";
+import { registerEventListener } from "../../utils/EventListener";
 
 let lastTick = 0;
 let effigiesStatus = ["§c", "§c", "§c", "§c", "§c", "§c"];
@@ -34,94 +35,93 @@ function updateState() {
     }
 }
 
-register("chat", () => {
-    if (!Settings.bloodEffigy) return;
-    if (!checkInZone("Stillgore Château")) return;
+registerEventListener(() => Settings.bloodEffigy && checkInZone("Stillgore Château"),
+    register("chat", () => {
+        setTimeout(() => {
+            updateState();
+        }, 1000);
+    }).setCriteria("You used ${time} ф Rift Time to teleport to ${zone}!")
+);
 
-    setTimeout(() => {
-        updateState();
-    }, 1000);
-}).setCriteria("You used ${time} ф Rift Time to teleport to ${zone}!");
+registerEventListener(() => Settings.bloodEffigy && checkInZone("Stillgore Château"),
+    register("chat", () => {
+        setTimeout(() => {
+            let effigiesLine = Scoreboard.getLines().find((line) => line.getName().includes("Effigies:"));
+            if (effigiesLine) {
+                effigiesLine = String(effigiesLine).replace("🍭", "");
+                effigiesStatus = effigiesLine.replace("Effigies: ", "").split("⧯");
 
-register("chat", () => {
-    if (!Settings.bloodEffigy) return;
+                effigiesStatus.forEach((status, index) => {
+                    if (respawnTime[index] === 0 && status === "§c") {
+                        respawnTime[index] = 1200;
+                    }
+                });
+            }
+        }, 1000);
+    }).setCriteria("${player} broke a Blood Effigy!")
+);
 
-    setTimeout(() => {
-        let effigiesLine = Scoreboard.getLines().find((line) => line.getName().includes("Effigies:"));
-        if (effigiesLine) {
-            effigiesLine = String(effigiesLine).replace("🍭", "");
-            effigiesStatus = effigiesLine.replace("Effigies: ", "").split("⧯");
+registerEventListener(() => Settings.bloodEffigy && checkInZone("Stillgore Château"),
+    register("renderWorld", () => {
+        // Check Blood Effigy respawn time
+        BloodEffigyPos.forEach((pos, index) => {
+            const [x, y, z] = pos;
+            const armorstands = World.getAllEntitiesOfType(ArmorStand.class);
+            const bloodEffigyArmorstand = armorstands.find((armorstand) => {
+                return armorstand.getX() === x && armorstand.getY() === y && armorstand.getZ() === z;
+            });
+            if (bloodEffigyArmorstand) {
+                const name = ChatLib.removeFormatting(bloodEffigyArmorstand.getName());
 
-            effigiesStatus.forEach((status, index) => {
-                if (respawnTime[index] === 0 && status === "§c") {
-                    respawnTime[index] = 1200;
+                if (name) {
+                    const respawnTimeString = name.match(/Respawn (\d{1,2})m(\d{1,2})s/);
+                    if (respawnTimeString) {
+                        const minutes = parseInt(respawnTimeString[1]);
+                        const seconds = parseInt(respawnTimeString[2]);
+                        respawnTime[index] = minutes * 60 + seconds;
+                    }
+                }
+            }
+            let color = "§a";
+            if (respawnTime[index] < 240)
+                color = "§e";
+
+            let display = respawnTime[index] === -1 ? "§cUnknown" :
+                respawnTime[index] === 0 ? "§cExpired" :
+                    respawnTime[index] < 60 ? `${color}${respawnTime[index]}s` :
+                        `${color}${Math.floor(respawnTime[index] / 60)}m ${respawnTime[index] % 60}s`;
+            const textColor = 0xFFFFFF;
+            const scale = 2;
+            const increase = true;
+
+            if (scale > 0)
+                Tessellator.drawString(`${display}`, x, y + 0.5, z, textColor, true, scale, increase);
+
+        });
+    })
+);
+
+registerEventListener(() => Settings.bloodEffigy && checkInWorld("The Rift"),
+    register("step", () => {
+        // Update Time
+        const currentTick = Math.floor(Date.now() / 1000);
+
+        if (currentTick > lastTick) {
+            lastTick = currentTick;
+
+            respawnTime.forEach((time, index) => {
+                if (time > 0) {
+                    respawnTime[index]--;
+                } else {
+                    updateState();
                 }
             });
         }
-    }, 1000);
-}).setCriteria("${player} broke a Blood Effigy!");
+    }).setDelay(1)
+);
 
-register("renderWorld", () => {
-    if (!Settings.bloodEffigy) return;
-    if (!checkInZone("Stillgore Château")) return;
-
-    // Check Blood Effigy respawn time
-    BloodEffigyPos.forEach((pos, index) => {
-        const [x, y, z] = pos;
-        const armorstands = World.getAllEntitiesOfType(ArmorStand.class);
-        const bloodEffigyArmorstand = armorstands.find((armorstand) => {
-            return armorstand.getX() === x && armorstand.getY() === y && armorstand.getZ() === z;
-        });
-        if (bloodEffigyArmorstand) {
-            const name = ChatLib.removeFormatting(bloodEffigyArmorstand.getName());
-
-            if (name) {
-                const respawnTimeString = name.match(/Respawn (\d{1,2})m(\d{1,2})s/);
-                if (respawnTimeString) {
-                    const minutes = parseInt(respawnTimeString[1]);
-                    const seconds = parseInt(respawnTimeString[2]);
-                    respawnTime[index] = minutes * 60 + seconds;
-                }
-            }
-        }
-        let color = "§a";
-        if (respawnTime[index] < 240)
-            color = "§e";
-
-        let display = respawnTime[index] === -1 ? "§cUnknown" :
-            respawnTime[index] === 0 ? "§cExpired" :
-                respawnTime[index] < 60 ? `${color}${respawnTime[index]}s` :
-                    `${color}${Math.floor(respawnTime[index] / 60)}m ${respawnTime[index] % 60}s`;
-        const textColor = 0xFFFFFF;
-        const scale = 2;
-        const increase = true;
-
-        if (scale > 0)
-            Tessellator.drawString(`${display}`, x, y + 0.5, z, textColor, true, scale, increase);
-
-    });
-});
-
-register("step", () => {
-    if (!Settings.bloodEffigy) return;
-    if (!checkInWorld("The Rift")) return;
-    // Update Time
-    const currentTick = Math.floor(Date.now() / 1000);
-
-    if (currentTick > lastTick) {
-        lastTick = currentTick;
-
-        respawnTime.forEach((time, index) => {
-            if (time > 0) {
-                respawnTime[index]--;
-            } else {
-                updateState();
-            }
-        });
-    }
-}).setDelay(1);
-
-register("worldUnload", () => {
-    if (!Settings.bloodEffigy) return;
-    respawnTime = [-1, -1, -1, -1, -1, -1];
-});
+registerEventListener(() => Settings.bloodEffigy,
+    register("worldUnload", () => {
+        respawnTime = [-1, -1, -1, -1, -1, -1];
+    })
+);

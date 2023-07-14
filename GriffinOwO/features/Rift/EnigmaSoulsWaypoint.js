@@ -4,11 +4,11 @@ import { EnigmaSouls } from "../../utils/Variable";
 import { userData } from "../../utils/UserData";
 import { checkInWorld } from "../../utils/Location";
 import renderBeaconBeam from "../../../BeaconBeam";
+import { registerEventListener, updateEventListeners } from "../../utils/EventListener";
 
 const enigmaSoulsWaypoints = EnigmaSouls;
 let prevSoul = null;
 let nearestSoul = null;
-let inRift = false;
 
 function getNameCorlor(zone) {
     let color = "§b"
@@ -61,11 +61,12 @@ register("command", (...args) => {
         case "on":
             ChatLib.chat(`&2[GriffinOwO] &fEnigma Souls Waypoints is &aon`);
             Settings.enigmaSouls = true;
-            inRift = checkInWorld("The Rift");
+            updateEventListeners();
             break;
         case "off":
             ChatLib.chat(`&2[GriffinOwO] &fEnigma Souls Waypoints is &coff`);
             Settings.enigmaSouls = false;
+            updateEventListeners();
             break;
         case "remove":
             args.shift();
@@ -109,115 +110,106 @@ register("command", (...args) => {
     }
 }).setName("enigma");
 
-register("chat", () => {
-    inRift = true;
-}).setCriteria("    Your dimensional infusion has been consumed!");
+registerEventListener(() => Settings.enigmaSouls && checkInWorld("The Rift"),
+    register("renderWorld", () => {
+        const foundSouls = userData.foundEnigmaSouls;
 
-register("renderWorld", () => {
-    if (!Settings.enigmaSouls) return;
-    if (!inRift) return;
+        const playerPos = [Player.getX(), Player.getY(), Player.getZ()];
+        let soulsToShow = [];
 
-    const foundSouls = userData.foundEnigmaSouls;
+        let nearestDistance = Infinity;
 
-    const playerPos = [Player.getX(), Player.getY(), Player.getZ()];
-    let soulsToShow = [];
+        enigmaSoulsWaypoints.forEach(waypoint => {
+            const found = foundSouls.includes(waypoint.Name);
 
-    let nearestDistance = Infinity;
+            if (found) return;
 
-    enigmaSoulsWaypoints.forEach(waypoint => {
-        const found = foundSouls.includes(waypoint.Name);
+            const distance = Math.floor(Math.sqrt(Math.pow(waypoint.x - playerPos[0], 2) + Math.pow(waypoint.y - playerPos[1], 2) + Math.pow(waypoint.z - playerPos[2], 2)));
 
-        if (found) return;
+            let [x, y, z] = [waypoint.x, waypoint.y, waypoint.z];
 
-        const distance = Math.floor(Math.sqrt(Math.pow(waypoint.x - playerPos[0], 2) + Math.pow(waypoint.y - playerPos[1], 2) + Math.pow(waypoint.z - playerPos[2], 2)));
+            const textColor = 0xFFFFFF;
+            const scale = Settings.enigmaSoulsTextSize;
+            const increase = true;
+            const color = getNameCorlor(waypoint.Zone);
 
-        let [x, y, z] = [waypoint.x, waypoint.y, waypoint.z];
+            if (distance < 16) {
+                soulsToShow.push(waypoint);
 
-        const textColor = 0xFFFFFF;
-        const scale = Settings.enigmaSoulsTextSize;
-        const increase = true;
-        const color = getNameCorlor(waypoint.Zone);
-
-        if (distance < 16) {
-            soulsToShow.push(waypoint);
-
-            if (distance < nearestDistance) {
-                nearestDistance = distance;
-                nearestSoul = waypoint;
+                if (distance < nearestDistance) {
+                    nearestDistance = distance;
+                    nearestSoul = waypoint;
+                }
             }
-        }
 
-        if (distance > 200) {
-            const direction = [
-                waypoint.x - playerPos[0],
-                waypoint.y - playerPos[1],
-                waypoint.z - playerPos[2]
-            ];
-            const scaleFactor = 200 / distance;
-            x = playerPos[0] + direction[0] * scaleFactor;
-            y = playerPos[1] + direction[1] * scaleFactor;
-            z = playerPos[2] + direction[2] * scaleFactor;
-        }
+            if (distance > 200) {
+                const direction = [
+                    waypoint.x - playerPos[0],
+                    waypoint.y - playerPos[1],
+                    waypoint.z - playerPos[2]
+                ];
+                const scaleFactor = 200 / distance;
+                x = playerPos[0] + direction[0] * scaleFactor;
+                y = playerPos[1] + direction[1] * scaleFactor;
+                z = playerPos[2] + direction[2] * scaleFactor;
+            }
 
-        const beaconColor = getColorArray(Settings.enigmaSoulsBeaconColor);
-        if (distance < Settings.enigmaSoulsDistance)
+            const beaconColor = getColorArray(Settings.enigmaSoulsBeaconColor);
+            if (distance < Settings.enigmaSoulsDistance)
+                renderBeaconBeam(x, y, z, beaconColor[0], beaconColor[1], beaconColor[2], 1, false);
+
+            if (!soulsToShow.length && distance < Settings.enigmaSoulsTextDistance) {
+                Tessellator.drawString(`${color}${waypoint.Name} [${distance}m]`, x + 0.5, y + 0.5, z + 0.5, textColor, true, scale, increase);
+
+                renderBeaconBeam(x, y, z, beaconColor[0], beaconColor[1], beaconColor[2], 1, false);
+            }
+        });
+
+        soulsToShow.forEach(soulToShow => {
+            const soulName = soulToShow.Name;
+            const found = foundSouls.includes(soulName);
+
+            if (!found && prevSoul !== nearestSoul) {
+                let show_message = new Message(
+                    `&2[GriffinOwO] &fYouv arrive at [&b${nearestSoul.Name}&f] `,
+                    new TextComponent("&a[Mark As Complete]")
+                        .setClick("run_command", `/enigma remove ${nearestSoul.Name}`)
+                        .setHover("show_text", "Click to send"),
+                );
+
+                ChatLib.chat(show_message);
+                prevSoul = nearestSoul;
+            }
+
+            if (found) return;
+
+            const x = soulToShow.x;
+            const y = soulToShow.y;
+            const z = soulToShow.z;
+            const distance = Math.floor(Math.sqrt(Math.pow(soulToShow.x - playerPos[0], 2) + Math.pow(soulToShow.y - playerPos[1], 2) + Math.pow(soulToShow.z - playerPos[2], 2)));
+
+            const textColor = 0xFFFFFF;
+            const scale = Settings.enigmaSoulsTextSize;
+            const increase = true;
+            const color = getNameCorlor(soulToShow.Zone);
+
+            Tessellator.drawString(`§a${soulToShow["Obtaining or Requirements"]}`, x + 0.5, y - 0.75, z + 0.5, textColor, true, scale, increase);
+            Tessellator.drawString(`${color}${soulToShow.Name} [${distance}m]`, x + 0.5, y + 0.5, z + 0.5, textColor, true, scale, increase);
+
+            const beaconColor = getColorArray(Settings.enigmaSoulsBeaconColor);
             renderBeaconBeam(x, y, z, beaconColor[0], beaconColor[1], beaconColor[2], 1, false);
+        });
+    })
+);
 
-        if (!soulsToShow.length && distance < Settings.enigmaSoulsTextDistance) {
-            Tessellator.drawString(`${color}${waypoint.Name} [${distance}m]`, x + 0.5, y + 0.5, z + 0.5, textColor, true, scale, increase);
+registerEventListener(() => Settings.enigmaSouls && checkInWorld("The Rift"),
+    register("chat", () => {
+        ChatLib.command(`enigma remove ${nearestSoul.Name}`, true);
+    }).setCriteria("You have already found that Enigma Soul!")
+);
 
-            renderBeaconBeam(x, y, z, beaconColor[0], beaconColor[1], beaconColor[2], 1, false);
-        }
-    });
-
-    soulsToShow.forEach(soulToShow => {
-        const soulName = soulToShow.Name;
-        const found = foundSouls.includes(soulName);
-
-        if (!found && prevSoul !== nearestSoul) {
-            let show_message = new Message(
-                `&2[GriffinOwO] &fYouv arrive at [&b${nearestSoul.Name}&f] `,
-                new TextComponent("&a[Mark As Complete]")
-                    .setClick("run_command", `/enigma remove ${nearestSoul.Name}`)
-                    .setHover("show_text", "Click to send"),
-            );
-
-            ChatLib.chat(show_message);
-            prevSoul = nearestSoul;
-        }
-
-        if (found) return;
-
-        const x = soulToShow.x;
-        const y = soulToShow.y;
-        const z = soulToShow.z;
-        const distance = Math.floor(Math.sqrt(Math.pow(soulToShow.x - playerPos[0], 2) + Math.pow(soulToShow.y - playerPos[1], 2) + Math.pow(soulToShow.z - playerPos[2], 2)));
-
-        const textColor = 0xFFFFFF;
-        const scale = Settings.enigmaSoulsTextSize;
-        const increase = true;
-        const color = getNameCorlor(soulToShow.Zone);
-
-        Tessellator.drawString(`§a${soulToShow["Obtaining or Requirements"]}`, x + 0.5, y - 0.75, z + 0.5, textColor, true, scale, increase);
-        Tessellator.drawString(`${color}${soulToShow.Name} [${distance}m]`, x + 0.5, y + 0.5, z + 0.5, textColor, true, scale, increase);
-
-        const beaconColor = getColorArray(Settings.enigmaSoulsBeaconColor);
-        renderBeaconBeam(x, y, z, beaconColor[0], beaconColor[1], beaconColor[2], 1, false);
-    });
-});
-
-register("chat", () => {
-    if (!Settings.enigmaSouls) return;
-    if (!inRift) return;
-    ChatLib.command(`enigma remove ${nearestSoul.Name}`, true);
-}).setCriteria("You have already found that Enigma Soul!");
-
-register("chat", () => {
-    if (!Settings.enigmaSouls) return;
-    if (!inRift) return;
-    ChatLib.command(`enigma remove ${nearestSoul.Name}`, true);
-}).setCriteria("SOUL! You unlocked an Enigma Soul!");
-
-register("worldUnload", () => {
-    inRift = false;
-});
+registerEventListener(() => Settings.enigmaSouls && checkInWorld("The Rift"),
+    register("chat", () => {
+        ChatLib.command(`enigma remove ${nearestSoul.Name}`, true);
+    }).setCriteria("SOUL! You unlocked an Enigma Soul!")
+);

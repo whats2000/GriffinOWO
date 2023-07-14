@@ -1,6 +1,7 @@
 import Settings from "../../config";
 import { getIGN } from "../../utils/Function";
 import { registerCommand } from "../../utils/CommandQueue";
+import { registerEventListener } from "../../utils/EventListener";
 
 let playerX = 0;
 let playerY = 0;
@@ -46,98 +47,108 @@ function checkIsAllWarp() {
     }
 }
 
-register("Chat", (event) => {
-    if (Settings.flarePartyList === '' || flareWaitForJoin) return;
+registerEventListener(() => Settings.flarePartyList !== "",
+    register("Chat", (event) => {
+        if (flareWaitForJoin) return;
 
-    const formatted_message = ChatLib.getChatMessage(event, true);
+        const formatted_message = ChatLib.getChatMessage(event, true);
 
-    if (!formatted_message.includes("&r&aA &r&cVanquisher &r&ais spawning nearby!&r")) return;
+        if (!formatted_message.includes("&r&aA &r&cVanquisher &r&ais spawning nearby!&r")) return;
 
-    const scoreboard = Scoreboard.getLines().map(a => { return ChatLib.removeFormatting(a) });
+        const scoreboard = Scoreboard.getLines().map(a => { return ChatLib.removeFormatting(a) });
 
-    for (let line of scoreboard) {
-        if (line.includes("⏣")) {
-            location = line;
-            break;
+        for (let line of scoreboard) {
+            if (line.includes("⏣")) {
+                location = line;
+                break;
+            }
         }
-    }
 
-    playerX = Math.floor(Player.getX());
-    playerY = Math.floor(Player.getY());
-    playerZ = Math.floor(Player.getZ());
+        playerX = Math.floor(Player.getX());
+        playerY = Math.floor(Player.getY());
+        playerZ = Math.floor(Player.getZ());
 
-    flareInviteTarget = Settings.flarePartyList.split(" ")
-        .map(player => player.toLowerCase());
+        flareInviteTarget = Settings.flarePartyList.split(" ")
+            .map(player => player.toLowerCase());
 
-    flareInvitePlayersCount = flareInviteTarget.length;
+        flareInvitePlayersCount = flareInviteTarget.length;
 
-    flareWaitForJoin = true;
+        flareWaitForJoin = true;
 
-    let i = 1;
-    // run /party 
-    flareInviteTarget.forEach(player => {
-        registerCommand(() => {
-            ChatLib.command(`party ${player}`);
+        let i = 1;
+        // run /party 
+        flareInviteTarget.forEach(player => {
+            registerCommand(() => {
+                ChatLib.command(`party ${player}`);
+            });
+            i++;
         });
-        i++;
-    });
-})
+    })
+);
 
-register("chat", (player) => {
-    if (!flareWaitForJoin || Settings.flarePartyList === '') return;
+registerEventListener(() => Settings.flarePartyList !== "",
+    register("chat", (player) => {
+        if (!flareWaitForJoin) return;
 
-    setTimeout(() => {
-        ChatLib.chat(`&2[GriffinOwO] &f${player} has joined the party.`);
+        setTimeout(() => {
+            ChatLib.chat(`&2[GriffinOwO] &f${player} has joined the party.`);
 
-        if (flareInvitePlayersCount > 0)
-            ChatLib.chat(`&2[GriffinOwO] &fWaiting for ${flareInvitePlayersCount} players to join`);
-    }, 30);
+            if (flareInvitePlayersCount > 0)
+                ChatLib.chat(`&2[GriffinOwO] &fWaiting for ${flareInvitePlayersCount} players to join`);
+        }, 30);
 
-    checkIsAllWarp();
-}).setCriteria("${player} joined the party.");
+        checkIsAllWarp();
+    }).setCriteria("${player} joined the party.")
+);
 
-register("chat", () => {
-    if (Settings.flarePartyList === '') return;
-    checkIsAllWarp();
-}).setCriteria("Couldn't find a player with that name!");
+registerEventListener(() => Settings.flarePartyList !== "",
+    register("chat", () => {
+        checkIsAllWarp();
+    }).setCriteria("Couldn't find a player with that name!")
+);
 
-register("chat", () => {
-    if (Settings.flarePartyList === '') return;
-    checkIsAllWarp();
-}).setCriteria("You cannot invite that player since they're not online.");
+registerEventListener(() => Settings.flarePartyList !== "",
+    register("chat", () => {
+        checkIsAllWarp();
+    }).setCriteria("You cannot invite that player since they're not online.")
+);
 
-register("chat", () => {
-    if (Settings.flarePartyList === '') return;
-    checkIsAllWarp();
-}).setCriteria("The party invite to ${player} has expired");
+registerEventListener(() => Settings.flarePartyList !== "",
+    register("chat", () => {
+        checkIsAllWarp();
+    }).setCriteria("The party invite to ${player} has expired")
+);
 
-register("chat", () => {
-    if (Settings.flarePartyList === '') return;
-    flareWaitForJoin = false;
-    flareInvitePlayersCount = 0;
-}).setCriteria("RARE DROP! Nether Star");
+registerEventListener(() => Settings.flarePartyList !== "",
+    register("chat", () => {
+        flareWaitForJoin = false;
+        flareInvitePlayersCount = 0;
+    }).setCriteria("RARE DROP! Nether Star")
+);
 
-register("command", () => {
-    if (Settings.flarePartyList === '') return;
-    flareWaitForJoin = false;
-    flareInvitePlayersCount = 0;
-    checkIsAllWarp();
-}).setName("fw");
+registerEventListener(() => Settings.flarePartyList !== "",
+    register("command", () => {
+        flareWaitForJoin = false;
+        flareInvitePlayersCount = 0;
+        checkIsAllWarp();
+    }).setName("fw")
+);
 
-register("chat", (player) => {
-    if (Settings.flarePartyList === '' || flareWaitForJoin) return;
-    if (!Settings.flareTradeAutoJoin) return;
+registerEventListener(() => Settings.flarePartyList !== "" && Settings.flareTradeAutoJoin,
+    register("chat", (player) => {
+        if (flareWaitForJoin) return;
 
-    const flarePartyMember = Settings.flarePartyList.split(" ")
-        .map(player => player.toLowerCase());
+        const flarePartyMember = Settings.flarePartyList.split(" ")
+            .map(player => player.toLowerCase());
 
-    const ign = getIGN(player).toLowerCase();
+        const ign = getIGN(player).toLowerCase();
 
-    if (flarePartyMember.includes(ign)) {
-        const acceptCommand = `party accept ${ign}`;
+        if (flarePartyMember.includes(ign)) {
+            const acceptCommand = `party accept ${ign}`;
 
-        registerCommand(() => {
-            ChatLib.command(acceptCommand);
-        });
-    }
-}).setCriteria("-----------------------------------------------------\n${player} has invited you to join their party!\nYou have 60 seconds to accept. Click here to join!\n-----------------------------------------------------");
+            registerCommand(() => {
+                ChatLib.command(acceptCommand);
+            });
+        }
+    }).setCriteria("-----------------------------------------------------\n${player} has invited you to join their party!\nYou have 60 seconds to accept. Click here to join!\n-----------------------------------------------------")
+);
