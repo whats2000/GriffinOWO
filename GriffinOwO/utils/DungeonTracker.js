@@ -1,4 +1,4 @@
-let phase = 71;
+let phase = -1;
 
 register('chat', () => {
     phase = 71;
