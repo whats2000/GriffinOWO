@@ -13,6 +13,9 @@ import "./utils/RenderHUD";
 // Location
 import "./utils/Location";
 
+// Event Listener
+import "./utils/EventListener";
+
 // Whitelist and Blacklist
 import "./features/BlacklistWhitelist/Blacklist";
 import "./features/BlacklistWhitelist/Whitelist";
@@ -65,6 +68,7 @@ import "./features/Rift/EnigmaSoulsWaypoint";
 
 // Waypoint
 import "./features/Waypoint/Waypoint";
+import { initializeEventListeners } from "./utils/EventListener";
 
 userData.autosave();
 
@@ -198,3 +202,5 @@ register("command", (...args) => {
 register("command", () => {
     Settings.openGUI();
 }).setName("griffin_config")
+
+initializeEventListeners();

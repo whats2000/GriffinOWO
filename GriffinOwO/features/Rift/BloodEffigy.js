@@ -1,5 +1,5 @@
 import Settings from "../../config";
-import { in_stillgore } from "../../utils/Location";
+import { checkInWorld, checkInZone } from "../../utils/Location";
 
 let lastTick = 0;
 let effigiesStatus = ["§c", "§c", "§c", "§c", "§c", "§c"];
@@ -36,7 +36,7 @@ function updateState() {
 
 register("chat", () => {
     if (!Settings.bloodEffigy) return;
-    if (!in_stillgore()) return;
+    if (!checkInZone("Stillgore Château")) return;
 
     setTimeout(() => {
         updateState();
@@ -63,7 +63,7 @@ register("chat", () => {
 
 register("renderWorld", () => {
     if (!Settings.bloodEffigy) return;
-    if (!in_stillgore()) return;
+    if (!checkInZone("Stillgore Château")) return;
 
     // Check Blood Effigy respawn time
     BloodEffigyPos.forEach((pos, index) => {
@@ -104,6 +104,7 @@ register("renderWorld", () => {
 
 register("step", () => {
     if (!Settings.bloodEffigy) return;
+    if (!checkInWorld("The Rift")) return;
     // Update Time
     const currentTick = Math.floor(Date.now() / 1000);
 

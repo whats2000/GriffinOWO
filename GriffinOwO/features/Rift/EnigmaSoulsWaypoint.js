@@ -2,7 +2,7 @@ import Settings from "../../config";
 import { getColorArray } from "../../utils/Function";
 import { EnigmaSouls } from "../../utils/Variable";
 import { userData } from "../../utils/UserData";
-import { in_rift } from "../../utils/Location";
+import { checkInWorld } from "../../utils/Location";
 import renderBeaconBeam from "../../../BeaconBeam";
 
 const enigmaSoulsWaypoints = EnigmaSouls;
@@ -61,7 +61,7 @@ register("command", (...args) => {
         case "on":
             ChatLib.chat(`&2[GriffinOwO] &fEnigma Souls Waypoints is &aon`);
             Settings.enigmaSouls = true;
-            inRift = in_rift();
+            inRift = checkInWorld("The Rift");
             break;
         case "off":
             ChatLib.chat(`&2[GriffinOwO] &fEnigma Souls Waypoints is &coff`);
