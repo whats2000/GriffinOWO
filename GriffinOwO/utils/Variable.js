@@ -240,9 +240,9 @@ export const DecoyWaypoint = [
     },
     {
         "name": "§3Pre Decoy 1",
-        "x": 43,
+        "x": 40,
         "y": 63,
-        "z": 100,
+        "z": 103,
         show: [71, 72, 73],
         class: [3]
     },

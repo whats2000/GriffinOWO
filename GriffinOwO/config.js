@@ -377,6 +377,15 @@ class Settings {
     })
     rng = false;
 
+    @TextProperty({
+        name: "Custom Death Message",
+        description: "Send a custom death message in dungeon, use {player} to replace the ign of the player, use | to spilt for mutiple messages",
+        category: "Fun Command",
+        subcategory: "Custom Death Message",
+        triggerActionOnInitialization: false,
+    })
+    customDeathMessage = "";
+
     @SwitchProperty({
         name: "Kuudra Show Phrase",
         description: "Tell you what is current phrase",

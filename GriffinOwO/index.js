@@ -48,6 +48,7 @@ import "./features/Dungeon/MiningWaypoint";
 
 // Fun
 import "./features/Fun/GetTodayLuck";
+import "./features/Fun/SendDeathMessage";
 
 // Kuudra
 import "./features/Kuudra/KuudraBuildProgress";
