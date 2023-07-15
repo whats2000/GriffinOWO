@@ -535,6 +535,17 @@ class Settings {
     })
     dungeonMiningWaypoint = false;
 
+    @DecimalSliderProperty({
+        name: "Dungeon Waypoint Text Size",
+        description: "The Dungeon Waypoint text size",
+        category: "Dungeon",
+        subcategory: "Dungeon Waypoint",
+        minF: 0.0,
+        maxF: 5.0,
+        decimalPlaces: 1
+    })
+    dungeonWaypointTextSize = 2.0;
+
     constructor() {
         this.initialize(this);
         this.addDependency("Enigma Souls Waypoint Beacon Color", "Enigma Souls Waypoint");

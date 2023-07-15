@@ -18,7 +18,7 @@ registerEventListener(() => Settings.dungeonDecoyWaypoint && (checkInZone("The C
             let [x, y, z] = [waypoint.x, waypoint.y, waypoint.z]
 
             const textColor = 0xFFFFFF;
-            const scale = Settings.waypointTextSize;
+            const scale = Settings.dungeonWaypointTextSize;
             const increase = true;
 
             RenderLib.drawInnerEspBox(x + 0.5, y + 1, z + 0.5, 0.6, 0.01, 0.7, 0.7, 0.7, 1, true);

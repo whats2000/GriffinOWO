@@ -18,7 +18,7 @@ registerEventListener(() => Settings.dungeonGyroWaypoint && (checkInZone("The Ca
             let [x, y, z] = [waypoint.x, waypoint.y, waypoint.z]
 
             const textColor = 0xFFFFFF;
-            const scale = Settings.waypointTextSize;
+            const scale = Settings.dungeonWaypointTextSize;
             const increase = true;
 
             RenderLib.drawInnerEspBox(x + 0.5, y + 1, z + 0.5, 0.6, 0.01, 1, 1, 0.33, 1, true);

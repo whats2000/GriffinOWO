@@ -283,17 +283,17 @@ export const GyroWaypoint = [
     },
     {
         "name": "§bGyro",
-        "x": 82,
+        "x": 83,
         "y": 5,
-        "z": 99,
+        "z": 102,
         show: [75],
         class: [1, 2, 3, 4, 5]
     },
     {
         "name": "§aGyro",
-        "x": 24,
+        "x": 26,
         "y": 5,
-        "z": 84,
+        "z": 85,
         show: [75],
         class: [1, 2, 3, 4, 5]
     },

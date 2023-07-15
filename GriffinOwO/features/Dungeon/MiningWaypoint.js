@@ -19,7 +19,7 @@ registerEventListener(() => Settings.dungeonMiningWaypoint && (checkInZone("The 
             let [w, h] = [waypoint.w, waypoint.h]
 
             const textColor = 0xFFFFFF;
-            const scale = Settings.waypointTextSize;
+            const scale = Settings.dungeonWaypointTextSize;
             const increase = true;
 
             RenderLib.drawEspBox(x + 0.5, y, z + 0.5, w, h, 1, 0, 0, 1, true);
