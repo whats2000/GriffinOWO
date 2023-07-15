@@ -32,6 +32,11 @@ A chattrigger script helper for Hypixel Skyblock
 ### Diana
 1. Inquis Alert: Allow you to tell the inquisher spot in the party chat
 
+### Dungeon
+1. Dungeon Decoy Waypoint: Show where to place decoy
+2. Dungeon Gyro Waypoint: Show where to use gyro
+3. Dungeon Mining Waypoint: Show where to mine down phrase and where to get through
+
 ### Combat
 1. Alignment Tracker: The alignment Tracker for the gyro wand will track both your and other players' alignment
 2. Gyro Cool Down Tracker: Gyro Cool Down Tracker for the gyro wand will track the cd of the gyro wand right click ability
