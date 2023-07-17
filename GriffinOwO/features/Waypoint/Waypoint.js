@@ -218,7 +218,7 @@ registerEventListener(() => Settings.waypointUnloadWhenSwapLobby,
                 .map(player => player.toLowerCase());
 
             waypoints.forEach(waypoint => {
-                if (!flarePartyMember.includes(waypoint.name))
+                if (!flarePartyMember.includes(waypoint.name.toLowerCase()))
                     waypoints.splice(waypoints.indexOf(waypoint), 1);
             });
         }
