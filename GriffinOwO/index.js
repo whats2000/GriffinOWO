@@ -43,6 +43,7 @@ import "./features/CrimsonIsland/VanquisherAlert";
 
 // Dungeon
 import "./features/Dungeon/DecoyWaypoint";
+import "./features/Dungeon/DragonTimer";
 import "./features/Dungeon/GyroWaypoint";
 import "./features/Dungeon/MiningWaypoint";
 

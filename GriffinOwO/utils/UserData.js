@@ -17,6 +17,11 @@ export let userData = new PogObject("GriffinOwO", {
         y: 150,
         scale: 1
     },
+    dragonTimerCoords: {
+        x: 336,
+        y: 150,
+        scale: 1
+    },
     foundEnigmaSouls: []
 }, "UserData.json");
 

@@ -6,6 +6,7 @@ class Settings {
     gyroGUI = new Gui();
     alignmentGUI = new Gui();
     flareTimerGUI = new Gui();
+    dragonTimerGUI = new Gui();
 
     @SwitchProperty({
         name: "Blacklist Mode",
@@ -555,6 +556,25 @@ class Settings {
     })
     dungeonWaypointTextSize = 2.0;
 
+    @SwitchProperty({
+        name: "Dragon Timer",
+        description: "Dragon Timer will display the dragon spawning count down depend on skip order",
+        category: "Dungeon",
+        subcategory: "Dragon Timer HUD",
+    })
+    dragonTimer = false;
+
+    @ButtonProperty({
+        name: "Dragon Timer Location",
+        description: "Moves the Dragon Timer display hud",
+        category: "Dungeon",
+        subcategory: "Dragon Timer HUD",
+        placeholder: "Move"
+    })
+    MovedragonTimerGUI() {
+        this.dragonTimerGUI.open()
+    };
+
     constructor() {
         this.initialize(this);
         this.addDependency("Enigma Souls Waypoint Beacon Color", "Enigma Souls Waypoint");
@@ -589,6 +609,7 @@ class Settings {
         this.addDependency("Waypoint Beacon Color", "Recieve waypoint from chat");
         this.addDependency("Waypoint Text Size", "Recieve waypoint from chat");
         this.addDependency("Waypoint Unload When Swap Lobby", "Recieve waypoint from chat");
+        this.addDependency("Dragon Timer Location", "Dragon Timer");
     }
 
     sync() {

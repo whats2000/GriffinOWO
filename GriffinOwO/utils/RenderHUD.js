@@ -2,6 +2,7 @@ import Settings from "../config";
 import { userData } from "./UserData";
 import { getGyroUsedTimeFormatted, getAlignmentTimeFormatted } from "../features/Combat/GyroTimer";
 import { getFlareTimeFormatted } from "../features/Combat/FlareTimer";
+import { getDragonTimeFormatted } from "../features/Dungeon/DragonTimer";
 
 let canDrag = false; // Prevent drag after click the "move" button
 const Firework = new Item("fireworks");
@@ -62,6 +63,7 @@ register("renderOverlay", () => {
         const gyroTime = getGyroUsedTimeFormatted();
         renderTimeTracker(userData.gyroGUICoords, "&6&lGyro CD: ", gyroTime, 5, 2.5);
     }
+
     if (Settings.alignmentTracker) {
         if (Settings.alignmentGUI.isOpen()) {
             renderExampleText(userData.alignmentGUICoords, "&6&lAlignment: &f&a5.0s");
@@ -78,10 +80,21 @@ register("renderOverlay", () => {
             return;
         }
         const [flareType, flareTime] = getFlareTimeFormatted();
-        if (flareType === "Unknow" || flareTime < 0) return;
+        if (flareType !== "Unknow" && flareTime >= 0) {
+            renderTimeTracker(userData.flareTimerCoords, `${flareType}\n`, flareTime, 30, 10);
+            renderIcon(userData.flareTimerCoords, Firework, 16, -0.5);
+        }
+    }
 
-        renderTimeTracker(userData.flareTimerCoords, `${flareType}\n`, flareTime, 30, 10);
-        renderIcon(userData.flareTimerCoords, Firework, 16, -0.5);
+    if (Settings.dragonTimer) {
+        if (Settings.dragonTimerGUI.isOpen()) {
+            renderExampleText(userData.dragonTimerCoords, "&c&lRed: &f&a3.25s");
+            return;
+        }
+        const [dragonColor, spawnTime] = getDragonTimeFormatted();
+        if (dragonColor !== null && spawnTime >= 0) {
+            renderTimeTracker(userData.dragonTimerCoords, `${dragonColor}: `, spawnTime, 3, 1);
+        }
     }
 });
 
@@ -103,6 +116,11 @@ register('dragged', (dx, dy, x, y, button) => {
             handleDragged(userData.flareTimerCoords, x, y);
             return;
         }
+    if (Settings.dragonTimer)
+        if (Settings.dragonTimerGUI.isOpen()) {
+            handleDragged(userData.dragonTimerCoords, x, y);
+            return;
+        }
 });
 
 register('scrolled', (x, y, direction) => {
@@ -119,6 +137,11 @@ register('scrolled', (x, y, direction) => {
     if (Settings.flareTimer)
         if (Settings.flareTimerGUI.isOpen()) {
             handleScroll(userData.flareTimerCoords, direction);
+            return;
+        }
+    if (Settings.dragonTimer)
+        if (Settings.dragonTimerGUI.isOpen()) {
+            handleScroll(userData.dragonTimerCoords, direction);
             return;
         }
 });
