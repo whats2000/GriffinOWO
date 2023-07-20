@@ -37,7 +37,7 @@ let dragonTimer = {
 };
 let color = null;
 
-registerEventListener(() => Settings.dragonTimer && checkInZone("The Catacombs (M7)"),
+registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage || Settings.dragonSpawnTitle) && checkInZone("The Catacombs (M7)"),
     register("PacketReceived", (packet) => {
         if (getDungeonPhase() !== 75) return;
         if (!(packet instanceof S2APacketParticles)) return;
@@ -57,16 +57,18 @@ registerEventListener(() => Settings.dragonTimer && checkInZone("The Catacombs (
         for (let color in DragonParticle) {
             if (DragonParticle[color].x == parseInt(x) && DragonParticle[color].z == parseInt(z)) {
                 if (dragonTimer[color] <= 0) {
-                    dragonTimer[color] = new Date().getTime() + 5000;
+                    if (Settings.dragonTimer || Settings.dragonSpawnTitle)
+                        dragonTimer[color] = new Date().getTime() + 5000;
 
-                    ChatLib.chat(`&2[GriffinOwO] &f${color} dragon is spawning soon`);
+                    if (Settings.dragonSpawnMessage)
+                        ChatLib.chat(`&2[GriffinOwO] &f${color} dragon is spawning soon`);
                 }
             }
         }
     })
 );
 
-registerEventListener(() => Settings.dragonTimer && checkInZone("The Catacombs (M7)"),
+registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) && checkInZone("The Catacombs (M7)"),
     register("step", () => {
         if (getDungeonPhase() !== 75) return;
 
@@ -79,7 +81,14 @@ registerEventListener(() => Settings.dragonTimer && checkInZone("The Catacombs (
         }
 
         color = dragonColor ? dragonColor : null;
-    }).setFps(100)
+        if (!color || !Settings.dragonSpawnTitle) return;
+
+        const time = dragonTimer[dragonColor] - currentTime;
+        const displayColor = time > 3000 ? "&a" :
+            time > 1000 ? "&e" :
+                "&c"
+        Client.Companion.showTitle(`${dragonColor} dragon`, `&6Spawn in ${displayColor}${time}`, 0, 2, 0);
+    }).setFps(1000)
 );
 
 export function getDragonTimeFormatted() {

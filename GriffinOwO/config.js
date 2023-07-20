@@ -575,6 +575,22 @@ class Settings {
         this.dragonTimerGUI.open()
     };
 
+    @SwitchProperty({
+        name: "Dragon Spawn Message",
+        description: "Dragon spawn will show message in chat",
+        category: "Dungeon",
+        subcategory: "Dragon Spawn",
+    })
+    dragonSpawnMessage = false;
+
+    @SwitchProperty({
+        name: "Dragon Spawn Title",
+        description: "Dragon spawn will show Title in screen with timer",
+        category: "Dungeon",
+        subcategory: "Dragon Spawn",
+    })
+    dragonSpawnTitle = false;
+
     constructor() {
         this.initialize(this);
         this.addDependency("Enigma Souls Waypoint Beacon Color", "Enigma Souls Waypoint");
