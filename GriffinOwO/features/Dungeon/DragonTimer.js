@@ -84,10 +84,15 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) 
         if (!color || !Settings.dragonSpawnTitle) return;
 
         const time = dragonTimer[dragonColor] - currentTime;
-        const displayColor = time > 3000 ? "&a" :
-            time > 1000 ? "&e" :
-                "&c"
-        Client.Companion.showTitle(`${dragonColor} dragon`, `&6Spawn in ${displayColor}${time}`, 0, 2, 0);
+
+        if (Settings.dragonSpawnTitleShowTimer) {
+            const displayColor = time > 3000 ? "&a" :
+                time > 1000 ? "&e" :
+                    "&c"
+            Client.Companion.showTitle(`${dragonColor} dragon`, `&6Spawn in ${displayColor}${time}`, 0, 2, 0);
+        } else if (time > 4000) {
+            Client.Companion.showTitle(`${dragonColor} Spawning`, "", 0, 2, 0);
+        }
     }).setFps(1000)
 );
 

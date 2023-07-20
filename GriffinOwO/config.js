@@ -585,11 +585,19 @@ class Settings {
 
     @SwitchProperty({
         name: "Dragon Spawn Title",
-        description: "Dragon spawn will show Title in screen with timer",
+        description: "Dragon spawn will show Title in screen",
         category: "Dungeon",
         subcategory: "Dragon Spawn",
     })
     dragonSpawnTitle = false;
+
+    @SwitchProperty({
+        name: "Dragon Spawn Title show timer",
+        description: "Dragon spawn will show Title in screen with timer",
+        category: "Dungeon",
+        subcategory: "Dragon Spawn",
+    })
+    dragonSpawnTitleShowTimer = true;
 
     constructor() {
         this.initialize(this);
