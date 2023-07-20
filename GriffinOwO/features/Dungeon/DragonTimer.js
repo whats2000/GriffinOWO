@@ -56,7 +56,7 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage
         //ChatLib.chat(`[${x}, ${z}]`)
         for (let color in DragonParticle) {
             if (DragonParticle[color].x == parseInt(x) && DragonParticle[color].z == parseInt(z)) {
-                if (dragonTimer[color] <= 0) {
+                if (dragonTimer[color] < Date.now()) {
                     if (Settings.dragonTimer || Settings.dragonSpawnTitle)
                         dragonTimer[color] = new Date().getTime() + 5000;
 
@@ -95,6 +95,17 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) 
         }
     }).setFps(1000)
 );
+
+register("worldUnload", () => {
+    dragonTimer = {
+        "§a§lGreen": 0,
+        "§5§lPurple": 0,
+        "§b§lBlue": 0,
+        "§6§lOrange": 0,
+        "§c§lRed": 0,
+    };
+    color = null;
+});
 
 export function getDragonTimeFormatted() {
     const time = ((dragonTimer[color] - Date.now()) / 1000).toFixed(2);

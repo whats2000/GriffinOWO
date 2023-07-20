@@ -634,6 +634,7 @@ class Settings {
         this.addDependency("Waypoint Text Size", "Recieve waypoint from chat");
         this.addDependency("Waypoint Unload When Swap Lobby", "Recieve waypoint from chat");
         this.addDependency("Dragon Timer Location", "Dragon Timer");
+        this.addDependency("Dragon Spawn Title show timer", "Dragon Spawn Title");
     }
 
     sync() {
