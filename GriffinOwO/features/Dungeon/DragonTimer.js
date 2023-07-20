@@ -57,8 +57,11 @@ registerEventListener(() => Settings.dragonTimer && checkInZone("The Catacombs (
         //ChatLib.chat(`[${x}, ${z}]`)
         for (let color in DragonParticle) {
             if (DragonParticle[color].x == parseInt(x) && DragonParticle[color].z == parseInt(z)) {
-                if (dragonTimer[color] <= 0)
+                if (dragonTimer[color] <= 0) {
                     dragonTimer[color] = new Date().getTime() + 5000;
+
+                    ChatLib.chat(`&2[GriffinOwO] &f${color} dragon is spawning soon`);
+                }
             }
         }
     })

@@ -33,19 +33,13 @@ registerEventListener(() => checkInZone("The Catacombs (M7)") || checkInZone("Th
     }).setCriteria("[BOSS] Necron: You went further than any human before, congratulations.")
 );
 
-registerEventListener(() => checkInZone("The Catacombs (M7)") || checkInZone("The Catacombs (F7)"),
+registerEventListener(() => checkInZone("The Catacombs (M7)"),
     register('chat', () => {
         phase = 75;
     }).setCriteria("[BOSS] Wither King: Ohhh?")
 );
 
-registerEventListener(() => checkInZone("The Catacombs (M7)") || checkInZone("The Catacombs (F7)"),
-    register('chat', () => {
-        phase = 75;
-    }).setCriteria("[BOSS] Wither King: You.. again?")
-);
-
-registerEventListener(() => checkInZone("The Catacombs (M7)") || checkInZone("The Catacombs (F7)"),
+registerEventListener(() => checkInZone("The Catacombs (M7)"),
     register('chat', () => {
         phase = 75;
     }).setCriteria("[BOSS] Wither King: You.. again?")

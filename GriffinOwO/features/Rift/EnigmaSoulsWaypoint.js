@@ -6,7 +6,6 @@ import { checkInWorld } from "../../utils/Location";
 import renderBeaconBeam from "../../../BeaconBeam";
 import { registerEventListener, updateEventListeners } from "../../utils/EventListener";
 
-const enigmaSoulsWaypoints = EnigmaSouls;
 let prevSoul = null;
 let nearestSoul = null;
 
@@ -71,7 +70,7 @@ register("command", (...args) => {
         case "remove":
             args.shift();
             const soulName = args.join(" ");
-            const exists = enigmaSoulsWaypoints.some(waypoint => waypoint.Name === soulName);
+            const exists = EnigmaSouls.some(waypoint => waypoint.Name === soulName);
             if (exists) {
                 const index = foundSouls.indexOf(soulName);
                 if (index === -1)
@@ -86,7 +85,7 @@ register("command", (...args) => {
             break;
         case "clear":
             ChatLib.chat(`&2[GriffinOwO] &fAll Enigma Souls marked as found`);
-            enigmaSoulsWaypoints.forEach(waypoint => {
+            EnigmaSouls.forEach(waypoint => {
                 foundSouls.push(waypoint.Name);
             });
             userData.foundEnigmaSouls = foundSouls;
@@ -119,7 +118,7 @@ registerEventListener(() => Settings.enigmaSouls && checkInWorld("The Rift"),
 
         let nearestDistance = Infinity;
 
-        enigmaSoulsWaypoints.forEach(waypoint => {
+        EnigmaSouls.forEach(waypoint => {
             const found = foundSouls.includes(waypoint.Name);
 
             if (found) return;
