@@ -30,7 +30,11 @@ function updateState() {
             if (status !== "§c") {
                 respawnTime[index] = 0;
             } else if (respawnTime[index] === 0) {
-                respawnTime[index] = -1;
+                // Wait for update if someone break the effigy, if no one break then mark as unknow
+                setTimeout(() => {
+                    if (respawnTime[index] === 0)
+                        respawnTime[index] = -1;
+                }, 1500);
             }
         });
     }
@@ -58,6 +62,8 @@ registerEventListener(() => Settings.bloodEffigy && checkInZone("Stillgore Chtea
                     }
                 });
             }
+
+            updateState();
         }, 1000);
     }).setCriteria("${player} broke a Blood Effigy!")
 );

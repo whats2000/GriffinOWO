@@ -43,7 +43,6 @@ registerEventListener(() => Settings.dragonTimer && checkInZone("The Catacombs (
         if (!(packet instanceof S2APacketParticles)) return;
 
         if (packet.func_179749_a().toString() !== "FLAME" || //getParticleType
-            !packet.func_179750_b() ||                       //isLongDistance
             packet.func_149220_d() % 1 !== 0.0 ||            //getXCoordinate
             packet.func_149226_e() !== 19.0 ||               //getYCoordinate
             packet.func_149225_f() % 1 !== 0.0 ||            //getZCoordinate
