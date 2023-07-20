@@ -36,12 +36,14 @@ A chattrigger script helper for Hypixel Skyblock
 1. Dungeon Decoy Waypoint: Show where to place decoy
 2. Dungeon Gyro Waypoint: Show where to use gyro
 3. Dungeon Mining Waypoint: Show where to mine down phrase and where to get through
+4. Dragon Timer: Dragon Timer will display the dragon spawning count down depend on skip order [R -> O -> B -> P -> G] **[Beta]**
+5. Dragon Spawn Message/Title: Better dragon spawn detect to not trigger by fire veil wand **[Beta]**
 
 ### Combat
 1. Alignment Tracker: The alignment Tracker for the gyro wand will track both your and other players' alignment
 2. Gyro Cool Down Tracker: Gyro Cool Down Tracker for the gyro wand will track the cd of the gyro wand right click ability
 3. Flare Range Marker: Display the range of the flare
-4. Flare Timer: Flare Timer will display the flare time when you are in flare range **[Beta]**
+4. Flare Timer: Flare Timer will display the flare time when you are in flare range
 
 ### Crimson Island
 1. Broke Hype Detect: Detect Hype stopped grand combat xp without using the book of state
