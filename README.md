@@ -63,6 +63,9 @@ A chattrigger script helper for Hypixel Skyblock
 5. Kuudra Build Progress: Show the build progress of all build locations
 6. Kuudra Fuel Progress: Show the fuel progress
 
+### Miscellaneous
+1. Hide NPC Abiphone Contact: Hide NPC Abiphone Contact will hide the NPC contact by input their name spilit by space
+
 ### Fun command
 1. `!rng`: show what your today luck
 2. Custom Death Message: Send a custom death message in dungeon, use `{player}` to replace the ign of the player, use `|` to spilt for mutiple messages

@@ -58,6 +58,9 @@ import "./features/Kuudra/KuudraSupplyPearlHelper";
 import "./features/Kuudra/KuudraSupplyWaypoint";
 import "./features/Kuudra/KuudraTwoTwoReparty";
 
+// Miscellaneous
+import "./features/Miscellaneous/HideAbiphone";
+
 // Party
 import "./features/Party/KickBlacklistPlayer";
 import "./features/Party/RepartyKickPlayer";

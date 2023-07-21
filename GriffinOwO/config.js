@@ -599,6 +599,15 @@ class Settings {
     })
     dragonSpawnTitleShowTimer = true;
 
+    @TextProperty({
+        name: "Hide NPC Abiphone Contact",
+        description: "Hide NPC Abiphone Contact will hide the NPC contact by input their name spilit by space, NPC list: [Pablo Suus Aranya Kat Kaus Rollim Oringo]",
+        category: "Miscellaneous",
+        subcategory: "Abiphone",
+        triggerActionOnInitialization: false,
+    })
+    hideAbiphone = "";
+
     constructor() {
         this.initialize(this);
         this.addDependency("Enigma Souls Waypoint Beacon Color", "Enigma Souls Waypoint");
