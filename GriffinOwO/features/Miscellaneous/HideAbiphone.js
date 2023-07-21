@@ -12,6 +12,7 @@ registerEventListener(() => Settings.hideAbiphone !== "",
     register("chat", (name, event) => {
         if (name && isNpcInHideList(name)) {
             event.cancel();
+            //ChatLib.chat(`&2[GriffinOwO] &fHide ${name} contact`);
             ringingCancel = true;
             setTimeout(() => {
                 ringingCancel = false;
@@ -30,7 +31,7 @@ registerEventListener(() => Settings.hideAbiphone !== "",
 
 registerEventListener(() => Settings.hideAbiphone !== "",
     register("soundPlay", (pos, name, vol, pitch, category, event) => {
-        if (name === "note.pling" && ringingCancel) {
+        if (name.equals("note.pling") && ringingCancel) {
             event.cancel();
         }
     })
