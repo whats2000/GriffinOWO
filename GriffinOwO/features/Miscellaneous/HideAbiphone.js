@@ -11,7 +11,7 @@ function isNpcInHideList(npcName) {
 registerEventListener(() => Settings.hideAbiphone !== "",
     register("chat", (name, event) => {
         if (name && isNpcInHideList(name)) {
-            event.cancel();
+            cancel(event);
             //ChatLib.chat(`&2[GriffinOwO] &fHide ${name} contact`);
             ringingCancel = true;
             setTimeout(() => {
@@ -24,7 +24,7 @@ registerEventListener(() => Settings.hideAbiphone !== "",
 registerEventListener(() => Settings.hideAbiphone !== "",
     register("chat", (front, event) => {
         if (ringingCancel) {
-            event.cancel();
+            cancel(event);
         }
     }).setCriteria("✆ ${front} [PICK UP]")
 );
@@ -32,7 +32,7 @@ registerEventListener(() => Settings.hideAbiphone !== "",
 registerEventListener(() => Settings.hideAbiphone !== "",
     register("soundPlay", (pos, name, vol, pitch, category, event) => {
         if (name.equals("note.pling") && ringingCancel) {
-            event.cancel();
+            cancel(event);
         }
     })
 );
