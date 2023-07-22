@@ -40,6 +40,12 @@ registerEventListener(() => Settings.gyroRangeMarker,
 );
 
 registerEventListener(() => Settings.gyroRangeMarker,
+    register("worldUnload", () => {
+        gravityStormUsedTime = 0;
+    })
+);
+
+registerEventListener(() => Settings.gyroRangeMarker,
     register("actionBar", () => {
         if (gravityStormUsedTime < Date.now())
             gravityStormUsedTime = new Date().getTime() + gravityStormCooldown * getCdReduce();
