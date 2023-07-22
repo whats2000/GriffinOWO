@@ -125,6 +125,14 @@ class Settings {
     };
 
     @SwitchProperty({
+        name: "Gyro Range Marker",
+        description: "Gyro Range Marker will draw a gyro circle when in valid distance",
+        category: "Combat",
+        subcategory: "Gyro Range Marker",
+    })
+    gyroRangeMarker = false;
+
+    @SwitchProperty({
         name: "Broken Hype Detect",
         description: "Toggle to detect if use hype but not get combat exp",
         category: "Crimson Island",
@@ -601,7 +609,7 @@ class Settings {
 
     @TextProperty({
         name: "Hide NPC Abiphone Contact",
-        description: "Hide NPC Abiphone Contact will hide the NPC contact by input their name spilit by space, NPC list: [Pablo Suus Aranya Kat Kaus Rollim Oringo]",
+        description: "Hide NPC Abiphone Contact will hide the NPC contact by input their name spilit by space, &bNPC list: [Pablo Suus Aranya Kat Kaus Rollim Igrupan Oringo]",
         category: "Miscellaneous",
         subcategory: "Abiphone",
         triggerActionOnInitialization: false,

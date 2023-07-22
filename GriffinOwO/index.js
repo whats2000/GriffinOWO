@@ -34,6 +34,7 @@ import "./features/ChatTriggerCommandParty/Restart";
 // Combat
 import "./features/Combat/FlareRange";
 import "./features/Combat/FlareTimer";
+import "./features/Combat/GyroRangeMarker";
 import "./features/Combat/GyroTimer";
 
 // CrimsonIsland

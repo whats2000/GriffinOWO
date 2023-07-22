@@ -1,4 +1,5 @@
 import Settings from "../../config";
+import { getCdReduce } from "../../utils/DungeonTracker";
 import { registerEventListener } from "../../utils/EventListener";
 
 let gyroUsedTime = 0;
@@ -12,7 +13,7 @@ let gyroUsedTimeFormatted = 0;
 registerEventListener(() => Settings.alignmentTracker || Settings.gyroCoolDownTracker,
     register("chat", () => {
         alignmentTime = new Date().getTime() + alignmentDuration;
-        gyroUsedTime = new Date().getTime() + gyroCooldown;
+        gyroUsedTime = new Date().getTime() + gyroCooldown * getCdReduce();
     }).setCriteria("You aligned ${message}")
 );
 

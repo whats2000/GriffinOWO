@@ -1,7 +1,66 @@
-import { checkInZone } from "../utils/Location";
+import { checkInZone, checkInWorld } from "../utils/Location";
+import { getIGN, romanToInt } from "../utils/Function"
 import { registerEventListener } from "../utils/EventListener";
 
 let phase = -1;
+let partyMember = "";
+let party = {};
+let cdReduce = 1;
+
+function updateClass() {
+    const PartyLine = TabList.getNames().find(tab => tab.includes("§r§b§lParty §r§f("));
+    if (PartyLine) {
+        const regex = /\d+/g;
+        partyMember = PartyLine.match(regex);
+        //ChatLib.chat(`&2[GriffinOwO] &fHave member count [${partyMember}] in your party`);
+
+        const tab = TabList.getNames()
+
+        for (let i = 0; i < partyMember; i++) {
+            let player = getIGN(tab[1 + i * 4].removeFormatting().split(" ")[1]);
+            const classRegex = /\((\S+)\s+(\S+)\)/;
+            const classMatch = tab[1 + i * 4].removeFormatting().match(classRegex);
+
+            if (!classMatch) {
+                partyRetryCount++;
+                if (partyRetryCount < 10) {
+                    //ChatLib.chat("&2[GriffinOwO] &fFailed to get class. Retry");
+                    setTimeout(updateClass, 1000);
+                    return;
+                } else {
+                    ChatLib.chat("&2[GriffinOwO] &fFailed to get class.");
+                    return;
+                }
+            }
+
+            party[player] = {
+                class: classMatch[1],
+                level: isNaN(romanToInt(classMatch[2])) ? 0 : romanToInt(classMatch[2])
+            }
+        }
+        //ChatLib.chat(`&2[GriffinOwO] &fYou are playing ${party[Player.getName()].class} ${party[Player.getName()].level}`);
+
+        if (party[Player.getName()].class === "Mage") {
+            const magePlayers = [];
+            for (let player in party) {
+                if (party[player].class === "Mage") {
+                    magePlayers.push(player);
+                }
+            }
+
+            cdReduce = magePlayers.length > 1 ? 1 - party[Player.getName()].level * 0.01 : 1 - party[Player.getName()].level * 0.01 * 1.5;
+            //ChatLib.chat(`&2[GriffinOwO] &fCool down now is ${cdReduce}`);
+        }
+    } else {
+        partyRetryCount++;
+        if (partyRetryCount < 10) {
+            //ChatLib.chat("&2[GriffinOwO] &fFailed to get party. Retry");
+            setTimeout(updateClass, 1000);
+        } else {
+            ChatLib.chat("&2[GriffinOwO] &fFailed to get party.");
+        }
+    }
+}
 
 registerEventListener(() => checkInZone("The Catacombs (M7)") || checkInZone("The Catacombs (F7)"),
     register('chat', () => {
@@ -45,10 +104,24 @@ registerEventListener(() => checkInZone("The Catacombs (M7)"),
     }).setCriteria("[BOSS] Wither King: You.. again?")
 );
 
+registerEventListener(() => checkInWorld("Dungeon"),
+    register('chat', () => {
+        partyRetryCount = 0;
+        partyMember = 0;
+        party = {}
+        updateClass();
+    }).setCriteria("Dungeon starts in 1 second.")
+);
+
 register("worldUnload", () => {
     phase = -1;
+    cdReduce = 1;
 });
 
 export function getDungeonPhase() {
     return phase;
+}
+
+export function getCdReduce() {
+    return cdReduce;
 }
