@@ -42,8 +42,9 @@ A chattrigger script helper for Hypixel Skyblock
 ### Combat
 1. Alignment Tracker: The alignment Tracker for the gyro wand will track both your and other players' alignment
 2. Gyro Cool Down Tracker: Gyro Cool Down Tracker for the gyro wand will track the cd of the gyro wand right click ability
-3. Flare Range Marker: Display the range of the flare
-4. Flare Timer: Flare Timer will display the flare time when you are in flare range
+3. Gyro Range Marker: Gyro Range Marker will draw a gyro circle when in valid distance and tell you if in cool down
+4. Flare Range Marker: Display the range of the flare
+5. Flare Timer: Flare Timer will display the flare time when you are in flare range
 
 ### Crimson Island
 1. Broke Hype Detect: Detect Hype stopped grand combat xp without using the book of state
