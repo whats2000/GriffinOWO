@@ -1,7 +1,7 @@
 import Settings from "../../config";
 import RenderLib from "../../../RenderLib";
 import { DecoyWaypoint } from "../../utils/Variable";
-import { getDungeonPhase } from "../../utils/DungeonTracker";
+import { getDungeonPhase, getPlayerClass } from "../../utils/DungeonTracker";
 import { checkInZone } from "../../utils/Location";
 import { registerEventListener } from "../../utils/EventListener";
 
@@ -12,8 +12,14 @@ registerEventListener(() => Settings.dungeonDecoyWaypoint && (checkInZone("The C
 
         DecoyWaypoint.forEach(waypoint => {
             if (!waypoint.show.includes(phrase)) return;
-            if (Settings.dungeonWaypointMode !== 0)
-                if (!waypoint.class.includes(Settings.dungeonWaypointMode)) return;
+            if (Settings.dungeonWaypointMode !== 0) {
+                if (Settings.dungeonWaypointMode === 6) {
+                    if (!waypoint.class.includes(getPlayerClass())) return;
+                }
+                else {
+                    if (!waypoint.class.includes(Settings.dungeonWaypointMode)) return;
+                }
+            }
 
             let [x, y, z] = [waypoint.x, waypoint.y, waypoint.z]
 

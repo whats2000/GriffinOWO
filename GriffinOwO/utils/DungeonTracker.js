@@ -125,3 +125,24 @@ export function getDungeonPhase() {
 export function getCdReduce() {
     return cdReduce;
 }
+
+//["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage"]
+export function getPlayerClass() {
+    if (party[Player.getName()])
+        switch (party[Player.getName()].class) {
+            case "Archer":
+                return 1;
+            case "Berserk":
+                return 2;
+            case "Healer":
+                return 3;
+            case "Tank":
+                return 4;
+            case "Mage":
+                return 5
+            default:
+                return undefined;
+        }
+    else
+        return undefined;
+}

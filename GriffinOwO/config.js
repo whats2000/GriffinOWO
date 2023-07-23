@@ -525,7 +525,7 @@ class Settings {
         description: "Select to make only show specify class waypoint instead of all (Need disable SBA hide boss message, others mod is fine)",
         category: "Dungeon",
         subcategory: "Dungeon Waypoint",
-        options: ["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage"],
+        options: ["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage", "Auto Detect"],
     })
     dungeonWaypointMode = 0;
 
@@ -605,7 +605,7 @@ class Settings {
         category: "Dungeon",
         subcategory: "Dragon Spawn",
     })
-    dragonSpawnTitleShowTimer = true;
+    dragonSpawnTitleShowTimer = false;
 
     @TextProperty({
         name: "Hide NPC Abiphone Contact",
@@ -650,6 +650,7 @@ class Settings {
         this.addDependency("Waypoint Beacon Color", "Recieve waypoint from chat");
         this.addDependency("Waypoint Text Size", "Recieve waypoint from chat");
         this.addDependency("Waypoint Unload When Swap Lobby", "Recieve waypoint from chat");
+
         this.addDependency("Dragon Timer Location", "Dragon Timer");
         this.addDependency("Dragon Spawn Title show timer", "Dragon Spawn Title");
     }
