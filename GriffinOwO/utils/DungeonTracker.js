@@ -108,7 +108,7 @@ registerEventListener(() => checkInWorld("Dungeon"),
     register('chat', () => {
         partyRetryCount = 0;
         partyMember = 0;
-        party = {}
+        party = {};
         updateClass();
     }).setCriteria("Dungeon starts in 1 second.")
 );

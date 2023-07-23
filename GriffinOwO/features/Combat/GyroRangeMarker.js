@@ -26,8 +26,15 @@ registerEventListener(() => Settings.gyroRangeMarker,
 
         // If on air return
         if (moveObject.field_72313_a.toString() !== "BLOCK") return; // MovingObjectPosition.typeOfHit
+
+        // If top of it not air return
+        const topBlock = World.getWorld().func_180495_p(moveObject.func_178782_a().func_177984_a()/* getBlockPos().up() */);
+        if (topBlock.toString() !== "minecraft:air") return;
+
+        // Get the position
         const [x, y, z] = getVec3Pos(moveObject.field_72307_f); // MovingObjectPosition.hitVec
 
+        // Check if in CD
         const [r, g, b] = gravityStormUsedTime < Date.now() ? [0, 1, 0] : [1, 0, 0];
 
         RenderLib.drawCyl(x, y, z, 10, 10, 0.25, 30, 1, 0, 90, 90, r, g, b, 0.5, false, false);
