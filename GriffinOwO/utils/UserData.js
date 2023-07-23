@@ -2,6 +2,7 @@ import PogObject from "PogData";
 
 export let userData = new PogObject("GriffinOwO", {
     firstUse: true,
+    version: "2.2.7",
     gyroGUICoords: {
         x: 195,
         y: 77.5,

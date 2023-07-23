@@ -78,6 +78,33 @@ import { initializeEventListeners, updateEventListeners } from "./utils/EventLis
 
 userData.autosave();
 
+// Show Change Log
+register("chat", () => {
+    const version = JSON.parse(FileLib.read("GriffinOWO", "metadata.json")).version;
+    if (version === userData.version) return;
+
+    userData.version = version;
+    userData.save();
+    setTimeout(() => {
+        ChatLib.chat("&r&r&b&m-----------------------------------------------------");
+        ChatLib.chat(`          &6[GriffinOwO] &f&aChange Log (${version})`);
+        ChatLib.chat("&b&l                New Feature");
+        ChatLib.chat("&a + &eAdd Gyro Range Marker &b(Combat)");
+        ChatLib.chat("&a + &eAdd Dragon Timer &b(Dungeon)");
+        ChatLib.chat("&a + &eAdd Dragon Spawn Message &b(Dungeon)");
+        ChatLib.chat("&a + &eAdd Dragon Spawn Title show timer &b(Dungeon)");
+        ChatLib.chat("&a + &eAdd Hide Abiphone Contact &b(Miscellaneous)");
+        ChatLib.chat("&a + &eAdd Change Log");
+        ChatLib.chat("");
+        ChatLib.chat("&b&l                Bug Fix");
+        ChatLib.chat("&c - &eFix Blood Effigy sometime update incorrect");
+        ChatLib.chat("");
+        ChatLib.chat("&b&l                Change");
+        ChatLib.chat("&d = &eChange Cool Down Reduce for both Gravity Storm and Cell Agliment while playing Mage Class");
+        ChatLib.chat("&r&r&b&m-----------------------------------------------------");
+    }, 1000);
+}).setCriteria("Welcome to Hypixel SkyBlock${after}");
+
 function commandHelp() {
     ChatLib.chat("&r&r&b&m--------------------------------------------------------------------------------");
     ChatLib.chat("                          &6[GriffinOwO] &f&aHelp list (Page 1/1)");

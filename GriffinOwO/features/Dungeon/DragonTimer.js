@@ -42,6 +42,7 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage
         if (getDungeonPhase() !== 75) return;
         if (!(packet instanceof S2APacketParticles)) return;
 
+        // To filter it is dragon or fire veil wand, also filter if the dragon is alive or not
         if (packet.func_179749_a().toString() !== "FLAME" || //getParticleType
             packet.func_149220_d() % 1 !== 0.0 ||            //getXCoordinate
             packet.func_149226_e() !== 19.0 ||               //getYCoordinate
