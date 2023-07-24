@@ -89,7 +89,8 @@ register("chat", () => {
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
         ChatLib.chat(`          &6[GriffinOwO] &f&aChange Log (${version})`);
         ChatLib.chat("&b&l                New Feature");
-        ChatLib.chat("&a + &eAdd Gyro Range Marker &b(Combat)");
+        ChatLib.chat("&a + &eAdd Gyro Range Marker Radius &b(Combat)");
+        ChatLib.chat("&a + &eAdd Gyro Range Marker Target Block &b(Combat)");
         ChatLib.chat("&a + &eAdd Dragon Timer &b(Dungeon)");
         ChatLib.chat("&a + &eAdd Dragon Spawn Message &b(Dungeon)");
         ChatLib.chat("&a + &eAdd Dragon Spawn Title show timer &b(Dungeon)");

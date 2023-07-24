@@ -125,12 +125,20 @@ class Settings {
     };
 
     @SwitchProperty({
-        name: "Gyro Range Marker",
-        description: "Gyro Range Marker will draw a gyro circle when in valid distance",
+        name: "Gyro Range Marker Radius",
+        description: "Gyro Range Marker Radius will draw a gyro radius circle when in valid distance",
         category: "Combat",
         subcategory: "Gyro Range Marker",
     })
     gyroRangeMarker = false;
+
+    @SwitchProperty({
+        name: "Gyro Range Marker Target Block",
+        description: "Gyro Range Marker Target Block will draw a block you are point at when in valid distance",
+        category: "Combat",
+        subcategory: "Gyro Range Marker",
+    })
+    gyroRangeBlock = false;
 
     @SwitchProperty({
         name: "Broken Hype Detect",

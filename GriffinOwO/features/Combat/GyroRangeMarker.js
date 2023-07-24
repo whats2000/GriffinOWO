@@ -8,17 +8,12 @@ const gravityStormCooldown = 30000; // 30 seconds
 
 let gravityStormUsedTime = 0;
 
-function getVec3Pos(vec) {
-    // [Vec3.xCoord, Vec3.yCoord, Vec3.zCoord]
-    return [vec.field_72450_a, vec.field_72448_b, vec.field_72449_c]
-}
-
 function getVec3iPos(vec) {
     // [Vec3i.getX(), Vec3i.getY(), Vec3i.getZ()]
     return [parseInt(vec.func_177958_n()), parseInt(vec.func_177956_o()), parseInt(vec.func_177952_p())]
 }
 
-registerEventListener(() => Settings.gyroRangeMarker,
+registerEventListener(() => Settings.gyroRangeMarker || Settings.gyroRangeBlock,
     register("renderWorld", (partialTick) => {
         if (!Player.getHeldItem()?.getName()?.endsWith("Gyrokinetic Wand")) return;
 
@@ -46,22 +41,28 @@ registerEventListener(() => Settings.gyroRangeMarker,
         // Check if in CD
         const [r, g, b] = gravityStormUsedTime < Date.now() ? [0, 1, 0] : [1, 0, 0];
 
-        RenderLib.drawCyl(x + 0.5, y + 1, z + 0.5, 10, 10, 0.25, 30, 1, 0, 90, 90, r, g, b, 0.5, false, false);
+        if (Settings.gyroRangeMarker) {
+            RenderLib.drawCyl(x + 0.5, y + 1, z + 0.5, 10, 10, 0.25, 30, 1, 0, 90, 90, r, g, b, 0.5, false, false);
 
-        const playerPos = [Player.getX(), Player.getY(), Player.getZ()];
-        const distance = Math.floor(Math.sqrt(Math.pow(x - playerPos[0], 2) + Math.pow(y - playerPos[1], 2) + Math.pow(z - playerPos[2], 2)));
+            const playerPos = [Player.getX(), Player.getY(), Player.getZ()];
+            const distance = Math.floor(Math.sqrt(Math.pow(x - playerPos[0], 2) + Math.pow(y - playerPos[1], 2) + Math.pow(z - playerPos[2], 2)));
 
-        renderBeaconBeam(x, y + 1, z, r, g, b, 0.2, false);
+            if (distance > 5)
+                renderBeaconBeam(x, y + 1, z, r, g, b, 0.2, false);
+        }
+
+        if (Settings.gyroRangeBlock)
+            RenderLib.drawEspBox(x + 0.5, y, z + 0.5, 1, 1, r, g, b, 1, true);
     })
 );
 
-registerEventListener(() => Settings.gyroRangeMarker,
+registerEventListener(() => Settings.gyroRangeMarker || Settings.gyroRangeBlock,
     register("worldUnload", () => {
         gravityStormUsedTime = 0;
     })
 );
 
-registerEventListener(() => Settings.gyroRangeMarker,
+registerEventListener(() => Settings.gyroRangeMarker || Settings.gyroRangeBlock,
     register("actionBar", () => {
         if (gravityStormUsedTime < Date.now())
             gravityStormUsedTime = new Date().getTime() + gravityStormCooldown * getCdReduce();
