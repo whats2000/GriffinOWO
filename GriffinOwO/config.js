@@ -133,8 +133,8 @@ class Settings {
     gyroRangeMarker = false;
 
     @SwitchProperty({
-        name: "Gyro Range Marker Target Block",
-        description: "Gyro Range Marker Target Block will draw a block you are point at when in valid distance",
+        name: "Gyro Range Marker Target Block Mode",
+        description: "Gyro Range Marker Target Block Mode will draw a block you are point at and adjust radius into precision block position when in valid distance",
         category: "Combat",
         subcategory: "Gyro Range Marker",
     })
