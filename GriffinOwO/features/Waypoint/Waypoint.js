@@ -72,36 +72,6 @@ register("command", (x, y, z, name) => {
     ChatLib.chat(show_message);
 }).setName("griffin_set_coord");
 
-registerEventListener(() => Settings.inquis,
-    register("Chat", (event) => {
-        let formatted_message = ChatLib.getChatMessage(event, true);
-
-        if (!formatted_message.includes("&r&eYou dug out &r&2a Minos Champion&r&e!&r")) return;
-
-        setTimeout(() => {
-            const newWaypoint = {
-                x: Math.floor(Player.getX()),
-                y: Math.floor(Player.getY()),
-                z: Math.floor(Player.getZ()),
-                name: "Inquis"
-            };
-            waypoints.push(newWaypoint);
-
-            let show_message = new Message(
-                "&2[GriffinOwO] &fClick to show coord to party member. ",
-                new TextComponent("&a[Show coord]")
-                    .setClick("run_command", `/pc ` +
-                        `x: ${newWaypoint.x}, ` +
-                        `y: ${newWaypoint.y}, ` +
-                        `z: ${newWaypoint.z} [!] Inquis is dug out Warning [!]`)
-                    .setHover("show_text", "Click to send"),
-            );
-
-            ChatLib.chat(show_message);
-        }, 300);
-    })
-);
-
 registerEventListener(() => Settings.recieveWaypoint,
     register("chat", (player, x, y, z, event) => {
         player = getIGN(player);

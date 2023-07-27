@@ -42,6 +42,9 @@ import "./features/CrimsonIsland/BrokenHype";
 import "./features/CrimsonIsland/FlareTrade";
 import "./features/CrimsonIsland/VanquisherAlert";
 
+// Diana
+import "./features/Diana/InquisitorAlert";
+
 // Dungeon
 import "./features/Dungeon/DecoyWaypoint";
 import "./features/Dungeon/DragonTimer";
@@ -101,6 +104,7 @@ register("chat", () => {
         ChatLib.chat("&c - &eFix Blood Effigy sometime update incorrect");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Change");
+        ChatLib.chat("&d = &eChange Inquisitor detect logic");
         ChatLib.chat("&d = &eChange Cool Down Reduce for both Gravity Storm and Cell Agliment while playing Mage Class");
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
     }, 1000);
@@ -116,6 +120,7 @@ function commandHelp() {
     ChatLib.chat("&b/gf waypoint &f[&badd x y z&f|&bremove name&f|&breset&f] - Manage waypoints (coordinates)");
     ChatLib.chat("&b/kw &f- Manually warp 2/2 kuudra party");
     ChatLib.chat("&b/fw &f- Ignore waiting for all other players and warp the party when flare trade");
+    ChatLib.chat("&b/pk &f[&bplayer1 player2...&f] - Reparty but not invite some people");
     ChatLib.chat(`&b/enigma &f[&bon &f/ &boff &f/ &bremove &f/ &bclear &f/ &bunclear&f] - Enigma Souls Waypoints (Kinda similar to neusouls)`);
     ChatLib.chat("&r&r&b&m--------------------------------------------------------------------------------");
 }
