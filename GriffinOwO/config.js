@@ -574,7 +574,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Dragon Timer",
-        description: "Dragon Timer will display the dragon spawning count down depend on skip order",
+        description: "Dragon Timer will display the dragon spawning count down depand on skip order, similar to skytils but have order and turn into HUD",
         category: "Dungeon",
         subcategory: "Dragon Timer HUD",
     })
