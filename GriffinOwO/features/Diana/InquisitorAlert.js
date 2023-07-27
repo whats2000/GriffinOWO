@@ -1,10 +1,11 @@
 import Settings from "../../config";
+import { checkInWorld } from "../../utils/Location";
 import { registerCommand } from "../../utils/CommandQueue";
 import { registerEventListener } from "../../utils/EventListener";
 
 const EntityPlayerMP = Java.type("net.minecraft.client.entity.EntityOtherPlayerMP");
 
-registerEventListener(() => Settings.inquis,
+registerEventListener(() => Settings.inquis && checkInWorld("Hub"),
     register("Chat", () => {
         const entitis = World.getAllEntitiesOfType(EntityPlayerMP.class);
         const Inquisitors = entitis.filter(entity => entity.getName().equals("Minos Inquisitor"));
