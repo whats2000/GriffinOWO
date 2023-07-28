@@ -29,26 +29,30 @@ registerEventListener(() => Settings.warp,
 
 registerEventListener(() => Settings.warp,
     register("chat", (player) => {
-        if (lastAttemptWarpTime + 1000 * Settings.warpDelay < Date.now()) return;
+        if (lastAttemptWarpTime + 1000 * Settings.warpDelay < Date.now() || cancel) return;
         cancel = true;
 
         registerCommand(() => {
             ChatLib.command(`pc Party warping has been cancel!`);
         });
 
-        setTimeout(() => { cancel = false; }, 10000)
+        setTimeout(() => { cancel = false; }, Settings.warpDelay * 1000)
     }).setCriteria(/^Party > (.+): ![Cc]$/)
 );
 
 registerEventListener(() => Settings.warp,
     register("chat", (mode, names, e) => {
         if (new Date().getTime() - lastAttemptWarpTime > 1000) return;
-        if (mode === "Moderators" || mode === "Members") return;
+        if (mode !== "Leader") return;
         const myIGN = getIGN(Player.getName()).toLowerCase();
 
         let leader = getIGN(names).toLowerCase();
 
-        if (leader !== myIGN) return;
+        ChatLib.chat(`${leader}`)
+        if (leader !== myIGN) {
+            lastAttemptWarpTime = 0;
+            return;
+        };
 
         let delay = Settings.warpDelay;
 
