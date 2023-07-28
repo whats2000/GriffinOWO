@@ -24,7 +24,7 @@ export const EnigmaSouls = [
         "Name": "Up in the Sky", "x": -137, "y": 133, "z": 156, "Zone": "Wyld Woods", "Obtaining or Requirements": "Reached by jumping on the launch pad."
     },
     {
-        "Name": "Between Branches", "x": -108, "y": 117, "z": 123, "Zone": "Wyld Woods", "Obtaining or Requirements": "In a floating glass block, which can be reached by placing 2 SkyBlock items enchanted string.gif Larva Silk and using a SkyBlock items enchanted stick.gif Silkwire Stick."
+        "Name": "Between Branches", "x": -108, "y": 117, "z": 123, "Zone": "Wyld Woods", "Obtaining or Requirements": "In a floating glass block, which can be reached by placing 2 Larva Silk and using a Silkwire Stick."
     },
     {
         "Name": "Tel Kar", "x": -115, "y": 69, "z": 61, "Zone": "Black Lagoon", "Obtaining or Requirements": "Unlocked by fully speaking to Tel Kar, which requires at least 2m30s Rift Time."
@@ -60,7 +60,7 @@ export const EnigmaSouls = [
         "Name": "Dolphin Parkour", "x": -38, "y": 44, "z": 130, "Zone": "West Village", "Obtaining or Requirements": "You must speak to Cosmo in the West Village and enter the Dolphin Trainer, then swim in the water like a dolphin."
     },
     {
-        "Name": "Between Roofs", "x": -88, "y": 79, "z": -102, "Zone": "West Village", "Obtaining or Requirements": "In a floating glass block, which can be reached by placing 2 SkyBlock items enchanted string.gif Larva Silk and using a SkyBlock items enchanted stick.gif Silkwire Stick."
+        "Name": "Between Roofs", "x": -88, "y": 79, "z": -102, "Zone": "West Village", "Obtaining or Requirements": "In a floating glass block, which can be reached by placing 2 Larva Silk and using a Silkwire Stick."
     },
     {
         "Name": "Farm Flower Pot", "x": -76, "y": 90, "z": -149, "Zone": "Dreadfarm", "Obtaining or Requirements": "Can be reached by clicking and following flower pots, with the last one launching you to the windmill."
@@ -93,7 +93,7 @@ export const EnigmaSouls = [
         "Name": "Lonely \u00c4vae\u00eckx", "x": -34, "y": 66, "z": -25, "Zone": "Village Plaza", "Obtaining or Requirements": "Can be obtained by sitting in the chairs next to Lonely \u00c4vae\u00eckx for at least 3 minutes."
     },
     {
-        "Name": "Between Cooler Roofs", "x": -23, "y": 84, "z": -92, "Zone": "Village Plaza", "Obtaining or Requirements": "In a floating glass block, which can be reached by placing 2 SkyBlock items enchanted string.gif Larva Silk and using a SkyBlock items enchanted stick.gif Silkwire Stick."
+        "Name": "Between Cooler Roofs", "x": -23, "y": 84, "z": -92, "Zone": "Village Plaza", "Obtaining or Requirements": "In a floating glass block, which can be reached by placing 2 Larva Silk and using a Silkwire Stick."
     },
     {
         "Name": "Horsing Around", "x": 40, "y": 70, "z": 27, "Zone": "Village Plaza", "Obtaining or Requirements": "The surrounding Hay Bales can be destroyed with the Horsezooka."
@@ -111,7 +111,7 @@ export const EnigmaSouls = [
         "Name": "Standing there", "x": 255, "y": 74, "z": 160, "Zone": "Stillgore Ch\u00e2teau", "Obtaining or Requirements": "Found in a hidden cave around the cliffside."
     },
     {
-        "Name": "Between Towers", "x": 262, "y": 118, "z": 94, "Zone": "Stillgore Ch\u00e2teau", "Obtaining or Requirements": "In a floating glass block, which can be reached by placing 2 SkyBlock items enchanted string.gif Larva Silk and using a SkyBlock items enchanted stick.gif Silkwire Stick."
+        "Name": "Between Towers", "x": 262, "y": 118, "z": 94, "Zone": "Stillgore Ch\u00e2teau", "Obtaining or Requirements": "In a floating glass block, which can be reached by placing 2 Larva Silk and using a Silkwire Stick."
     },
     {
         "Name": "Castle Fleespook", "x": 182, "y": 92, "z": 124, "Zone": "Stillgore Ch\u00e2teau", "Obtaining or Requirements": "Can be obtained by following the Fleespook up the trees."

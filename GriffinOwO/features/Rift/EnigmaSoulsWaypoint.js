@@ -121,9 +121,13 @@ registerEventListener(() => Settings.enigmaSouls && checkInWorld("The Rift"),
         EnigmaSouls.forEach(waypoint => {
             const found = foundSouls.includes(waypoint.Name);
 
-            if (found) return;
-
             const distance = Math.floor(Math.sqrt(Math.pow(waypoint.x - playerPos[0], 2) + Math.pow(waypoint.y - playerPos[1], 2) + Math.pow(waypoint.z - playerPos[2], 2)));
+            if (distance < nearestDistance) {
+                nearestDistance = distance;
+                nearestSoul = waypoint;
+            }
+
+            if (found) return;
 
             let [x, y, z] = [waypoint.x, waypoint.y, waypoint.z];
 
@@ -134,11 +138,6 @@ registerEventListener(() => Settings.enigmaSouls && checkInWorld("The Rift"),
 
             if (distance < 16) {
                 soulsToShow.push(waypoint);
-
-                if (distance < nearestDistance) {
-                    nearestDistance = distance;
-                    nearestSoul = waypoint;
-                }
             }
 
             if (distance > 200) {
