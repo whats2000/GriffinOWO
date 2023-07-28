@@ -47,8 +47,6 @@ registerEventListener(() => Settings.warp,
         const myIGN = getIGN(Player.getName()).toLowerCase();
 
         let leader = getIGN(names).toLowerCase();
-
-        ChatLib.chat(`${leader}`)
         if (leader !== myIGN) {
             lastAttemptWarpTime = 0;
             return;
