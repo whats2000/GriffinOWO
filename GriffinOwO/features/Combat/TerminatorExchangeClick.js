@@ -4,10 +4,11 @@ import { registerEventListener } from "../../utils/EventListener";
 const leftClick = Client.getMinecraft().field_71474_y.field_74312_F; // net.minecraft.client.settings.GameSettings.keyBindAttack
 const rightClick = Client.getMinecraft().field_71474_y.field_74313_G; // net.minecraft.client.settings.GameSettings.keyBindUseItem
 
+// Mouse Left Click default is -100
+// Mouse Right Click default is -99
 registerEventListener(() => Settings.exchangeTerminatorClick,
     register("clicked", () => {
         const rightClickCode = rightClick.func_151463_i(); // rightClick.getKeyCode()
-        const leftClickCode = leftClick.func_151463_i(); // leftClick.getKeyCode()
 
         // Check if hold correct item
         if (Player.getHeldItem()?.getName()?.includes("Terminator")) {
@@ -33,3 +34,11 @@ registerEventListener(() => Settings.exchangeTerminatorClick,
         }
     })
 );
+
+register("gameUnload", () => {
+    Client.getMinecraft().field_71474_y.func_151440_a(leftClick, -100);
+    Client.getMinecraft().field_71474_y.func_151440_a(rightClick, -99);
+
+    // net.minecraft.client.settings.GameSettings.loadOptions()
+    Client.getMinecraft().field_71474_y.func_74300_a();
+});

@@ -95,6 +95,7 @@ register("chat", () => {
         ChatLib.chat("&b&l                New Feature");
         ChatLib.chat("&a + &eAdd Gyro Range Marker Radius &b(Combat)");
         ChatLib.chat("&a + &eAdd Gyro Range Marker Target Block &b(Combat)");
+        ChatLib.chat("&a + &eAdd Terminator Exchange Click &b(Combat)");
         ChatLib.chat("&a + &eAdd Dragon Timer &b(Dungeon)");
         ChatLib.chat("&a + &eAdd Dragon Spawn Message &b(Dungeon)");
         ChatLib.chat("&a + &eAdd Dragon Spawn Title show timer &b(Dungeon)");
@@ -107,6 +108,7 @@ register("chat", () => {
         ChatLib.chat("&b&l                Change");
         ChatLib.chat("&d = &eChange Inquisitor detect logic");
         ChatLib.chat("&d = &eChange Cool Down Reduce for both Gravity Storm and Cell Agliment while playing Mage Class");
+        ChatLib.chat("&d = &eChange &b!warp &fto make it can be cancel");
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
     }, 1000);
 }).setCriteria("Welcome to Hypixel SkyBlock${after}");

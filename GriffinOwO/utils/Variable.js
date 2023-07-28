@@ -176,7 +176,7 @@ export const MiningWaypoint = [
         "z": 80,
         w: 1,
         h: 1,
-        show: [74],
+        show: [71, 72, 74],
         class: [3]
     }
 ];
@@ -200,9 +200,9 @@ export const DecoyWaypoint = [
     },
     {
         "name": "§cDecoy",
-        "x": 37,
-        "y": 13,
-        "z": 44,
+        "x": 36.5,
+        "y": 13.5,
+        "z": 44.5,
         show: [74, 75],
         class: [3]
     },

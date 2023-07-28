@@ -19,7 +19,7 @@ A chattrigger script helper for Hypixel Skyblock
 2. Transfer Back Not Welcome Player: Transfer Back the leader if the player is not in the whitelist or the player is in the blacklist
 
 ### Party Chat Trigger Command
-1. `!warp`: allow party members to warp the party
+1. `!warp`: allow party members to warp the party (Can be cancel by `!c`)
 2. `!allinv`: allow party members to enable all invite
 3. `!ptme`: allow party members to be the new leader
 4. `!join [dungeon floor (ex: f7, m7)]`: allow party members to start the dungeon (No downtime)
@@ -45,6 +45,7 @@ A chattrigger script helper for Hypixel Skyblock
 3. Gyro Range Marker: Gyro Range Marker will draw a gyro circle when in valid distance and tell you if in cool down
 4. Flare Range Marker: Display the range of the flare
 5. Flare Timer: Flare Timer will display the flare time when you are in flare range
+6. Terminator Exchange Click: Will exchange your attack and use keybind while hold terminator
 
 ### Crimson Island
 1. Broke Hype Detect: Detect Hype stopped grand combat xp without using the book of state

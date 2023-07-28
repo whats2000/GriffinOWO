@@ -3,11 +3,11 @@ import { getIGN, romanToInt } from "../utils/Function"
 import { registerEventListener } from "../utils/EventListener";
 
 let phase = -1;
-let partyMember = "";
+let partyMember = 0;
 let party = {};
 let cdReduce = 1;
 
-function updateClass() {
+export function updateClass() {
     const PartyLine = TabList.getNames().find(tab => tab.includes("§r§b§lParty §r§f("));
     if (PartyLine) {
         const regex = /\d+/g;
@@ -38,7 +38,7 @@ function updateClass() {
                 level: isNaN(romanToInt(classMatch[2])) ? 0 : romanToInt(classMatch[2])
             }
         }
-        //ChatLib.chat(`&2[GriffinOwO] &fYou are playing ${party[Player.getName()].class} ${party[Player.getName()].level}`);
+        ChatLib.chat(`&2[GriffinOwO] &fYou are playing ${party[Player.getName()].class} ${party[Player.getName()].level}`);
 
         if (party[Player.getName()].class === "Mage") {
             const magePlayers = [];
@@ -109,13 +109,18 @@ registerEventListener(() => checkInWorld("Dungeon"),
         partyRetryCount = 0;
         partyMember = 0;
         party = {};
-        updateClass();
+
+        setTimeout(() => {
+            updateClass();
+        }, 5000);
     }).setCriteria("Dungeon starts in 1 second.")
 );
 
 register("worldUnload", () => {
     phase = -1;
     cdReduce = 1;
+    partyMember = 0;
+    party = {};
 });
 
 export function getDungeonPhase() {
