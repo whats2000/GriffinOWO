@@ -36,6 +36,7 @@ import "./features/Combat/FlareRange";
 import "./features/Combat/FlareTimer";
 import "./features/Combat/GyroRangeMarker";
 import "./features/Combat/GyroTimer";
+import "./features/Combat/TerminatorExchangeClick";
 
 // CrimsonIsland
 import "./features/CrimsonIsland/BrokenHype";

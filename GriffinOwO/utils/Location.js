@@ -34,7 +34,7 @@ function updateZone() {
 }
 
 function checkCurrentWorld() {
-    const WorldLine = TabList.getNames().find(tab => tab.includes("Area"));
+    const WorldLine = TabList?.getNames()?.find(tab => tab.includes("Area"));
     if (WorldLine) {
         currentWorld = WorldLine.replace("Area: ", "").removeFormatting();
         updateZone();

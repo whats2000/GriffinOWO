@@ -141,6 +141,14 @@ class Settings {
     gyroRangeBlock = false;
 
     @SwitchProperty({
+        name: "Terminator Exchange Click",
+        description: "&b[WIP] &fWill exchange your attack and use keybind while hold terminator \n&a(Note: This feature will change your client local keybind setting in Controls while hold terminator)",
+        category: "Combat",
+        subcategory: "Terminator Exchange Click",
+    })
+    exchangeTerminatorClick = false;
+
+    @SwitchProperty({
         name: "Broken Hype Detect",
         description: "Toggle to detect if use hype but not get combat exp",
         category: "Crimson Island",
