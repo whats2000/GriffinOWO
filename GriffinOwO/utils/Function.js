@@ -1,5 +1,10 @@
 import Settings from "../config";
 
+export function isHoldItem(id) {
+    // itemStack.getSubCompound("ExtraAttributes", false).getString("id")
+    return Player.getHeldItem()?.itemStack?.func_179543_a("ExtraAttributes", false)?.func_74779_i("id") === id;
+}
+
 export function checkWhitelist(player) {
     const whitelist_mode = Settings.whitelist;
     const blacklist_mode = Settings.blacklist;

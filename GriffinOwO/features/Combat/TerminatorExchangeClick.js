@@ -1,4 +1,5 @@
 import Settings from "../../config";
+import { isHoldItem } from "../../utils/Function";
 import { registerEventListener } from "../../utils/EventListener";
 
 const leftClick = Client.getMinecraft().field_71474_y.field_74312_F; // net.minecraft.client.settings.GameSettings.keyBindAttack
@@ -11,7 +12,7 @@ registerEventListener(() => Settings.exchangeTerminatorClick,
         const rightClickCode = rightClick.func_151463_i(); // rightClick.getKeyCode()
 
         // Check if hold correct item
-        if (Player.getHeldItem()?.getName()?.includes("Terminator")) {
+        if (isHoldItem("TERMINATOR")) {
             // If right click code is mouse right click then invert it
             // net.minecraft.client.settings.GameSettings.setOptionKeyBinding()
             if (rightClickCode === -99) {

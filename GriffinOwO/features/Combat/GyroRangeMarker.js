@@ -1,6 +1,7 @@
 import Settings from "../../config";
 import RenderLib from "../../../RenderLib";
 import renderBeaconBeam from "../../../BeaconBeam";
+import { isHoldItem } from "../../utils/Function";
 import { getCdReduce } from "../../utils/DungeonTracker";
 import { registerEventListener } from "../../utils/EventListener";
 
@@ -20,7 +21,7 @@ function getVec3iPos(vec) {
 
 registerEventListener(() => Settings.gyroRangeMarker || Settings.gyroRangeBlock,
     register("renderWorld", (partialTick) => {
-        if (!Player.getHeldItem()?.getName()?.endsWith("Gyrokinetic Wand")) return;
+        if (!isHoldItem("GYROKINETIC_WAND")) return;
 
         // Get block looking at
         const moveObject = Player.getPlayer().func_174822_a(25, partialTick);
