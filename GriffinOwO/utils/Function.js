@@ -1,8 +1,7 @@
 import Settings from "../config";
 
 export function isHoldItem(id) {
-    // itemStack.getSubCompound("ExtraAttributes", false).getString("id")
-    return Player.getHeldItem()?.itemStack?.func_179543_a("ExtraAttributes", false)?.func_74779_i("id") === id;
+    return Player.getHeldItem()?.getNBT()?.toObject()?.tag?.ExtraAttributes?.id === id;
 }
 
 export function checkWhitelist(player) {
