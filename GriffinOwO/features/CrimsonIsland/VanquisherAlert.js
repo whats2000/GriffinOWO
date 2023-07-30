@@ -1,8 +1,9 @@
 import Settings from "../../config";
+import { checkInWorld } from "../../utils/Location";
 import { registerCommand } from "../../utils/CommandQueue";
 import { registerEventListener } from "../../utils/EventListener";
 
-registerEventListener(() => Settings.vanquisher && Settings.flarePartyList === "",
+registerEventListener(() => Settings.vanquisher && Settings.flarePartyList === "" && checkInWorld("Crimson Isle"),
     register("Chat", (event) => {
         const formatted_message = ChatLib.getChatMessage(event, true);
 
@@ -49,7 +50,7 @@ registerEventListener(() => Settings.vanquisher && Settings.flarePartyList === "
     })
 );
 
-registerEventListener(() => Settings.vanquisher && Settings.flarePartyList === "",
+registerEventListener(() => Settings.vanquisher && Settings.flarePartyList === "" && checkInWorld("Crimson Isle"),
     register("Chat", (event) => {
         formatted_message = ChatLib.getChatMessage(event, true);
 

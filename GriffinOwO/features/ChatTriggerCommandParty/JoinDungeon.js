@@ -43,7 +43,7 @@ registerEventListener(() => Settings.join,
         setTimeout(() => {
             ChatLib.command(`joindungeon master_catacombs ${floor}`);
         }, 300);
-    }).setCriteria(/^Party > (.+): ![Mm] ([1-7])$/)
+    }).setCriteria(/^Party > (.+): ![Mm][ ]?([1-7])$/)
 );
 
 registerEventListener(() => Settings.join,
@@ -62,5 +62,5 @@ registerEventListener(() => Settings.join,
         setTimeout(() => {
             ChatLib.command(`joindungeon catacombs ${floor}`);
         }, 300);
-    }).setCriteria(/^Party > (.+): ![Ff] ([0-7])$/)
+    }).setCriteria(/^Party > (.+): ![Ff][ ]?([0-7])$/)
 );

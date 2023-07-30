@@ -24,7 +24,7 @@ registerEventListener(() => Settings.gyroRangeMarker || Settings.gyroRangeBlock,
         if (!isHoldItem("GYROKINETIC_WAND")) return;
 
         // Get block looking at
-        const moveObject = Player.getPlayer().func_174822_a(25, partialTick);
+        const moveObject = Player.getPlayer().func_174822_a(25, partialTick); // rayTrace(25, partialTick)
 
         // If on air return
         if (moveObject.field_72313_a.toString() !== "BLOCK") return; // MovingObjectPosition.typeOfHit
