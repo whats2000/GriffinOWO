@@ -110,7 +110,7 @@ register("chat", () => {
         ChatLib.chat("&d = &eChange Cool Down Reduce for both Gravity Storm and Cell Agliment while playing Mage Class");
         ChatLib.chat("&d = &eChange &b!warp &f&dto make it can be cancel");
         ChatLib.chat("&d = &eChange &b!join &f&dto support &b!m7 &f&dand &b!f7 &f&dformat");
-        ChatLib.chat("&d = &eChange Broken hHype Detect Flare Only and Vanquishier Alert register in Crimson Island only");
+        ChatLib.chat("&d = &eChange Broken Hype Detect Flare Only and Vanquishier Alert register in Crimson Island only");
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
     }, 1000);
 }).setCriteria("Welcome to Hypixel SkyBlock${after}");
