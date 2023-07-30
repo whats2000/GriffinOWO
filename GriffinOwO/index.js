@@ -109,6 +109,8 @@ register("chat", () => {
         ChatLib.chat("&d = &eChange Inquisitor detect logic");
         ChatLib.chat("&d = &eChange Cool Down Reduce for both Gravity Storm and Cell Agliment while playing Mage Class");
         ChatLib.chat("&d = &eChange &b!warp &fto make it can be cancel");
+        ChatLib.chat("&d = &eChange &b!join &fto support &b!m7 &fand &b!f7 &fformat");
+        ChatLib.chat("&d = &eChange Broken hHype Detect Flare Only and Vanquishier Alert register in Crimson Island only");
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
     }, 1000);
 }).setCriteria("Welcome to Hypixel SkyBlock${after}");
