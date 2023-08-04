@@ -10,7 +10,7 @@ registerEventListener(() => Settings.party,
 
         setTimeout(() => {
             ChatLib.chat(`&2[GriffinOwO] &fTrying to party. [${player}]`);
-            ChatLib.command(`p ${player}`)
+            ChatLib.command(`p ${player}`);
         }, 300);
 
     }).setCriteria(/^From (.+): ![Pp][Aa][Rr][Tt][Yy](.*)?$/)

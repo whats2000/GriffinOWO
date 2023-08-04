@@ -110,10 +110,8 @@ registerEventListener(() => checkInWorld("Dungeon"),
         partyMember = 0;
         party = {};
 
-        setTimeout(() => {
-            updateClass();
-        }, 5000);
-    }).setCriteria("Dungeon starts in 1 second.")
+        updateClass();
+    }).setCriteria("Starting in 1 second${end}")
 );
 
 register("worldUnload", () => {
