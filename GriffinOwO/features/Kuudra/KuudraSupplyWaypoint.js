@@ -7,7 +7,7 @@ import { registerEventListener } from "../../utils/EventListener";
 
 const Giant = Java.type("net.minecraft.entity.monster.EntityGiantZombie");
 
-registerEventListener(() => Settings.kuudraSupplyWaypoint && checkInWorld("Instanced"),
+registerEventListener(() => Settings.kuudraSupplyWaypoint && checkInWorld("Kuudra"),
     register("renderWorld", () => {
         if (getCurrentPhase() !== 0 && getCurrentPhase() !== 1 && getCurrentPhase() !== 3) return;
 

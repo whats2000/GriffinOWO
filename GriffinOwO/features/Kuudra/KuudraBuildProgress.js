@@ -24,7 +24,7 @@ let buildLocationProgress = {
     "-106:-112.9375": "§c0%"
 };
 
-registerEventListener(() => Settings.kuudraBuildProgress && checkInWorld("Instanced"),
+registerEventListener(() => Settings.kuudraBuildProgress && checkInWorld("Kuudra"),
     register("chat", () => {
         buildLocationProgress = {
             "-98:-112.9375": "§c0%",
@@ -37,7 +37,7 @@ registerEventListener(() => Settings.kuudraBuildProgress && checkInWorld("Instan
     }).setCriteria("[NPC] Elle: Not again!")
 );
 
-registerEventListener(() => Settings.kuudraBuildProgress && checkInWorld("Instanced"),
+registerEventListener(() => Settings.kuudraBuildProgress && checkInWorld("Kuudra"),
     register("step", () => {
         if (getCurrentPhase() !== 2) return;
 
@@ -63,7 +63,7 @@ registerEventListener(() => Settings.kuudraBuildProgress && checkInWorld("Instan
     }).setDelay(1)
 );
 
-registerEventListener(() => Settings.kuudraBuildProgress && checkInWorld("Instanced"),
+registerEventListener(() => Settings.kuudraBuildProgress && checkInWorld("Kuudra"),
     register("renderWorld", () => {
         if (getCurrentPhase() !== 2) return;
 

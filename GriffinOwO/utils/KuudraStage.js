@@ -5,7 +5,7 @@ import { registerEventListener } from "../utils/EventListener";
 let phase = -1;
 
 // Reset When Start
-registerEventListener(() => checkInWorld("Instanced"),
+registerEventListener(() => checkInWorld("Kuudra"),
     register("chat", () => {
         phase = 0;
         if (Settings.kuudraShowPhrase)
@@ -14,7 +14,7 @@ registerEventListener(() => checkInWorld("Instanced"),
 );
 
 // Supply Spawn
-registerEventListener(() => checkInWorld("Instanced"),
+registerEventListener(() => checkInWorld("Kuudra"),
     register("chat", () => {
         phase = 1;
         if (Settings.kuudraShowPhrase)
@@ -23,7 +23,7 @@ registerEventListener(() => checkInWorld("Instanced"),
 );
 
 // All Supply Done
-registerEventListener(() => checkInWorld("Instanced"),
+registerEventListener(() => checkInWorld("Kuudra"),
     register("chat", () => {
         phase = 2;
         if (Settings.kuudraShowPhrase)
@@ -32,7 +32,7 @@ registerEventListener(() => checkInWorld("Instanced"),
 );
 
 // Build Done
-registerEventListener(() => checkInWorld("Instanced"),
+registerEventListener(() => checkInWorld("Kuudra"),
     register("chat", () => {
         phase = 3;
         if (Settings.kuudraShowPhrase)
@@ -41,7 +41,7 @@ registerEventListener(() => checkInWorld("Instanced"),
 );
 
 // Hit Stage Done
-registerEventListener(() => checkInWorld("Instanced"),
+registerEventListener(() => checkInWorld("Kuudra"),
     register("chat", () => {
         phase = 4;
         if (Settings.kuudraShowPhrase)
@@ -50,14 +50,14 @@ registerEventListener(() => checkInWorld("Instanced"),
 );
 
 // Finish
-registerEventListener(() => checkInWorld("Instanced"),
+registerEventListener(() => checkInWorld("Kuudra"),
     register("chat", () => {
         phase = -1;
     }).setCriteria("${before}KUUDRA DOWN${after}")
 );
 
 // Fail
-registerEventListener(() => checkInWorld("Instanced"),
+registerEventListener(() => checkInWorld("Kuudra"),
     register("chat", () => {
         phase = -1;
     }).setCriteria("${before}DEFEAT${after}")

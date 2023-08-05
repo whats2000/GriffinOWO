@@ -8,14 +8,14 @@ const ArmorStand = Java.type("net.minecraft.entity.item.EntityArmorStand");
 
 let fuelProgress = 0;
 
-registerEventListener(() => Settings.kuudraFuelProgress && checkInWorld("Instanced"),
+registerEventListener(() => Settings.kuudraFuelProgress && checkInWorld("Kuudra"),
     register("chat", () => {
         fuelProgress = 0;
         moutedCannon = false;
     }).setCriteria("[NPC] Elle: Not again!")
 );
 
-registerEventListener(() => Settings.kuudraFuelProgress && checkInWorld("Instanced"),
+registerEventListener(() => Settings.kuudraFuelProgress && checkInWorld("Kuudra"),
     register("chat", (player, progress) => {
         if (getCurrentPhase() !== 3) return;
 
@@ -23,7 +23,7 @@ registerEventListener(() => Settings.kuudraFuelProgress && checkInWorld("Instanc
     }).setCriteria("${player} recovered a Fuel Cell and charged the Ballista! (${progress}%)")
 );
 
-registerEventListener(() => Settings.kuudraFuelProgress && checkInWorld("Instanced"),
+registerEventListener(() => Settings.kuudraFuelProgress && checkInWorld("Kuudra"),
     register("step", () => {
         if (getCurrentPhase() !== 3) return;
         const stands = World.getAllEntitiesOfType(ArmorStand.class);
@@ -47,7 +47,7 @@ registerEventListener(() => Settings.kuudraFuelProgress && checkInWorld("Instanc
     }).setDelay(1)
 );
 
-registerEventListener(() => Settings.kuudraFuelProgress && checkInWorld("Instanced"),
+registerEventListener(() => Settings.kuudraFuelProgress && checkInWorld("Kuudra"),
     register("renderWorld", () => {
         if (getCurrentPhase() !== 3) return;
 

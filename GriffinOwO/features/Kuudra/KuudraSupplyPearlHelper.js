@@ -17,13 +17,13 @@ const SupplyPlacePos = [
 
 let supplyPlaceWaypoint = [];
 
-registerEventListener(() => Settings.kuudraSupplyPearlHelper && checkInWorld("Instanced"),
+registerEventListener(() => Settings.kuudraSupplyPearlHelper && checkInWorld("Kuudra"),
     register("chat", () => {
         supplyPlaceWaypoint = [];
     }).setCriteria("[NPC] Elle: Not again!")
 );
 
-registerEventListener(() => Settings.kuudraSupplyPearlHelper && checkInWorld("Instanced"),
+registerEventListener(() => Settings.kuudraSupplyPearlHelper && checkInWorld("Kuudra"),
     register("step", () => {
         if (getCurrentPhase() !== 1) return;
 
@@ -53,7 +53,7 @@ registerEventListener(() => Settings.kuudraSupplyPearlHelper && checkInWorld("In
     }).setDelay(1)
 );
 
-registerEventListener(() => Settings.kuudraSupplyPearlHelper && checkInWorld("Instanced"),
+registerEventListener(() => Settings.kuudraSupplyPearlHelper && checkInWorld("Kuudra"),
     register("renderWorld", () => {
         if (getCurrentPhase() !== 1) return;
         if (supplyPlaceWaypoint.length === 0) return
