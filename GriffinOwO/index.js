@@ -104,6 +104,7 @@ register("chat", () => {
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
         ChatLib.chat("&c - &eFix Blood Effigy sometime update incorrect");
+        ChatLib.chat("&c - &eFix Kuudra and Dungeon detect name (Changed by Hypixel)");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Change");
         ChatLib.chat("&d = &eChange Inquisitor detect logic");
