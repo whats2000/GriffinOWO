@@ -1,13 +1,16 @@
 import Settings from "../../config";
-import { checkInWorld } from "../../utils/Location";
+import getCurrentPhase from "../../utils/KuudraStage";
+import { checkInZone } from "../../utils/Location";
 import { getVec3Pos } from "../../utils/Function";
 import { registerEventListener } from "../../utils/EventListener";
 
 const MagmaCube = Java.type('net.minecraft.entity.monster.EntityMagmaCube');
 const radians_to_degrees = rad => (rad * 180.0) / Math.PI;
 
-registerEventListener(() => Settings.kuudraHeadPointer && checkInWorld("Kuudra"),
+registerEventListener(() => Settings.kuudraHeadPointer && checkInZone("Kuudra's Hollow (T5)"),
     register("renderWorld", (partialTick) => {
+        if (getCurrentPhase() !== 4) return;
+
         const MagmaCubes = World.getAllEntitiesOfType(MagmaCube.class);
 
         const Kuudra = MagmaCubes.find((magma) =>
@@ -60,6 +63,6 @@ registerEventListener(() => Settings.kuudraHeadPointer && checkInWorld("Kuudra")
             direction = "§e↗";
         }
 
-        Client.Companion.showTitle(`${direction}`, ``, 0, 2, 0);
+        Client.Companion.showTitle(`${direction}`, "", 0, 2, 0);
     })
 );
