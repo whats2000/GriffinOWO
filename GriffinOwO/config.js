@@ -419,6 +419,14 @@ class Settings {
     })
     kuudraShowPhrase = false;
 
+    @SwitchProperty({
+        name: "Kuudra Head Pointer",
+        description: "Tell you where is the kuudra head",
+        category: "Kuudra",
+        subcategory: "Kuudra Head Pointer"
+    })
+    kuudraHeadPointer = false;
+
     @TextProperty({
         name: "Kuudra 2/2 reparty IGN",
         description: "Put player you want to reparty in other group split by space, you can use /kw for manually warp if warp is fail",

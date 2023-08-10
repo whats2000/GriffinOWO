@@ -107,3 +107,13 @@ export function romanToInt(roman) {
     }
     return result;
 }
+
+export function getVec3Pos(vec) {
+    // [Vec3.xCoord, Vec3.yCoord, Vec3.zCoord]
+    return [vec.field_72450_a, vec.field_72448_b, vec.field_72449_c]
+}
+
+export function getVec3iPos(vec) {
+    // [Vec3i.getX(), Vec3i.getY(), Vec3i.getZ()]
+    return [parseInt(vec.func_177958_n()), parseInt(vec.func_177956_o()), parseInt(vec.func_177952_p())]
+}

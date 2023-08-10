@@ -1,23 +1,13 @@
 import Settings from "../../config";
 import RenderLib from "../../../RenderLib";
 import renderBeaconBeam from "../../../BeaconBeam";
-import { isHoldItem } from "../../utils/Function";
+import { isHoldItem, getVec3Pos, getVec3iPos } from "../../utils/Function";
 import { getCdReduce } from "../../utils/DungeonTracker";
 import { registerEventListener } from "../../utils/EventListener";
 
 const gravityStormCooldown = 30000; // 30 seconds
 
 let gravityStormUsedTime = 0;
-
-function getVec3Pos(vec) {
-    // [Vec3.xCoord, Vec3.yCoord, Vec3.zCoord]
-    return [vec.field_72450_a, vec.field_72448_b, vec.field_72449_c]
-}
-
-function getVec3iPos(vec) {
-    // [Vec3i.getX(), Vec3i.getY(), Vec3i.getZ()]
-    return [parseInt(vec.func_177958_n()), parseInt(vec.func_177956_o()), parseInt(vec.func_177952_p())]
-}
 
 registerEventListener(() => Settings.gyroRangeMarker || Settings.gyroRangeBlock,
     register("renderWorld", (partialTick) => {
