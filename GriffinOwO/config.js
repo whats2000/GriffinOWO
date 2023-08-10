@@ -676,6 +676,8 @@ class Settings {
         this.addDependency("Kuudra Fuel Progress Show Beacon", "Kuudra Fuel Progress");
         this.addDependency("Kuudra Fuel Progress Text Size", "Kuudra Fuel Progress");
 
+        this.addDependency("Kuudra Head Pointer Location", "Kuudra Head Pointer");
+
         this.addDependency("Delay of !warp", "!warp");
 
         this.addDependency("Broken Hype Detect Only On Flare", "Broken Hype Detect");
