@@ -7,6 +7,7 @@ class Settings {
     alignmentGUI = new Gui();
     flareTimerGUI = new Gui();
     dragonTimerGUI = new Gui();
+    kuudraHeadPointerGUI = new Gui();
 
     @SwitchProperty({
         name: "Blacklist Mode",
@@ -426,6 +427,17 @@ class Settings {
         subcategory: "Kuudra Head Pointer"
     })
     kuudraHeadPointer = false;
+
+    @ButtonProperty({
+        name: "Kuudra Head Pointer Location",
+        description: "Moves the Kuudra Head Pointer display hud",
+        category: "Kuudra",
+        subcategory: "Kuudra Head Pointer",
+        placeholder: "Move"
+    })
+    MoveKuudraHeadPointerGUI() {
+        this.kuudraHeadPointerGUI.open()
+    };
 
     @TextProperty({
         name: "Kuudra 2/2 reparty IGN",

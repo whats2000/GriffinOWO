@@ -3,6 +3,7 @@ import { userData } from "./UserData";
 import { getGyroUsedTimeFormatted, getAlignmentTimeFormatted } from "../features/Combat/GyroTimer";
 import { getFlareTimeFormatted } from "../features/Combat/FlareTimer";
 import { getDragonTimeFormatted } from "../features/Dungeon/DragonTimer";
+import { getKuudraPointer } from "../features/Kuudra/KuudraHeadPointer";
 
 let canDrag = false; // Prevent drag after click the "move" button
 const Firework = new Item("fireworks");
@@ -19,6 +20,17 @@ function renderExampleText(coords, exampleText) {
 
     Renderer.scale(scale);
     Renderer.drawString(exampleText, xScale, yScale, true);
+}
+
+function renderText(coords, text) {
+    const scale = coords.scale;
+    const x = coords.x;
+    const y = coords.y;
+    const xScale = x / scale;
+    const yScale = y / scale;
+
+    Renderer.scale(scale);
+    Renderer.drawString(text, xScale, yScale, true);
 }
 
 function renderTimeTracker(coords, text, currentTime, timeSplit1, timeSplit2) {
@@ -96,6 +108,17 @@ register("renderOverlay", () => {
             renderTimeTracker(userData.dragonTimerCoords, `${dragonColor}: `, spawnTime, 3, 1);
         }
     }
+
+    if (Settings.kuudraHeadPointer) {
+        if (Settings.kuudraHeadPointerGUI.isOpen()) {
+            renderExampleText(userData.kuudraHeadPointerCoords, "§a↑");
+            return;
+        }
+        const kuudraPointer = getKuudraPointer();
+        if (kuudraPointer !== "") {
+            renderText(userData.kuudraHeadPointerCoords, `${kuudraPointer}`);
+        }
+    }
 });
 
 register('dragged', (dx, dy, x, y, button) => {
@@ -121,6 +144,11 @@ register('dragged', (dx, dy, x, y, button) => {
             handleDragged(userData.dragonTimerCoords, x, y);
             return;
         }
+    if (Settings.kuudraHeadPointer)
+        if (Settings.kuudraHeadPointerGUI.isOpen()) {
+            handleDragged(userData.kuudraHeadPointerCoords, x, y);
+            return;
+        }
 });
 
 register('scrolled', (x, y, direction) => {
@@ -142,6 +170,11 @@ register('scrolled', (x, y, direction) => {
     if (Settings.dragonTimer)
         if (Settings.dragonTimerGUI.isOpen()) {
             handleScroll(userData.dragonTimerCoords, direction);
+            return;
+        }
+    if (Settings.kuudraHeadPointer)
+        if (Settings.kuudraHeadPointerGUI.isOpen()) {
+            handleScroll(userData.kuudraHeadPointerCoords, direction);
             return;
         }
 });

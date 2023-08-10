@@ -1,11 +1,19 @@
 import Settings from "../../config";
 import getCurrentPhase from "../../utils/KuudraStage";
-import { checkInZone } from "../../utils/Location";
+import { checkInWorld, checkInZone } from "../../utils/Location";
 import { getVec3Pos } from "../../utils/Function";
 import { registerEventListener } from "../../utils/EventListener";
 
 const MagmaCube = Java.type('net.minecraft.entity.monster.EntityMagmaCube');
 const radians_to_degrees = rad => (rad * 180.0) / Math.PI;
+
+let direction = "";
+
+registerEventListener(() => Settings.kuudraHeadPointer && checkInWorld("Kuudra"),
+    register("chat", () => {
+        direction = "";
+    }).setCriteria("[NPC] Elle: Not again!")
+);
 
 registerEventListener(() => Settings.kuudraHeadPointer && checkInZone("Kuudra's Hollow (T5)"),
     register("renderWorld", (partialTick) => {
@@ -43,7 +51,6 @@ registerEventListener(() => Settings.kuudraHeadPointer && checkInZone("Kuudra's 
 
         //ChatLib.chat(`${angleDifference}`)
         // Point to Kuudra ↗ ↖ ↘ ↙ ↑ ↓ → ←
-        let direction = "";
 
         if (angleDifference >= -22.5 && angleDifference < 22.5) {
             direction = "§a↑";
@@ -62,7 +69,15 @@ registerEventListener(() => Settings.kuudraHeadPointer && checkInZone("Kuudra's 
         } else if (angleDifference >= -67.5 && angleDifference < -22.5) {
             direction = "§e↗";
         }
-
-        Client.Companion.showTitle(`${direction}`, "", 0, 2, 0);
     })
 );
+
+registerEventListener(() => Settings.kuudraHeadPointer,
+    register("worldUnload", () => {
+        direction = "";
+    })
+);
+
+export function getKuudraPointer() {
+    return direction;
+}

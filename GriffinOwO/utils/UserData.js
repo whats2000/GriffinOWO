@@ -23,6 +23,11 @@ export let userData = new PogObject("GriffinOwO", {
         y: 150,
         scale: 1
     },
+    kuudraHeadPointerCoords: {
+        x: 336,
+        y: 150,
+        scale: 3
+    },
     foundEnigmaSouls: []
 }, "UserData.json");
 
