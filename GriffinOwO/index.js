@@ -27,6 +27,7 @@ import "./features/ChatTriggerCommandDM/PartyPlayer";
 // ChatTriggerCommandParty
 import "./features/ChatTriggerCommandParty/AllInvite";
 import "./features/ChatTriggerCommandParty/JoinDungeon";
+import "./features/ChatTriggerCommandParty/JoinKuudra";
 import "./features/ChatTriggerCommandParty/PartyTransfer";
 import "./features/ChatTriggerCommandParty/PartyWarp";
 import "./features/ChatTriggerCommandParty/Restart";
@@ -94,7 +95,8 @@ register("chat", () => {
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
         ChatLib.chat(`          &6[GriffinOwO] &f&aChange Log (${version})`);
         ChatLib.chat("&b&l                New Feature");
-        ChatLib.chat("&a + &eKuudra Head Pointer &b(Kuudra)");
+        ChatLib.chat("&a + &eAdd Kuudra Head Pointer &b(Kuudra)");
+        ChatLib.chat("&a + &eAdd !join t5 (!t5, !t 5) for kuudra fight");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
         ChatLib.chat("&c - &eFix !join (!m7, !f7) into new format changed by hypixel");
