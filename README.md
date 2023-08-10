@@ -22,7 +22,7 @@ A chattrigger script helper for Hypixel Skyblock
 1. `!warp`: allow party members to warp the party (Can be cancel by `!c`)
 2. `!allinv`: allow party members to enable all invite
 3. `!ptme`: allow party members to be the new leader
-4. `!join [dungeon floor (ex: f7, m7)]`: allow party members to start the dungeon (No downtime)
+4. `!join [dungeon floor (ex: f7, m7) | kuudra tier (ex: t1, t5)]`: allow party members to start the dungeon or kuudra (No downtime)
 5. `!rp`: allow party members to reparty (need toggle others mod reparty */rp*)
 
 ### DM Trigger Command
@@ -36,8 +36,8 @@ A chattrigger script helper for Hypixel Skyblock
 1. Dungeon Decoy Waypoint: Show where to place decoy
 2. Dungeon Gyro Waypoint: Show where to use gyro
 3. Dungeon Mining Waypoint: Show where to mine down phrase and where to get through
-4. Dragon Timer: Dragon Timer will display the dragon spawning count down depend on skip order [R -> O -> B -> P -> G] **[Beta]**
-5. Dragon Spawn Message/Title: Better dragon spawn detect to not trigger by fire veil wand **[Beta]**
+4. Dragon Timer: Dragon Timer will display the dragon spawning count down depend on skip order [R -> O -> B -> P -> G]
+5. Dragon Spawn Message/Title: Better dragon spawn detect to not trigger by fire veil wand
 
 ### Combat
 1. Alignment Tracker: The alignment Tracker for the gyro wand will track both your and other players' alignment
@@ -64,6 +64,7 @@ A chattrigger script helper for Hypixel Skyblock
 4. Kuudra Supply Pearl Helper: Mark the closest empty supply place location
 5. Kuudra Build Progress: Show the build progress of all build locations
 6. Kuudra Fuel Progress: Show the fuel progress
+7. Kuudra Head Pointer: Tell you where is the kuudra head
 
 ### Miscellaneous
 1. Hide NPC Abiphone Contact: Hide NPC Abiphone Contact will hide the NPC contact by input their name spilit by space
