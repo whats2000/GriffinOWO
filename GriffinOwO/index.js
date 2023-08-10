@@ -100,6 +100,7 @@ register("chat", () => {
         ChatLib.chat("&c - &eFix !join (!m7, !f7) into new format changed by hypixel");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Change");
+        ChatLib.chat("&d = &eNo change currently");
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
     }, 1000);
 }).setCriteria("Welcome to Hypixel SkyBlock${after}");
