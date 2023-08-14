@@ -102,7 +102,7 @@ register("chat", () => {
         ChatLib.chat("&c - &eFix Bug in Terminator Exchange Click will keep holding state after swap");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Change");
-        ChatLib.chat("&d = &eNo change currently");
+        ChatLib.chat("&d = &eChange P5 decoy gyro waypoint becomes more clearly");
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
     }, 1000);
 }).setCriteria("Welcome to Hypixel SkyBlock${after}");

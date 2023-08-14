@@ -181,6 +181,7 @@ export const MiningWaypoint = [
     }
 ];
 
+// Class number index for ["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage"]
 export const DecoyWaypoint = [
     {
         "name": "§bDecoy",
@@ -215,7 +216,7 @@ export const DecoyWaypoint = [
         class: [3]
     },
     {
-        "name": "§6Decoy",
+        "name": "§6Decoy (Optional)",
         "x": 91,
         "y": 11,
         "z": 62,
@@ -256,6 +257,7 @@ export const DecoyWaypoint = [
     }
 ];
 
+// Class number index for ["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage"]
 export const GyroWaypoint = [
     {
         "name": "§6Gyro skeletons",
@@ -287,7 +289,7 @@ export const GyroWaypoint = [
         "y": 5,
         "z": 102,
         show: [75],
-        class: [1, 2, 3, 4, 5]
+        class: [4, 5]
     },
     {
         "name": "§aGyro",
@@ -295,23 +297,23 @@ export const GyroWaypoint = [
         "y": 5,
         "z": 85,
         show: [75],
-        class: [1, 2, 3, 4, 5]
+        class: [3, 5]
     },
     {
-        "name": "§cGyro",
+        "name": "§cGyro (Optional)",
         "x": 32,
         "y": 5,
         "z": 47,
         show: [75],
-        class: [1, 2, 3, 4, 5]
+        class: [3, 4, 5]
     },
     {
-        "name": "§6Gyro",
+        "name": "§6Gyro (Optional)",
         "x": 84,
         "y": 5,
         "z": 62,
         show: [75],
-        class: [1, 2, 3, 4, 5]
+        class: [3, 4, 5]
     }
 ];
 
