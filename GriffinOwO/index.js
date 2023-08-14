@@ -99,6 +99,7 @@ register("chat", () => {
         ChatLib.chat("&b&l                New Feature");
         ChatLib.chat("&a + &eLava Fishing Alert (Crimson Island)");
         ChatLib.chat("&a + &eShow Pet Candy Used (Miscellaneous)");
+        ChatLib.chat("&a + &eDungeon Waypoint Practice Mode (Dungeon)");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
         ChatLib.chat("&c - &eFix Bug in Terminator Exchange Click will keep holding state after swap");

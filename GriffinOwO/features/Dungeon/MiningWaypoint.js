@@ -11,7 +11,7 @@ registerEventListener(() => Settings.dungeonMiningWaypoint && (checkInZone("The 
         if (phrase < 71) return;
 
         MiningWaypoint.forEach(waypoint => {
-            if (!waypoint.show.includes(phrase)) return;
+            if (!waypoint.show.includes(phrase) && !Settings.dungeonWaypointPracticeMode) return;
             if (Settings.dungeonWaypointMode !== 0) {
                 if (Settings.dungeonWaypointMode === 6) {
                     if (!waypoint.class.includes(getPlayerClass())) return;

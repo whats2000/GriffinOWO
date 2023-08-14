@@ -11,7 +11,7 @@ registerEventListener(() => Settings.dungeonGyroWaypoint && (checkInZone("The Ca
         if (phrase < 71) return;
 
         GyroWaypoint.forEach(waypoint => {
-            if (!waypoint.show.includes(phrase)) return;
+            if (!waypoint.show.includes(phrase) && !Settings.dungeonWaypointPracticeMode) return;
             if (Settings.dungeonWaypointMode !== 0) {
                 if (Settings.dungeonWaypointMode === 6) {
                     if (!waypoint.class.includes(getPlayerClass())) return;
