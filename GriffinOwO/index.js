@@ -42,6 +42,7 @@ import "./features/Combat/TerminatorExchangeClick";
 // CrimsonIsland
 import "./features/CrimsonIsland/BrokenHype";
 import "./features/CrimsonIsland/FlareTrade";
+import "./features/CrimsonIsland/LavaFishingAlert";
 import "./features/CrimsonIsland/VanquisherAlert";
 
 // Diana
@@ -95,7 +96,7 @@ register("chat", () => {
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
         ChatLib.chat(`          &6[GriffinOwO] &f&aChange Log (${version})`);
         ChatLib.chat("&b&l                New Feature");
-        ChatLib.chat("&a + &eNo change currently");
+        ChatLib.chat("&a + &eLava Fishing Alert (Crimson Island)");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
         ChatLib.chat("&c - &eFix Bug in Terminator Exchange Click will keep holding state after swap");

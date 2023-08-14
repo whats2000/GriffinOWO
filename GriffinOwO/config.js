@@ -171,7 +171,7 @@ class Settings {
         category: "Crimson Island",
         subcategory: "Vanquisher Alert"
     })
-    vanquisher = true;
+    vanquisher = false;
 
     @SelectorProperty({
         name: "Vanquisher Alert Chat",
@@ -181,6 +181,23 @@ class Settings {
         options: ["party", "guild", "all"],
     })
     vanquisherAlertChat = 0;
+
+    @SwitchProperty({
+        name: "Lava Sea Creature Alert",
+        description: "Toggle to send the coordinate of Mythic Lava Sea Creatures",
+        category: "Crimson Island",
+        subcategory: "Lava Sea Creature Alert"
+    })
+    lavaSeaCreature = false;
+
+    @SelectorProperty({
+        name: "Lava Sea Creature Alert Chat",
+        description: "Select an option to send the coordinate of Mythic Lava Sea Creatures",
+        category: "Crimson Island",
+        subcategory: "Lava Sea Creature Alert",
+        options: ["party", "guild", "all"],
+    })
+    lavaSeaCreatureAlertChat = 0;
 
     @SwitchProperty({
         name: "Vanquisher killed Alert",
@@ -683,6 +700,8 @@ class Settings {
         this.addDependency("Broken Hype Detect Only On Flare", "Broken Hype Detect");
 
         this.addDependency("Vanquisher Alert Chat", "Vanquisher Alert");
+
+        this.addDependency("Lava Sea Creature Alert Chat", "Lava Sea Creature Alert");
 
         this.addDependency("Recieve waypoint from chat include yourself", "Recieve waypoint from chat");
         this.addDependency("Waypoint Beacon Color", "Recieve waypoint from chat");
