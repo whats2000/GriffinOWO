@@ -69,6 +69,7 @@ A chattrigger script helper for Hypixel Skyblock
 
 ### Miscellaneous
 1. Hide NPC Abiphone Contact: Hide NPC Abiphone Contact will hide the NPC contact by inputting their name split by space
+2. Show Pet Candy Used: Show Pet Candy Used amounts behind the pet name even when it is max level
 
 ### Fun command
 1. `!rng`: show what your today luck
