@@ -583,8 +583,16 @@ class Settings {
     dungeonWaypointMode = 0;
 
     @SwitchProperty({
+        name: "Dungeon Waypoint Practice Mode",
+        description: "Show all the waypoint no matter the phrase, for practice usage",
+        category: "Dungeon",
+        subcategory: "Dungeon Waypoint",
+    })
+    dungeonWaypointPracticeMode = false;
+
+    @SwitchProperty({
         name: "Dungeon Decoy Waypoint",
-        description: "Show where to place decoy (Need disable SBA hide boss message, others mod is fine)",
+        description: "Show where to place decoy \n§e(Need disable §lSBA §f§ehide boss message, others mod is fine)",
         category: "Dungeon",
         subcategory: "Dungeon Waypoint",
     })
@@ -592,7 +600,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Dungeon Gyro Waypoint",
-        description: "Show where to use gyro (Need disable SBA hide boss message, others mod is fine)",
+        description: "Show where to use gyro \n§e(Need disable §lSBA §f§ehide boss message, others mod is fine)",
         category: "Dungeon",
         subcategory: "Dungeon Waypoint",
     })
@@ -600,7 +608,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Dungeon Mining Waypoint",
-        description: "Show where to mine down phrase and where to get through (Need disable SBA hide boss message, others mod is fine)",
+        description: "Show where to mine down phrase and where to get through \n§e(Need disable §lSBA §f§ehide boss message, others mod is fine)",
         category: "Dungeon",
         subcategory: "Dungeon Waypoint",
     })
