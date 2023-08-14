@@ -19,7 +19,7 @@ A chattrigger script helper for Hypixel Skyblock
 2. Transfer Back Not Welcome Player: Transfer Back the leader if the player is not in the whitelist or the player is in the blacklist
 
 ### Party Chat Trigger Command
-1. `!warp`: allow party members to warp the party (Can be cancel by `!c`)
+1. `!warp`: allow party members to warp the party (Can be canceled by `!c`)
 2. `!allinv`: allow party members to enable all invite
 3. `!ptme`: allow party members to be the new leader
 4. `!join [dungeon floor (ex: f7, m7) | kuudra tier (ex: t1, t5)]`: allow party members to start the dungeon or kuudra (No downtime)
@@ -33,24 +33,25 @@ A chattrigger script helper for Hypixel Skyblock
 1. Inquis Alert: Allow you to tell the inquisher spot in the party chat
 
 ### Dungeon
-1. Dungeon Decoy Waypoint: Show where to place decoy
+1. Dungeon Decoy Waypoint: Show where to place the decoy
 2. Dungeon Gyro Waypoint: Show where to use gyro
-3. Dungeon Mining Waypoint: Show where to mine down phrase and where to get through
-4. Dragon Timer: Dragon Timer will display the dragon spawning count down depend on skip order [R -> O -> B -> P -> G]
+3. Dungeon Mining Waypoint: Show where to mine down phrases and where to get through
+4. Dragon Timer: Dragon Timer will display the dragon spawning countdown depending on skip order [R -> O -> B -> P -> G]
 5. Dragon Spawn Message/Title: Better dragon spawn detect to not trigger by fire veil wand
 
 ### Combat
 1. Alignment Tracker: The alignment Tracker for the gyro wand will track both your and other players' alignment
 2. Gyro Cool Down Tracker: Gyro Cool Down Tracker for the gyro wand will track the cd of the gyro wand right click ability
-3. Gyro Range Marker: Gyro Range Marker will draw a gyro circle when in valid distance and tell you if in cool down
+3. Gyro Range Marker: Gyro Range Marker will draw a gyro circle when in the valid distance and tell you if it is in cooldown
 4. Flare Range Marker: Display the range of the flare
 5. Flare Timer: Flare Timer will display the flare time when you are in flare range
-6. Terminator Exchange Click: Will exchange your attack and use keybind while hold terminator
+6. Terminator Exchange Click: Will exchange your attack and use keybind while holding the terminator
 
 ### Crimson Island
 1. Broke Hype Detect: Detect Hype stopped grand combat xp without using the book of state
 2. Flare Trade: Party other players and send vanquisher spot and disband the party after send
-3. Vanquisher Alert: Tell the location and x y z of the vanquisher and the location to the party with patcher format coord
+3. Vanquisher Alert: Tell the location and x y z of the vanquisher and the location to the customized channel with patcher format coord
+4. Lava Sea Creature Alert: Tell the location and x y z of the Mythic Lava Sea Creatures and the location to the customized channel with patcher format coord
 
 ### Rift
 1. Enigma Souls Waypoint: Show Enigma Souls Waypoint, you can use `/enigma` too
@@ -59,7 +60,7 @@ A chattrigger script helper for Hypixel Skyblock
 
 ### Kuudra
 1. Kuudra 2/2 reparty: Skip cd when starting a new run
-2. Kuudra Show Phrase: Show what kuudra stage is it
+2. Kuudra Show Phrase: Show what kuudra stage it is
 3. Kuudra Supply Waypoint: It can show if other players are around it, and can beacon change color
 4. Kuudra Supply Pearl Helper: Mark the closest empty supply place location
 5. Kuudra Build Progress: Show the build progress of all build locations
@@ -67,11 +68,11 @@ A chattrigger script helper for Hypixel Skyblock
 7. Kuudra Head Pointer: Tell you where is the kuudra head
 
 ### Miscellaneous
-1. Hide NPC Abiphone Contact: Hide NPC Abiphone Contact will hide the NPC contact by input their name spilit by space
+1. Hide NPC Abiphone Contact: Hide NPC Abiphone Contact will hide the NPC contact by inputting their name split by space
 
 ### Fun command
 1. `!rng`: show what your today luck
-2. Custom Death Message: Send a custom death message in dungeon, use `{player}` to replace the ign of the player, use `|` to spilt for mutiple messages
+2. Custom Death Message: Send a custom death message in the dungeon, use `{player}` to replace the IGN of the player, and use `|` to spill for mutiple messages
 
 ## What's more?
 * You can toggle `whitelist mode/blacklist mode` on config now, use `/griffin` or `/gf` to see more
