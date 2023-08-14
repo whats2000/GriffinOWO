@@ -669,6 +669,14 @@ class Settings {
     })
     hideAbiphone = "";
 
+    @SwitchProperty({
+        name: "Show Pet Candy Used",
+        description: "Show Pet Candy Used amounts behind the pet name",
+        category: "Miscellaneous",
+        subcategory: "Show Pet Candy Used",
+    })
+    showPetCandyUsed = false;
+
     constructor() {
         this.initialize(this);
         this.addDependency("Enigma Souls Waypoint Beacon Color", "Enigma Souls Waypoint");

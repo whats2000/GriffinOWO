@@ -4,6 +4,14 @@ export function isHoldItem(id) {
     return Player.getHeldItem()?.getNBT()?.toObject()?.tag?.ExtraAttributes?.id === id;
 }
 
+export function getId(item) {
+    return item?.getNBT()?.toObject()?.tag?.ExtraAttributes?.id;
+}
+
+export function getCandyUsed(pet) {
+    return JSON.parse(pet.getNBT()?.toObject()?.tag?.ExtraAttributes?.petInfo).candyUsed;
+}
+
 export function checkWhitelist(player) {
     const whitelist_mode = Settings.whitelist;
     const blacklist_mode = Settings.blacklist;

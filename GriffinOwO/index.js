@@ -67,6 +67,7 @@ import "./features/Kuudra/KuudraSupplyWaypoint";
 import "./features/Kuudra/KuudraTwoTwoReparty";
 
 // Miscellaneous
+import "./features/Miscellaneous/DisplayPetCandy";
 import "./features/Miscellaneous/HideAbiphone";
 
 // Party
@@ -97,6 +98,7 @@ register("chat", () => {
         ChatLib.chat(`          &6[GriffinOwO] &f&aChange Log (${version})`);
         ChatLib.chat("&b&l                New Feature");
         ChatLib.chat("&a + &eLava Fishing Alert (Crimson Island)");
+        ChatLib.chat("&a + &eShow Pet Candy Used (Miscellaneous)");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
         ChatLib.chat("&c - &eFix Bug in Terminator Exchange Click will keep holding state after swap");
