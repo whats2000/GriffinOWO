@@ -679,11 +679,43 @@ class Settings {
 
     @SwitchProperty({
         name: "Show Pet Candy Used",
-        description: "Show Pet Candy Used amounts behind the pet name",
+        description: "Show Pet Candy Used amounts below the pet lore even it is level 100",
         category: "Miscellaneous",
         subcategory: "Show Pet Candy Used",
     })
     showPetCandyUsed = false;
+
+    @SwitchProperty({
+        name: "Show Pet Candy Used Behind Name",
+        description: "Show Pet Candy Used will also add behind the pet's name",
+        category: "Miscellaneous",
+        subcategory: "Show Pet Candy Used",
+    })
+    showPetCandyUsedBehindName = false;
+
+    @SwitchProperty({
+        name: "Show Pet XP",
+        description: "Show Pet XP below the pet lore",
+        category: "Miscellaneous",
+        subcategory: "Show Pet XP",
+    })
+    showPetXP = false;
+
+    @SwitchProperty({
+        name: "Show Pet XP Overflow",
+        description: "Show Pet XP will also show overflow percentage",
+        category: "Miscellaneous",
+        subcategory: "Show Pet XP",
+    })
+    showPetXPOverflow = false;
+
+    @SwitchProperty({
+        name: "Show Pet XP To Max Level",
+        description: "Show Pet XP will also show how much XP require to max level",
+        category: "Miscellaneous",
+        subcategory: "Show Pet XP",
+    })
+    showPetXPToMaxLevel = false;
 
     constructor() {
         this.initialize(this);
@@ -726,6 +758,11 @@ class Settings {
 
         this.addDependency("Dragon Timer Location", "Dragon Timer");
         this.addDependency("Dragon Spawn Title show timer", "Dragon Spawn Title");
+
+        this.addDependency("Show Pet Candy Used Behind Name", "Show Pet Candy Used");
+
+        this.addDependency("Show Pet XP Overflow", "Show Pet XP");
+        this.addDependency("Show Pet XP To Max Level", "Show Pet XP");
     }
 
     sync() {

@@ -1,5 +1,7 @@
 import Settings from "../config";
 
+const NBTTagString = Java.type("net.minecraft.nbt.NBTTagString");
+
 export function isHoldItem(id) {
     return Player.getHeldItem()?.getNBT()?.toObject()?.tag?.ExtraAttributes?.id === id;
 }
@@ -11,6 +13,27 @@ export function getId(item) {
 export function getCandyUsed(pet) {
     return JSON.parse(pet.getNBT()?.toObject()?.tag?.ExtraAttributes?.petInfo).candyUsed;
 }
+
+export function getPetXP(pet) {
+    return JSON.parse(pet.getNBT()?.toObject()?.tag?.ExtraAttributes?.petInfo).exp;
+}
+
+export function getPetType(pet) {
+    return JSON.parse(pet.getNBT()?.toObject()?.tag?.ExtraAttributes?.petInfo).type;
+}
+
+export function formatNumber(num) {
+    if (num >= 1000000000) {
+        return (num / 1000000000).toFixed(2) + "b";
+    } else if (num >= 1000000) {
+        return (num / 1000000).toFixed(2) + "m";
+    } else if (num >= 1000) {
+        return (num / 1000).toFixed(2) + "k";
+    } else {
+        return num.toString();
+    }
+}
+
 
 export function checkWhitelist(player) {
     const whitelist_mode = Settings.whitelist;
@@ -124,4 +147,42 @@ export function getVec3Pos(vec) {
 export function getVec3iPos(vec) {
     // [Vec3i.getX(), Vec3i.getY(), Vec3i.getZ()]
     return [parseInt(vec.func_177958_n()), parseInt(vec.func_177956_o()), parseInt(vec.func_177952_p())]
+}
+
+// Reference to https://github.com/Soopyboo32/SoopyV2/blob/master/src/utils/utils.js
+export function addLore(item, prefix, value) {
+
+    const list = item.
+        getNBT().
+        getCompoundTag("tag").
+        getCompoundTag("display").
+        getTagMap().
+        get("Lore");
+
+    let done = false;
+
+    // Use to go pass all line 
+    // mapping: list.tagCount
+    for (let i = 0; i < list.func_74745_c(); i++) {
+        // Check if at target line
+        // mapping: list.getStringTagAt
+        if (String(list.func_150307_f(i)).startsWith(prefix)) {
+            // Replace the line to "prefix + value"
+            // mapping: list.set()
+            list.func_150304_a(i, new NBTTagString(prefix + value));
+            done = true;
+        }
+    }
+    if (!done) {
+        // If not exist before then add it
+        // mapping: list.appendTag()
+        list.func_74742_a(new NBTTagString(prefix + value));
+    }
+
+    item.
+        getNBT().
+        getCompoundTag("tag").
+        getCompoundTag("display").
+        getRawNBT().
+        func_74782_a("Lore", list); // mapping: setTag("Lore", list)
 }

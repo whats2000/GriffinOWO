@@ -68,6 +68,7 @@ import "./features/Kuudra/KuudraTwoTwoReparty";
 
 // Miscellaneous
 import "./features/Miscellaneous/DisplayPetCandy";
+import "./features/Miscellaneous/DisplayPetXP";
 import "./features/Miscellaneous/HideAbiphone";
 
 // Party
@@ -99,6 +100,7 @@ register("chat", () => {
         ChatLib.chat("&b&l                New Feature");
         ChatLib.chat("&a + &eLava Fishing Alert (Crimson Island)");
         ChatLib.chat("&a + &eShow Pet Candy Used (Miscellaneous)");
+        ChatLib.chat("&a + &eShow Pet XP (Miscellaneous)");
         ChatLib.chat("&a + &eDungeon Waypoint Practice Mode (Dungeon)");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
