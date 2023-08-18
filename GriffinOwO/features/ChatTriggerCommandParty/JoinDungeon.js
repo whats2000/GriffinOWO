@@ -1,6 +1,11 @@
 import Settings from "../../config";
 import { getIGN, checkWhitelist } from "../../utils/Function";
+import { registerCommand } from "../../utils/CommandQueue";
 import { registerEventListener } from "../../utils/EventListener";
+
+let lastAttemptWarpTime = 0;
+let joinFloor = "";
+let triggerPlayer = "";
 
 function number_to_text(num) {
     switch (num) {
@@ -29,15 +34,16 @@ registerEventListener(() => Settings.join,
         else
             type = "master_catacombs_";
 
+        ChatLib.chat('&2[GriffinOwO] &fTrying to get party list.');
+        registerCommand(() => {
+            ChatLib.command('party list');
+        });
+
         const floorText = number_to_text(floor);
 
-        setTimeout(() => {
-            ChatLib.chat(`&2[GriffinOwO] &fTrying to join dungeon ${type}${floorText}. [${player}]`);
-        }, 50);
-
-        setTimeout(() => {
-            ChatLib.command(`joindungeon ${type}${floorText}`);
-        }, 300);
+        lastAttemptWarpTime = new Date().getTime();
+        joinFloor = `${type}${floorText}`;
+        triggerPlayer = player;
     }).setCriteria(/^Party > (.+): ![Jj][Oo][Ii][Nn] ([FMfm])([0-7])$/)
 );
 
@@ -48,15 +54,16 @@ registerEventListener(() => Settings.join,
 
         if (!checkWhitelist(player)) return;
 
+        ChatLib.chat('&2[GriffinOwO] &fTrying to get party list.');
+        registerCommand(() => {
+            ChatLib.command('party list');
+        });
+
         const floorText = number_to_text(floor);
 
-        setTimeout(() => {
-            ChatLib.chat(`&2[GriffinOwO] &fTrying to join dungeon master_catacombs_${floorText}. [${player}]`);
-        }, 50);
-
-        setTimeout(() => {
-            ChatLib.command(`joindungeon master_catacombs_${floorText}`);
-        }, 300);
+        lastAttemptWarpTime = new Date().getTime();
+        joinFloor = `master_catacombs_${floorText}`;
+        triggerPlayer = player;
     }).setCriteria(/^Party > (.+): ![Mm][ ]?([1-7])$/)
 );
 
@@ -66,14 +73,39 @@ registerEventListener(() => Settings.join,
 
         if (!checkWhitelist(player)) return;
 
+        ChatLib.chat('&2[GriffinOwO] &fTrying to get party list.');
+        registerCommand(() => {
+            ChatLib.command('party list');
+        });
+
         const floorText = number_to_text(floor);
 
+        lastAttemptWarpTime = new Date().getTime();
+        joinFloor = `catacombs_${floorText}`;
+        triggerPlayer = player;
+    }).setCriteria(/^Party > (.+): ![Ff][ ]?([0-7])$/)
+);
+
+registerEventListener(() => Settings.join,
+    register("chat", (mode, names, e) => {
+        if (new Date().getTime() - lastAttemptWarpTime > 1000) return;
+        if (mode !== "Leader") return;
+        const myIGN = getIGN(Player.getName()).toLowerCase();
+
+        let leader = getIGN(names).toLowerCase();
+        if (leader !== myIGN) {
+            lastAttemptWarpTime = 0;
+            return;
+        };
+
         setTimeout(() => {
-            ChatLib.chat(`&2[GriffinOwO] &fTrying to join dungeon catacombs_${floorText}. [${player}]`);
+            ChatLib.chat(`&2[GriffinOwO] &fTrying to join ${joinFloor}. [${triggerPlayer}]`);
         }, 50);
 
         setTimeout(() => {
-            ChatLib.command(`joindungeon catacombs_${floorText}`);
+            registerCommand(() => {
+                ChatLib.command(`joindungeon ${joinFloor}`);
+            });
         }, 300);
-    }).setCriteria(/^Party > (.+): ![Ff][ ]?([0-7])$/)
+    }).setChatCriteria("Party ${mode}: ${names}")
 );

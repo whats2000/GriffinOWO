@@ -110,6 +110,7 @@ register("chat", () => {
         ChatLib.chat("&c - &eFix Bug in Terminator Exchange Click will keep holding state after swap");
         ChatLib.chat("&c - &eFix Some Spelling in config");
         ChatLib.chat("&c - &eFix lost class information when reconnect in dungeon, now will recheck when switch phase");
+        ChatLib.chat("&c - &eFix !join will trigger when you are not leader");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Change");
         ChatLib.chat("&d = &eChange P5 decoy gyro waypoint becomes more clearly");

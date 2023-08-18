@@ -1,6 +1,11 @@
 import Settings from "../../config";
 import { getIGN, checkWhitelist } from "../../utils/Function";
+import { registerCommand } from "../../utils/CommandQueue";
 import { registerEventListener } from "../../utils/EventListener";
+
+let lastAttemptWarpTime = 0;
+let joinFloor = "";
+let triggerPlayer = "";
 
 function number_to_text(num) {
     switch (num) {
@@ -18,15 +23,16 @@ registerEventListener(() => Settings.join,
 
         if (!checkWhitelist(player)) return;
 
+        ChatLib.chat('&2[GriffinOwO] &fTrying to get party list.');
+        registerCommand(() => {
+            ChatLib.command('party list');
+        });
+
         const floorText = number_to_text(floor);
 
-        setTimeout(() => {
-            ChatLib.chat(`&2[GriffinOwO] &fTrying to join kuudra ${floorText}. [${player}]`);
-        }, 50);
-
-        setTimeout(() => {
-            ChatLib.command(`joindungeon kuudra_${floorText}`);
-        }, 300);
+        lastAttemptWarpTime = new Date().getTime();
+        joinFloor = `kuudra_${floorText}`;
+        triggerPlayer = player;
     }).setCriteria(/^Party > (.+): ![Jj][Oo][Ii][Nn] [Tt]([1-5])$/)
 );
 
@@ -37,14 +43,39 @@ registerEventListener(() => Settings.join,
 
         if (!checkWhitelist(player)) return;
 
+        ChatLib.chat('&2[GriffinOwO] &fTrying to get party list.');
+        registerCommand(() => {
+            ChatLib.command('party list');
+        });
+
         const floorText = number_to_text(floor);
 
+        lastAttemptWarpTime = new Date().getTime();
+        joinFloor = `kuudra_${floorText}`;
+        triggerPlayer = player;
+    }).setCriteria(/^Party > (.+): ![Tt][ ]?([1-5])$/)
+);
+
+registerEventListener(() => Settings.join,
+    register("chat", (mode, names, e) => {
+        if (new Date().getTime() - lastAttemptWarpTime > 1000) return;
+        if (mode !== "Leader") return;
+        const myIGN = getIGN(Player.getName()).toLowerCase();
+
+        let leader = getIGN(names).toLowerCase();
+        if (leader !== myIGN) {
+            lastAttemptWarpTime = 0;
+            return;
+        };
+
         setTimeout(() => {
-            ChatLib.chat(`&2[GriffinOwO] &fTrying to join kuudra ${floorText}. [${player}]`);
+            ChatLib.chat(`&2[GriffinOwO] &fTrying to join ${joinFloor}. [${triggerPlayer}]`);
         }, 50);
 
         setTimeout(() => {
-            ChatLib.command(`joindungeon kuudra_${floorText}`);
+            registerCommand(() => {
+                ChatLib.command(`joindungeon ${joinFloor}`);
+            });
         }, 300);
-    }).setCriteria(/^Party > (.+): ![Tt][ ]?([1-5])$/)
+    }).setChatCriteria("Party ${mode}: ${names}")
 );

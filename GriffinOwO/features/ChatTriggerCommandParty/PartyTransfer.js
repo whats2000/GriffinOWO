@@ -13,6 +13,6 @@ registerEventListener(() => Settings.ptme,
             ChatLib.command(`p transfer ${player}`)
         }, 300);
 
-    }).setCriteria(/^Party > (.+): ![Pp][Tt][Mm][Ee]$/)
+    }).setCriteria(/^Party > (.+): ![Pp][Tt][ ]?[Mm][Ee]$/)
 );
 
