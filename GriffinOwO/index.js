@@ -103,9 +103,13 @@ register("chat", () => {
         ChatLib.chat("&a + &eShow Pet Candy Used (Miscellaneous)");
         ChatLib.chat("&a + &eShow Pet XP (Miscellaneous)");
         ChatLib.chat("&a + &eDungeon Waypoint Practice Mode (Dungeon)");
+        ChatLib.chat("&a + &eDecoy killed Title (Dungeon)");
+        ChatLib.chat("&a + &eDecoy Killed Message (Dungeon)");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
         ChatLib.chat("&c - &eFix Bug in Terminator Exchange Click will keep holding state after swap");
+        ChatLib.chat("&c - &eFix Some Spelling in config");
+        ChatLib.chat("&c - &eFix lost class information when reconnect in dungeon, now will recheck when switch phase");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Change");
         ChatLib.chat("&d = &eChange P5 decoy gyro waypoint becomes more clearly");
