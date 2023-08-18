@@ -7,7 +7,7 @@ let partyMember = 0;
 let party = {};
 let cdReduce = 1;
 
-export function updateClass() {
+function updateClass() {
     const PartyLine = TabList.getNames().find(tab => tab.includes("§r§b§lParty §r§f("));
     if (PartyLine) {
         const regex = /\d+/g;
@@ -62,55 +62,87 @@ export function updateClass() {
     }
 }
 
+function reloadClass() {
+    partyRetryCount = 0;
+    partyMember = 0;
+    party = {};
+
+    updateClass();
+}
+
 registerEventListener(() => checkInZone("The Catacombs (M7)") || checkInZone("The Catacombs (F7)"),
     register('chat', () => {
         phase = 71;
+
+        if (Object.keys(party).length === 0) {
+            reloadClass();
+        }
     }).setCriteria("[BOSS] Maxor: WELL! WELL! WELL! LOOK WHO'S HERE!")
 );
 
 registerEventListener(() => checkInZone("The Catacombs (M7)") || checkInZone("The Catacombs (F7)"),
     register('chat', () => {
         phase = 72;
+
+        if (Object.keys(party).length === 0) {
+            reloadClass();
+        }
     }).setCriteria("[BOSS] Storm: Pathetic Maxor, just like expected.")
 );
 
 registerEventListener(() => checkInZone("The Catacombs (M7)") || checkInZone("The Catacombs (F7)"),
     register('chat', () => {
         phase = 73;
+
+        if (Object.keys(party).length === 0) {
+            reloadClass();
+        }
     }).setCriteria("[BOSS] Goldor: Who dares trespass into my domain?")
 );
 
 registerEventListener(() => checkInZone("The Catacombs (M7)") || checkInZone("The Catacombs (F7)"),
     register('chat', () => {
         phase = 74;
+
+        if (Object.keys(party).length === 0) {
+            reloadClass();
+        }
     }).setCriteria("[BOSS] Necron: Finally, I heard so much about you. The Eye likes you very much.")
 );
 
 registerEventListener(() => checkInZone("The Catacombs (M7)") || checkInZone("The Catacombs (F7)"),
     register('chat', () => {
         phase = 74;
+
+        if (Object.keys(party).length === 0) {
+            reloadClass();
+        }
     }).setCriteria("[BOSS] Necron: You went further than any human before, congratulations.")
 );
 
 registerEventListener(() => checkInZone("The Catacombs (M7)"),
     register('chat', () => {
         phase = 75;
+
+        if (Object.keys(party).length === 0) {
+            reloadClass();
+        }
     }).setCriteria("[BOSS] Wither King: Ohhh?")
 );
 
 registerEventListener(() => checkInZone("The Catacombs (M7)"),
     register('chat', () => {
         phase = 75;
+
+        if (Object.keys(party).length === 0) {
+            reloadClass();
+        }
     }).setCriteria("[BOSS] Wither King: You.. again?")
 );
 
 registerEventListener(() => checkInWorld("Dungeon"),
     register('chat', () => {
-        partyRetryCount = 0;
-        partyMember = 0;
-        party = {};
-
-        updateClass();
+        reloadClass();
     }).setCriteria("Starting in 1 second${end}")
 );
 

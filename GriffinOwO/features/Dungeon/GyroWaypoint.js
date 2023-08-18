@@ -7,11 +7,11 @@ import { registerEventListener } from "../../utils/EventListener";
 
 registerEventListener(() => Settings.dungeonGyroWaypoint && (checkInZone("The Catacombs (M7)") || checkInZone("The Catacombs (F7)")),
     register("renderWorld", () => {
-        const phrase = getDungeonPhase();
-        if (phrase < 71) return;
+        const phase = getDungeonPhase();
+        if (phase < 71) return;
 
         GyroWaypoint.forEach(waypoint => {
-            if (!waypoint.show.includes(phrase) && !Settings.dungeonWaypointPracticeMode) return;
+            if (!waypoint.show.includes(phase) && !Settings.dungeonWaypointPracticeMode) return;
             if (Settings.dungeonWaypointMode !== 0) {
                 if (Settings.dungeonWaypointMode === 6) {
                     if (!waypoint.class.includes(getPlayerClass())) return;

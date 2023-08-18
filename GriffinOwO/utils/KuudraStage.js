@@ -5,19 +5,17 @@ import { registerEventListener } from "../utils/EventListener";
 let phase = -1;
 
 // Reset When Start
-registerEventListener(() => checkInWorld("Kuudra"),
-    register("chat", () => {
-        phase = 0;
-        if (Settings.kuudraShowPhrase)
-            Client.Companion.showTitle(`&aGet Ready`, "", 5, 25, 5);
-    }).setCriteria("[NPC] Elle: Talk with me to begin!")
-);
+register("chat", () => {
+    phase = 0;
+    if (Settings.kuudraShowPhase)
+        Client.Companion.showTitle(`&aGet Ready`, "", 5, 25, 5);
+}).setCriteria("[NPC] Elle: Talk with me to begin!");
 
 // Supply Spawn
 registerEventListener(() => checkInWorld("Kuudra"),
     register("chat", () => {
         phase = 1;
-        if (Settings.kuudraShowPhrase)
+        if (Settings.kuudraShowPhase)
             Client.Companion.showTitle(`&aSupply Spawn`, "", 5, 25, 5);
     }).setCriteria("[NPC] Elle: Okay adventurers, I will go and fish up Kuudra!")
 );
@@ -26,7 +24,7 @@ registerEventListener(() => checkInWorld("Kuudra"),
 registerEventListener(() => checkInWorld("Kuudra"),
     register("chat", () => {
         phase = 2;
-        if (Settings.kuudraShowPhrase)
+        if (Settings.kuudraShowPhase)
             Client.Companion.showTitle(`&aSupply Done`, "", 5, 25, 5);
     }).setCriteria("[NPC] Elle: OMG! Great work collecting my supplies!")
 );
@@ -35,7 +33,7 @@ registerEventListener(() => checkInWorld("Kuudra"),
 registerEventListener(() => checkInWorld("Kuudra"),
     register("chat", () => {
         phase = 3;
-        if (Settings.kuudraShowPhrase)
+        if (Settings.kuudraShowPhase)
             Client.Companion.showTitle(`&aBuild Done`, "", 5, 25, 5);
     }).setCriteria("[NPC] Elle: Phew! The Ballista is finally ready! It should be strong enough to tank Kuudra's blows now!")
 );
@@ -44,8 +42,8 @@ registerEventListener(() => checkInWorld("Kuudra"),
 registerEventListener(() => checkInWorld("Kuudra"),
     register("chat", () => {
         phase = 4;
-        if (Settings.kuudraShowPhrase)
-            Client.Companion.showTitle(`&aHit Phrase Done`, "", 5, 25, 5);
+        if (Settings.kuudraShowPhase)
+            Client.Companion.showTitle(`&aHit Phase Done`, "", 5, 25, 5);
     }).setCriteria("[NPC] Elle: POW! SURELY THAT'S IT! I don't think he has any more in him!")
 );
 

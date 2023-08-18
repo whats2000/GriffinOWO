@@ -49,6 +49,7 @@ import "./features/CrimsonIsland/VanquisherAlert";
 import "./features/Diana/InquisitorAlert";
 
 // Dungeon
+import "./features/Dungeon/DecoyDeadAlert";
 import "./features/Dungeon/DecoyWaypoint";
 import "./features/Dungeon/DragonTimer";
 import "./features/Dungeon/GyroWaypoint";

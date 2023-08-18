@@ -80,7 +80,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Gyro Cool Down Tracker",
-        description: "Gyro Cool Down Tracker for gyro wand will track the cd  of the gyro wand right click ability",
+        description: "Gyro Cool Down Tracker for gyro wand will track the cd of the gyro wand right click ability",
         category: "Combat",
         subcategory: "Gyro Cool Down HUD",
     })
@@ -143,7 +143,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Terminator Exchange Click",
-        description: "&b[WIP] &fWill exchange your attack and use keybind while hold terminator \n&a(Note: This feature will change your client local keybind setting in Controls while hold terminator)",
+        description: "&b[WIP] &fWill exchange your attack and use keybind while hold terminator \n&e(Note: This feature will change your client local keybind setting in Controls while hold terminator)",
         category: "Combat",
         subcategory: "Terminator Exchange Click",
     })
@@ -430,12 +430,12 @@ class Settings {
     customDeathMessage = "";
 
     @SwitchProperty({
-        name: "Kuudra Show Phrase",
-        description: "Tell you what is current phrase",
+        name: "Kuudra Show Phase",
+        description: "Tell you what is current phase",
         category: "Kuudra",
-        subcategory: "Kuudra Show Phrase"
+        subcategory: "Kuudra Show Phase"
     })
-    kuudraShowPhrase = false;
+    kuudraShowPhase = false;
 
     @SwitchProperty({
         name: "Kuudra Head Pointer",
@@ -584,7 +584,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Dungeon Waypoint Practice Mode",
-        description: "Show all the waypoint no matter the phrase, for practice usage",
+        description: "Show all the waypoint no matter the phase, for practice usage",
         category: "Dungeon",
         subcategory: "Dungeon Waypoint",
     })
@@ -608,7 +608,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Dungeon Mining Waypoint",
-        description: "Show where to mine down phrase and where to get through \n§e(Need disable §lSBA §f§ehide boss message, others mod is fine)",
+        description: "Show where to mine down phase and where to get through \n§e(Need disable §lSBA §f§ehide boss message, others mod is fine)",
         category: "Dungeon",
         subcategory: "Dungeon Waypoint",
     })
@@ -667,6 +667,23 @@ class Settings {
         subcategory: "Dragon Spawn",
     })
     dragonSpawnTitleShowTimer = false;
+
+    @SwitchProperty({
+        name: "Decoy Killed Title",
+        description: "Dragon spawn will show Title in screen with timer",
+        category: "Dungeon",
+        subcategory: "Decoy Tracker",
+    })
+    decoyKilledTitle = false;
+
+    @TextProperty({
+        name: "Decoy Killed Message",
+        description: "Show a message when the decoy is dead, leave empty if don't want show",
+        category: "Dungeon",
+        subcategory: "Decoy Tracker",
+        triggerActionOnInitialization: false,
+    })
+    decoyKilledMessage = "";
 
     @TextProperty({
         name: "Hide NPC Abiphone Contact",
