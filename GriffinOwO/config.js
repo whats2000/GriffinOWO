@@ -669,6 +669,14 @@ class Settings {
     dragonSpawnTitleShowTimer = false;
 
     @SwitchProperty({
+        name: "Dragon Box",
+        description: "Display the dragon box and remove when the dragon is killed",
+        category: "Dungeon",
+        subcategory: "Dragon Box",
+    })
+    dragonBox = false;
+
+    @SwitchProperty({
         name: "Decoy Killed Title",
         description: "Dragon spawn will show Title in screen with timer",
         category: "Dungeon",
