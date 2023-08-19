@@ -38,7 +38,8 @@ A chattrigger script helper for Hypixel Skyblock
 3. Dungeon Mining Waypoint: Show where to mine down phrases and where to get through
 4. Dragon Timer: Dragon Timer will display the dragon spawning countdown depending on skip order [R -> O -> B -> P -> G]
 5. Dragon Spawn Message/Title: Better dragon spawn detect to not trigger by fire veil wand
-6. Decoy Killed Title/Message: Tell you and your party when the decoy is killed
+6. Dragon Box: Display the dragon box and remove when the dragon is killed
+7. Decoy Killed Title/Message: Tell you and your party when the decoy is killed
 
 ### Combat
 1. Alignment Tracker: The alignment Tracker for the gyro wand will track both your and other players' alignment
