@@ -110,15 +110,14 @@ register("chat", () => {
         ChatLib.chat("&c - &eFix !join will trigger when you are not leader");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Change");
-        ChatLib.chat("&d = &eNo Change Currently");
         ChatLib.chat("&d = &eMake Dragon Timer Auto adjust if server lag");
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
     }, 1000);
 }).setCriteria("Welcome to Hypixel SkyBlock${after}");
 
 function commandHelp() {
-    ChatLib.chat("&r&r&b&m--------------------------------------------------------------------------------");
-    ChatLib.chat("                          &6[GriffinOwO] &f&aHelp list (Page 1/1)");
+    ChatLib.chat("&r&r&b&m-----------------------------------------------------");
+    ChatLib.chat("          &6[GriffinOwO] &f&aHelp list (Page 1/1)");
     ChatLib.chat("The command &b/gf &fcan be replace by [&bgriffin&f|&bgriffinOwO&f]");
     ChatLib.chat("&b/gf settings &f- Open the settings GUI (&b/gf &fwork too)");
     ChatLib.chat("&b/gf blacklist &f[&badd&f|&bremove&f|&blist&f|&breset&f] [&bplayer1 player2...&f] &f- Manage the blacklist");
@@ -127,8 +126,8 @@ function commandHelp() {
     ChatLib.chat("&b/kw &f- Manually warp 2/2 kuudra party");
     ChatLib.chat("&b/fw &f- Ignore waiting for all other players and warp the party when flare trade");
     ChatLib.chat("&b/pk &f[&bplayer1 player2...&f] - Reparty but not invite some people");
-    ChatLib.chat(`&b/enigma &f[&bon &f/ &boff &f/ &bremove &f/ &bclear &f/ &bunclear&f] - Enigma Souls Waypoints (Kinda similar to neusouls)`);
-    ChatLib.chat("&r&r&b&m--------------------------------------------------------------------------------");
+    ChatLib.chat("&b/enigma &f[&bon&f|&boff&f|&bremove&f|&bclear&f|&bunclear&f] - Enigma Souls Waypoints (Kinda similar to neusouls)");
+    ChatLib.chat("&r&r&b&m-----------------------------------------------------");
 }
 
 if (userData.firstUse) {

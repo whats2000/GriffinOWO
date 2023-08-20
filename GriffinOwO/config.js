@@ -678,7 +678,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Decoy Killed Title",
-        description: "Dragon spawn will show Title in screen with timer",
+        description: "Show a title when the decoy is dead",
         category: "Dungeon",
         subcategory: "Decoy Tracker",
     })
