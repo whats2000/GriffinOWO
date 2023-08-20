@@ -111,6 +111,7 @@ register("chat", () => {
         ChatLib.chat("");
         ChatLib.chat("&b&l                Change");
         ChatLib.chat("&d = &eNo Change Currently");
+        ChatLib.chat("&d = &eMake Dragon Timer Auto adjust if server lag");
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
     }, 1000);
 }).setCriteria("Welcome to Hypixel SkyBlock${after}");

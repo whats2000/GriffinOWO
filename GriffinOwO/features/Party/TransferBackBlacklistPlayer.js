@@ -5,7 +5,7 @@ import { registerEventListener } from "../../utils/EventListener";
 
 registerEventListener(() => Settings.transferBackNotWelcomePlayer,
     register("chat", (target, player) => {
-        target = getIGN(target);
+        target = getIGN(target).toLowerCase();
         const myIGN = getIGN(Player.getName()).toLowerCase();
 
         if (target !== myIGN) return;

@@ -35,6 +35,15 @@ let dragonTimer = {
     "§6§lOrange": 0,
     "§c§lRed": 0,
 };
+
+let dragonParticleCount = {
+    "§a§lGreen": 0,
+    "§5§lPurple": 0,
+    "§b§lBlue": 0,
+    "§6§lOrange": 0,
+    "§c§lRed": 0,
+};
+
 let color = null;
 
 registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage || Settings.dragonSpawnTitle) && checkInZone("The Catacombs (M7)"),
@@ -57,13 +66,18 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage
         //ChatLib.chat(`[${x}, ${z}]`)
         for (let color in DragonParticle) {
             if (DragonParticle[color].x == parseInt(x) && DragonParticle[color].z == parseInt(z)) {
-                if (dragonTimer[color] < Date.now()) {
-                    if (Settings.dragonTimer || Settings.dragonSpawnTitle)
-                        dragonTimer[color] = new Date().getTime() + 5000;
+                // Dragon spawn will release 10 particle is before spawn, adjust timer if server lag
+                if (Settings.dragonTimer || Settings.dragonSpawnTitle)
+                    dragonTimer[color] = new Date().getTime() + 5000 - 500 * dragonParticleCount[color];
 
-                    if (Settings.dragonSpawnMessage)
-                        ChatLib.chat(`&2[GriffinOwO] &f${color} dragon is spawning soon`);
-                }
+                if (Settings.dragonSpawnMessage && dragonParticleCount[color] === 0)
+                    ChatLib.chat(`&2[GriffinOwO] &f${color} dragon is spawning soon`);
+
+                dragonParticleCount[color]++;
+
+                // Reset Counter
+                if (dragonParticleCount[color] >= 10)
+                    dragonParticleCount[color] = 0;
             }
         }
     })
@@ -97,7 +111,7 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) 
     }).setFps(1000)
 );
 
-register("worldUnload", () => {
+function resetTimer() {
     dragonTimer = {
         "§a§lGreen": 0,
         "§5§lPurple": 0,
@@ -105,8 +119,30 @@ register("worldUnload", () => {
         "§6§lOrange": 0,
         "§c§lRed": 0,
     };
+
+    dragonParticleCount = {
+        "§a§lGreen": 0,
+        "§5§lPurple": 0,
+        "§b§lBlue": 0,
+        "§6§lOrange": 0,
+        "§c§lRed": 0,
+    };
+
     color = null;
-});
+}
+
+// Reset alive status
+registerEventListener(() => Settings.dragonBox && checkInZone("The Catacombs (M7)"),
+    register("chat", () => {
+        resetTimer();
+    }).setCriteria("[BOSS] Wither King: Ohhh?")
+);
+
+registerEventListener(() => Settings.dragonBox && checkInZone("The Catacombs (M7)"),
+    register("chat", () => {
+        resetTimer();
+    }).setCriteria("[BOSS] Wither King: You.. again?")
+);
 
 export function getDragonTimeFormatted() {
     const time = ((dragonTimer[color] - Date.now()) / 1000).toFixed(2);
