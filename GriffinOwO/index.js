@@ -108,6 +108,7 @@ register("chat", () => {
         ChatLib.chat("&c - &eFix Some Spelling in config");
         ChatLib.chat("&c - &eFix lost class information when reconnect in dungeon, now will recheck when switch phase");
         ChatLib.chat("&c - &eFix !join will trigger when you are not leader");
+        ChatLib.chat("&c - &eFix Bug in Terminator Exchange Click will keep holding state after swap (Yep 2nd bug so it still WIP)");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Change");
         ChatLib.chat("&d = &eMake Dragon Timer Auto adjust if server lag");

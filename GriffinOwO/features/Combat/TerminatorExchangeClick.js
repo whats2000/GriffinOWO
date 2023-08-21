@@ -2,7 +2,8 @@ import Settings from "../../config";
 import { isHoldItem } from "../../utils/Function";
 import { registerEventListener } from "../../utils/EventListener";
 
-let buttonDownState = false;
+let leftButtonDownState = false;
+let rightButtonDownState = false;
 
 const leftClick = Client.getMinecraft().field_71474_y.field_74312_F; // net.minecraft.client.settings.GameSettings.keyBindAttack
 const rightClick = Client.getMinecraft().field_71474_y.field_74313_G; // net.minecraft.client.settings.GameSettings.keyBindUseItem
@@ -14,7 +15,7 @@ registerEventListener(() => Settings.exchangeTerminatorClick,
         const rightClickCode = rightClick.func_151463_i(); // rightClick.getKeyCode()
 
         // Only change when key is not hold (Or it will keep the hold state after swap keybind even you are not click)
-        if (!isHoldItem("TERMINATOR") && rightClickCode === -100 && !buttonDownState) {
+        if (!isHoldItem("TERMINATOR") && rightClickCode === -100 && !leftButtonDownState && !rightButtonDownState) {
             Client.getMinecraft().field_71474_y.func_151440_a(leftClick, -100);
             Client.getMinecraft().field_71474_y.func_151440_a(rightClick, -99);
 
@@ -28,7 +29,10 @@ registerEventListener(() => Settings.exchangeTerminatorClick,
     register("clicked", (mouseX, mouseY, button, isButtonDown) => {
         const rightClickCode = rightClick.func_151463_i(); // rightClick.getKeyCode()
 
-        buttonDownState = isButtonDown;
+        if (button === 0)
+            leftButtonDownState = isButtonDown;
+        else
+            rightButtonDownState = isButtonDown;
 
         // Check if hold correct item
         if (isHoldItem("TERMINATOR")) {
