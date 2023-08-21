@@ -7,7 +7,7 @@ registerEventListener(() => (Settings.decoyKilledTitle || Settings.decoyKilledMe
         if (!(entity.getName() === "Decoy ") || entity.isDead()) return;
 
         if (Settings.decoyKilledTitle)
-            Client.Companion.showTitle(`&aDecoy Killded`, "", 5, 25, 5);
+            Client.Companion.showTitle(`&aDecoy Killed`, "", 5, 25, 5);
 
         if (Settings.decoyKilledMessage !== "")
             ChatLib.command(`pc ${Settings.decoyKilledMessage}`)
