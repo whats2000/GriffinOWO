@@ -140,6 +140,26 @@ export const MiningWaypoint = [
         class: [2, 3, 5]
     },
     {
+        "name": "Mine down P2 (Chest)",
+        "x": 76,
+        "y": 220,
+        "z": 33,
+        w: 1,
+        h: 1,
+        show: [71],
+        class: [2, 3, 5]
+    },
+    {
+        "name": "Chest (Chest)",
+        "x": 76,
+        "y": 221,
+        "z": 32,
+        w: 0.9,
+        h: 0.9,
+        show: [71],
+        class: [2, 3, 5]
+    },
+    {
         "name": "Mine down P3",
         "x": 91.5,
         "y": 166,
@@ -148,6 +168,26 @@ export const MiningWaypoint = [
         h: 2,
         show: [71, 72],
         class: [3]
+    },
+    {
+        "name": "Mine down P3 (Chest)",
+        "x": 100,
+        "y": 168,
+        "z": 47,
+        w: 1,
+        h: 1,
+        show: [71],
+        class: [2, 3, 5]
+    },
+    {
+        "name": "Chest (Chest)",
+        "x": 100,
+        "y": 169,
+        "z": 46,
+        w: 0.9,
+        h: 0.9,
+        show: [71],
+        class: [2, 3, 5]
     },
     {
         "name": "Pre-Device",
@@ -159,6 +199,7 @@ export const MiningWaypoint = [
         show: [71, 72],
         class: [3]
     },
+    // For Healer
     {
         "name": "Mine down P4",
         "x": 57,
@@ -168,6 +209,17 @@ export const MiningWaypoint = [
         h: 1,
         show: [71, 72, 73],
         class: [3]
+    },
+    // For Mage and Berserk
+    {
+        "name": "Mine down P4",
+        "x": 57,
+        "y": 108,
+        "z": 124,
+        w: 1,
+        h: 1,
+        show: [73],
+        class: [2, 5]
     },
     {
         "name": "Mine down P5 (M7)",
@@ -239,6 +291,7 @@ export const DecoyWaypoint = [
         show: [73],
         class: [3]
     },
+    // For Healer
     {
         "name": "§3Pre Decoy 1",
         "x": 40,
@@ -254,6 +307,23 @@ export const DecoyWaypoint = [
         "z": 76,
         show: [71, 72, 73],
         class: [3]
+    },
+    // For Mage and Berserk
+    {
+        "name": "§3Pre Decoy 1",
+        "x": 40,
+        "y": 63,
+        "z": 103,
+        show: [73],
+        class: [2, 5]
+    },
+    {
+        "name": "§3Pre Decoy 2",
+        "x": 54,
+        "y": 64,
+        "z": 76,
+        show: [73],
+        class: [2, 5]
     }
 ];
 

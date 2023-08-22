@@ -582,6 +582,15 @@ class Settings {
     })
     dungeonWaypointMode = 0;
 
+    @SelectorProperty({
+        name: "Dungeon Waypoint Pre P4 decoy class",
+        description: "Change P4 pre decoy class",
+        category: "Dungeon",
+        subcategory: "Dungeon Waypoint",
+        options: ["Healer", "Berserk", "Mage"],
+    })
+    dungeonWaypointP4Class = 0;
+
     @SwitchProperty({
         name: "Dungeon Waypoint Practice Mode",
         description: "Show all the waypoint no matter the phase, for practice usage",

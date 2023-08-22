@@ -103,6 +103,8 @@ register("chat", () => {
         ChatLib.chat("&a + &eDecoy killed Title (Dungeon)");
         ChatLib.chat("&a + &eDecoy Killed Message (Dungeon)");
         ChatLib.chat("&a + &eDragon Box (Dungeon)");
+        ChatLib.chat("&a + &eDungeon Waypoint Pre P4 decoy class (Dungeon)");
+        ChatLib.chat("&a + &eDungeon Mining Waypoint Chest mine down meta (Dungeon)");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
         ChatLib.chat("&c - &eFix Some Spelling in config");
