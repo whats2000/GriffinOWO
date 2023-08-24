@@ -397,6 +397,14 @@ class Settings {
     rp = false;
 
     @SwitchProperty({
+        name: "!tps",
+        description: "Toggle to calculate the tps of the server (Will take about 3s)",
+        category: "Trigger Command (Party)",
+        subcategory: "!tps",
+    })
+    tps = false;
+
+    @SwitchProperty({
         name: "!mute",
         description: "Toggle party mute by '/msg leader !mute [random text]' to fix channel in party chat",
         category: "Trigger Command (DM)",

@@ -7,7 +7,7 @@ registerEventListener(() => Settings.lavaSeaCreature && checkInWorld("Crimson Is
     register("Chat", (event) => {
         const formatted_message = ChatLib.getChatMessage(event, true);
 
-        if (!formatted_message.includes("&r&c&lYou have angered a legendary creature... Lord Jawbus has arrived&r")) return;
+        if (!formatted_message.includes("&r&c&lYou have angered a legendary creature... Lord Jawbus has arrived.&r")) return;
 
         let channel = "";
 

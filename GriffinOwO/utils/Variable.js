@@ -177,7 +177,7 @@ export const MiningWaypoint = [
         w: 1,
         h: 1,
         show: [71],
-        class: [2, 3, 5]
+        class: [3]
     },
     {
         "name": "Chest (Chest)",
@@ -187,7 +187,7 @@ export const MiningWaypoint = [
         w: 0.9,
         h: 0.9,
         show: [71],
-        class: [2, 3, 5]
+        class: [3]
     },
     {
         "name": "Pre-Device",

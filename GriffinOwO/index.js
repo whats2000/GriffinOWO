@@ -13,6 +13,9 @@ import "./utils/RenderHUD";
 // Location
 import "./utils/Location";
 
+// Server
+import "./utils/ServerUtils";
+
 // Event Listener
 import "./utils/EventListener";
 
@@ -31,6 +34,7 @@ import "./features/ChatTriggerCommandParty/JoinKuudra";
 import "./features/ChatTriggerCommandParty/PartyTransfer";
 import "./features/ChatTriggerCommandParty/PartyWarp";
 import "./features/ChatTriggerCommandParty/Restart";
+import "./features/ChatTriggerCommandParty/Tps";
 
 // Combat
 import "./features/Combat/FlareRange";
