@@ -19,11 +19,12 @@ A chattrigger script helper for Hypixel Skyblock
 2. Transfer Back Not Welcome Player: Transfer Back the leader if the player is not in the whitelist or the player is in the blacklist
 
 ### Party Chat Trigger Command
-1. `!warp`: allow party members to warp the party (Can be canceled by `!c`)
-2. `!allinv`: allow party members to enable all invite
-3. `!ptme`: allow party members to be the new leader
-4. `!join [dungeon floor (ex: f7, m7) | kuudra tier (ex: t1, t5)]`: allow party members to start the dungeon or kuudra (No downtime)
-5. `!rp`: allow party members to reparty (need toggle others mod reparty */rp*)
+1. `!warp`: Allow party members to warp the party (Can be canceled by `!c`)
+2. `!allinv`: Allow party members to enable all invite
+3. `!ptme`: Allow party members to be the new leader
+4. `!join [dungeon floor (ex: f7, m7) | kuudra tier (ex: t1, t5)]`: Allow party members to start the dungeon or kuudra (No downtime)
+5. `!rp`: Allow party members to reparty (need toggle others mod reparty */rp*)
+6. `!tps`: Allow party members to get the 3s average tps
 
 ### DM Trigger Command
 1. `/msg [IGN] !party [anything string]`: let the leader invite the player
