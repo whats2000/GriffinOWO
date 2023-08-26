@@ -36,16 +36,6 @@ let dragonTimer = {
     "§c§lRed": 0,
 };
 
-let dragonParticleCount = {
-    "§a§lGreen": 0,
-    "§5§lPurple": 0,
-    "§b§lBlue": 0,
-    "§6§lOrange": 0,
-    "§c§lRed": 0,
-};
-
-let color = null;
-
 registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage || Settings.dragonSpawnTitle) && checkInZone("The Catacombs (M7)"),
     register("PacketReceived", (packet) => {
         if (getDungeonPhase() !== 75) return;
@@ -66,18 +56,13 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage
         //ChatLib.chat(`[${x}, ${z}]`)
         for (let color in DragonParticle) {
             if (DragonParticle[color].x == parseInt(x) && DragonParticle[color].z == parseInt(z)) {
-                // Dragon spawn will release 10 particle is before spawn, adjust timer if server lag
-                if (Settings.dragonTimer || Settings.dragonSpawnTitle)
-                    dragonTimer[color] = new Date().getTime() + 5000 - 500 * dragonParticleCount[color];
+                if (dragonTimer[color] < Date.now()) {
+                    if (Settings.dragonTimer || Settings.dragonSpawnTitle)
+                        dragonTimer[color] = new Date().getTime() + 5000;
 
-                if (Settings.dragonSpawnMessage && dragonParticleCount[color] === 0)
-                    ChatLib.chat(`&2[GriffinOwO] &f${color} dragon is spawning soon`);
-
-                dragonParticleCount[color]++;
-
-                // Reset Counter
-                if (dragonParticleCount[color] >= 10)
-                    dragonParticleCount[color] = 0;
+                    if (Settings.dragonSpawnMessage)
+                        ChatLib.chat(`&2[GriffinOwO] &f${color} dragon is spawning soon`);
+                }
             }
         }
     })
@@ -92,13 +77,6 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) 
         for (let color in DragonParticle) {
             if (dragonTimer[color] - currentTime > 0) {
                 dragonColor = color;
-            } else if (dragonParticleCount[color] !== 0) {
-                // A reset if package lost
-                setTimeout(() => {
-                    if (dragonTimer[color] - Date.now() < 0) {
-                        dragonParticleCount[color] = 0;
-                    }
-                }, 2000);
             }
         }
 
@@ -120,14 +98,6 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) 
 
 function resetTimer() {
     dragonTimer = {
-        "§a§lGreen": 0,
-        "§5§lPurple": 0,
-        "§b§lBlue": 0,
-        "§6§lOrange": 0,
-        "§c§lRed": 0,
-    };
-
-    dragonParticleCount = {
         "§a§lGreen": 0,
         "§5§lPurple": 0,
         "§b§lBlue": 0,
