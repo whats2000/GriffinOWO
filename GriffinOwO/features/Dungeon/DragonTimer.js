@@ -36,6 +36,8 @@ let dragonTimer = {
     "§c§lRed": 0,
 };
 
+let color = null;
+
 registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage || Settings.dragonSpawnTitle) && checkInZone("The Catacombs (M7)"),
     register("PacketReceived", (packet) => {
         if (getDungeonPhase() !== 75) return;
