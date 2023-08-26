@@ -92,10 +92,10 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) 
         for (let color in DragonParticle) {
             if (dragonTimer[color] - currentTime > 0) {
                 dragonColor = color;
-            } else {
+            } else if (dragonParticleCount[color] !== 0) {
                 // A reset if package lost
                 setTimeout(() => {
-                    if (dragonTimer[color] - Date.now() < 0 && dragonParticleCount[color] !== 0) {
+                    if (dragonTimer[color] - Date.now() < 0) {
                         dragonParticleCount[color] = 0;
                     }
                 }, 2000);
