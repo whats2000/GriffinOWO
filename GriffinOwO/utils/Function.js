@@ -186,3 +186,32 @@ export function addLore(item, prefix, value) {
         getRawNBT().
         func_74782_a("Lore", list); // mapping: setTag("Lore", list)
 }
+
+// This function from OdinClient
+/**
+ * Returns the squared 3D distance between two Minecraft entities.
+ * @param {object} mcEntity1 - The first Minecraft entity.
+ * @param {object} mcEntity2 - The second Minecraft entity.
+ * @returns {number} The squared 3D distance between the two entities.
+ */
+export function noSqrt3DDistance(mcEntity1, mcEntity2) {
+    return Math.pow(mcEntity1.field_70165_t - mcEntity2.field_70165_t, 2) +
+        Math.pow(mcEntity1.field_70163_u - mcEntity2.field_70163_u, 2) +
+        Math.pow(mcEntity1.field_70161_v - mcEntity2.field_70161_v, 2)
+}
+
+/**
+ * Returns the entity render parameters for a given Minecraft entity.
+ * @param {object} mcEntity - The Minecraft entity.
+ * @param {number} partialTicks - The partial ticks for rendering.
+ * @returns {Array} An array with the entity render parameters.
+ */
+export function getEntityRenderParams(mcEntity, partialTicks) {
+    return [
+        mcEntity.field_70142_S + (mcEntity.field_70165_t - mcEntity.field_70142_S) * partialTicks,
+        mcEntity.field_70137_T + (mcEntity.field_70163_u - mcEntity.field_70137_T) * partialTicks,
+        mcEntity.field_70136_U + (mcEntity.field_70161_v - mcEntity.field_70136_U) * partialTicks,
+        mcEntity.field_70130_N,
+        mcEntity.field_70131_O
+    ]
+}

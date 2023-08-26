@@ -53,6 +53,7 @@ import "./features/CrimsonIsland/VanquisherAlert";
 import "./features/Diana/InquisitorAlert";
 
 // Dungeon
+import "./features/Dungeon/BoxStarMobs";
 import "./features/Dungeon/DecoyDeadAlert";
 import "./features/Dungeon/DecoyWaypoint";
 import "./features/Dungeon/DragonBox";
@@ -104,6 +105,7 @@ register("chat", () => {
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
         ChatLib.chat(`          &6[GriffinOwO] &f&aChange Log (${version})`);
         ChatLib.chat("&b&l                New Feature");
+        ChatLib.chat("&a + &eBox Starred Mob (Dungeon)");
         ChatLib.chat("&a + &e!tps (Trigger Command (Party))");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");

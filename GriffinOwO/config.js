@@ -710,6 +710,33 @@ class Settings {
     })
     decoyKilledMessage = "";
 
+    @SwitchProperty({
+        name: "Box Starred Mob",
+        description: "Display the boxes of the star mobs if they are visible to player, similar to Skytils but can customize",
+        category: "Dungeon",
+        subcategory: "Box Starred Mob",
+    })
+    boxStarredMob = false;
+
+    @ColorProperty({
+        name: "Box Starred Mob Color",
+        description: "Pick a color for Starred Mob Boxes",
+        category: "Dungeon",
+        subcategory: "Box Starred Mob",
+    })
+    boxStarredMobColor = Color.YELLOW;
+
+    @DecimalSliderProperty({
+        name: "Box Starred Mob Box Line Width",
+        description: "Change the box line width for Starred Mob Boxes",
+        category: "Dungeon",
+        subcategory: "Box Starred Mob",
+        minF: 0.0,
+        maxF: 10.0,
+        decimalPlaces: 1
+    })
+    boxStarredMobBoxLineWidth = 2.0;
+
     @TextProperty({
         name: "Hide NPC Abiphone Contact",
         description: "Hide NPC Abiphone Contact will hide the NPC contact by input their name spilit by space, &bNPC list: [Pablo Suus Aranya Kat Kaus Rollim Igrupan Oringo]",
@@ -800,6 +827,9 @@ class Settings {
 
         this.addDependency("Dragon Timer Location", "Dragon Timer");
         this.addDependency("Dragon Spawn Title show timer", "Dragon Spawn Title");
+
+        this.addDependency("Box Starred Mob Color", "Box Starred Mob");
+        this.addDependency("Box Starred Mob Box Line Width", "Box Starred Mob");
 
         this.addDependency("Show Pet Candy Used Behind Name", "Show Pet Candy Used");
 
