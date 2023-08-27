@@ -631,6 +631,14 @@ class Settings {
     })
     dungeonMiningWaypoint = false;
 
+    @SwitchProperty({
+        name: "Dungeon Stack Arrow Waypoint",
+        description: "Show where to stack arrow for each dragon \n§e(Need disable §lSBA §f§ehide boss message, others mod is fine)",
+        category: "Dungeon",
+        subcategory: "Dungeon Waypoint",
+    })
+    dungeonStackArrowWaypoint = false;
+
     @DecimalSliderProperty({
         name: "Dungeon Waypoint Text Size",
         description: "The Dungeon Waypoint text size",

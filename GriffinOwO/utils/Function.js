@@ -187,7 +187,7 @@ export function addLore(item, prefix, value) {
         func_74782_a("Lore", list); // mapping: setTag("Lore", list)
 }
 
-// This function from OdinClient
+// This function from OdinClient https://github.com/odtheking/OdinClient/
 /**
  * Returns the squared 3D distance between two Minecraft entities.
  * @param {object} mcEntity1 - The first Minecraft entity.

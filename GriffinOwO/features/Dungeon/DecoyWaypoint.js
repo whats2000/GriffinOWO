@@ -21,7 +21,7 @@ registerEventListener(() => Settings.dungeonDecoyWaypoint && (checkInZone("The C
                 }
             }
 
-            if (waypoint.name.startsWith("§3Pre Decoy")) {
+            if (waypoint.name.startsWith("§3Pre Decoy") && Settings.dungeonWaypointMode !== 0) {
                 // Waypoint Class index ["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage"]
                 let p4Class = 3; // Deafault Healer
 

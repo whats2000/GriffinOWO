@@ -60,6 +60,7 @@ import "./features/Dungeon/DragonBox";
 import "./features/Dungeon/DragonTimer";
 import "./features/Dungeon/GyroWaypoint";
 import "./features/Dungeon/MiningWaypoint";
+import "./features/Dungeon/StackArrowWaypoint";
 
 // Fun
 import "./features/Fun/GetTodayLuck";
@@ -106,6 +107,7 @@ register("chat", () => {
         ChatLib.chat(`          &6[GriffinOwO] &f&aChange Log (${version})`);
         ChatLib.chat("&b&l                New Feature");
         ChatLib.chat("&a + &eBox Starred Mob (Dungeon)");
+        ChatLib.chat("&a + &eDungeon Stack Arrow Waypoint (Dungeon)");
         ChatLib.chat("&a + &e!tps (Trigger Command (Party))");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");

@@ -21,7 +21,7 @@ registerEventListener(() => Settings.dungeonMiningWaypoint && (checkInZone("The 
                 }
             }
 
-            if (waypoint.name === "Mine down P4") {
+            if (waypoint.name === "Mine down P4" && Settings.dungeonWaypointMode !== 0) {
                 // Waypoint Class index ["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage"]
                 let p4Class = 3; // Deafault Healer
 

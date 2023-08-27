@@ -330,7 +330,7 @@ export const DecoyWaypoint = [
 // Class number index for ["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage"]
 export const GyroWaypoint = [
     {
-        "name": "§6Gyro skeletons",
+        "name": "§3Gyro skeletons",
         "x": 98,
         "y": 168,
         "z": 53,
@@ -338,7 +338,7 @@ export const GyroWaypoint = [
         class: [2]
     },
     {
-        "name": "§6Gyro skeletons",
+        "name": "§3Gyro skeletons",
         "x": 44,
         "y": 168,
         "z": 53,
@@ -346,7 +346,7 @@ export const GyroWaypoint = [
         class: [5]
     },
     {
-        "name": "§6Gyro Decoy for storm",
+        "name": "§3Gyro Decoy for storm",
         "x": 46,
         "y": 168,
         "z": 61,
@@ -385,6 +385,65 @@ export const GyroWaypoint = [
         show: [75],
         class: [3, 4, 5]
     }
+];
+
+// Class number index for ["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage"]
+// /visit Epsiloni for practice
+export const StackArrowWaypoint = [
+    {
+        "name": "§dStack Arrow A",
+        "x": 31,
+        "y": 5,
+        "z": 97,
+        show: [75],
+        class: [1, 2],
+        color: [0.5019608, 0.0, 0.5019608]
+    },
+    {
+        "name": "§dStack Arrow B",
+        "x": 81,
+        "y": 5,
+        "z": 99,
+        show: [75],
+        class: [1, 2],
+        color: [0.5019608, 0.0, 0.5019608]
+    },
+    {
+        "name": "§aStack Arrow",
+        "x": 25,
+        "y": 6,
+        "z": 119,
+        show: [75],
+        class: [1, 2],
+        color: [0, 1, 0]
+    },
+    {
+        "name": "§cStack Arrow",
+        "x": 17,
+        "y": 5,
+        "z": 85,
+        show: [75],
+        class: [1, 2],
+        color: [1, 0, 0]
+    },
+    {
+        "name": "§bStack Arrow",
+        "x": 48,
+        "y": 5,
+        "z": 110,
+        show: [75],
+        class: [1, 2],
+        color: [0, 1, 1]
+    },
+    {
+        "name": "§6Stack Arrow",
+        "x": 53,
+        "y": 4,
+        "z": 90,
+        show: [75],
+        class: [1, 2],
+        color: [1.0, 0.49803922, 0.3137255]
+    },
 ];
 
 export const Flare = [
