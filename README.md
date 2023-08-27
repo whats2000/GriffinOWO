@@ -37,10 +37,13 @@ A chattrigger script helper for Hypixel Skyblock
 1. Dungeon Decoy Waypoint: Show where to place the decoy
 2. Dungeon Gyro Waypoint: Show where to use gyro
 3. Dungeon Mining Waypoint: Show where to mine down phrases and where to get through
-4. Dragon Timer: Dragon Timer will display the dragon spawning countdown depending on skip order [R -> O -> B -> P -> G]
-5. Dragon Spawn Message/Title: Better dragon spawn detect to not trigger by fire veil wand
-6. Dragon Box: Display the dragon box and remove when the dragon is killed
-7. Decoy Killed Title/Message: Tell you and your party when the decoy is killed
+4. Dungeon Stack Arrow Waypoint: Show where to stack arrow for each dragon
+5. Dragon Timer: Dragon Timer will display the dragon spawning countdown depending on skip order [R -> O -> B -> P -> G]
+6. Dragon Spawn Message/Title: Better dragon spawn detect to not trigger by fire veil wand
+7. Dragon Box: Display the dragon box and remove when the dragon is killed
+8. Decoy Killed Title/Message: Tell you and your party when the decoy is killed
+9. Box Starred Mob: Display the boxes of the star mobs if they are visible to player, similar to Skytils but can customize
+10. Tank Protect Range: Display the boxes of the tanks protect range, similar to skytils but hope it will never broken >_< (Please report bug in github)
 
 ### Combat
 1. Alignment Tracker: The alignment Tracker for the gyro wand will track both your and other players' alignment
