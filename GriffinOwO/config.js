@@ -745,6 +745,39 @@ class Settings {
     })
     boxStarredMobBoxLineWidth = 2.0;
 
+    @SwitchProperty({
+        name: "Tank Protect Range",
+        description: "Display the boxes of the tanks protect range, similar to skytils but hope it will never broken >_<",
+        category: "Dungeon",
+        subcategory: "Tank Protect Range",
+    })
+    tankProtectRange = false;
+
+    @SwitchProperty({
+        name: "Tank Protect Range Show Own Range",
+        description: "Display the boxes when you are playing tank",
+        category: "Dungeon",
+        subcategory: "Tank Protect Range",
+    })
+    tankProtectRangeShowOwn = true;
+
+    @ColorProperty({
+        name: "Tank Protect Range Color",
+        description: "Pick a color for Tank Protect Range",
+        category: "Dungeon",
+        subcategory: "Tank Protect Range",
+    })
+    tankProtectRangeColor = Color.GREEN;
+
+    @SelectorProperty({
+        name: "Tank Protect Range Mode",
+        description: "Display mode of Tank Protect Range",
+        category: "Dungeon",
+        subcategory: "Tank Protect Range",
+        options: ["box", "circle"],
+    })
+    tankProtectRangeMode = 0;
+
     @TextProperty({
         name: "Hide NPC Abiphone Contact",
         description: "Hide NPC Abiphone Contact will hide the NPC contact by input their name spilit by space, &bNPC list: [Pablo Suus Aranya Kat Kaus Rollim Igrupan Oringo]",
@@ -838,6 +871,10 @@ class Settings {
 
         this.addDependency("Box Starred Mob Color", "Box Starred Mob");
         this.addDependency("Box Starred Mob Box Line Width", "Box Starred Mob");
+
+        this.addDependency("Tank Protect Range Mode", "Tank Protect Range");
+        this.addDependency("Tank Protect Range Show Own Range", "Tank Protect Range");
+        this.addDependency("Tank Protect Range Color", "Tank Protect Range");
 
         this.addDependency("Show Pet Candy Used Behind Name", "Show Pet Candy Used");
 

@@ -6,6 +6,7 @@ let phase = -1;
 let partyMember = 0;
 let party = {};
 let cdReduce = 1;
+let classCheck = false;
 
 function updateClass() {
     const PartyLine = TabList.getNames().find(tab => tab.includes("§r§b§lParty §r§f("));
@@ -41,16 +42,13 @@ function updateClass() {
         ChatLib.chat(`&2[GriffinOwO] &fYou are playing ${party[Player.getName()].class} ${party[Player.getName()].level}`);
 
         if (party[Player.getName()].class === "Mage") {
-            const magePlayers = [];
-            for (let player in party) {
-                if (party[player].class === "Mage") {
-                    magePlayers.push(player);
-                }
-            }
+            const magePlayers = getTeammateByClass("Mage");
 
             cdReduce = magePlayers.length > 1 ? 1 - party[Player.getName()].level * 0.01 : 1 - party[Player.getName()].level * 0.01 * 1.5;
             //ChatLib.chat(`&2[GriffinOwO] &fCool down now is ${cdReduce}`);
         }
+
+        classCheck = true;
     } else {
         partyRetryCount++;
         if (partyRetryCount < 10) {
@@ -142,6 +140,7 @@ registerEventListener(() => checkInZone("The Catacombs (M7)"),
 
 registerEventListener(() => checkInWorld("Dungeon"),
     register('chat', () => {
+        classCheck = false;
         reloadClass();
     }).setCriteria("Starting in 1 second${end}")
 );
@@ -151,7 +150,12 @@ register("worldUnload", () => {
     cdReduce = 1;
     partyMember = 0;
     party = {};
+    classCheck = false;
 });
+
+register("command", (setPhase) => {
+    phase = setPhase;
+}).setName("set_phase");
 
 export function getDungeonPhase() {
     return phase;
@@ -159,6 +163,22 @@ export function getDungeonPhase() {
 
 export function getCdReduce() {
     return cdReduce;
+}
+
+export function getTeammateByClass(playerClass) {
+    let targetTeammates = [];
+
+    for (let player in party) {
+        if (party[player].class === playerClass) {
+            targetTeammates.push(player);
+        }
+    }
+
+    return targetTeammates;
+}
+
+export function getClassCheck() {
+    return classCheck;
 }
 
 //["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage"]
