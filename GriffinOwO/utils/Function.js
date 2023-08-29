@@ -10,6 +10,10 @@ export function getId(item) {
     return item?.getNBT()?.toObject()?.tag?.ExtraAttributes?.id;
 }
 
+export function getItemScroll(item) {
+    return Player.getHeldItem()?.getNBT()?.toObject()?.tag?.ExtraAttributes?.ability_scroll;
+}
+
 export function getCandyUsed(pet) {
     return JSON.parse(pet.getNBT()?.toObject()?.tag?.ExtraAttributes?.petInfo).candyUsed;
 }

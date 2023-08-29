@@ -41,6 +41,7 @@ import "./features/Combat/FlareRange";
 import "./features/Combat/FlareTimer";
 import "./features/Combat/GyroRangeMarker";
 import "./features/Combat/GyroTimer";
+import "./features/Combat/ShadowWarpRangeMarker";
 import "./features/Combat/TerminatorExchangeClick";
 
 // CrimsonIsland
@@ -111,8 +112,9 @@ register("chat", () => {
         ChatLib.chat("&a + &eTank Protect Range (Dungeon)");
         ChatLib.chat("&a + &eDungeon Stack Arrow Waypoint (Dungeon)");
         ChatLib.chat("&a + &e!tps (Trigger Command (Party))");
-        ChatLib.chat("&a + &eAdd spring boot decoy for m7 (Dungeon)");
-        ChatLib.chat("&a + &eAdd Shadow Warp Waypoint into Gyro Waypoint (Dungeon)");
+        ChatLib.chat("&a + &eAdd Spring Boot Decoy for m7 in Dungeon Decoy Waypoint (Dungeon)");
+        ChatLib.chat("&a + &eAdd Shadow Warp Waypoint into Dungeon Gyro Waypoint (Dungeon)");
+        ChatLib.chat("&a + &eAdd Shadow Warp Marker (Combat)");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
         ChatLib.chat("&c - &eFix Lava Fishing Alert not trigger by Lord Jawbus");

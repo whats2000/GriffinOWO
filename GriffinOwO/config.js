@@ -150,12 +150,20 @@ class Settings {
     exchangeTerminatorClick = false;
 
     @SwitchProperty({
+        name: "Shadow Warp Marker",
+        description: "Shadow Warp Marker will draw a radius circle when in valid distance, this only work with a blade with Shadow Warp pnly",
+        category: "Combat",
+        subcategory: "Shadow Warp Marker",
+    })
+    shadowWarpMarker = false;
+
+    @SwitchProperty({
         name: "Broken Hype Detect",
         description: "Toggle to detect if use hype but not get combat exp",
         category: "Crimson Island",
         subcategory: "Broken Hype"
     })
-    brokenHyper = true;
+    brokenHyper = false;
 
     @SwitchProperty({
         name: "Broken Hype Detect Only On Flare",
@@ -205,7 +213,7 @@ class Settings {
         category: "Crimson Island",
         subcategory: "Vanquisher Alert"
     })
-    vanquisherDeadAlert = true;
+    vanquisherDeadAlert = false;
 
     @TextProperty({
         name: "Flare Trade party IGN",
