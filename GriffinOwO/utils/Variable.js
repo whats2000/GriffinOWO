@@ -433,7 +433,7 @@ export const GyroWaypoint = [
         "z": 103,
         dragonColor: "Blue",
         show: [75],
-        class: [4, 5]
+        class: [3, 4, 5]
     },
     {
         "name": "§aShadow Warp (Look Up)",
@@ -442,7 +442,7 @@ export const GyroWaypoint = [
         "z": 82,
         dragonColor: "Green",
         show: [75],
-        class: [3, 5]
+        class: [3, 4, 5]
     },
     {
         "name": "§cShadow Warp (Look Up, Optional)",
