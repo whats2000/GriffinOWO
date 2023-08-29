@@ -29,7 +29,9 @@ registerEventListener(() => Settings.dungeonStackArrowWaypoint && (checkInZone("
             const increase = true;
             let color = waypoint.color;
 
-            RenderLib.drawInnerEspBox(x + 0.5, y + 1, z + 0.5, 0.6, 0.01, color[0], color[1], color[2], 1, true);
+            if (waypoint.color)
+                RenderLib.drawInnerEspBox(x + 0.5, y + 1, z + 0.5, 0.6, 0.01, color[0], color[1], color[2], 1, true);
+
             Tessellator.drawString(`${waypoint.name}`, x + 0.5, y + 0.5, z + 0.5, textColor, true, scale, increase);
         });
     })
