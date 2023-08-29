@@ -240,6 +240,26 @@ export const DecoyWaypoint = [
         "x": 90,
         "y": 11,
         "z": 100,
+        dragonColor: "Blue",
+        show: [74, 75],
+        class: [3]
+    },
+    {
+        "name": "§bSpring Boot",
+        "x": 80,
+        "y": 5,
+        "z": 94,
+        dragonColor: "Blue",
+        show: [74, 75],
+        class: [3],
+        color: [0, 1, 1]
+    },
+    {
+        "name": "§bDecoy",
+        "x": 79,
+        "y": 19.5,
+        "z": 94,
+        dragonColor: "Blue",
         show: [74, 75],
         class: [3]
     },
@@ -248,6 +268,26 @@ export const DecoyWaypoint = [
         "x": 21,
         "y": 11,
         "z": 88,
+        dragonColor: "Green",
+        show: [74, 75],
+        class: [3]
+    },
+    {
+        "name": "§aSpring Boot",
+        "x": 31,
+        "y": 5,
+        "z": 94,
+        dragonColor: "Green",
+        show: [74, 75],
+        class: [3],
+        color: [0, 1, 0]
+    },
+    {
+        "name": "§aDecoy",
+        "x": 32,
+        "y": 19.5,
+        "z": 94,
+        dragonColor: "Green",
         show: [74, 75],
         class: [3]
     },
@@ -256,6 +296,26 @@ export const DecoyWaypoint = [
         "x": 36.5,
         "y": 13.5,
         "z": 44.5,
+        dragonColor: "Red",
+        show: [74, 75],
+        class: [3]
+    },
+    {
+        "name": "§cSpring Boot",
+        "x": 31,
+        "y": 4,
+        "z": 59,
+        dragonColor: "Red",
+        show: [74, 75],
+        class: [3],
+        color: [1, 0, 0]
+    },
+    {
+        "name": "§cDecoy",
+        "x": 32,
+        "y": 18.5,
+        "z": 59,
+        dragonColor: "Red",
         show: [74, 75],
         class: [3]
     },
@@ -264,6 +324,7 @@ export const DecoyWaypoint = [
         "x": 56,
         "y": 7,
         "z": 124,
+        dragonColor: "Purple",
         show: [74, 75],
         class: [3]
     },
@@ -272,6 +333,26 @@ export const DecoyWaypoint = [
         "x": 91,
         "y": 11,
         "z": 62,
+        dragonColor: "Orange",
+        show: [74, 75],
+        class: [3]
+    },
+    {
+        "name": "§6Spring Boot (Optional)",
+        "x": 81,
+        "y": 5,
+        "z": 56,
+        dragonColor: "Orange",
+        show: [74, 75],
+        class: [3],
+        color: [1.0, 0.49803922, 0.3137255]
+    },
+    {
+        "name": "§6Decoy (Optional)",
+        "x": 80,
+        "y": 19.5,
+        "z": 56,
+        dragonColor: "Orange",
         show: [74, 75],
         class: [3]
     },
@@ -346,18 +427,11 @@ export const GyroWaypoint = [
         class: [5]
     },
     {
-        "name": "§3Gyro Decoy for storm",
-        "x": 46,
-        "y": 168,
-        "z": 61,
-        show: [72],
-        class: [5]
-    },
-    {
         "name": "§bGyro",
         "x": 83,
         "y": 5,
         "z": 102,
+        dragonColor: "Blue",
         show: [75],
         class: [4, 5]
     },
@@ -366,6 +440,7 @@ export const GyroWaypoint = [
         "x": 26,
         "y": 5,
         "z": 85,
+        dragonColor: "Green",
         show: [75],
         class: [3, 5]
     },
@@ -374,6 +449,7 @@ export const GyroWaypoint = [
         "x": 32,
         "y": 5,
         "z": 47,
+        dragonColor: "Red",
         show: [75],
         class: [3, 4, 5]
     },
@@ -382,6 +458,7 @@ export const GyroWaypoint = [
         "x": 84,
         "y": 5,
         "z": 62,
+        dragonColor: "Orange",
         show: [75],
         class: [3, 4, 5]
     }
@@ -395,6 +472,7 @@ export const StackArrowWaypoint = [
         "x": 31,
         "y": 5,
         "z": 97,
+        dragonColor: "Purple",
         show: [75],
         class: [1, 2],
         color: [0.5019608, 0.0, 0.5019608]
@@ -404,6 +482,7 @@ export const StackArrowWaypoint = [
         "x": 81,
         "y": 5,
         "z": 99,
+        dragonColor: "Purple",
         show: [75],
         class: [1, 2],
         color: [0.5019608, 0.0, 0.5019608]
@@ -413,15 +492,17 @@ export const StackArrowWaypoint = [
         "x": 25,
         "y": 6,
         "z": 119,
+        dragonColor: "Green",
         show: [75],
         class: [1, 2],
         color: [0, 1, 0]
     },
     {
         "name": "§cStack Arrow",
-        "x": 17,
-        "y": 5,
-        "z": 85,
+        "x": 10,
+        "y": 6,
+        "z": 83,
+        dragonColor: "Red",
         show: [75],
         class: [1, 2],
         color: [1, 0, 0]
@@ -431,6 +512,7 @@ export const StackArrowWaypoint = [
         "x": 48,
         "y": 5,
         "z": 110,
+        dragonColor: "Blue",
         show: [75],
         class: [1, 2],
         color: [0, 1, 1]
@@ -440,6 +522,7 @@ export const StackArrowWaypoint = [
         "x": 53,
         "y": 4,
         "z": 90,
+        dragonColor: "Orange",
         show: [75],
         class: [1, 2],
         color: [1.0, 0.49803922, 0.3137255]

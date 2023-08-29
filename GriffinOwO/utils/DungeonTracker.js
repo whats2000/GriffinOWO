@@ -8,6 +8,40 @@ let party = {};
 let cdReduce = 1;
 let classCheck = false;
 
+let dragonState = {
+    "Red": { pos: new BlockPos(32, 22, 59), alive: true },
+    "Orange": { pos: new BlockPos(80, 23, 56), alive: true },
+    "Green": { pos: new BlockPos(32, 23, 94), alive: true },
+    "Blue": { pos: new BlockPos(79, 23, 94), alive: true },
+    "Purple": { pos: new BlockPos(56, 22, 120), alive: true }
+};
+
+export function isAlive(color) {
+    if (color)
+        return dragonState[color].alive;
+    else
+        return true;
+}
+
+function resetAlive() {
+    for (let color in dragonState) {
+        dragonState[color].alive = true;
+    }
+}
+
+// Update to check alive status
+registerEventListener(() => checkInZone("The Catacombs (M7)"),
+    register("step", () => {
+        if (getDungeonPhase() !== 75) return;
+
+        for (let color in dragonState) {
+            if (World.getBlockStateAt(dragonState[color].pos).toString() === "minecraft:air") {
+                dragonState[color].alive = false;
+            }
+        }
+    }).setDelay(1)
+);
+
 function updateClass() {
     const PartyLine = TabList.getNames().find(tab => tab.includes("§r§b§lParty §r§f("));
     if (PartyLine) {
@@ -121,6 +155,7 @@ registerEventListener(() => checkInZone("The Catacombs (M7)") || checkInZone("Th
 registerEventListener(() => checkInZone("The Catacombs (M7)"),
     register('chat', () => {
         phase = 75;
+        resetAlive();
 
         if (Object.keys(party).length === 0) {
             reloadClass();
@@ -131,6 +166,7 @@ registerEventListener(() => checkInZone("The Catacombs (M7)"),
 registerEventListener(() => checkInZone("The Catacombs (M7)"),
     register('chat', () => {
         phase = 75;
+        resetAlive();
 
         if (Object.keys(party).length === 0) {
             reloadClass();
@@ -156,6 +192,10 @@ register("worldUnload", () => {
 register("command", (setPhase) => {
     phase = setPhase;
 }).setName("set_phase");
+
+register("command", (color) => {
+    dragonState[color].alive = !dragonState[color].alive;
+}).setName("set_dragon_death");
 
 export function getDungeonPhase() {
     return phase;
@@ -201,3 +241,4 @@ export function getPlayerClass() {
     else
         return undefined;
 }
+

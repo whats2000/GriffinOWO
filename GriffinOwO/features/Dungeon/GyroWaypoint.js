@@ -1,7 +1,7 @@
 import Settings from "../../config";
 import RenderLib from "../../../RenderLib";
 import { GyroWaypoint } from "../../utils/Variable";
-import { getDungeonPhase, getPlayerClass } from "../../utils/DungeonTracker";
+import { getDungeonPhase, getPlayerClass, isAlive } from "../../utils/DungeonTracker";
 import { checkInZone } from "../../utils/Location";
 import { registerEventListener } from "../../utils/EventListener";
 
@@ -11,7 +11,8 @@ registerEventListener(() => Settings.dungeonGyroWaypoint && (checkInZone("The Ca
         if (phase < 71) return;
 
         GyroWaypoint.forEach(waypoint => {
-            if (!waypoint.show.includes(phase) && !Settings.dungeonWaypointPracticeMode) return;
+            if ((!waypoint.show.includes(phase) || !isAlive(waypoint.dragonColor))
+                && !Settings.dungeonWaypointPracticeMode) return;
             if (Settings.dungeonWaypointMode !== 0) {
                 if (Settings.dungeonWaypointMode === 6) {
                     if (!waypoint.class.includes(getPlayerClass())) return;
