@@ -412,7 +412,7 @@ export const DecoyWaypoint = [
 export const GyroWaypoint = [
     {
         "name": "§3Gyro skeletons",
-        "x": 98,
+        "x": 100,
         "y": 168,
         "z": 53,
         show: [71, 72],
@@ -420,32 +420,32 @@ export const GyroWaypoint = [
     },
     {
         "name": "§3Gyro skeletons",
-        "x": 44,
+        "x": 46,
         "y": 168,
         "z": 53,
         show: [71, 72],
         class: [5]
     },
     {
-        "name": "§bGyro",
-        "x": 83,
+        "name": "§bShadow Warp (Look Up)",
+        "x": 84,
         "y": 5,
-        "z": 102,
+        "z": 103,
         dragonColor: "Blue",
         show: [75],
         class: [4, 5]
     },
     {
-        "name": "§aGyro",
-        "x": 26,
+        "name": "§aShadow Warp (Look Up)",
+        "x": 24,
         "y": 5,
-        "z": 85,
+        "z": 82,
         dragonColor: "Green",
         show: [75],
         class: [3, 5]
     },
     {
-        "name": "§cGyro (Optional)",
+        "name": "§cShadow Warp (Look Up, Optional)",
         "x": 32,
         "y": 5,
         "z": 47,
@@ -454,10 +454,10 @@ export const GyroWaypoint = [
         class: [3, 4, 5]
     },
     {
-        "name": "§6Gyro (Optional)",
-        "x": 84,
+        "name": "§6Shadow Warp (Look Up, Optional)",
+        "x": 88,
         "y": 5,
-        "z": 62,
+        "z": 66,
         dragonColor: "Orange",
         show: [75],
         class: [3, 4, 5]

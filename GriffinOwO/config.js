@@ -617,7 +617,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Dungeon Gyro Waypoint",
-        description: "Show where to use gyro \n§e(Need disable §lSBA §f§ehide boss message, others mod is fine)",
+        description: "&b[WIP] &fShow where to use gyro or shadow warp blade (Please tell me if you find a better spot as I only test in f7 for 4 hours) \n§e(Need disable §lSBA §f§ehide boss message, others mod is fine)",
         category: "Dungeon",
         subcategory: "Dungeon Waypoint",
     })

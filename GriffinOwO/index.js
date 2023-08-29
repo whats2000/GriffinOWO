@@ -112,6 +112,7 @@ register("chat", () => {
         ChatLib.chat("&a + &eDungeon Stack Arrow Waypoint (Dungeon)");
         ChatLib.chat("&a + &e!tps (Trigger Command (Party))");
         ChatLib.chat("&a + &eAdd spring boot decoy for m7 (Dungeon)");
+        ChatLib.chat("&a + &eAdd Shadow Warp Waypoint into Gyro Waypoint (Dungeon)");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
         ChatLib.chat("&c - &eFix Lava Fishing Alert not trigger by Lord Jawbus");
