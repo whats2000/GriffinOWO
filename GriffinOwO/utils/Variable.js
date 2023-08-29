@@ -488,6 +488,15 @@ export const StackArrowWaypoint = [
         color: [0.5019608, 0.0, 0.5019608]
     },
     {
+        "name": "§dTarget",
+        "x": 56,
+        "y": 20,
+        "z": 124,
+        dragonColor: "Purple",
+        show: [75],
+        class: [1, 2]
+    },
+    {
         "name": "§aStack Arrow",
         "x": 25,
         "y": 6,
@@ -496,6 +505,15 @@ export const StackArrowWaypoint = [
         show: [75],
         class: [1, 2],
         color: [0, 1, 0]
+    },
+    {
+        "name": "§aTarget",
+        "x": 27,
+        "y": 16,
+        "z": 94,
+        dragonColor: "Green",
+        show: [75],
+        class: [1, 2]
     },
     {
         "name": "§cStack Arrow",
@@ -508,6 +526,15 @@ export const StackArrowWaypoint = [
         color: [1, 0, 0]
     },
     {
+        "name": "§cTarget",
+        "x": 29,
+        "y": 19,
+        "z": 57,
+        dragonColor: "Red",
+        show: [75],
+        class: [1, 2]
+    },
+    {
         "name": "§bStack Arrow",
         "x": 48,
         "y": 5,
@@ -516,6 +543,15 @@ export const StackArrowWaypoint = [
         show: [75],
         class: [1, 2],
         color: [0, 1, 1]
+    },
+    {
+        "name": "§bTarget",
+        "x": 85,
+        "y": 20,
+        "z": 98,
+        dragonColor: "Blue",
+        show: [75],
+        class: [1, 2]
     },
     {
         "name": "§6Stack Arrow",
@@ -527,6 +563,15 @@ export const StackArrowWaypoint = [
         class: [1, 2],
         color: [1.0, 0.49803922, 0.3137255]
     },
+    {
+        "name": "§6Target",
+        "x": 84,
+        "y": 20,
+        "z": 59,
+        dragonColor: "Orange",
+        show: [75],
+        class: [1, 2]
+    }
 ];
 
 export const Flare = [

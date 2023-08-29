@@ -16,13 +16,6 @@ let dragonState = {
     "Purple": { pos: new BlockPos(56, 22, 120), alive: true }
 };
 
-export function isAlive(color) {
-    if (color)
-        return dragonState[color].alive;
-    else
-        return true;
-}
-
 function resetAlive() {
     for (let color in dragonState) {
         dragonState[color].alive = true;
@@ -242,3 +235,9 @@ export function getPlayerClass() {
         return undefined;
 }
 
+export function isAlive(color) {
+    if (color)
+        return dragonState[color].alive;
+    else
+        return true;
+}
