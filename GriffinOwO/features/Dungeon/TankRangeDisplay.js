@@ -1,6 +1,6 @@
 import Settings from "../../config";
 import RenderLibV2 from "../../../RenderLibV2";
-import { getPlayerClass, getClassCheck, getTeammateByClass } from "../../utils/DungeonTracker";
+import { getClassCheck, getTeammateByClass } from "../../utils/DungeonTracker";
 import { checkInWorld } from "../../utils/Location";
 import { registerEventListener } from "../../utils/EventListener";
 

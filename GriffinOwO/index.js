@@ -59,6 +59,7 @@ import "./features/Dungeon/DecoyDeadAlert";
 import "./features/Dungeon/DecoyWaypoint";
 import "./features/Dungeon/DragonBox";
 import "./features/Dungeon/DragonTimer";
+import "./features/Dungeon/HealerWishNotification";
 import "./features/Dungeon/GyroWaypoint";
 import "./features/Dungeon/MiningWaypoint";
 import "./features/Dungeon/StackArrowWaypoint";
@@ -114,6 +115,7 @@ register("chat", () => {
         ChatLib.chat("&a + &e!tps (Trigger Command (Party))");
         ChatLib.chat("&a + &eAdd Spring Boot Decoy for m7 in Dungeon Decoy Waypoint (Dungeon)");
         ChatLib.chat("&a + &eAdd Shadow Warp Waypoint into Dungeon Gyro Waypoint (Dungeon)");
+        ChatLib.chat("&a + &eAdd Healer Wish Notification / Message (Dungeon)");
         ChatLib.chat("&a + &eAdd Shadow Warp Marker (Combat)");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");

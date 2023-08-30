@@ -1,6 +1,8 @@
 import { @Vigilant, @ButtonProperty, @TextProperty, @SwitchProperty, @DecimalSliderProperty @SliderProperty, @SelectorProperty, @ColorProperty, Color } from "Vigilance";
 
-@Vigilant("GriffinOWO", "Some people call it iahnaddons", {
+const version = JSON.parse(FileLib.read("GriffinOWO", "metadata.json")).version;
+
+@Vigilant("GriffinOWO", `Some people call it iahnaddons, v${version}`, {
 })
 class Settings {
     gyroGUI = new Gui();
@@ -591,7 +593,7 @@ class Settings {
 
     @SelectorProperty({
         name: "Dungeon Waypoint Mode",
-        description: "Select to make only show specify class waypoint instead of all (Need disable SBA hide boss message, others mod is fine)",
+        description: "Select to make only show specify class waypoint instead of all \n§e(Need disable §lSBA §f§ehide boss message, others mod is fine)",
         category: "Dungeon",
         subcategory: "Dungeon Waypoint",
         options: ["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage", "Auto Detect"],
@@ -660,7 +662,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Dragon Timer",
-        description: "Dragon Timer will display the dragon spawning count down depand on skip order, similar to skytils but have order and turn into HUD",
+        description: "Dragon Timer will display the dragon spawning count down depand on skip order, similar to skytils but have order and turn into HUD \n§e(Need disable §lSBA §f§ehide boss message, others mod is fine)",
         category: "Dungeon",
         subcategory: "Dragon Timer HUD",
     })
@@ -703,7 +705,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Dragon Box",
-        description: "Display the dragon box and remove when the dragon is killed",
+        description: "Display the dragon box and remove when the dragon is killed \n§e(Need disable §lSBA §f§ehide boss message, others mod is fine)",
         category: "Dungeon",
         subcategory: "Dragon Box",
     })
@@ -719,12 +721,29 @@ class Settings {
 
     @TextProperty({
         name: "Decoy Killed Message",
-        description: "Show a message when the decoy is dead, leave empty if don't want show",
+        description: "Show a message when the decoy is dead, leave empty if don't want send",
         category: "Dungeon",
         subcategory: "Decoy Tracker",
         triggerActionOnInitialization: false,
     })
     decoyKilledMessage = "";
+
+    @SwitchProperty({
+        name: "Healer Wish Notification",
+        description: "Show a title and play a sound when you are playing healer while the timing to wish \n§e(Need disable §lSBA §f§ehide boss message, others mod is fine)",
+        category: "Dungeon",
+        subcategory: "Healer Wish",
+    })
+    healerWishTitle = false;
+
+    @TextProperty({
+        name: "Healer Wish Message",
+        description: "Show a message when the healer need to wish, this will not trigger when you are playing healer! Really useful when you are playing tank. Leave empty if don't want send \n§e(Need disable §lSBA §f§ehide boss message, others mod is fine)",
+        category: "Dungeon",
+        subcategory: "Healer Wish",
+        triggerActionOnInitialization: false,
+    })
+    healerWishMessage = "";
 
     @SwitchProperty({
         name: "Box Starred Mob",
