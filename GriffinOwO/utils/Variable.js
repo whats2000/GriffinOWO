@@ -237,9 +237,9 @@ export const MiningWaypoint = [
 export const DecoyWaypoint = [
     {
         "name": "§bDecoy",
-        "x": 90,
+        "x": 89.5,
         "y": 11,
-        "z": 100,
+        "z": 100.5,
         dragonColor: "Blue",
         show: [74, 75],
         class: [3]
@@ -265,9 +265,9 @@ export const DecoyWaypoint = [
     },
     {
         "name": "§aDecoy",
-        "x": 21,
+        "x": 21.5,
         "y": 11,
-        "z": 88,
+        "z": 88.5,
         dragonColor: "Green",
         show: [74, 75],
         class: [3]
