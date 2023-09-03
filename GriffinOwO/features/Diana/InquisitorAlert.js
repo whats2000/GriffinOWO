@@ -8,6 +8,7 @@ const EntityPlayerMP = Java.type("net.minecraft.client.entity.EntityOtherPlayerM
 registerEventListener(() => Settings.inquis && checkInWorld("Hub"),
     register("Chat", () => {
         const entitis = World.getAllEntitiesOfType(EntityPlayerMP.class);
+
         const Inquisitors = entitis.filter(entity => entity.getName().equals("Minos Inquisitor"));
 
         if (Inquisitors.length === 0) return;
@@ -41,5 +42,5 @@ registerEventListener(() => Settings.inquis && checkInWorld("Hub"),
                 ChatLib.command(`${channel} [!] Inquisitor is spawned at [${location} ] [!]`)
             });
         })
-    }).setCriteria("${front}! You dug out a Minos Champion!")
+    }).setCriteria("${front}! You dug out a Minos Inquisitor!")
 );

@@ -153,7 +153,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Shadow Warp Marker",
-        description: "Shadow Warp Marker will draw a radius circle when in valid distance, this only work with a blade with Shadow Warp pnly",
+        description: "Shadow Warp Marker will draw a radius circle when in valid distance, this only work with a blade with Shadow Warp only",
         category: "Combat",
         subcategory: "Shadow Warp Marker",
     })
