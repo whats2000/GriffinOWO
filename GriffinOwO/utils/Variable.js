@@ -190,10 +190,40 @@ export const MiningWaypoint = [
         class: [3]
     },
     {
-        "name": "Pre-Device",
+        "name": "Pre-Device 2",
         "x": 96,
         "y": 120,
         "z": 121,
+        w: 1,
+        h: 1,
+        show: [71, 72],
+        class: [3]
+    },
+    {
+        "name": "Pre-Device 2",
+        "x": 104,
+        "y": 120,
+        "z": 121,
+        w: 1,
+        h: 1,
+        show: [71, 72],
+        class: [3]
+    },
+    {
+        "name": "Pre-Device 3",
+        "x": 19,
+        "y": 120,
+        "z": 128,
+        w: 1,
+        h: 1,
+        show: [71, 72],
+        class: [3]
+    },
+    {
+        "name": "Pre-Device 3",
+        "x": 19,
+        "y": 120,
+        "z": 136,
         w: 1,
         h: 1,
         show: [71, 72],
