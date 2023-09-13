@@ -8,6 +8,7 @@ import { registerEventListener } from "../../utils/EventListener";
 // But I rewrite it into legit version
 
 const EntityArmorStand = Java.type("net.minecraft.entity.item.EntityArmorStand");
+const EntityWither = Java.type("net.minecraft.entity.boss.EntityWither");
 
 let starEntitiesToRender = {};
 
@@ -39,6 +40,7 @@ registerEventListener(() => Settings.boxStarredMob && checkInWorld("Dungeon"),
             const entities = World.getWorld().func_72839_b(mcStand, mcStand.func_174813_aQ().func_72314_b(1, 5, 1)).filter(entity =>
                 entity &&
                 !(entity instanceof EntityArmorStand) &&
+                !(entity instanceof EntityWither) &&
                 entity !== Player.getPlayer()
             ).sort((a, b) =>
                 noSqrt3DDistance(a, mcStand) - noSqrt3DDistance(b, mcStand)

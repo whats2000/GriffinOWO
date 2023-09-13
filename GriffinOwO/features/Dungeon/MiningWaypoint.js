@@ -21,32 +21,6 @@ registerEventListener(() => Settings.dungeonMiningWaypoint && (checkInZone("The 
                 }
             }
 
-            if (waypoint.name === "Mine down P4" && Settings.dungeonWaypointMode !== 0) {
-                // Waypoint Class index ["All Class", "Archer", "Berserk", "Healer", "Tank", "Mage"]
-                let p4Class = 3; // Deafault Healer
-
-                // P4 Class index ["Healer", "Berserk", "Mage"]
-                switch (Settings.dungeonWaypointP4Class) {
-                    case 0:
-                        p4Class = 3;
-                        break;
-                    case 1:
-                        p4Class = 2;
-                        break;
-                    case 2:
-                        p4Class = 5;
-                        break;
-                    default:
-                        p4Class = 3;
-                }
-
-                if (Settings.dungeonWaypointMode === 6) {
-                    if (getPlayerClass() !== p4Class) return;
-                } else {
-                    if (Settings.dungeonWaypointMode !== p4Class) return;
-                }
-            };
-
             let [x, y, z] = [waypoint.x, waypoint.y, waypoint.z]
             let [w, h] = [waypoint.w, waypoint.h]
 

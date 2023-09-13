@@ -600,15 +600,6 @@ class Settings {
     })
     dungeonWaypointMode = 0;
 
-    @SelectorProperty({
-        name: "Dungeon Waypoint Pre P4 decoy class",
-        description: "Change P4 pre decoy class",
-        category: "Dungeon",
-        subcategory: "Dungeon Waypoint",
-        options: ["Healer", "Berserk", "Mage"],
-    })
-    dungeonWaypointP4Class = 0;
-
     @SwitchProperty({
         name: "Dungeon Waypoint Practice Mode",
         description: "Show all the waypoint no matter the phase, for practice usage",
@@ -616,14 +607,6 @@ class Settings {
         subcategory: "Dungeon Waypoint",
     })
     dungeonWaypointPracticeMode = false;
-
-    @SwitchProperty({
-        name: "Dungeon Decoy Waypoint",
-        description: "Show where to place decoy \n§e(Need disable §lSBA §f§ehide boss message, others mod is fine)",
-        category: "Dungeon",
-        subcategory: "Dungeon Waypoint",
-    })
-    dungeonDecoyWaypoint = false;
 
     @SwitchProperty({
         name: "Dungeon Gyro Waypoint",
