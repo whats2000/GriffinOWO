@@ -662,6 +662,15 @@ class Settings {
         this.dragonTimerGUI.open()
     };
 
+    @SelectorProperty({
+        name: "Dragon Timer Mode",
+        description: "&aSingle&f: All player target at 1 dragon\n&aSplit&f: Archer, Healer dispaly first order, Others will display second order",
+        category: "Dungeon",
+        subcategory: "Dragon Timer HUD",
+        options: ["single", "split"],
+    })
+    dragonTimerMode = 0;
+
     @SwitchProperty({
         name: "Dragon Spawn Message",
         description: "Dragon spawn will show message in chat",

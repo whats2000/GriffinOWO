@@ -1,6 +1,6 @@
 import Settings from "../../config";
 import { checkInZone } from "../../utils/Location";
-import { getDungeonPhase } from "../../utils/DungeonTracker";
+import { getDungeonPhase, getPlayerClass } from "../../utils/DungeonTracker";
 import { registerEventListener } from "../../utils/EventListener";
 
 // The revert order is depend on skip 
@@ -10,6 +10,24 @@ const DragonParticle = {
     "§b§lBlue": { x: 84, y: 19, z: 94 },
     "§6§lOrange": { x: 85, y: 19, z: 56 },
     "§c§lRed": { x: 27, y: 19, z: 59 },
+}
+
+// Order for Archer, Healer
+const SplitOrder1 = {
+    "§6§lOrange": { x: 85, y: 19, z: 56 },
+    "§c§lRed": { x: 27, y: 19, z: 59 },
+    "§a§lGreen": { x: 27, y: 19, z: 94 },
+    "§5§lPurple": { x: 56, y: 19, z: 125 },
+    "§b§lBlue": { x: 84, y: 19, z: 94 },
+}
+
+// Revert Order for Tank, Berserk, Mage
+const SplitOrder2 = {
+    "§b§lBlue": { x: 84, y: 19, z: 94 },
+    "§5§lPurple": { x: 56, y: 19, z: 125 },
+    "§a§lGreen": { x: 27, y: 19, z: 94 },
+    "§c§lRed": { x: 27, y: 19, z: 59 },
+    "§6§lOrange": { x: 85, y: 19, z: 56 },
 }
 
 const S2APacketParticles = Java.type("net.minecraft.network.play.server.S2APacketParticles");
@@ -56,7 +74,12 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage
 
         const [x, z] = [packet.func_149220_d(), packet.func_149225_f()]
         //ChatLib.chat(`[${x}, ${z}]`)
-        for (let color in DragonParticle) {
+
+        const ParticleOrder = Settings.dragonTimerMode === 1 ? DragonParticle :
+            (getPlayerClass() === 1 || getPlayerClass() === 3) ? SplitOrder1 :
+                SplitOrder2;
+
+        for (let color in ParticleOrder) {
             if (DragonParticle[color].x == parseInt(x) && DragonParticle[color].z == parseInt(z)) {
                 if (dragonTimer[color] < Date.now()) {
                     if (Settings.dragonTimer || Settings.dragonSpawnTitle)
@@ -76,7 +99,12 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) 
 
         const currentTime = Date.now();
         let dragonColor = null;
-        for (let color in DragonParticle) {
+
+        const ParticleOrder = Settings.dragonTimerMode === 1 ? DragonParticle :
+            (getPlayerClass() === 1 || getPlayerClass() === 3) ? SplitOrder1 :
+                SplitOrder2;
+
+        for (let color in ParticleOrder) {
             if (dragonTimer[color] - currentTime > 0) {
                 dragonColor = color;
             }
