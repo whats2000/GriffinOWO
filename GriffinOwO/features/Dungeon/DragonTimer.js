@@ -56,6 +56,7 @@ let dragonTimer = {
 };
 
 let color = null;
+let dragonOrder = DragonParticle;
 
 function selectSplitOrder() {
     return (getPlayerClass() === 1 || getPlayerClass() === 3) ? SplitOrder1 : SplitOrder2
@@ -67,7 +68,7 @@ function selectTimerMode() {
             return DragonParticle;
         case 1:
             return selectSplitOrder();
-        case 3:
+        case 2:
             const Blessing = getBlessing();
 
             if (Blessing[0] && (Blessing[1].power.current + 1 / 2 * Blessing[1].time.current) >= Settings.dragonTimerPowerSelect) {
@@ -100,9 +101,8 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage
 
         const [x, z] = [packet.func_149220_d(), packet.func_149225_f()]
         //ChatLib.chat(`[${x}, ${z}]`)
-        const ParticleOrder = selectTimerMode();
 
-        for (let color in ParticleOrder) {
+        for (let color in dragonOrder) {
             if (DragonParticle[color].x == parseInt(x) && DragonParticle[color].z == parseInt(z)) {
                 if (dragonTimer[color] < Date.now()) {
                     if (Settings.dragonTimer || Settings.dragonSpawnTitle)
@@ -123,9 +123,7 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) 
         const currentTime = Date.now();
         let dragonColor = null;
 
-        const ParticleOrder = selectTimerMode();
-
-        for (let color in ParticleOrder) {
+        for (let color in dragonOrder) {
             if (dragonTimer[color] - currentTime > 0) {
                 dragonColor = color;
             }
@@ -163,12 +161,14 @@ function resetTimer() {
 registerEventListener(() => Settings.dragonBox && checkInZone("The Catacombs (M7)"),
     register("chat", () => {
         resetTimer();
+        dragonOrder = selectTimerMode();
     }).setCriteria("[BOSS] Wither King: Ohhh?")
 );
 
 registerEventListener(() => Settings.dragonBox && checkInZone("The Catacombs (M7)"),
     register("chat", () => {
         resetTimer();
+        dragonOrder = selectTimerMode();
     }).setCriteria("[BOSS] Wither King: You.. again?")
 );
 
