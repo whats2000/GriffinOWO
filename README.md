@@ -34,11 +34,11 @@ A chattrigger script helper for Hypixel Skyblock
 1. Inquis Alert: Allow you to tell the inquisher spot in the party chat
 
 ### Dungeon
-1. Dungeon Decoy Waypoint: Show where to place the decoy and use spring boot
+1. Blessing Display: Show the blessing in dungeon
 2. Dungeon Gyro Waypoint: Show where to use gyro or shadow warp
 3. Dungeon Mining Waypoint: Show where to mine down phrases and where to get through
 4. Dungeon Stack Arrow Waypoint: Show where to stack arrow for each dragon
-5. Dragon Timer: Dragon Timer will display the dragon spawning countdown depending on skip order [R -> O -> B -> P -> G]
+5. Dragon Timer: Dragon Timer will display the dragon spawning countdown depending on skip order [R -> O -> B -> P -> G] or double skip order [[B -> P -> G -> R -> O], [O -> R -> G -> P -> B]]. You can change the mode in `Dragon Timer Mode`
 6. Dragon Spawn Message/Title: Better dragon spawn detect to not trigger by fire veil wand
 7. Dragon Box: Display the dragon box and remove when the dragon is killed
 8. Decoy Killed Title/Message: Tell you and your party when the decoy is killed
