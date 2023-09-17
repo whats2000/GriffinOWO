@@ -75,7 +75,7 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage
         const [x, z] = [packet.func_149220_d(), packet.func_149225_f()]
         //ChatLib.chat(`[${x}, ${z}]`)
 
-        const ParticleOrder = Settings.dragonTimerMode === 1 ? DragonParticle :
+        const ParticleOrder = Settings.dragonTimerMode === 0 ? DragonParticle :
             (getPlayerClass() === 1 || getPlayerClass() === 3) ? SplitOrder1 :
                 SplitOrder2;
 
@@ -100,7 +100,7 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) 
         const currentTime = Date.now();
         let dragonColor = null;
 
-        const ParticleOrder = Settings.dragonTimerMode === 1 ? DragonParticle :
+        const ParticleOrder = Settings.dragonTimerMode === 0 ? DragonParticle :
             (getPlayerClass() === 1 || getPlayerClass() === 3) ? SplitOrder1 :
                 SplitOrder2;
 
