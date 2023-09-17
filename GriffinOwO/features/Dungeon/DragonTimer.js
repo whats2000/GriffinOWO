@@ -59,7 +59,7 @@ let color = null;
 let dragonOrder = DragonParticle;
 
 function selectSplitOrder() {
-    return (getPlayerClass() === 1 || getPlayerClass() === 3) ? SplitOrder1 : SplitOrder2
+    return (getPlayerClass() === 1 || getPlayerClass() === 3) ? SplitOrder2 : SplitOrder1
 }
 
 function selectTimerMode() {
@@ -73,9 +73,11 @@ function selectTimerMode() {
 
             if (Blessing[0] && (Blessing[1].power.current + 1 / 2 * Blessing[1].time.current) >= Settings.dragonTimerPowerSelect) {
                 ChatLib.chat(`&2[GriffinOwO] &fPower ${(Blessing[1].power.current + 1 / 2 * Blessing[1].time.current)} use split mode`);
+                ChatLib.command(`pc Power is ${(Blessing[1].power.current + 1 / 2 * Blessing[1].time.current)} use split`);
                 return selectSplitOrder();
             } else {
                 ChatLib.chat(`&2[GriffinOwO] &fPower ${(Blessing[1].power.current + 1 / 2 * Blessing[1].time.current)} use single mode`);
+                ChatLib.command(`pc Power is ${(Blessing[1].power.current + 1 / 2 * Blessing[1].time.current)} use single`);
                 return DragonParticle;
             }
         default:
