@@ -683,6 +683,14 @@ class Settings {
     dragonTimerPowerSelect = 19;
 
     @SwitchProperty({
+        name: "Dragon Timer Mode Select Message",
+        description: "Tell the teammates what the mode you have selected",
+        category: "Dungeon",
+        subcategory: "Dragon Timer HUD",
+    })
+    dragonTimerModeMessage = false;
+
+    @SwitchProperty({
         name: "Dragon Spawn Message",
         description: "Dragon spawn will show message in chat",
         category: "Dungeon",
@@ -958,6 +966,7 @@ class Settings {
         this.addDependency("Dragon Timer Location", "Dragon Timer");
         this.addDependency("Dragon Timer Mode", "Dragon Timer");
         this.addDependency("Dragon Timer Mode Power Require", "Dragon Timer");
+        this.addDependency("Dragon Timer Mode Select Message", "Dragon Timer");
 
         this.addDependency("Dragon Spawn Title show timer", "Dragon Spawn Title");
 
