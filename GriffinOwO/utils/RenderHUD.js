@@ -2,6 +2,7 @@ import Settings from "../config";
 import { userData } from "./UserData";
 import { getGyroUsedTimeFormatted, getAlignmentTimeFormatted } from "../features/Combat/GyroTimer";
 import { getFlareTimeFormatted } from "../features/Combat/FlareTimer";
+import { getBlessing } from "../features/Dungeon/BlessingDisplay";
 import { getDragonTimeFormatted } from "../features/Dungeon/DragonTimer";
 import { getKuudraPointer } from "../features/Kuudra/KuudraHeadPointer";
 
@@ -119,6 +120,36 @@ register("renderOverlay", () => {
             renderText(userData.kuudraHeadPointerCoords, `${kuudraPointer}`);
         }
     }
+
+    if (Settings.blessingTracker) {
+        if (Settings.blessingDisplayGUI.isOpen()) {
+            renderExampleText(userData.blessingCoords, "§cPower: 24\n§dTime: 5\n§eLife: 10\n§bWisdom: 12\n§aStone: 8");
+            return;
+        }
+
+        const Blessing = getBlessing();
+        if (Blessing[0]) {
+            let displayText = "";
+
+            if (Settings.blessingDisplayPower)
+                displayText += `\n${Blessing[1].power.display}: ${Blessing[1].power.current}`;
+
+            if (Settings.blessingDisplayTime)
+                displayText += `\n${Blessing[1].time.display}: ${Blessing[1].time.current}`;
+
+            if (Settings.blessingDisplayLife)
+                displayText += `\n${Blessing[1].life.display}: ${Blessing[1].life.current}`;
+
+            if (Settings.blessingDisplayWisdom)
+                displayText += `\n${Blessing[1].wisdom.display}: ${Blessing[1].wisdom.current}`;
+
+            if (Settings.blessingDisplayStone)
+                displayText += `\n${Blessing[1].stone.display}: ${Blessing[1].stone.current}`;
+
+            if (displayText !== "")
+                renderText(userData.blessingCoords, `${displayText}`);
+        }
+    }
 });
 
 register('dragged', (dx, dy, x, y, button) => {
@@ -149,6 +180,11 @@ register('dragged', (dx, dy, x, y, button) => {
             handleDragged(userData.kuudraHeadPointerCoords, x, y);
             return;
         }
+    if (Settings.blessingTracker)
+        if (Settings.blessingDisplayGUI.isOpen()) {
+            handleDragged(userData.blessingCoords, x, y);
+            return;
+        }
 });
 
 register('scrolled', (x, y, direction) => {
@@ -175,6 +211,11 @@ register('scrolled', (x, y, direction) => {
     if (Settings.kuudraHeadPointer)
         if (Settings.kuudraHeadPointerGUI.isOpen()) {
             handleScroll(userData.kuudraHeadPointerCoords, direction);
+            return;
+        }
+    if (Settings.blessingTracker)
+        if (Settings.blessingDisplayGUI.isOpen()) {
+            handleScroll(userData.blessingCoords, direction);
             return;
         }
 });

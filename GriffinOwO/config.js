@@ -10,6 +10,7 @@ class Settings {
     flareTimerGUI = new Gui();
     dragonTimerGUI = new Gui();
     kuudraHeadPointerGUI = new Gui();
+    blessingDisplayGUI = new Gui();
 
     @SwitchProperty({
         name: "Blacklist Mode",
@@ -664,12 +665,22 @@ class Settings {
 
     @SelectorProperty({
         name: "Dragon Timer Mode",
-        description: "&aSingle&f: All player target at 1 dragon\n&aSplit&f: Archer, Healer dispaly first order, Others will display second order",
+        description: "&aSingle&f: All player target at 1 dragon\n&aSplit&f: Archer, Healer dispaly first order, Others will display second order\n&aAuto Select&f: Select the skip mode depend on &cBlessing of Power &flevel, &eNeed enable &lBlessing Tracker",
         category: "Dungeon",
         subcategory: "Dragon Timer HUD",
-        options: ["single", "split"],
+        options: ["single", "split", "auto select"],
     })
     dragonTimerMode = 0;
+
+    @SliderProperty({
+        name: "Dragon Timer Mode Power Require",
+        description: "The &cBlessing of Power&f above this setting (include) will use split mode, we will calculate time as 2.5 &cBlessing of Power",
+        category: "Dungeon",
+        subcategory: "Dragon Timer HUD",
+        min: 9,
+        max: 29
+    })
+    dragonTimerPowerSelect = 19;
 
     @SwitchProperty({
         name: "Dragon Spawn Message",
@@ -763,6 +774,65 @@ class Settings {
         decimalPlaces: 1
     })
     boxStarredMobBoxLineWidth = 2.0;
+
+    @SwitchProperty({
+        name: "Blessing Tracker",
+        description: "Display the dungeon blessing",
+        category: "Dungeon",
+        subcategory: "Blessing Tracker",
+    })
+    blessingTracker = false;
+
+    @ButtonProperty({
+        name: "Blessing Display HUD Location",
+        description: "Moves the Blessing Display HUD",
+        category: "Dungeon",
+        subcategory: "Blessing Tracker",
+        placeholder: "Move"
+    })
+    MoveblessingDisplayGUI() {
+        this.blessingDisplayGUI.open()
+    };
+
+    @SwitchProperty({
+        name: "Blessing Display Power",
+        description: "Display the dungeon Blessing of Power",
+        category: "Dungeon",
+        subcategory: "Blessing Tracker",
+    })
+    blessingDisplayPower = false;
+
+    @SwitchProperty({
+        name: "Blessing Display Time",
+        description: "Display the dungeon Blessing of Time",
+        category: "Dungeon",
+        subcategory: "Blessing Tracker",
+    })
+    blessingDisplayTime = false;
+
+    @SwitchProperty({
+        name: "Blessing Display Life",
+        description: "Display the dungeon Blessing of Life",
+        category: "Dungeon",
+        subcategory: "Blessing Tracker",
+    })
+    blessingDisplayLife = false;
+
+    @SwitchProperty({
+        name: "Blessing Display Wisdom",
+        description: "Display the dungeon Blessing of Wisdom",
+        category: "Dungeon",
+        subcategory: "Blessing Tracker",
+    })
+    blessingDisplayWisdom = false;
+
+    @SwitchProperty({
+        name: "Blessing Display Stone",
+        description: "Display the dungeon Blessing of Stone",
+        category: "Dungeon",
+        subcategory: "Blessing Tracker",
+    })
+    blessingDisplayStone = false;
 
     @SwitchProperty({
         name: "Tank Protect Range",
@@ -886,6 +956,9 @@ class Settings {
         this.addDependency("Waypoint Unload When Swap Lobby", "Recieve waypoint from chat");
 
         this.addDependency("Dragon Timer Location", "Dragon Timer");
+        this.addDependency("Dragon Timer Mode", "Dragon Timer");
+        this.addDependency("Dragon Timer Mode Power Require", "Dragon Timer");
+
         this.addDependency("Dragon Spawn Title show timer", "Dragon Spawn Title");
 
         this.addDependency("Box Starred Mob Color", "Box Starred Mob");
@@ -894,6 +967,13 @@ class Settings {
         this.addDependency("Tank Protect Range Mode", "Tank Protect Range");
         this.addDependency("Tank Protect Range Show Own Range", "Tank Protect Range");
         this.addDependency("Tank Protect Range Color", "Tank Protect Range");
+
+        this.addDependency("Blessing Display HUD Location", "Blessing Tracker");
+        this.addDependency("Blessing Display Power", "Blessing Tracker");
+        this.addDependency("Blessing Display Time", "Blessing Tracker");
+        this.addDependency("Blessing Display Life", "Blessing Tracker");
+        this.addDependency("Blessing Display Wisdom", "Blessing Tracker");
+        this.addDependency("Blessing Display Stone", "Blessing Tracker");
 
         this.addDependency("Show Pet Candy Used Behind Name", "Show Pet Candy Used");
 

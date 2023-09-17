@@ -1,5 +1,6 @@
 import Settings from "../../config";
 import { checkInZone } from "../../utils/Location";
+import { getBlessing } from "./BlessingDisplay";
 import { getDungeonPhase, getPlayerClass } from "../../utils/DungeonTracker";
 import { registerEventListener } from "../../utils/EventListener";
 
@@ -56,6 +57,31 @@ let dragonTimer = {
 
 let color = null;
 
+function selectSplitOrder() {
+    return (getPlayerClass() === 1 || getPlayerClass() === 3) ? SplitOrder1 : SplitOrder2
+}
+
+function selectTimerMode() {
+    switch (Settings.dragonTimerMode) {
+        case 0:
+            return DragonParticle;
+        case 1:
+            return selectSplitOrder();
+        case 3:
+            const Blessing = getBlessing();
+
+            if (Blessing[0] && (Blessing[1].power.current + 1 / 2 * Blessing[1].time.current) >= Settings.dragonTimerPowerSelect) {
+                ChatLib.chat(`&2[GriffinOwO] &fPower ${(Blessing[1].power.current + 1 / 2 * Blessing[1].time.current)} use split mode`);
+                return selectSplitOrder();
+            } else {
+                ChatLib.chat(`&2[GriffinOwO] &fPower ${(Blessing[1].power.current + 1 / 2 * Blessing[1].time.current)} use single mode`);
+                return DragonParticle;
+            }
+        default:
+            return DragonParticle;
+    }
+}
+
 registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage || Settings.dragonSpawnTitle) && checkInZone("The Catacombs (M7)"),
     register("PacketReceived", (packet) => {
         if (getDungeonPhase() !== 75) return;
@@ -74,10 +100,7 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage
 
         const [x, z] = [packet.func_149220_d(), packet.func_149225_f()]
         //ChatLib.chat(`[${x}, ${z}]`)
-
-        const ParticleOrder = Settings.dragonTimerMode === 0 ? DragonParticle :
-            (getPlayerClass() === 1 || getPlayerClass() === 3) ? SplitOrder1 :
-                SplitOrder2;
+        const ParticleOrder = selectTimerMode();
 
         for (let color in ParticleOrder) {
             if (DragonParticle[color].x == parseInt(x) && DragonParticle[color].z == parseInt(z)) {
@@ -100,9 +123,7 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) 
         const currentTime = Date.now();
         let dragonColor = null;
 
-        const ParticleOrder = Settings.dragonTimerMode === 0 ? DragonParticle :
-            (getPlayerClass() === 1 || getPlayerClass() === 3) ? SplitOrder1 :
-                SplitOrder2;
+        const ParticleOrder = selectTimerMode();
 
         for (let color in ParticleOrder) {
             if (dragonTimer[color] - currentTime > 0) {

@@ -54,6 +54,7 @@ import "./features/CrimsonIsland/VanquisherAlert";
 import "./features/Diana/InquisitorAlert";
 
 // Dungeon
+import "./features/Dungeon/BlessingDisplay";
 import "./features/Dungeon/BoxStarMobs";
 import "./features/Dungeon/DecoyDeadAlert";
 import "./features/Dungeon/DragonBox";
