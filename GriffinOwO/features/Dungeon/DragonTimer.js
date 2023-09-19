@@ -13,21 +13,21 @@ const DragonParticle = {
     "§c§lRed": { x: 27, y: 19, z: 59 },
 }
 
-// Order for Archer, Healer
+// Order for Archer, Healer, Tank
 const SplitOrder1 = {
     "§6§lOrange": { x: 85, y: 19, z: 56 },
-    "§c§lRed": { x: 27, y: 19, z: 59 },
     "§a§lGreen": { x: 27, y: 19, z: 94 },
+    "§c§lRed": { x: 27, y: 19, z: 59 },
     "§5§lPurple": { x: 56, y: 19, z: 125 },
     "§b§lBlue": { x: 84, y: 19, z: 94 },
 }
 
-// Revert Order for Tank, Berserk, Mage
+// Revert Order for Berserk, Mage
 const SplitOrder2 = {
     "§b§lBlue": { x: 84, y: 19, z: 94 },
     "§5§lPurple": { x: 56, y: 19, z: 125 },
-    "§a§lGreen": { x: 27, y: 19, z: 94 },
     "§c§lRed": { x: 27, y: 19, z: 59 },
+    "§a§lGreen": { x: 27, y: 19, z: 94 },
     "§6§lOrange": { x: 85, y: 19, z: 56 },
 }
 
@@ -59,7 +59,7 @@ let color = null;
 let dragonOrder = DragonParticle;
 
 function selectSplitOrder() {
-    return (getPlayerClass() === 1 || getPlayerClass() === 3) ? SplitOrder2 : SplitOrder1
+    return (getPla4yerClass() === 1 || getPlayerClass() === 3 || getPlayerClass() === 4) ? SplitOrder2 : SplitOrder1
 }
 
 function selectTimerMode() {
