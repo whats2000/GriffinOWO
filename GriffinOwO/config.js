@@ -148,9 +148,17 @@ class Settings {
         name: "Terminator Exchange Click",
         description: "&b[WIP] &fWill exchange your attack and use keybind while hold terminator \n&e(Note: This feature will change your client local keybind setting in Controls while hold terminator)",
         category: "Combat",
-        subcategory: "Terminator Exchange Click",
+        subcategory: "Terminator",
     })
     exchangeTerminatorClick = false;
+
+    @SwitchProperty({
+        name: "Terminator Hide Animation",
+        description: "Will disable the Terminator left click swing animation",
+        category: "Combat",
+        subcategory: "Terminator",
+    })
+    TerminatorHideAnimation = false;
 
     @SwitchProperty({
         name: "Shadow Warp Marker",

@@ -42,6 +42,7 @@ import "./features/Combat/FlareTimer";
 import "./features/Combat/GyroRangeMarker";
 import "./features/Combat/GyroTimer";
 import "./features/Combat/ShadowWarpRangeMarker";
+import "./features/Combat/TerminatorAnimation";
 import "./features/Combat/TerminatorExchangeClick";
 
 // CrimsonIsland
@@ -111,6 +112,7 @@ register("chat", () => {
         ChatLib.chat("&b&l                New Feature");
         ChatLib.chat("&a + &eAdd Blessing display (Dungeon)");
         ChatLib.chat("&a + &eAdd Dragon Timer Mode (Dungeon)");
+        ChatLib.chat("&a + &eAdd Terminator Hide Animation (Combat)");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
         ChatLib.chat("&c - &eNothing currently");
