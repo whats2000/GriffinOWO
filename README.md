@@ -53,7 +53,8 @@ A chattrigger script helper for Hypixel Skyblock
 4. Flare Range Marker: Display the range of the flare
 5. Flare Timer: Flare Timer will display the flare time when you are in flare range
 6. Terminator Exchange Click: Will exchange your attack and use keybind while holding the terminator
-7. Shadow Warp Marker: Shadow Warp Marker will draw a radius circle when in valid distance, this only work with a blade with Shadow Warp Scroll only
+7. Terminator Hide Animation: Will disable the Terminator left click swing animation
+8. Shadow Warp Marker: Shadow Warp Marker will draw a radius circle when in valid distance, this only work with a blade with Shadow Warp Scroll only
 
 ### Crimson Island
 1. Broke Hype Detect: Detect Hype stopped grand combat xp without using the book of state
