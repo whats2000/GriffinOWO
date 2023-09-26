@@ -63,6 +63,7 @@ import "./features/Dungeon/DragonTimer";
 import "./features/Dungeon/HealerWishNotification";
 import "./features/Dungeon/GyroWaypoint";
 import "./features/Dungeon/MiningWaypoint";
+import "./features/Dungeon/HideArmorStand";
 import "./features/Dungeon/StackArrowWaypoint";
 import "./features/Dungeon/TankRangeDisplay";
 
@@ -110,15 +111,14 @@ register("chat", () => {
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
         ChatLib.chat(`          &6[GriffinOwO] &f&aChange Log (${version})`);
         ChatLib.chat("&b&l                New Feature");
-        ChatLib.chat("&a + &eAdd Blessing display (Dungeon)");
-        ChatLib.chat("&a + &eAdd Dragon Timer Mode (Dungeon)");
-        ChatLib.chat("&a + &eAdd Terminator Hide Animation (Combat)");
+        ChatLib.chat("&a + &eAdd Remove P1 ArmorStand (Dungeon)");
+        ChatLib.chat("&a + &eAdd Remove P5 ArmorStand and Falling Block (Dungeon)");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
         ChatLib.chat("&c - &eNothing currently");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Change");
-        ChatLib.chat("&d = &eChange dragon timer can choose double skip order depend on class");
+        ChatLib.chat("&d = &eTank Range Radius now can be modify");
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
     }, 1000);
 }).setCriteria("Welcome to Hypixel SkyBlock${after}");

@@ -875,6 +875,15 @@ class Settings {
     tankProtectRangeColor = Color.GREEN;
 
     @SelectorProperty({
+        name: "Tank Range Radius",
+        description: "Tank Protect Range change by Bone Necklace",
+        category: "Dungeon",
+        subcategory: "Tank Protect Range",
+        options: ["30", "45"],
+    })
+    tankProtectRangeRadius = 0;
+
+    @SelectorProperty({
         name: "Tank Protect Range Mode",
         description: "Display mode of Tank Protect Range",
         category: "Dungeon",
@@ -882,6 +891,22 @@ class Settings {
         options: ["box", "circle"],
     })
     tankProtectRangeMode = 0;
+
+    @SwitchProperty({
+        name: "Remove P1 ArmorStand",
+        description: "Will improve your FPS, this feature will not trigger when you are playing archer to prevent disable boss bar render",
+        category: "Dungeon",
+        subcategory: "Performance",
+    })
+    hideP1ArmorStand = false;
+
+    @SwitchProperty({
+        name: "Remove P5 ArmorStand and Falling Block",
+        description: "Will improve your FPS",
+        category: "Dungeon",
+        subcategory: "Performance",
+    })
+    hideP5ArmorStandAndFallingBlock = false;
 
     @TextProperty({
         name: "Hide NPC Abiphone Contact",
@@ -984,6 +1009,7 @@ class Settings {
         this.addDependency("Tank Protect Range Mode", "Tank Protect Range");
         this.addDependency("Tank Protect Range Show Own Range", "Tank Protect Range");
         this.addDependency("Tank Protect Range Color", "Tank Protect Range");
+        this.addDependency("Tank Range Radius", "Tank Protect Range");
 
         this.addDependency("Blessing Display HUD Location", "Blessing Tracker");
         this.addDependency("Blessing Display Power", "Blessing Tracker");
