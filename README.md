@@ -45,6 +45,7 @@ A chattrigger script helper for Hypixel Skyblock
 9. Healer Wish Notification/Message: Tell you and your party when the healer need wish in boss room
 10. Box Starred Mob: Display the boxes of the star mobs if they are visible to player, similar to Skytils but can customize
 11. Tank Protect Range: Display the boxes of the tanks protect range, similar to skytils but hope it will never broken >_< (Please report bug in github)
+12. Remove P1/P5 ArmorStand and P5 Falling Block: Will increase FPS
 
 ### Combat
 1. Alignment Tracker: The alignment Tracker for the gyro wand will track both your and other players' alignment
