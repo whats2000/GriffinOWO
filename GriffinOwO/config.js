@@ -673,7 +673,7 @@ class Settings {
 
     @SelectorProperty({
         name: "Dragon Timer Mode",
-        description: "&aSingle&f: All player target at 1 dragon\n&aSplit&f: Archer, Healer, Tank dispaly second order, Others will display first order\n&aAuto Select&f: Select the skip mode depend on &cBlessing of Power &flevel, &eNeed enable &lBlessing Tracker\n&aCurrent first order is [P -> O -> G -> R -> B]",
+        description: "&aSingle&f: All player target at 1 dragon\n&aSplit&f: Archer, Healer, Tank dispaly as the order below, Others will display revert of that order\n&aAuto Select&f: Select the skip mode depend on &cBlessing of Power &flevel, &eNeed enable &lBlessing Tracker\n&aCurrent order is [P -> O -> G -> R -> B]",
         category: "Dungeon",
         subcategory: "Dragon Timer HUD",
         options: ["single", "split", "auto select"],
