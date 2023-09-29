@@ -111,14 +111,13 @@ register("chat", () => {
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
         ChatLib.chat(`          &6[GriffinOwO] &f&aChange Log (${version})`);
         ChatLib.chat("&b&l                New Feature");
-        ChatLib.chat("&a + &eAdd Remove P1 ArmorStand (Dungeon)");
-        ChatLib.chat("&a + &eAdd Remove P5 ArmorStand and Falling Block (Dungeon)");
+        ChatLib.chat("&a + &eNothing add currently");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
-        ChatLib.chat("&c - &eNothing currently");
+        ChatLib.chat("&c - &eFix incorrect order in dragon timer split mode");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Change");
-        ChatLib.chat("&d = &eTank Range Radius now can be modify");
+        ChatLib.chat("&d = &eNothing change currently");
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
     }, 1000);
 }).setCriteria("Welcome to Hypixel SkyBlock${after}");

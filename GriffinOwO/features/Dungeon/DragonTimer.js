@@ -15,20 +15,20 @@ const DragonParticle = {
 
 // Order for Archer, Healer, Tank
 const SplitOrder1 = {
-    "§6§lOrange": { x: 85, y: 19, z: 56 },
-    "§a§lGreen": { x: 27, y: 19, z: 94 },
-    "§c§lRed": { x: 27, y: 19, z: 59 },
-    "§5§lPurple": { x: 56, y: 19, z: 125 },
     "§b§lBlue": { x: 84, y: 19, z: 94 },
+    "§c§lRed": { x: 27, y: 19, z: 59 },
+    "§a§lGreen": { x: 27, y: 19, z: 94 },
+    "§6§lOrange": { x: 85, y: 19, z: 56 },
+    "§5§lPurple": { x: 56, y: 19, z: 125 },
 }
 
 // Revert Order for Berserk, Mage
 const SplitOrder2 = {
-    "§b§lBlue": { x: 84, y: 19, z: 94 },
     "§5§lPurple": { x: 56, y: 19, z: 125 },
-    "§c§lRed": { x: 27, y: 19, z: 59 },
-    "§a§lGreen": { x: 27, y: 19, z: 94 },
     "§6§lOrange": { x: 85, y: 19, z: 56 },
+    "§a§lGreen": { x: 27, y: 19, z: 94 },
+    "§c§lRed": { x: 27, y: 19, z: 59 },
+    "§b§lBlue": { x: 84, y: 19, z: 94 },
 }
 
 const S2APacketParticles = Java.type("net.minecraft.network.play.server.S2APacketParticles");
@@ -59,7 +59,7 @@ let color = null;
 let dragonOrder = DragonParticle;
 
 function selectSplitOrder() {
-    return (getPla4yerClass() === 1 || getPlayerClass() === 3 || getPlayerClass() === 4) ? SplitOrder2 : SplitOrder1
+    return (getPla4yerClass() === 1 || getPlayerClass() === 3 || getPlayerClass() === 4) ? SplitOrder1 : SplitOrder2
 }
 
 function selectTimerMode() {
@@ -143,7 +143,7 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) 
         if (Settings.dragonSpawnTitleShowTimer) {
             const displayColor = time > 3000 ? "&a" :
                 time > 1000 ? "&e" :
-                    "&c"
+                    "&c";
             Client.Companion.showTitle(`${dragonColor} dragon`, `&6Spawn in ${displayColor}${time}`, 0, 2, 0);
         } else if (time > 4000) {
             Client.Companion.showTitle(`${dragonColor} Spawning`, "", 0, 2, 0);
