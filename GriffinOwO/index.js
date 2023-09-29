@@ -111,7 +111,7 @@ register("chat", () => {
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
         ChatLib.chat(`          &6[GriffinOwO] &f&aChange Log (${version})`);
         ChatLib.chat("&b&l                New Feature");
-        ChatLib.chat("&a + &eNothing add currently");
+        ChatLib.chat("&a + &eAdd hotkey for set dragon timer mode (In GameSetting > Control)");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
         ChatLib.chat("&c - &eFix incorrect order in dragon timer split mode");

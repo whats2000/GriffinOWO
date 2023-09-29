@@ -32,20 +32,8 @@ const SplitOrder2 = {
 }
 
 const S2APacketParticles = Java.type("net.minecraft.network.play.server.S2APacketParticles");
-
-/* const mapping = {
-    getParticleType: (S2APacketParticles) => S2APacketParticles.func_179749_a(),
-    isLongDistance: (S2APacketParticles) => S2APacketParticles.func_179750_b(),
-    getXCoordinate: (S2APacketParticles) => S2APacketParticles.func_149220_d(),
-    getYCoordinate: (S2APacketParticles) => S2APacketParticles.func_149226_e(),
-    getZCoordinate: (S2APacketParticles) => S2APacketParticles.func_149225_f(),
-    getXOffset: (S2APacketParticles) => S2APacketParticles.func_149221_g(),
-    getYOffset: (S2APacketParticles) => S2APacketParticles.func_149224_h(),
-    getZOffset: (S2APacketParticles) => S2APacketParticles.func_149223_i(),
-    getParticleSpeed: (S2APacketParticles) => S2APacketParticles.func_149227_j(),
-    getParticleCount: (S2APacketParticles) => S2APacketParticles.func_149222_k ),
-    getParticleArgs: (S2APacketParticles) => S2APacketParticles.func_179748_k(),
-}; */
+const modes = ["single", "split", "auto-select"];
+const modeSwitchKeyBind = Client.getKeyBindFromKey(Keyboard.KEY_Y, "Cycle Dragon Timer Mode");
 
 let dragonTimer = {
     "§a§lGreen": 0,
@@ -88,6 +76,29 @@ function selectTimerMode() {
             return DragonParticle;
     }
 }
+
+function resetTimer() {
+    dragonTimer = {
+        "§a§lGreen": 0,
+        "§5§lPurple": 0,
+        "§b§lBlue": 0,
+        "§6§lOrange": 0,
+        "§c§lRed": 0,
+    };
+
+    color = null;
+}
+
+registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle),
+    register("renderWorld", () => {
+        if (!modeSwitchKeyBind.isPressed()) return;
+
+        const currentModeIndex = (Settings.dragonTimerMode + 1) % modes.length;
+        const newMode = modes[currentModeIndex];
+        Settings.dragonTimerMode = currentModeIndex;
+        ChatLib.chat(`&2[GriffinOwO] &fDragon Timer Mode: &a&l${newMode}`);
+    })
+);
 
 registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage || Settings.dragonSpawnTitle) && checkInZone("The Catacombs (M7)"),
     register("PacketReceived", (packet) => {
@@ -151,27 +162,15 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) 
     }).setFps(1000)
 );
 
-function resetTimer() {
-    dragonTimer = {
-        "§a§lGreen": 0,
-        "§5§lPurple": 0,
-        "§b§lBlue": 0,
-        "§6§lOrange": 0,
-        "§c§lRed": 0,
-    };
-
-    color = null;
-}
-
-// Reset alive status
-registerEventListener(() => Settings.dragonBox && checkInZone("The Catacombs (M7)"),
+// Reset Timer
+registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) && checkInZone("The Catacombs (M7)"),
     register("chat", () => {
         resetTimer();
         dragonOrder = selectTimerMode();
     }).setCriteria("[BOSS] Wither King: Ohhh?")
 );
 
-registerEventListener(() => Settings.dragonBox && checkInZone("The Catacombs (M7)"),
+registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle) && checkInZone("The Catacombs (M7)"),
     register("chat", () => {
         resetTimer();
         dragonOrder = selectTimerMode();
