@@ -59,7 +59,7 @@ let color = null;
 let dragonOrder = DragonParticle;
 
 function selectSplitOrder() {
-    return (getPla4yerClass() === 1 || getPlayerClass() === 3 || getPlayerClass() === 4) ? SplitOrder1 : SplitOrder2
+    return (getPlayerClass() === 1 || getPlayerClass() === 3 || getPlayerClass() === 4) ? SplitOrder1 : SplitOrder2
 }
 
 function selectTimerMode() {
