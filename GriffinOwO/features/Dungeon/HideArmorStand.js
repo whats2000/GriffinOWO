@@ -10,24 +10,23 @@ let endFight = false;
 
 registerEventListener(() => Settings.hideP1ArmorStand && (checkInZone("The Catacombs (M7)") || checkInZone("The Catacombs (F7)")),
     register("renderEntity", (entity, pos, partialTick, event) => {
-        if (getDungeonPhase() !== 71) return;
-        if (getPlayerClass() === 1) return;
+        if (getDungeonPhase() !== 71 || getPlayerClass() === 1 || !(entity.getEntity() instanceof EntityArmorStand)) return;
         cancel(event);
-    }).setFilteredClass(EntityArmorStand.class)
+    })
 );
 
 registerEventListener(() => Settings.hideP5ArmorStandAndFallingBlock && (checkInZone("The Catacombs (M7)") || checkInZone("The Catacombs (F7)")),
     register("renderEntity", (entity, pos, partialTick, event) => {
-        if (getDungeonPhase() !== 75 || endFight) return;
+        if (getDungeonPhase() !== 75 || endFight || !(entity.getEntity() instanceof EntityArmorStand)) return;
         cancel(event);
-    }).setFilteredClass(EntityArmorStand.class)
+    })
 );
 
 registerEventListener(() => Settings.hideP5ArmorStandAndFallingBlock && (checkInZone("The Catacombs (M7)")),
     register("renderEntity", (entity, pos, partialTick, event) => {
-        if (getDungeonPhase() !== 75) return;
+        if (getDungeonPhase() !== 75 || !(entity.getEntity() instanceof EntityFallingBlock)) return;
         cancel(event);
-    }).setFilteredClass(EntityFallingBlock.class)
+    })
 );
 
 registerEventListener(() => Settings.hideP5ArmorStandAndFallingBlock && (checkInZone("The Catacombs (M7)")),
