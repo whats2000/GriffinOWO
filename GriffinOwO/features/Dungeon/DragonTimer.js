@@ -96,6 +96,7 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnTitle),
         const currentModeIndex = (Settings.dragonTimerMode + 1) % modes.length;
         const newMode = modes[currentModeIndex];
         Settings.dragonTimerMode = currentModeIndex;
+        dragonOrder = selectTimerMode();
         ChatLib.chat(`&2[GriffinOwO] &fDragon Timer Mode: &a&l${newMode}`);
     })
 );
