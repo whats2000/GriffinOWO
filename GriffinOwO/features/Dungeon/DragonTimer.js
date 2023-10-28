@@ -15,20 +15,20 @@ const DragonParticle = {
 
 // Order for Archer, Healer, Tank
 const SplitOrder1 = {
-    "§b§lBlue": { x: 84, y: 19, z: 94 },
-    "§c§lRed": { x: 27, y: 19, z: 59 },
-    "§a§lGreen": { x: 27, y: 19, z: 94 },
     "§6§lOrange": { x: 85, y: 19, z: 56 },
+    "§a§lGreen": { x: 27, y: 19, z: 94 },
+    "§c§lRed": { x: 27, y: 19, z: 59 },
+    "§b§lBlue": { x: 84, y: 19, z: 94 },
     "§5§lPurple": { x: 56, y: 19, z: 125 },
 }
 
 // Revert Order for Berserk, Mage
 const SplitOrder2 = {
     "§5§lPurple": { x: 56, y: 19, z: 125 },
-    "§6§lOrange": { x: 85, y: 19, z: 56 },
-    "§a§lGreen": { x: 27, y: 19, z: 94 },
-    "§c§lRed": { x: 27, y: 19, z: 59 },
     "§b§lBlue": { x: 84, y: 19, z: 94 },
+    "§c§lRed": { x: 27, y: 19, z: 59 },
+    "§a§lGreen": { x: 27, y: 19, z: 94 },
+    "§6§lOrange": { x: 85, y: 19, z: 56 },
 }
 
 const S2APacketParticles = Java.type("net.minecraft.network.play.server.S2APacketParticles");

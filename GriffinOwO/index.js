@@ -114,10 +114,11 @@ register("chat", () => {
         ChatLib.chat("&a + &eNothing change currently");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
-        ChatLib.chat("&c - &eFix hotkey for set dragon timer mode sometime will not change order in p5");
+        ChatLib.chat("&c - &eNothing Fix currently");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Change");
-        ChatLib.chat("&d = &eNothing change currently");
+        ChatLib.chat("&d = &eChange dragon order into BM -> OGRBP <- AHT due to berserk nerf");
+        ChatLib.chat("&d = &eTo-Do Customizable dragon order for perm party (Currently working on it)");
         ChatLib.chat("&r&r&b&m-----------------------------------------------------");
     }, 1000);
 }).setCriteria("Welcome to Hypixel SkyBlock${after}");
