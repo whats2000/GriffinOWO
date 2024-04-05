@@ -114,7 +114,7 @@ register("chat", () => {
         ChatLib.chat("&a + &eNothing change currently");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Bug Fix");
-        ChatLib.chat("&c - &eNothing Fix currently");
+        ChatLib.chat("&c - &eFix the incorrect detection of phase 5 in Master Mode Floor 7");
         ChatLib.chat("");
         ChatLib.chat("&b&l                Change");
         ChatLib.chat("&d = &eChange dragon order into BM -> OGRBP <- AHT due to berserk nerf");
