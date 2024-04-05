@@ -7,6 +7,7 @@ let partyMember = 0;
 let party = {};
 let cdReduce = 1;
 let classCheck = false;
+let partyRetryCount = 0;
 
 let dragonState = {
     "Red": { pos: new BlockPos(32, 22, 59), alive: true },
@@ -164,7 +165,7 @@ registerEventListener(() => checkInZone("The Catacombs (M7)"),
         if (Object.keys(party).length === 0) {
             reloadClass();
         }
-    }).setCriteria("[BOSS] Wither King: You.. again?")
+    }).setCriteria("[BOSS] Wither King: You... again?")
 );
 
 registerEventListener(() => checkInWorld("Dungeon"),
