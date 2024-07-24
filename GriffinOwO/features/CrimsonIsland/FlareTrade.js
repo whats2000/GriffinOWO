@@ -43,7 +43,7 @@ function checkIsAllWarp() {
             ChatLib.command("party disband");
         });
 
-        waitForJoin = false;
+        flareWaitForJoin = false;
     }
 }
 

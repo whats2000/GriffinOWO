@@ -111,17 +111,17 @@ registerEventListener(() => (Settings.dragonTimer || Settings.dragonSpawnMessage
             packet.func_149220_d() % 1 !== 0.0 ||            //getXCoordinate
             packet.func_149226_e() !== 19.0 ||               //getYCoordinate
             packet.func_149225_f() % 1 !== 0.0 ||            //getZCoordinate
-            packet.func_149221_g() != 2.0 ||                 //getXOffset
-            packet.func_149224_h() != 3.0 ||                 //getYOffset
-            packet.func_149223_i() != 2.0 ||                 //getZOffset
-            packet.func_149227_j() != 0.0 ||                 //getParticleSpeed
-            packet.func_149222_k() != 20) return;            //getParticleCount
+            packet.func_149221_g() !== 2.0 ||                 //getXOffset
+            packet.func_149224_h() !== 3.0 ||                 //getYOffset
+            packet.func_149223_i() !== 2.0 ||                 //getZOffset
+            packet.func_149227_j() !== 0.0 ||                 //getParticleSpeed
+            packet.func_149222_k() !== 20) return;            //getParticleCount
 
         const [x, z] = [packet.func_149220_d(), packet.func_149225_f()]
         //ChatLib.chat(`[${x}, ${z}]`)
 
         for (let color in dragonOrder) {
-            if (DragonParticle[color].x == parseInt(x) && DragonParticle[color].z == parseInt(z)) {
+            if (DragonParticle[color].x === parseInt(x) && DragonParticle[color].z === parseInt(z)) {
                 if (dragonTimer[color] < Date.now()) {
                     if (Settings.dragonTimer || Settings.dragonSpawnTitle)
                         dragonTimer[color] = new Date().getTime() + 5000;

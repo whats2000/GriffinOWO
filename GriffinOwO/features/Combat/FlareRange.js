@@ -7,7 +7,7 @@ function getBlock(x, y, z) {
     let newY;
     for (let i = y; i >= 0; i--) {
         let blockat = World.getBlockAt(x, i, z);
-        if (blockat.type.getID() != 0) {
+        if (blockat.type.getID() !== 0) {
             newY = parseInt(i);
             return newY;
         }

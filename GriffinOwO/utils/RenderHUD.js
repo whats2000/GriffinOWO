@@ -59,9 +59,9 @@ function handleDragged(coords, x, y) {
 }
 
 function handleScroll(coords, direction) {
-    if (direction == 1) {
+    if (direction === 1) {
         coords.scale += coords.scale < 10 ? 0.1 : 0;
-    } else if (direction == -1) {
+    } else if (direction === -1) {
         coords.scale -= coords.scale > 0 ? 0.1 : 0;
     }
     userData.save();
@@ -152,7 +152,7 @@ register("renderOverlay", () => {
     }
 });
 
-register('dragged', (dx, dy, x, y, button) => {
+register('dragged', (dx, dy, x, y, _button) => {
     if (!canDrag) return;
 
     if (Settings.gyroCoolDownTracker)
@@ -183,7 +183,6 @@ register('dragged', (dx, dy, x, y, button) => {
     if (Settings.blessingTracker)
         if (Settings.blessingDisplayGUI.isOpen()) {
             handleDragged(userData.blessingCoords, x, y);
-            return;
         }
 });
 
@@ -216,7 +215,6 @@ register('scrolled', (x, y, direction) => {
     if (Settings.blessingTracker)
         if (Settings.blessingDisplayGUI.isOpen()) {
             handleScroll(userData.blessingCoords, direction);
-            return;
         }
 });
 

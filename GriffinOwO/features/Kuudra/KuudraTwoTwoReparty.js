@@ -45,7 +45,7 @@ registerEventListener(() => Settings.kuudraRepartyList !== "",
 );
 
 registerEventListener(() => Settings.kuudraRepartyList !== "",
-    register("chat", (mode, names, e) => {
+    register("chat", (mode, names, _e) => {
         if (new Date().getTime() - lastAttemptKuudraRePartyTime > 1000 || cd) {
             return;
         }

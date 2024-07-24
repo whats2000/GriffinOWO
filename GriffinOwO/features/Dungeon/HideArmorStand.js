@@ -1,5 +1,5 @@
 import Settings from "../../config";
-import { getDungeonPhase, getPlayerClass, isAlive } from "../../utils/DungeonTracker";
+import { getDungeonPhase, getPlayerClass } from "../../utils/DungeonTracker";
 import { checkInZone } from "../../utils/Location";
 import { registerEventListener } from "../../utils/EventListener";
 

@@ -9,7 +9,7 @@ function updateZone() {
     const ZoneLine = Scoreboard.getLines().find((line) => line.getName().includes("⏣") || line.getName().includes("ф"));
 
     if (ZoneLine) {
-        currentZone = ZoneLine.getName().replace("⏣ ", "").replace("ф ", "").removeFormatting().replace(/[^\x00-\x7F]/g, "").replace(/^\s+/, '');;
+        currentZone = ZoneLine.getName().replace("⏣ ", "").replace("ф ", "").removeFormatting().replace(/[^\x00-\x7F]/g, "").replace(/^\s+/, '');
 
         if (currentZone.includes("None")) {
             zoneRetryCount++;
@@ -51,7 +51,7 @@ function checkCurrentWorld() {
             //ChatLib.chat("Failed to get current world after multiple attempts.");
         }
     }
-};
+}
 
 register("worldLoad", () => {
     worldRetryCount = 0;
@@ -60,7 +60,7 @@ register("worldLoad", () => {
 
 registerEventListener(() => checkInWorld("The Rift"),
     register("chat", (time, zone) => {
-        currentZone = zone.replace(/[^\x00-\x7F]/g, "");;
+        currentZone = zone.replace(/[^\x00-\x7F]/g, "");
 
         //console.log(`Current world: ${currentWorld}`);
         //console.log(`Current zone: ${currentZone}`);

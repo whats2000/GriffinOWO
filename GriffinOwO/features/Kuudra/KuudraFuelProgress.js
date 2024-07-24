@@ -11,7 +11,6 @@ let fuelProgress = 0;
 registerEventListener(() => Settings.kuudraFuelProgress && checkInWorld("Kuudra"),
     register("chat", () => {
         fuelProgress = 0;
-        moutedCannon = false;
     }).setCriteria("[NPC] Elle: Not again!")
 );
 
@@ -60,7 +59,7 @@ registerEventListener(() => Settings.kuudraFuelProgress && checkInWorld("Kuudra"
         const scale = Settings.kuudraFuelProgressTextSize;
         const increase = true;
 
-        let color = "§a"
+        let color;
 
         switch (fuelProgress) {
             case 0:

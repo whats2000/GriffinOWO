@@ -47,7 +47,7 @@ export function checkWhitelist(player) {
     if (blacklist_mode) {
         let blacklist_ign = Settings.blacklistIGN.split(" ");
         for (let a = 0; a < blacklist_ign.length; a++)
-            if (lower_case_player_ign == blacklist_ign[a].toLowerCase()) {
+            if (lower_case_player_ign === blacklist_ign[a].toLowerCase()) {
                 setTimeout(() => {
                     ChatLib.chat(`&2[GriffinOwO] &f[${player}] is on blacklist!`);
                 }, 50);
@@ -59,7 +59,7 @@ export function checkWhitelist(player) {
     if (whitelist_mode) {
         let whitelist_ign = Settings.whitelistIGN.split(" ");
         for (let a = 0; a < whitelist_ign.length; a++)
-            if (lower_case_player_ign == whitelist_ign[a].toLowerCase())
+            if (lower_case_player_ign === whitelist_ign[a].toLowerCase())
                 return true;
 
         setTimeout(() => {

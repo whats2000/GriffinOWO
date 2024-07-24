@@ -10,7 +10,7 @@ let prevSoul = null;
 let nearestSoul = null;
 
 function getNameCorlor(zone) {
-    let color = "§b"
+    let color;
     switch (zone) {
         case "Wyld Woods":
             color = "§a";
@@ -43,7 +43,7 @@ function getNameCorlor(zone) {
 }
 
 register("command", (...args) => {
-    if (args == undefined) {
+    if (args === undefined) {
         ChatLib.chat("&r&r&b&m--------------------------------------------------------------------------------");
         ChatLib.chat("                          &6[GriffinOwO] &f&aEnigma Souls");
         ChatLib.chat(`&b/enigma on &f- Turn on Enigma Souls Waypoints`);
@@ -53,7 +53,7 @@ register("command", (...args) => {
         ChatLib.chat(`&b/enigma unclear &f- Mark all Enigma Souls Waypoint as no found`);
         ChatLib.chat("&r&r&b&m--------------------------------------------------------------------------------");
     }
-    const subCommand = args[0] == undefined ? undefined : args[0].toLowerCase();
+    const subCommand = args[0] === undefined ? undefined : args[0].toLowerCase();
     const foundSouls = userData.foundEnigmaSouls;
 
     switch (subCommand) {

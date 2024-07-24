@@ -15,7 +15,7 @@ registerEventListener(() => Settings.brokenHyper && (Settings.brokenHyperDetectF
         const scoreboard = Scoreboard.getLines().map(a => { return ChatLib.removeFormatting(a) });
 
         if (Settings.brokenHyperDetectFlareOnly) {
-            if (!(entity.getClassName() == "EntityBlaze")) return;
+            if (!(entity.getClassName() === "EntityBlaze")) return;
 
             let location = "";
 

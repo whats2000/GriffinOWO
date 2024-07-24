@@ -1,4 +1,4 @@
-import { @Vigilant, @ButtonProperty, @TextProperty, @SwitchProperty, @DecimalSliderProperty @SliderProperty, @SelectorProperty, @ColorProperty, Color } from "Vigilance";
+import { @Vigilant, @ButtonProperty, @TextProperty, @SwitchProperty, @DecimalSliderProperty, @SliderProperty, @SelectorProperty, @ColorProperty, Color } from "Vigilance";
 
 const version = JSON.parse(FileLib.read("GriffinOWO", "metadata.json")).version;
 

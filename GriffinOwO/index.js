@@ -150,8 +150,8 @@ if (userData.firstUse) {
 let settingOpen = false;
 
 register("command", (...args) => {
-    const subCommand = args[0] == undefined ? undefined : args[0].toLowerCase();
-    const subCommand2 = args[1] == undefined ? undefined : args[1].toLowerCase();
+    const subCommand = args[0] === undefined ? undefined : args[0].toLowerCase();
+    const subCommand2 = args[1] === undefined ? undefined : args[1].toLowerCase();
 
     switch (subCommand) {
         case undefined:
@@ -259,8 +259,8 @@ register("command", () => {
     settingOpen = true;
 }).setName("griffin_config");
 
-register("guiKey", (char, key, gui, event) => {
-    if (key == 1 && settingOpen) {
+register("guiKey", (char, key, _gui, _event) => {
+    if (key === 1 && settingOpen) {
         updateEventListeners();
         settingOpen = false;
     }

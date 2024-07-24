@@ -73,7 +73,7 @@ register("command", (x, y, z, name) => {
 }).setName("griffin_set_coord");
 
 registerEventListener(() => Settings.recieveWaypoint,
-    register("chat", (player, x, y, z, event) => {
+    register("chat", (player, x, y, z, _event) => {
         player = getIGN(player);
 
         if (!Settings.recieveOwnWaypoint)
@@ -84,7 +84,7 @@ registerEventListener(() => Settings.recieveWaypoint,
 );
 
 registerEventListener(() => Settings.recieveWaypoint,
-    register("chat", (player, x, y, z, event) => {
+    register("chat", (player, x, y, z, _event) => {
         player = getIGN(player);
 
         if (!Settings.recieveOwnWaypoint)
@@ -95,7 +95,7 @@ registerEventListener(() => Settings.recieveWaypoint,
 );
 
 registerEventListener(() => Settings.recieveWaypoint,
-    register("chat", (player, x, y, z, event) => {
+    register("chat", (player, x, y, z, _event) => {
         player = getIGN(player);
 
         if (!Settings.recieveOwnWaypoint)
@@ -115,7 +115,7 @@ registerEventListener(() => Settings.recieveWaypoint,
 
         // Remove anything after z coords
         const spaceIndex = z.indexOf(' ');
-        if (spaceIndex != -1) {
+        if (spaceIndex !== -1) {
             z = z.substring(0, spaceIndex);
         }
 

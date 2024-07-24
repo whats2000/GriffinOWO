@@ -48,7 +48,7 @@ registerEventListener(() => Settings.shadowWarpMarker,
 );
 
 registerEventListener(() => Settings.shadowWarpMarker,
-    register("clicked", (x, y, button, isButtonDown) => {
+    register("clicked", (x, y, button, _isButtonDown) => {
         if (getItemScroll(Player.getHeldItem())?.toString() !== "SHADOW_WARP_SCROLL" || button === 0) return;
         if (shadowWarpUsedTime > Date.now() && !inSecondAbilityCd) {
             shadowWarpUsedTime = new Date().getTime() + ShadowWarpCooldown[1] * getCdReduce();

@@ -66,7 +66,7 @@ registerEventListener(() => Settings.flareTimer,
 );
 
 export function getFlareTimeFormatted() {
-    let displayType = "Unknow";
+    let displayType;
     switch (flare.type) {
         case 0:
             displayType = "&a&lWarning"

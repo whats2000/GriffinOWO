@@ -29,7 +29,7 @@ registerEventListener(() => Settings.kuudraHeadPointer && checkInZone("Kuudra's 
         if (!Kuudra) return;
 
         // vector of player facing
-        const [vx1, vy1, vz1] = getVec3Pos(Player.getPlayer().func_70676_i(partialTick)); // getVec3Pos(Player.getPlayer().getLook())
+        const [vx1, _vy1, vz1] = getVec3Pos(Player.getPlayer().func_70676_i(partialTick)); // getVec3Pos(Player.getPlayer().getLook())
 
 
         // Kuudra x and z pos

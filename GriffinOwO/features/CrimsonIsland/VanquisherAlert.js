@@ -52,7 +52,7 @@ registerEventListener(() => Settings.vanquisher && Settings.flarePartyList === "
 
 registerEventListener(() => Settings.vanquisher && Settings.flarePartyList === "" && checkInWorld("Crimson Isle"),
     register("Chat", (event) => {
-        formatted_message = ChatLib.getChatMessage(event, true);
+        const formatted_message = ChatLib.getChatMessage(event, true);
 
         if (!formatted_message.includes("&r&6&lRARE DROP! &r&6Nether Star&r")) return;
 

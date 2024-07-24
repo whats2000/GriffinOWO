@@ -57,7 +57,7 @@ registerEventListener(() => Settings.join,
 );
 
 registerEventListener(() => Settings.join,
-    register("chat", (mode, names, e) => {
+    register("chat", (mode, names, _e) => {
         if (new Date().getTime() - lastAttemptWarpTime > 1000) return;
         if (mode !== "Leader") return;
         const myIGN = getIGN(Player.getName()).toLowerCase();
@@ -66,7 +66,7 @@ registerEventListener(() => Settings.join,
         if (leader !== myIGN) {
             lastAttemptWarpTime = 0;
             return;
-        };
+        }
 
         setTimeout(() => {
             ChatLib.chat(`&2[GriffinOwO] &fTrying to join ${joinFloor}. [${triggerPlayer}]`);

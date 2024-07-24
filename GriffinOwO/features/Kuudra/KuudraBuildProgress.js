@@ -49,7 +49,7 @@ registerEventListener(() => Settings.kuudraBuildProgress && checkInWorld("Kuudra
             const progress = name ? name.replace("PROGRESS: ", "") : null;
 
             if (progress) {
-                const [x, y, z] = [stand.getX(), stand.getY(), stand.getZ()];
+                const [x, _y, z] = [stand.getX(), stand.getY(), stand.getZ()];
                 const locationKey = `${x}:${z}`;
 
                 if (!buildLocationProgress.hasOwnProperty(locationKey)) {
