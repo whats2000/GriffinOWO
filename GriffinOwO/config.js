@@ -1,8 +1,8 @@
 import { @Vigilant, @ButtonProperty, @TextProperty, @SwitchProperty, @DecimalSliderProperty, @SliderProperty, @SelectorProperty, @ColorProperty, Color } from "Vigilance";
 
-const version = JSON.parse(FileLib.read("GriffinOWO", "metadata.json")).version;
+const version = JSON.parse(FileLib.read("GriffinOwO", "metadata.json")).version;
 
-@Vigilant("GriffinOWO", `Some people call it iahnaddons, v${version}`, {
+@Vigilant("GriffinOwO", `Some people call it iahnaddons, v${version}`, {
 })
 class Settings {
     gyroGUI = new Gui();
@@ -1025,7 +1025,7 @@ class Settings {
     }
 
     sync() {
-        ChatLib.command("GriffinOWO sync", true);
+        ChatLib.command("GriffinOwO sync", true);
     }
 }
 
