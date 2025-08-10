@@ -102,7 +102,7 @@ userData.autosave();
 
 // Show Change Log
 register("chat", () => {
-    const version = JSON.parse(FileLib.read("GriffinOWO", "metadata.json")).version;
+    const version = JSON.parse(FileLib.read("GriffinOwO", "metadata.json")).version;
     if (version === userData.version) return;
 
     userData.version = version;
